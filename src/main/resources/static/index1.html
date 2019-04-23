@@ -7,11 +7,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title></title>
-		<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}" href="../static/css/base.css" />
-		<link rel="stylesheet" type="text/css" th:href="@{/css/Torr.css}" href="../static/css/Torr.css" />
-	
-		<script type="text/javascript" charset="utf-8" th:src="@{/js/core.js}" src="../static/js/core.js"></script>
-		<script type="text/javascript" charset="utf-8" th:src="@{/js/v8.js}" src="../static/js/v8.js"></script>
+		<link rel="stylesheet"  th:href="@{/css/base.css}" href="css/base.css" />
+		<link rel="stylesheet"  th:href="@{/css/Torr.css}" href="css/Torr.css" />
+
+		<script  charset="utf-8" th:src="@{/js/core.js}" src="js/core.js"></script>
+		<script  charset="utf-8" th:src="@{/js/v8.js}" src="js/v8.js"></script>
 	</head>
 	<body>
 			<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
@@ -19,7 +19,7 @@
 			<div class="mod-wrap hd-wrap">
 				<div class="hd-left fix">
 					<div class="hd-logo">
-						<h1 class="logo"><a href="" title="风行网" hidefocus><img style="overflow: hidden;" src="../static/img/艺起看3.png"/></a></h1>
+						<h1 class="logo"><a href="" title="艺起看" hidefocus><img style="overflow: hidden;"  th:src="@{/img/艺起看3.png}" /></a></h1>
 						<div class="hd-ad">
 							<div class="ad-wrap" data-deliver="ws_index__logo">
 							</div>
@@ -58,7 +58,7 @@
 							<div class="login-btn-wrap" id="loginLayout">
 								<i class="login-bg"></i>
 								<div class="btns">
-									<a id="login-btn" href="" onclick="F.user.isLogin(true,true);return false;">登录</a>
+									<a id="login-btn" href="http://localhost:8760/login.html" onclick="F.user.isLogin(true,true);return false;">登录</a>
 									<i class="line"></i>
 									<a id="register-btn" href="" onclick="if(F.user.register){F.user.register();return false;}">注册</a>
 								</div>

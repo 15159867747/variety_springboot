@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
@@ -160,39 +160,31 @@
                 </div>
             </div>
             <div class="login-form">
-                <form name="pageLoginForm" id="pageLoginForm" method="post" autocomplete="off">
+                <form name="pageLoginForm" id="pageLoginForm" method="post" th:action="@{API/check}">
                     <div style="display: none;"><input type="text"><input type="password"></div>
                     <p class="login-tip"><span class="show_text" id="show_text">风行账号登录</span><span class="tab_login_method" id="tab_login_method">手机快捷登录</span></p>
-                    <div id="acount_login_container" style="display:block;">
+					
+					<div id="acount_login_container" style="display:block;">
                         <p class="f-p">
                             <input type="text" class="inputstyle hide" id="login-error-show" onfocus="this.blur()">
                             <a class="close-error hide" id="close-error"></a>
-                            <input type="text" class="inputstyle" name="username" id="panel_account" autocomplete="off">
-                            <span for="panel_email" id="for-panel_account" class="f-tip">用户名/邮箱/手机号</span>
+                            <input type="text" class="inputstyle" name="username"  placeholder="用户名"  id="panel_account" autocomplete="off">
+                            
                             <span class="login-error inline-block">
                                 <span id="et_panel_account" class="login-error-right" style="display:none;">账号不能为空</span>
                             </span>
-                            </p><ul class="on_changes" style="display: none;">
-                                <li email="">请选择或继续输入</li>
-                                <li email=""></li>
-                                <li email="@qq.com"></li>
-                                <li email="@163.com"></li>
-                                <li email="@126.com"></li>
-                                <li email="@sina.com"></li>
-                                <li email="@gmail.com"></li>
-                                <li email="@139.com"></li>
-                            </ul>
+                            </p>
                         <p></p>
                         <p class="f-p">
-                            <input type="password" class="inputstyle" name="password" id="panel_password">
-                            <span for="panel_password" id="for-panel_password" class="f-tip">密码</span>
+                            <input type="password" class="inputstyle" placeholder="密码"  name="password" id="panel_password">
+                            
                             <span class="login-error inline-block">
                                 <span id="et_panel_password" class="login-error-right" style="display:none;">密码不能为空</span>
                             </span>
                         </p>
                         <p class="act clearfix">
                             
-                            <input type="button" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" id="loginsubmit">
+                            <input type="submit" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" id="loginsubmit">
                         </p>
                     </div>
                 

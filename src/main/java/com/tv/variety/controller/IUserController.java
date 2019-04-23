@@ -24,4 +24,6 @@ public interface IUserController {
 
     //退出登录
     JsonResult<String> Exit(String userid);
+
+
 }

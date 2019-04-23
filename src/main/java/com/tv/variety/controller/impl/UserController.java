@@ -18,6 +18,7 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,6 +34,8 @@ import static com.tv.variety.util.MD5Utils.string2MD5;
  * @createtime ${date}${time}
  */
 @RestController
+//@Controller
+
 @RequestMapping(value = "/API")
 public class UserController implements IUserController {
 //    @Autowired
@@ -58,9 +61,10 @@ public class UserController implements IUserController {
     }
 
     @Override
-    @RequestMapping(value = "/check/" , method = RequestMethod.GET)
+    @RequestMapping(value = "/check")
 //    @UnInterception
-    public JsonResult<String> logincheck(@RequestBody UserloginParas resqUser) {
+//    @UnInterception
+    public JsonResult<String> logincheck( UserloginParas resqUser) {
         MD5Utils md5Utils=new MD5Utils();
         //判断用户信息为空
         if ("".equals(resqUser.getId()) || "".equals(resqUser.getPassword())) {
@@ -120,6 +124,7 @@ public class UserController implements IUserController {
     public JsonResult<String> Exit(String userid) {
         return null;
     }
+
 
 
 //    @RequestMapping("/user")

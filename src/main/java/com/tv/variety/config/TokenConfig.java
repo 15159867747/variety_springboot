@@ -2,12 +2,11 @@ package com.tv.variety.config;
 
 
 import com.tv.variety.util.HandlerInterceptor.TokenInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
@@ -24,8 +23,14 @@ public class TokenConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry ){
         registry.addInterceptor( tokenInterceptor()).addPathPatterns("/API/**");
+//        registry.addInterceptor( new TokenInterceptor()).addPathPatterns("/**");
         //配置生成器：添加一个拦截器，拦截路径为API以后的路径
 //        super.addInterceptors(registry);
     }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/");
 
-}
+
+}}

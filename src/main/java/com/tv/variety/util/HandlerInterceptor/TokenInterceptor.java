@@ -2,18 +2,21 @@ package com.tv.variety.util.HandlerInterceptor;
 
 import com.tv.variety.mybatic.mapper.TokenMapper;
 import com.tv.variety.mybatic.model.Token;
+import com.tv.variety.util.annotation.UnInterception;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.Date;
 
 
@@ -32,13 +35,20 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
+        HandlerMethod handlerMethod= (HandlerMethod) arg2;
+        Method method = handlerMethod.getMethod();
         //普通路径放行
         System.out.println(arg0.getRequestURI());
         logger.info("====拦截到了方法：{}，在该方法执行之前执行====", arg0.getRequestURI());
+        String uri=arg0.getRequestURI();
 
-        if ("/API/addUser".equals(arg0.getRequestURI()) || "/API/check/".equals(arg0.getRequestURI())) {
+        if ("/API/addUser".equals(uri) || "/API/check/".equals(uri)||"/API/test/".equals(uri)) {
             return true;}
 
+//        UnInterception unInterception = method.getAnnotation(UnInterception.class);
+//        if (null != unInterception) {
+//            return true;
+//        }
         //权限路径拦截
         arg1.setCharacterEncoding("UTF-8");
         PrintWriter resultWriter=arg1.getWriter();
