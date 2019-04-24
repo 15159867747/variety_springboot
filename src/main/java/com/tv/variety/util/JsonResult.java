@@ -14,7 +14,7 @@ public class JsonResult<T> {
     /**
      * 若没有数据返回，默认状态码为 0，提示信息为“操作成功！”
      */
-    public JsonResult() {
+    public  JsonResult() {
         this.code = 200;
         this.msg = "操作成功";
     }

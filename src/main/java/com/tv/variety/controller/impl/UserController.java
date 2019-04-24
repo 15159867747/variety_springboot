@@ -2,6 +2,7 @@ package com.tv.variety.controller.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.tv.variety.controller.IUserController;
+import com.tv.variety.dto.LoginSuccessParam;
 import com.tv.variety.facade.IUserFacade;
 import com.tv.variety.facade.impl.UserFacade;
 import com.tv.variety.mybatic.mapper.TokenMapper;
@@ -45,7 +46,7 @@ public class UserController implements IUserController {
     private IUserFacade userFacade;
 
     @Override
-    @RequestMapping(value ="/addUser", method = RequestMethod.POST)
+    @RequestMapping(value ="/addUser", method = RequestMethod.GET)
 
     public JsonResult<String> addUser(@RequestBody UserAddParms userAddParms) {
         System.out.println(userAddParms);
@@ -107,9 +108,14 @@ public class UserController implements IUserController {
             userFacade.updateToken(myUser);
         }
         String TokenStr=userFacade.searchToken(myUser.getId()).getToken();
+        LoginSuccessParam loginSuccessParam=new LoginSuccessParam();
+        loginSuccessParam.setId(myUser.getId());
+        loginSuccessParam.setName(myUser.getName());
+        loginSuccessParam.setToken(TokenStr);
+
         //返回Token信息给客户端
 
-        return new JsonResult<String>(TokenStr,"登陆成功",1);
+        return new JsonResult(loginSuccessParam,"登陆成功",1);
 
     }
 

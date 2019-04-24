@@ -7,7 +7,11 @@
 		<link rel="stylesheet"   href="css/base.css" />
 
 		<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-		
+
+		<script type="text/javascript" src="js/sweetalert.min.js"></script>
+		<script type="text/javascript" src="js/sweetalert-dev.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+
 	</head>
 	<body>
 		<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
@@ -155,7 +159,7 @@
                         <p class="f-p">
                             <!-- <input type="text" class="inputstyle hide" id="login-error-show" onfocus="this.blur()"> -->
                             <a class="close-error hide" id="close-error"></a>
-                            <input type="text" class="inputstyle" name="id"  placeholder="用户名"  id="panel_account" >
+                            <input type="text" class="inputstyle" name="id"  placeholder="用户名"  id="id" >
                             
                             <span class="login-error inline-block">
                                 <span id="et_panel_account" class="login-error-right" style="display:none;">账号不能为空</span>
@@ -163,7 +167,7 @@
                             </p>
                         <p></p>
                         <p class="f-p">
-                            <input type="password" class="inputstyle" placeholder="密码"  name="password" id="panel_password">
+                            <input type="password" class="inputstyle" placeholder="密码"  name="password" id="password">
                             
                             <span class="login-error inline-block">
                                 <span id="et_panel_password" class="login-error-right" style="display:none;">密码不能为空</span>
@@ -171,7 +175,7 @@
                         </p>
                         <p class="act clearfix">
                             <!-- <button type="button" id="btn">提交</button> -->
-                            <input type="submit" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" onclick="login()">
+                            <input type="button" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" onclick="login()">
                         </p>
                     </div>
                 
@@ -210,90 +214,70 @@
 		</div>
 		
 	</body>
-<!-- 	<script>
-		// $("#loginsubmit").click(function(){
-		// 	$.ajax({
-		// 		url: "http://127.0.0.1:8760/API/check",
-		// 		data: {"id":"",
-		// 				"password":""},
-		// 		type: "GET",
-		// 		dataType: "json",
-		// 		async: false,
-		// 		contentType: "application/json;charset=utf-8",
-				// success: function() {
-				// 	// re = re1;
-				// },
-				// error: function(XMLHttpRequest, textStatus, errorThrown) {
-				// 	console.log('语法异常，请检查代码');
-				// 	console.log("请求码：" + textStatus);
-				// }
-		// 	})
-		// 	
-		// })
-		    $("loginsubmit").on("click", function () {
-        $.ajax({
-            url: "http://127.0.0.1:8760/API/check",
-            data: {"id":"",
-					"password":""},
-            type: "get",
-            dataType: "json",
-			contentType: "application/json;charset=utf-8",
-            success: function f(data) {
-                console.log(data);
-               
-            },
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-				console.log('语法异常，请检查代码');
-				console.log("请求码：" + textStatus);
-			}
-        })
-    });
-		
-	</script> -->
-<!-- 	<script type="text/javascript">
-    //获取basePath，测试的话就能用就完了
-    var obj = window.document.location;
-    var BASE_PATH = obj.href.substring(0, obj.href.indexOf(obj.pathname));
-
-    var username = "root";
-    var password = "123456";
-
-
-    $("#loginsubmit").on("click", function () {
-        $.ajax({
-            url: "http://127.0.0.1:8760/API/check",
-            data: {"id":"2",
-                "password":"2"},
-            type: "post",
-            dataType: "json",
-            success: function f(data) {
-                console.log(data);
-                debugger;
-                window.location.href = BASE_PATH + "/test2.html";
-            }
-        })
-    });
-</script> -->
-
 <script type="text/javascript">
-    function login() {
-        $.ajax({
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "http://127.0.0.1:8760/API/check" ,//url
-            data: $('#pageLoginForm').serialize(),
-            success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.resultCode == 200) {
-                    alert("SUCCESS");
-                }
-                ;
-            },
-            error : function(e) {
-                alert(,"异常！");
-            }
-        });
+    function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
     }
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+            return unescape(arr[2]);
+        } else {
+            return null;
+        }
+    }
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = this.getCookie(name);
+        if(cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+
+    function login() {
+        // console.log($("#id").val())
+        if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()=="")
+		{
+            swal("账号密码为空!");
+            // swal("Good!", "弹出了一个操作成功的提示框", "success");
+		}
+		else {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/API/check" ,//url
+                data: $('#pageLoginForm').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.code == 1) {
+                        swal("登录成功!", "", "success");
+                        setCookie()
+                    }
+                    if(result.code==-3){
+                        swal("密码不正确哦!", "", "error");
+					}
+                    if(result.code==-2){
+                        swal("账号不正确哦", "", "error");
+                    }
+                    ;
+                },
+                error : function(e) {
+                    alert("异常！");
+                }
+            });
+		}
+
+
+    }
+	
+	
+
+	
 </script>
+
 </html>

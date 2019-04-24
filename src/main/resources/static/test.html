@@ -15,7 +15,7 @@
 </div>
 </body>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
     //获取basePath，测试的话就能用就完了
     var obj = window.document.location;
     var BASE_PATH = obj.href.substring(0, obj.href.indexOf(obj.pathname));
@@ -30,30 +30,30 @@
             data: {"id":"2",
                 "password":"2"},
             type: "post",
-            dataType: "json",
+            dataType: "jsonp",
        
             success: function f(data) {
                 console.log(data);
                 debugger;
-                window.location.href = BASE_PATH + "/test2.html";
+                //window.location.href = BASE_PATH + "/test2.html";
             }
         })
     });
-</script>
+</script>-->
 
 
 <script type="text/javascript">
-    function login() {
+	function login() {
         $.ajax({
             //几个参数需要注意一下
-            type: "POST",//方法类型
+            type: "post",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://127.0.0.1:8760/API/check" ,//url
-            data: JSON.stringify({
-				id:"",
-				password:""
-			}),
-			
+            url: "API/check" ,//url
+            data: {
+				id:"2",
+				password:"2"
+			}
+			,
 			async:false,
             success: function (result) {
                 console.log(result);//打印服务端返回的数据(调试用)
@@ -66,6 +66,6 @@
                 alert("异常！");
             }
         });
-    }
+	}
 </script>
 </html>
