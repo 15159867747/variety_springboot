@@ -1,4 +1,4 @@
-﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
 	margin: 0;
 	padding: 0
 }
@@ -7020,8 +7020,7 @@ div.hd-content {
 	width: 17px;
 	height: 5px;
 	font-size: 0;
-	line-height: 0;
-	background: url(img/new_b7275002b8.gif) no-repeat 0 0
+	line-height: 0
 }
 
 .hd-content-sub .prev .new i {
@@ -8072,18 +8071,7 @@ div.hd-content {
 	background-color: #fcfcfc
 }
 
-.hd-so .submit-btn {
-	float: left;
-	color: #fff;
-	width: 86px;
-	height: 38px;
-	display: block;
-	line-height: 38px;
-	cursor: pointer;
-	border: 0;
-	background: url(data:image/gif;
-	base64,R0lGODlhVgAmAOYAAPVpCv////3m3vikgPq5nv739PrCrPZ2Lv7v6fze0veOXPaDR/iab/vMufmvj/7t4fzVxv7s3/mkaviQSf3iz/VqC/zQsv728fiWVP7v5Pq7kP3bw/qzg/3o2vq6jvVrDv7q3P3m1/Z/Lv7p2vq0hP7s4P3bxPqxgPZ5JfzTuPu/lvmsePeMRPZyGPicXveLQfzPsPzLqvZ+LfZ1HfeDNPVrDfVqDPeKQP3n2P3n2fVwFvibXPZxF/VsD/Z+LPzOrvmpc/3dx/VuE/icXfZ7KPZ1HvzStf/7+feIPfZ9K/q3ivZzGvvFoPeJP/iPSPzNrfzWvf3j0veAL/7q3fmiZ/eCMvzXvviRS/Z5JP3cxfZ4IveOR/eDNfvJp/q1h/7t4veMQ/eBMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABWACYAAAf/gACCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipkUJAJg8lEU8YFaQHA6ZgIxo0gh9bMBtYjQIGhQQFjQMBB6QTHVyHQzlFjMQABAEBBQ0FENnIggwC4+QB5OQMnTwRVYlUKdXFx4Lz1+AAtgP6A9j7+8ycTpBYlOVGIgHZsnGjB64eAAb++AWIOCAdJwoiFknwsMgaNoUFPt4TgOBcgJLnSna6wAiJhY7yGsocZA3AAgENBC1QIMiAgJWMXrxURKyBgZn2BhEYcMCngwMKjhEQxK9TlCQaNXQM+TFhwnv0EiIIkICBg1AcOCzawCKRggQF4IoRcmgI6gKn+AQkANhpyQMZiVxYUdTgZjEDXr3yJMSgAQICUPU5KIDAYqcJOKQcwpABRTxBCgosGJTgJ6EFXguYM3nLkxMQXnwIstGkS4YjSj7TE8CM2+hCDJYeODARAIRbZ0HpWBHkQYQHRnaE+RJABa2DcukhSIBgMaEB3G8RZ0oAwWNVRKYEYFIj0XkAChBvT5AdH9xi+rBZLo+AryktIQQQQw+GYCMaYvQtdlcCAUBAFUAQjFMfPq2lMgMFAfygSiotQHHFhiCGKOKIJJZo4okopqjiiiy26OKLIgYCADs=) no-repeat 0 0;*background: url(img/soicon_f74e68ef8b.gif) no-repeat 0 0
-}
+
 
 .hd-so .so-inner-title {
 	margin: 0 12px;
@@ -13873,31 +13861,17 @@ div .com-torrent-complex ._cfix3 .cb-checked,div .com-torrent-complex ._cfix3 ._
 	color: #48aeff
 }
 
-.page .login-conn .sina {
-	background: url(img/weibo_new_5f5d40ea22.jpg) no-repeat 0 0;
-	margin-top: 8px
-}
 
-.page .login-conn .sina:hover {
-	background: url(img/weibo_hover_79ecafe990.jpg) no-repeat 0 0
-}
 
-.page .login-conn .tencent {
-	background: url(img/qq_new_506cfcbec6.jpg) no-repeat 0 0
-}
 
-.page .login-conn .tencent:hover {
-	background: url(img/qq_hover_b2e1627fe9.jpg) no-repeat 0 0
-}
 
-.page .login-conn .weixin {
-	background: url(img/weixin_0c047f25e0.jpg) no-repeat 0 0;
-	margin-top: 8px
-}
 
-.page .login-conn .weixin:hover {
-	background: url(img/weixin_hover_7e6c786940.jpg) no-repeat 0 0
-}
+
+
+
+
+
+
 
 .page .login-conn .login-tip {
 	padding: 0 0 15px;
@@ -14441,20 +14415,7 @@ div .com-torrent-complex ._cfix3 .cb-checked,div .com-torrent-complex ._cfix3 ._
 	}
 }
 
--o-keyframes rotate 0 {
-	opacity: .7;
-	-o-transform: rotate(0deg)
-}
 
--o-keyframes rotate 50% {
-	opacity: 1;
-	-o-transform: rotate(149deg)
-}
-
--o-keyframes rotate 100% {
-	opacity: .7;
-	-o-transform: rotate(359deg)
-}
 
 .m-h5v-loading i {
 	animation: 1s linear infinite rotate;
@@ -16055,34 +16016,7 @@ body .fullscreen-ad-panel .dialog-layout .dialog-border .ui-title-close {
 	background-position: -105px -6412px
 }
 
-.mod-sub .sub-btn,.mod-sub .sub-btn:hover,.mod-sub .subscriptioned,.mod-sub .subscriptioned:hover,.mod-sub .ico-l-arr,.mod-sub-s .ico-l-arr,.ico-sub-btn,.mod-sub-s .sub-btn,.mod-sub-i .sub-btn,.mod-frag .channel li .info .sub-btn,.ico-sub-btn:hover,.mod-sub-s .sub-btn:hover,.mod-sub-i .sub-btn:hover,.mod-frag .channel li .info .sub-btn:hover,.ico-sub-btn.subscriptioned,.mod-sub-s .subscriptioned,.mod-sub-i .subscriptioned,.mod-frag .channel li .info .subscriptioned,.ico-sub-btn.subscriptioned:hover,.mod-sub-s .subscriptioned:hover,.mod-sub-i .subscriptioned:hover,.mod-frag .channel li .info .subscriptioned:hover,.ico-guess-change i,.ico-guess-change:hover i,.ico-guess-change-s i,.ico-guess-change-s:hover i,.ico-vd-pay,.mod-vd-lay-c13-1 .ico-vd-pay,.mod-vd-lay-c13-1 .ico-vd-pay-20,.mod-vd-lay-c13-1 .ico-vd-pay-21 {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
 
-.mod-vd-lay-c13-1 .ico-vd-pay-22,.hd-so .auto-complete-item .vip,.ico-vd-pay-min,.ico-pay-bill,.ico-pay-bill-min,.ico-vd-new,.ico-vd-new-min,.ico-vd-pay-20,.ico-vd-pay-21,.ico-vd-pay-22,.ico-topic,.vip-sign,.mod-h2-tit .ico-reco,.mod-player-tip .err,.mod-vd-i .owner i,.mod-vd-more .owner i,.mod-li-i .owner i,.mod-ch-i .owner i,.mod-li-i .ico-list,.mod-error-tip i,.material .btn-wrap .btn-close,.material-banner .btn-wrap .btn-close,.mod-vd-lay-c18 .mod-h2-tit .tit-line .arr,.mod-vd-lay-c19 .mod-h2-tit .tit-line .arr,.mod-vd-lay-c19-3 .mod-h2-tit .tit-line .arr,.mod-vd-lay-c20 .mod-h2-tit .tit-line .arr,.mod-vd-lay-c21 .mod-h2-tit .tit-line .arr,.mod-vd-lay-c21-3 .mod-h2-tit .tit-line .arr,.recom-vd-list .mod-h2-tit .tit-line .arr,.mod-comment .mod-h2-tit .tit-line .arr {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
 
-.video-tab-wrap .mod-h2-tit .tit-line .arr,.mod-vd-lay-c23 .mod-wrap-in .mod-vd-i .tit-sec em,.mod-vd-lay-c23 .mod-wrap-in .mod-vd-i .tit-sec-current em,.mod-vd-lay-c23 .more-wonder a em,.hd-content .hd-menu .icon,.hd-content .hd-menu:hover .tit-inner .icon,.hd-content .hd-right .arrow-btn .ico_arrow,.hd-content-sub .nav-toggle i,.com-jpager .combox-title .icon,.mod-vd-lay-c23 .more-wonder .unfold em,.hd-content-sub .nav-toggle-current i,.mod-vd-lay-c25 .mod-wrap-in .mod-vd-i .pic .mask .play-soon:hover,.mod-vd-lay-c26 .mod-wrap-in .mod-vd-i .pic .mask .play-soon:hover,.hd-content .hd-so .submit-btn,.hd-content-sub .hd-content-sub-rel .nav-arrow,.home-first-screen .mod-focus .foc-wrap .foc-btn .prev .ico,.home-first-screen .mod-focus .foc-wrap .foc-btn .prev:hover .ico,.home-first-screen .mod-focus .foc-wrap .foc-btn .next .ico,.home-first-screen .mod-focus .foc-wrap .foc-btn .next:hover .ico,.home-first-screen .mod-focus .foc-wrap .foc-text .playBtn,.hd-festival .mod-wrap .close-festival,.hd-menu:hover .tit-inner .icon,.show-panel .icon,.hd-menu:hover .hd-nav-ico,.hd-menu .lump,.hd-menu .hd-nav-ico,.hd-menu .icon,.hd-menu .menu-arrow,.hd-menu-common .menu-wrap .menu-arrow,.logined .logined-arrow {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
 
-.hd-history .history-arrow,.hd-so .so-history .so-inner-title i,.hd-so .so-history .remove i,.hd-so .so-hotkey .so-inner-title i,.hd-so .auto-complete-item .mtype i,.hd-so .auto-complete-item .play,.hd-so .auto-complete-item .play:hover,.hd-so .auto-complete-item .play-detail,.hd-so .auto-complete-item .play-detail:hover,.hd-so .auto-item-current .mtype i,.hd-so .hover .mtype i,.login-btn-wrap .login-bg,.login-btn-wrap .login-bg:hover,.login-btn-wrap:hover .login-bg,.logined .com-pic-vip,.logined .submenu-wrap .submenu-login-info .user-name h3 .vip-sign,.logined .submenu-wrap .submenu-list a .my-credit,.logined .submenu-wrap .submenu-list a .my-history,.logined .submenu-wrap .submenu-list a .my-subscribe,.logined .submenu-wrap .submenu-list a .my-vip,.hd-history .history i,.hd-history:hover .history i,.show-panel .history b i,.hd-game .game i,.hd-game:hover .game i,.yes-result .result-tit .select-btn,.yes-result .result-tit .delete-btn,.yes-result .result-tit .select-current,.yes-result .res-tit,.yes-result .first-wrap .res-tit {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
 
-.yes-result .res-list .seegoon .colse,.yes-result .res-list .percent .pc,.yes-result .res-list .percent .mobile,.yes-result .iphone .percentage,.yes-result .winphone .percentage,.yes-result .aphone .percentage,.yes-result .ipad .percentage,.yes-result .apad .percentage,.yes-result .pc .percentage,.yes-result .web .percentage,.hd-message .arrow-btn em,.hd-message-wrap .hd-menu-inner .message-item .item em,.hd-download-wrap .xiankan,.hd-download-wrap .xiankan:hover,.footer .foot-wrap .site-list .cxlm,.footer .foot-wrap .site-list .cxsf,.footer .foot-wrap .site-list .wzba,.footer .foot-wrap .site-list .webba,.footer .foot-wrap .site-list .jbzx,.footer .foot-wrap .site-list .fxxf,.footer .foot-wrap .copyright .cop-rt .bst,.footer .foot-wrap .copyright .cop-rt .smg,.footer-partners-wrap .footer-partners .footer-scroll-btn .scr-btn span,.footer-partners-wrap .footer-partners .footer-scroll-btn .current span,.footer-partners-wrap .footer-down .d-pc,.footer-partners-wrap .footer-down .d-iphone,.footer-partners-wrap .footer-down .d-aphone,.footer-partners-wrap .footer-down .d-wphone,.footer-partners-wrap .footer-qrcode a.qrcode,.gototop .question-btn {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
-
-.gototop .question-btn:hover,.gototop .totop-btn,.gototop .totop-btn:hover,.mod-tipcard .conner,.mod-tipcard .frame .head .close .icon,.mod-tipcard .frame .error .txt,.mod-tipcard-r .conner,.imax-ad-entry .btn-wrap .btn-close,.tool-foldtxt .fold i,.tool-foldtxt .fold:hover i,.tool-foldtxt .unfold i,.tool-foldtxt .unfold:hover i,.mod-comment .cmt-more .cmt-more-ico,.com-cmt-form .cmt-rpl-tool .tool-emotion .tool-emo,.sites .sites-wrap .more-btn,.sites .sites-wrap .more-btn:hover,.sites .qqzone,.sites .qqzone:hover,.sites .sinaweibo,.sites .sinaweibo:hover,.sites .weixin,.sites .weixin:hover,.sites .kaixin,.sites .kaixin:hover,.sites .qqweibo,.sites .qqweibo:hover,.sites .renren,.sites .renren:hover,.sites-selected .sites-wrap .more-btn,.sites-selected .sites-wrap .more-btn:hover {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
-
-.com-combox .combox-title .icon,.sub-window .sub-colse,.sub-window .sub-colse:hover,.subscribe_ani,.com-torrent .torrent-sort .sort,.com-torrent .torrent-sort .sort_acw,.com-torrent .torrent-sort .sort_cw,.com-torrent .expand i,.com-torrent a.expand:hover i,.com-torrent .expand:hover i,.com-torrent .expandoff i,.com-torrent .expandoff:hover i,.com-torrent-complex .tool-checkall .checked,.page_vplay_ .com-jpager .combox-title .icon,.page_vplay_ .com-jpager .combox-focus .combox-title .icon,.download .more-btn,.download .more-btn:hover,.download-selected .btn .more-btn,.download-selected .btn .more-btn:hover,.left-navigate .nav-con .level1 .current,.security .password .myalert-out ul li .save-ok,.myalert .save-ok,.page .login-site-small .renren,.page .login-site-small .renren:hover,.page .login-site-small .kaixin,.page .login-site-small .kaixin:hover,.page .login-form a.close-error,.page .login-form .login_submit,.page .login-form .login_submit.useful1.useful2,.page .login-form .login_submit.useful1.useful2:hover {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}
-
-.page .reg-form .reg_submit,.page .reg-form .reg_submit.useful1.useful2.useful3,.page .reg-form .reg_submit.useful1.useful2.useful3:hover,.page .verifyrealid-form .check_btn,.login-confict .ico,.m-h5v-player .big-play-btn i,.m-h5v-player .big-play-btn i:hover,.m-h5v-loading i,.m-h5v-control .play-btn,.m-h5v-control .play-btn:hover,.m-h5v-control .pause-btn,.m-h5v-control .pause-btn:hover,.m-h5v-control .next-btn,.m-h5v-control .next-btn:hover,.m-h5v-control .full-btn,.m-h5v-control .full-btn:hover,.m-h5v-control .unfull-btn,.m-h5v-control .unfull-btn:hover,.m-h5v-control .sound-btn,.m-h5v-control .sound-btn:hover,.m-h5v-control .sound-low-btn,.m-h5v-control .sound-low-btn:hover,.m-h5v-control .sound-mute-btn,.m-h5v-control .sound-mute-btn:hover,.play-cd-ad .bg-wrap,.play-cd-ad .btn-wrap .btn-close,.ad_mark,body .fullscreen-ad-panel .dialog-layout .dialog-border .ui-title-close {
-	background-image: url(img/base_v12_z_0d6b70224a.png)
-}

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="css/Torr.css"/>
+		<!-- <link rel="stylesheet"   href="css/base.css" /> -->
+		<link rel="stylesheet"   href="css/base.css" />
+
+		<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 		
-		
-		<script type="text/javascript" charset="utf-8" src="js/core.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/v8.js"></script>
 	</head>
 	<body>
 		<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
@@ -62,7 +61,7 @@
 							</div>
 							<div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
 								<a href="" title="" class="us-headpic head-btn arrow-btn" data-hover-ele="1">
-								<img alt="" title="" width="30" height="30"/>
+								
 								<span class="vip-sign com-pic-vip"></span>
 								<b class="us-name"></b>
 								<i class="ico_arrow"></i>
@@ -72,26 +71,14 @@
 									<div class="submenu-wrap">
 										<div class="submenu-login-info fix">
 											<div class="img-avatar js-subAvatar">
-												<img src="">
+												
 											</div>
-											<div class="user-name">
-												<h3 class="js-userInfo"><span></span><em class="js-subVipSign"></em></h3>
-												<h4>积分  <a href=""><em class="js-subCredit"></em></a></h4>
-											</div>
-											<div class="vip-info">
-												<p>
-													<span class="js-subValidDate">开通会员免广告</span><a class="js-subVipBtn" href="">开通会员</a>
-												</p>
-											</div>
+											
+										
 										</div>
 										<div class="submenu-line">
 										</div>
-										<div class="submenu-list fix">
-											<a href=""><em class="my-credit"></em><span>我的积分</span></a>
-											<a href=""><em class="my-vip"></em><span>我的会员</span></a>
-											<a href=""><em class="my-history"></em><span>观看历史</span></a>
-											<a href=""><em class="my-subscribe"></em><span>我的订阅</span></a>
-										</div>
+								
 										<div class="submenu-ft">
 											<a href="" class="submenu-set">设置</a>
 											<a href="" class="submenu-exit">退出</a>
@@ -160,15 +147,15 @@
                 </div>
             </div>
             <div class="login-form">
-                <form name="pageLoginForm" id="pageLoginForm" method="post" th:action="@{API/check}">
-                    <div style="display: none;"><input type="text"><input type="password"></div>
+                <form id="pageLoginForm">
+                    
                     <p class="login-tip"><span class="show_text" id="show_text">风行账号登录</span><span class="tab_login_method" id="tab_login_method">手机快捷登录</span></p>
 					
 					<div id="acount_login_container" style="display:block;">
                         <p class="f-p">
-                            <input type="text" class="inputstyle hide" id="login-error-show" onfocus="this.blur()">
+                            <!-- <input type="text" class="inputstyle hide" id="login-error-show" onfocus="this.blur()"> -->
                             <a class="close-error hide" id="close-error"></a>
-                            <input type="text" class="inputstyle" name="username"  placeholder="用户名"  id="panel_account" autocomplete="off">
+                            <input type="text" class="inputstyle" name="id"  placeholder="用户名"  id="panel_account" >
                             
                             <span class="login-error inline-block">
                                 <span id="et_panel_account" class="login-error-right" style="display:none;">账号不能为空</span>
@@ -183,8 +170,8 @@
                             </span>
                         </p>
                         <p class="act clearfix">
-                            
-                            <input type="submit" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" id="loginsubmit">
+                            <!-- <button type="button" id="btn">提交</button> -->
+                            <input type="submit" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" onclick="login()">
                         </p>
                     </div>
                 
@@ -223,4 +210,90 @@
 		</div>
 		
 	</body>
+<!-- 	<script>
+		// $("#loginsubmit").click(function(){
+		// 	$.ajax({
+		// 		url: "http://127.0.0.1:8760/API/check",
+		// 		data: {"id":"",
+		// 				"password":""},
+		// 		type: "GET",
+		// 		dataType: "json",
+		// 		async: false,
+		// 		contentType: "application/json;charset=utf-8",
+				// success: function() {
+				// 	// re = re1;
+				// },
+				// error: function(XMLHttpRequest, textStatus, errorThrown) {
+				// 	console.log('语法异常，请检查代码');
+				// 	console.log("请求码：" + textStatus);
+				// }
+		// 	})
+		// 	
+		// })
+		    $("loginsubmit").on("click", function () {
+        $.ajax({
+            url: "http://127.0.0.1:8760/API/check",
+            data: {"id":"",
+					"password":""},
+            type: "get",
+            dataType: "json",
+			contentType: "application/json;charset=utf-8",
+            success: function f(data) {
+                console.log(data);
+               
+            },
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log('语法异常，请检查代码');
+				console.log("请求码：" + textStatus);
+			}
+        })
+    });
+		
+	</script> -->
+<!-- 	<script type="text/javascript">
+    //获取basePath，测试的话就能用就完了
+    var obj = window.document.location;
+    var BASE_PATH = obj.href.substring(0, obj.href.indexOf(obj.pathname));
+
+    var username = "root";
+    var password = "123456";
+
+
+    $("#loginsubmit").on("click", function () {
+        $.ajax({
+            url: "http://127.0.0.1:8760/API/check",
+            data: {"id":"2",
+                "password":"2"},
+            type: "post",
+            dataType: "json",
+            success: function f(data) {
+                console.log(data);
+                debugger;
+                window.location.href = BASE_PATH + "/test2.html";
+            }
+        })
+    });
+</script> -->
+
+<script type="text/javascript">
+    function login() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://127.0.0.1:8760/API/check" ,//url
+            data: $('#pageLoginForm').serialize(),
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.resultCode == 200) {
+                    alert("SUCCESS");
+                }
+                ;
+            },
+            error : function(e) {
+                alert(,"异常！");
+            }
+        });
+    }
+</script>
 </html>

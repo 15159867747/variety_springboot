@@ -35,7 +35,6 @@ import static com.tv.variety.util.MD5Utils.string2MD5;
  */
 @RestController
 //@Controller
-
 @RequestMapping(value = "/API")
 public class UserController implements IUserController {
 //    @Autowired
@@ -44,10 +43,7 @@ public class UserController implements IUserController {
 //    private UserMapper userMapper;
     @Autowired
     private IUserFacade userFacade;
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private TokenMapper tokenmapper;
+
     @Override
     @RequestMapping(value ="/addUser", method = RequestMethod.POST)
 
@@ -61,9 +57,7 @@ public class UserController implements IUserController {
     }
 
     @Override
-    @RequestMapping(value = "/check")
-//    @UnInterception
-//    @UnInterception
+    @RequestMapping(value = "/check" , method = RequestMethod.POST)
     public JsonResult<String> logincheck( UserloginParas resqUser) {
         MD5Utils md5Utils=new MD5Utils();
         //判断用户信息为空

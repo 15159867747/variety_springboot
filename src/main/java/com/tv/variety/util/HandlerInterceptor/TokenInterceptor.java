@@ -35,14 +35,15 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
-        HandlerMethod handlerMethod= (HandlerMethod) arg2;
-        Method method = handlerMethod.getMethod();
+//        HandlerMethod handlerMethod= (HandlerMethod) arg2;
+//        Method method = handlerMethod.getMethod();
         //普通路径放行
         System.out.println(arg0.getRequestURI());
         logger.info("====拦截到了方法：{}，在该方法执行之前执行====", arg0.getRequestURI());
         String uri=arg0.getRequestURI();
 
-        if ("/API/addUser".equals(uri) || "/API/check/".equals(uri)||"/API/test/".equals(uri)) {
+        if ("/API/addUser".equals(uri) || "/API/check".equals(uri)||"/API/test/".equals(uri)) {
+            System.out.println("没有被拦截");
             return true;}
 
 //        UnInterception unInterception = method.getAnnotation(UnInterception.class);

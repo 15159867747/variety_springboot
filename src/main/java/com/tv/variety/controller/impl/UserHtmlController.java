@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = "/API")
-
 public class UserHtmlController implements IUserHtmlController {
 
     @Override
@@ -20,6 +19,6 @@ public class UserHtmlController implements IUserHtmlController {
 //    @UnInterception
     public String test() {
 
-        return "index1.html";
+        return "index1";
     }
 }
