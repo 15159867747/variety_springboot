@@ -13,16 +13,13 @@
 <title>风行网-中国领先的新一代视频平台</title>
 
 <!--[if lt IE 7 ]>
-<style type="text/css">
-    *html,*html body{background-image:url(about:blank);background-attachment:fixed;}
-</style>
 <![endif]-->
 
 
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
 <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
 
-
+	<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/v8.js"></script>
 </head>
@@ -93,9 +90,11 @@
 						<div class="login-btn-wrap" id="loginLayout">
 							<i class="login-bg"></i>
 							<div class="btns">
-								<a id="login-btn" href="" onclick="F.user.isLogin(true,true);return false;">登录</a>
+								<a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+								<a id="userinform" href="http://localhost:8760/login.html">个人中心</a>
 								<i class="line"></i>
-								<a id="register-btn" href="" onclick="if(F.user.register){F.user.register();return false;}">注册</a>
+								<a id="register-btn" href="" >注册</a>
+								<a id="exit" href="javascript:exit()" >退出</a>
 							</div>
 						</div>
 						<div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
@@ -110,7 +109,7 @@
 								<div class="submenu-wrap">
 									<div class="submenu-login-info fix">
 								
-									
+
 							
 									<div class="submenu-ft">
 										<a href="" class="submenu-set">设置</a>
@@ -1002,9 +1001,50 @@
     console.log("app.ready");
 </script>
 
-<script type="text/javascript"></script>
-<div id="test-page-complete"></div>
+<script type="text/javascript">
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+            return unescape(arr[2]);
+        } else {
+            return null;
+        }
+    }
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = this.getCookie(name);
+        if(cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+    function refresh(){
+        var token=getCookie("token");
+        if (token!=null){
+            $("#login-btn").css("display","none");
+            $("#register-btn").css("display","none");
+		}
+		if(token==null||token=="")
+		{
+            $("#userinform").css("display","none");
+            $("#exit").css("display","none");
+		}
 
+
+
+
+
+    }
+
+    function exit(){
+        delCookie("token")
+        console.log(getCookie("token"));
+        // location.replace(document.referrer);返回上一个页面并刷新
+        location.replace(location)
+    }
+    window.refresh();
+
+</script>
+<div id="test-page-complete"></div>
 </body>
 </html>
 

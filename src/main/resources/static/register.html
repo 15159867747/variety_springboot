@@ -58,9 +58,9 @@
 							<div class="login-btn-wrap" id="loginLayout">
 								<i class="login-bg"></i>
 								<div class="btns">
-									<a id="login-btn" href="/login.html" onclick="F.user.isLogin(true,true);return false;">登录</a>
+									<a id="login-btn" href="/login.html" >登录</a>
 									<i class="line"></i>
-									<a id="register-btn" href="/register.html" onclick="if(F.user.register){F.user.register();return false;}">注册</a>
+									<a id="register-btn" href="/register.html" >注册</a>
 								</div>
 							</div>
 							<div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
@@ -153,29 +153,30 @@
             <div class="login-form">
                 <form id="pageLoginForm">
                     
-                    <p class="login-tip"><span class="show_text" id="show_text">风行账号登录</span><span class="tab_login_method" id="tab_login_method">手机快捷登录</span></p>
+                    <p class="login-tip"><span class="show_text" id="show_text">艺起看账号注册</span><span class="tab_login_method" id="tab_login_method"></span></p>
 					
 					<div id="acount_login_container" style="display:block;">
                         <p class="f-p">
                             <!-- <input type="text" class="inputstyle hide" id="login-error-show" onfocus="this.blur()"> -->
                             <a class="close-error hide" id="close-error"></a>
                             <input type="text" class="inputstyle" name="id"  placeholder="用户名"  id="id" >
-                            
-                            <span class="login-error inline-block">
-                                <span id="et_panel_account" class="login-error-right" style="display:none;">账号不能为空</span>
-                            </span>
+                                              
                             </p>
                         <p></p>
                         <p class="f-p">
                             <input type="password" class="inputstyle" placeholder="密码"  name="password" id="password">
                             
-                            <span class="login-error inline-block">
-                                <span id="et_panel_password" class="login-error-right" style="display:none;">密码不能为空</span>
-                            </span>
+                         
                         </p>
+						<p></p>
+						 <p class="f-p">
+						    <input type="password" class="inputstyle" placeholder="确认密码"  name="password" id="password2">
+						    
+						   
+						</p>
                         <p class="act clearfix">
                             <!-- <button type="button" id="btn">提交</button> -->
-                            <input type="button" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" onclick="login()">
+                            <input type="button" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="注册" onclick="register()">
                         </p>
                     </div>
                 
@@ -184,8 +185,8 @@
         </div>
  
         <div class="login-bottom">
-            <a href="/login.html"  id="regButton">注册账号</a>&nbsp;或&nbsp;
-            <a href="/lookingpassword"  id="forgetpsd">找回密码</a>
+            <a href="/login.html"  id="regButton">已有艺起看账户？马上登陆</a>&nbsp;或&nbsp;
+            <a href="/lookingpassword.html"  id="forgetpsd">找回密码</a>
         </div>
     </div>
 </div>
@@ -204,23 +205,12 @@
 	</div>
 </div>
 	<!-- ================================================== -->
-	
-	
-	
-	
-	
-	
-	
+		
 		</div>
 		
 	</body>
 <script type="text/javascript">
-    function setCookie(name, value) {
-        var Days = 30;
-        var exp = new Date();
-        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
-    }
+
     function getCookie(name) {
         var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
         if(arr = document.cookie.match(reg)) {
@@ -229,22 +219,25 @@
             return null;
         }
     }
-    function delCookie(name) {
-        var exp = new Date();
-        exp.setTime(exp.getTime() - 1);
-        var cval = this.getCookie(name);
-        if(cval != null)
-            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
-    }
 
 
-    function login() {
-        // console.log($("#id").val())
-        if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()=="")
+    function register() {
+        // console.log($("#id").val().length);
+        if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()==""||$("#password2").val()==null||$("#password2").val()=="")
 		{
             swal("账号密码为空!");
             // swal("Good!", "弹出了一个操作成功的提示框", "success");
 		}
+		else if($("#password").val()!=$("#password2").val())
+		{
+			swal("两次输入的密码不一致!");
+		}
+		else if($("#id").val().length<6 || $("#id").val().length>18 ||$("password").val().length<6 || $("#password").val().length>18)
+		{
+			swal("账号密码的长度应在6-18位之间");
+		}
+		
+				
 		else {
             $.ajax({
                 //几个参数需要注意一下

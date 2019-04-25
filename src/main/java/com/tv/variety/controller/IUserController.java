@@ -17,7 +17,7 @@ public interface IUserController {
 
 //    String UserInform(String name);
 
-    JsonResult<String> addUser(UserAddParms userAddParms);
+    JsonResult<String> addUser(UserloginParas userAddParms);
 
     //用户登录检查
     JsonResult<String> logincheck(UserloginParas resqUser);

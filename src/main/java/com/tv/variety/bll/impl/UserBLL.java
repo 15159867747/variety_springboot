@@ -71,5 +71,10 @@ public class UserBLL implements IUserBLL {
         return i;
     }
 
+    @Override
+    public int deleteToken(String userid) {
+        return 0;
+    }
+
 
 }
