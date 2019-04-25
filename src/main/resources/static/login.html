@@ -255,8 +255,12 @@
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
                     if (result.code == 1) {
-                        swal("登录成功!", "", "success");
-                        setCookie()
+                        // swal("登录成功!", "", "success");
+                        setCookie("token",result.data.token);
+						setCookie("name",result.data.name);
+						setCookie("userid",result.data.id);
+                        console.log(result.data.token,result.data.name,result.data.id);
+                        window.location.href = '/index.html';
                     }
                     if(result.code==-3){
                         swal("密码不正确哦!", "", "error");
