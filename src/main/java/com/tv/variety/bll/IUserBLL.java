@@ -33,7 +33,8 @@ public interface IUserBLL {
     //更新Token信息
     int updateToken(Token token);
 
-    //删除用户的token信息退出登录qw
+    //删除用户的token信息退出登录
+    int deleteToken(String userid);
 
 
 }

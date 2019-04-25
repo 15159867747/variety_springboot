@@ -49,7 +49,16 @@ public class UserController implements IUserController {
     @RequestMapping(value ="/addUser", method = RequestMethod.GET)
 
     public JsonResult<String> addUser(@RequestBody UserAddParms userAddParms) {
-        System.out.println(userAddParms);
+
+
+        if(userAddParms.getUserid().length()<6||userAddParms.getUserid().length()>18||userAddParms.getUserid()==""||userAddParms.getUserid()==null){
+            return new JsonResult<>(-2,"账号不能低于6位数,最大不能超过18位,且不能为空");
+        }
+        if(userAddParms.getPassword().length()<6||userAddParms.getPassword().length()>18||userAddParms.getPassword()==""||userAddParms.getPassword()==null){
+            return new JsonResult<>(-2,"密码不能低于6位数,最大不能超过18位,且不能为空");
+        }
+
+
         int rs =userFacade.addUser(userAddParms);
         if(rs==0){
             return new JsonResult<>(-1,"该账号已被注册");
@@ -122,6 +131,7 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value ="/exit", method = RequestMethod.DELETE)
     public JsonResult<String> Exit(String userid) {
+
         return null;
     }
 
