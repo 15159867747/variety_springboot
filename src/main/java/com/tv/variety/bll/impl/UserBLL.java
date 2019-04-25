@@ -73,7 +73,24 @@ public class UserBLL implements IUserBLL {
 
     @Override
     public int deleteToken(String userid) {
-        return 0;
+        EntityWrapper<Token> wrapper = new EntityWrapper<Token>();
+        wrapper.eq("userid", userid);
+        int i =tokenMapper.delete(wrapper);
+        return i;
+    }
+
+    @Override
+    public User lookUserInform(String userid) {
+        User user =userMapper.selectById(userid);
+        return user;
+    }
+
+    @Override
+    public int updateUserInform(User user) {
+        EntityWrapper<User> wrapper = new EntityWrapper<User>();
+        wrapper.eq("userid", user.getId());
+        int i =userMapper.update(user,wrapper);
+        return i;
     }
 
 

@@ -2,11 +2,13 @@ package com.tv.variety.facade.impl;
 
 import com.tv.variety.bll.IUserBLL;
 import com.tv.variety.bll.impl.UserBLL;
+import com.tv.variety.dto.UserInformParam;
 import com.tv.variety.facade.IUserFacade;
 import com.tv.variety.mybatic.model.Token;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.param.TokenParams;
 import com.tv.variety.param.UserAddParms;
+import com.tv.variety.param.UserloginParas;
 import com.tv.variety.util.UUIDGenerator;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -28,9 +30,9 @@ public class UserFacade implements IUserFacade {
     private IUserBLL userBLL;
 
     @Override
-    public int addUser(UserAddParms userAddParms) {
+    public int addUser(UserloginParas userloginParas) {
         MD5Utils md5Utils=new MD5Utils();
-        String userid=userAddParms.getUserid();
+        String userid=userloginParas.getId();
         //String password=user.getPassword();
         //String password=md5Utils.string2MD5(user.getPassword());
         //对密码进行加密
@@ -41,11 +43,12 @@ public class UserFacade implements IUserFacade {
         }
         User user =new User();
         //初始化User
-        user.setPassword(md5Utils.string2MD5(userAddParms.getPassword()));
-        user.setId(userAddParms.getUserid());
-        user.setName(userAddParms.getName());
-        user.setBirthday(userAddParms.getBirthday());
-        user.setSex(userAddParms.getSex());
+        user.setPassword(md5Utils.string2MD5(userloginParas.getPassword()));
+        user.setId(userloginParas.getId());
+        user.setName(userloginParas.getId());
+        user.setIsManage(0);
+        user.setBirthday(null);
+        user.setSex(null);
         int rs=userBLL.addUser(user);
         return rs;
 
@@ -122,5 +125,29 @@ public class UserFacade implements IUserFacade {
                 .signWith(signatureAlgorithm, "dahao"); // 签名，需要算法和key
         String jwt = builder.compact();
         return jwt;
+    }
+
+    @Override
+    public UserInformParam lookUserInform(String userid) {
+        UserInformParam userInformParam=new UserInformParam();
+        User user=new User();
+        user=userBLL.lookUserInform(userid);
+
+        userInformParam.setId(user.getId());
+        userInformParam.setBirthday(user.getBirthday());
+        userInformParam.setName(user.getName());
+        userInformParam.setSex(user.getSex());
+        return userInformParam;
+    }
+
+    @Override
+    public int updateUserInform(UserInformParam userInformParam) {
+        User user=new User();
+        user.setId(userInformParam.getId());
+        user.setSex(userInformParam.getSex());
+        user.setBirthday(userInformParam.getBirthday());
+        user.setName(userInformParam.getName());
+        int rs =userBLL.updateUserInform(user);
+        return rs;
     }
 }

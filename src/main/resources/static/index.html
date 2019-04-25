@@ -90,10 +90,11 @@
 						<div class="login-btn-wrap" id="loginLayout">
 							<i class="login-bg"></i>
 							<div class="btns">
+								
 								<a id="login-btn" href="http://localhost:8760/login.html">登录</a>
-								<a id="userinform" href="http://localhost:8760/login.html">个人中心</a>
+								<a id="userinform" href="http://localhost:8760/userinform.html"></a>
 								<i class="line"></i>
-								<a id="register-btn" href="" >注册</a>
+								<a id="register-btn" href="/register.html" >注册</a>
 								<a id="exit" href="javascript:exit()" >退出</a>
 							</div>
 						</div>
@@ -1020,11 +1021,15 @@
     function refresh(){
         var token=getCookie("token");
         if (token!=null){
-            $("#login-btn").css("display","none");
+			
+            $("#login-btn").css("display","none");//隐藏登录显示个人中心
             $("#register-btn").css("display","none");
+
 		}
 		if(token==null||token=="")
 		{
+			
+		
             $("#userinform").css("display","none");
             $("#exit").css("display","none");
 		}

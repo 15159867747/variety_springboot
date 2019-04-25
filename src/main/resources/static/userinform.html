@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]><html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Description" content="新一代视频风行网,提供免费电影、电视剧、综艺、动漫、体育等视频内容的在线观看和下载.累积7亿用户的全平台,为传媒机构和品牌客户开设了官方视频服务账号,通过大数据分析与个性推荐订阅技术,实现海量独家内容与用户个性需求即时匹配." />
+    <meta name="keywords" content="免费电影,电影下载,在线视频,在线电影" />
+    <meta itemprop="image" content="img/logo.gif" />
+    <title>风行网-中国领先的新一代视频平台</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+<!--    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
+
+    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+		
+
+	<script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+	
+	<link rel="stylesheet"   href="css/base.css" />
+	
+	<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="js/sweetalert-dev.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="" title="风行网" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+                    <div class="hd-menu hd-nav hd-vmenu" id="verticalMenuLayout" data-hover-wrap="show-panel">
+                        <a href="javascript:;" class="tit-inner head-btn fix" data-hover-ele="1">
+                            <b class="lump "></b>
+                            <b class="tit">导航</b>
+                            <em class="icon"></em>
+                        </a>
+                    </div>
+              
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+                            <div class="">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="桃花依旧笑春风" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+                                <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+                                <a id="userinform" href="http://localhost:8760/userinform.html">个人中心</a>
+                                <i class="line"></i>
+                                <a id="register-btn" href="/register.html" >注册</a>
+                                <a id="exit" href="javascript:exit()" >退出</a>
+                            </div>
+                        </div>
+                        <div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
+                            <a href="" title="" class="us-headpic head-btn arrow-btn" data-hover-ele="1">
+                                <img alt="" title="" width="30" height="30"/>
+                                <span class="vip-sign com-pic-vip"></span>
+                                <b class="us-name"></b>
+                                <i class="ico_arrow"></i>
+                            </a>
+                            <div class="logined-submenu">
+                                <i class="logined-arrow"></i>
+                                <div class="submenu-wrap">
+                                    <div class="submenu-login-info fix">
+
+
+
+                                        <div class="submenu-ft">
+                                            <a href="" class="submenu-set">设置</a>
+                                            <a href="" class="submenu-exit">退出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="page-progress" id="page-progress">
+            </div>
+        </div>
+        <div class="hd-content-sub z-app-footer fixed" id="nav-container-sub">
+            <div class="hd-content-sub-con fix">
+                <div class="mod-wrap sub-wrap">
+                    <div class="nav">
+                        <div class="prev">
+                            <a class="item large current" href="/">首页</a>
+                            <a class="item large new" href="">风行号<i></i></a>
+                            <a class="item large" href="">电影</a>
+                            <a class="item large" href="">电视剧</a>
+                            <a class="item large" href="">少儿</a>
+                            <a class="item large" href="">动漫</a>
+                            <a class="item large" href="">综艺</a>
+                            <i class="sep"></i>
+                            <a class="item" href="">天下</a>
+                            <a class="item" href="">娱乐</a>
+                            <a class="item" href="">游戏</a>
+                            <a class="item" href="">搞笑</a>
+                            <a class="item" href="">美食</a>
+                            <a class="item" href="">生活</a>
+                            <a class="item" href="">体育</a>
+                            <a class="item" href="">汽车</a>
+                        </div>
+                    </div>
+                    <a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>
+                    <div class="nav-ad">
+                        <div class="ad-wrap" data-deliver="ws_nav_guide">
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="personal set-wrap" style="margin-top: 90px;">
+	<div class="left-navigate">
+    <div class="nav-con">
+        <div class="level1">
+            <p class="homepage"><a href="/">首页</a></p>
+            <p class="account-setting current"><a>个人资料</a></p>
+			<p class="account-setting current"><a>节目评价</a></p>
+			<p class="account-setting current"><a>安全设置</a></p>
+        </div>
+  
+    </div>
+</div>
+    <div class="setting-title">个人资料</div>
+    <form method="post"  class="fix account-info" id="FormUserInform">
+    <div class="prset-item fix">
+        <dl class="fix">
+            <dt><em>*</em>昵称：</dt>
+            <dd>
+                <input type="text" class="t" id="nickname" name="nickname" value="151***747">
+                <label class="show-err" id="for-nickname"></label>
+            </dd>
+        </dl>
+        <dl class="fix">
+            <dt><em>*</em>性别：</dt>
+            <dd>
+                <input type="radio" name="sex" id="sexMale" class="b" value="male" checked=""><label class="sex" for="sexMale">男</label>
+                <input type="radio" name="sex" id="sexFemale" class="b s-female" value="female"><label class="sex" for="sexFemale">女</label>
+                <label class="show-err" id="for-sexFemale"></label>
+            </dd>
+        </dl>
+	
+        <dl class="fix">
+            <dt><em>*</em>生日：</dt>
+            <dd>
+				
+				<input type="text" id="test1" class="t" readonly="readonly">
+        </dl>
+		<p class="">
+			<input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 142px;" value="登录" onclick="updateUserinform()">
+		
+	</p></div>
+    </form>
+</div>
+
+
+
+
+
+
+    <div class="page-wrap" style="margin-top: 90px;">
+
+    </div>
+
+
+
+    <!-- <link rel="stylesheet" href="card.less"/>
+    <script type="text/javascript" src="js/card.js"></script> -->
+<!-- 底部样式    -->
+<div class="footer fix" id="footer">
+	<div class="mod-wrap">
+		<div class="foot-wrap">
+			<div class="foot-link fix" >
+				<h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+			</div>
+			
+		
+		</div>
+	</div>
+</div>
+	<!-- ================================================== -->
+ 
+
+
+    <div class="gototop fixed" id="gototopwrap">
+        <div class="ad-game-tip" data-deliver="ws_all_game"></div>
+        <a class="question-btn" href=""></a>
+        <a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>
+    </div>
+
+    <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
+
+    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <script type="text/javascript">
+        T.observer.send('app.ready');
+        console.log("app.ready");
+    </script>
+
+    <script type="text/javascript">
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if(arr = document.cookie.match(reg)) {
+                return unescape(arr[2]);
+            } else {
+                return null;
+            }
+        }
+        function delCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = this.getCookie(name);
+            if(cval != null)
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        }
+        // function refresh(){
+        //     var token=getCookie("token");
+        //     if (token!=null){
+        //         $("#login-btn").css("display","none");
+        //         $("#register-btn").css("display","none");
+        //     }
+        //     if(token==null||token=="")
+        //     {
+        //         $("#userinform").css("display","none");
+        //         $("#exit").css("display","none");
+        //     }
+        // }
+		    function updateUserinform() {
+		    // console.log($("#id").val())
+		    if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()=="")
+			{
+		        swal("账号密码为空!");
+		        // swal("Good!", "弹出了一个操作成功的提示框", "success");
+			}
+			else {
+		        $.ajax({
+		            //几个参数需要注意一下
+		            type: "post",//方法类型
+		            dataType: "json",//预期服务器返回的数据类型
+		            url: "/API/check" ,//url
+		            data: $('#pageLoginForm').serialize(),
+		            success: function (result) {
+		                console.log(result);//打印服务端返回的数据(调试用)
+		                if (result.code == 1) {
+		                    // swal("登录成功!", "", "success");
+		                    setCookie("token",result.data.token);
+							setCookie("name",result.data.name);
+							setCookie("userid",result.data.id);
+		                    console.log(result.data.token,result.data.name,result.data.id);
+		                    window.location.href = '/index.html';
+		                }
+		                if(result.code==-3){
+		                    swal("密码不正确哦!", "", "error");
+						}
+		                if(result.code==-2){
+		                    swal("账号不正确哦", "", "error");
+		                }
+		                ;
+		            },
+		            error : function(e) {
+		                alert("异常！");
+		            }
+		        });
+			}		
+		}
+
+        function exit(){
+            delCookie("token")
+            console.log(getCookie("token"));
+            // location.replace(document.referrer);返回上一个页面并刷新
+            window.location.href = '/index.html';
+        }
+        window.refresh();
+		
+		
+		function getUserInform() {
+		    // console.log($("#id").val())
+			var token=getCookie("token");
+		    if (token==null||token="")
+			{
+		        window.location.href = '/login.html';
+		        // swal("Good!", "弹出了一个操作成功的提示框", "success");
+			}
+			else {
+		        $.ajax({
+		            //几个参数需要注意一下
+		            type: "post",//方法类型
+		            dataType: "json",//预期服务器返回的数据类型
+		            url: "/API/check" ,//url
+		            data: $('#pageLoginForm').serialize(),
+		            success: function (result) {
+		                console.log(result);//打印服务端返回的数据(调试用)
+		                if (result.code == 1) {
+		                    // swal("登录成功!", "", "success");
+		                    setCookie("token",result.data.token);
+							setCookie("name",result.data.name);
+							setCookie("userid",result.data.id);
+		                    console.log(result.data.token,result.data.name,result.data.id);
+		                    window.location.href = '/index.html';
+		                }
+		                if(result.code==-3){
+		                    swal("密码不正确哦!", "", "error");
+						}
+		                if(result.code==-2){
+		                    swal("账号不正确哦", "", "error");
+		                }
+		                ;
+		            },
+		            error : function(e) {
+		                alert("异常！");
+		            }
+		        });
+			}
+		
+		
+		}
+		
+
+    </script>
+    <div id="test-page-complete"></div>
+	
+	
+	<script>
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1' //指定元素
+});
+</script>
+
+</body>
+</html>
+
+

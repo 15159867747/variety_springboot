@@ -36,5 +36,14 @@ public interface IUserBLL {
     //删除用户的token信息退出登录
     int deleteToken(String userid);
 
+    // 查询用户信息
+
+    User lookUserInform(String userid);
+
+    //修改用户信息
+
+    int updateUserInform(User user);
+
+
 
 }

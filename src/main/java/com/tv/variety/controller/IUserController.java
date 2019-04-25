@@ -1,5 +1,6 @@
 package com.tv.variety.controller;
 
+import com.tv.variety.dto.UserInformParam;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.param.UserAddParms;
 import com.tv.variety.param.UserloginParas;
@@ -25,5 +26,10 @@ public interface IUserController {
     //退出登录
     JsonResult<String> Exit(String userid);
 
+    //返回用户个人信息
+    JsonResult userInform(String userid);
+
+    //修改用户个人信息
+   JsonResult  updateUserinform(UserInformParam userInformParam);
 
 }

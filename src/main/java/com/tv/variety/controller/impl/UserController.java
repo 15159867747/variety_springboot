@@ -3,6 +3,7 @@ package com.tv.variety.controller.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.tv.variety.controller.IUserController;
 import com.tv.variety.dto.LoginSuccessParam;
+import com.tv.variety.dto.UserInformParam;
 import com.tv.variety.facade.IUserFacade;
 import com.tv.variety.facade.impl.UserFacade;
 import com.tv.variety.mybatic.mapper.TokenMapper;
@@ -46,9 +47,9 @@ public class UserController implements IUserController {
     private IUserFacade userFacade;
 
     @Override
-    @RequestMapping(value ="/addUser", method = RequestMethod.GET)
+    @RequestMapping(value ="/addUser", method = RequestMethod.POST)
 
-    public JsonResult<String> addUser(@RequestBody UserloginParas userAddParms) {
+    public JsonResult<String> addUser(UserloginParas userAddParms) {
 
 
         if(userAddParms.getId().length()<6||userAddParms.getId().length()>18||userAddParms.getId()==""||userAddParms.getId()==null){
@@ -59,8 +60,7 @@ public class UserController implements IUserController {
         }
 
 
-//        int rs =userFacade.addUser(userAddParms);
-        int rs=0;
+        int rs =userFacade.addUser(userAddParms);
         if(rs==0){
             return new JsonResult<>(-1,"该账号已被注册");
         }
@@ -133,9 +133,33 @@ public class UserController implements IUserController {
     @RequestMapping(value ="/exit", method = RequestMethod.DELETE)
     public JsonResult<String> Exit(String userid) {
 
+
         return null;
     }
 
+    @Override
+    @RequestMapping(value = "/index/userInform" , method = RequestMethod.POST)
+    public JsonResult userInform(String userid) {
+        UserInformParam userInformParam=new UserInformParam();
+        userInformParam=userFacade.lookUserInform(userid);
+        if (userInformParam==null)
+        {
+            return new JsonResult(-1,"系统异常");
+        }
+        return new JsonResult(userInformParam,"返回个人成功",1);
+    }
+
+    @Override
+    @RequestMapping(value = "/index/updateUserInform" , method = RequestMethod.POST)
+    public JsonResult updateUserinform(UserInformParam userInformParam) {
+        if(userInformParam==null||userInformParam.getId()==null||userInformParam.getId().equals(""))
+        {
+            return new JsonResult(userInformParam,"个人信息修改失败",-1);
+        }
+        int rs=userFacade.updateUserInform(userInformParam);
+        return new JsonResult(userInformParam,"个人信息修改成功",1);
+
+    }
 
 
 //    @RequestMapping("/user")

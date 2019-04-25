@@ -1,9 +1,11 @@
 package com.tv.variety.facade;
 
+import com.tv.variety.dto.UserInformParam;
 import com.tv.variety.mybatic.model.Token;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.param.TokenParams;
 import com.tv.variety.param.UserAddParms;
+import com.tv.variety.param.UserloginParas;
 
 import java.util.Date;
 
@@ -13,7 +15,7 @@ import java.util.Date;
  */
 public interface IUserFacade {
     //用户注册
-    int addUser(UserAddParms userAddParms);
+    int addUser(UserloginParas userloginParas);
 
     //用户登录验证
     int check(String userid,String password);
@@ -35,6 +37,13 @@ public interface IUserFacade {
 
     //创建tokena
     String creatToken(User user ,Date date);
+
+    //查询用户信息
+    UserInformParam lookUserInform(String userid);
+
+    //更新用户信息
+    int updateUserInform(UserInformParam userInformParam);
+
 
 
 }

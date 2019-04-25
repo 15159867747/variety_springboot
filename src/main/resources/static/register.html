@@ -226,40 +226,39 @@
         if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()==""||$("#password2").val()==null||$("#password2").val()=="")
 		{
             swal("账号密码为空!");
+			
             // swal("Good!", "弹出了一个操作成功的提示框", "success");
+		}
+		else if($("#id").val().length<6 || $("#id").val().length>18 ||$("#password").val().length<6|| $("#password").val().length>18)
+		{
+			swal("账号密码的长度应在6-18位之间");
 		}
 		else if($("#password").val()!=$("#password2").val())
 		{
 			swal("两次输入的密码不一致!");
 		}
-		else if($("#id").val().length<6 || $("#id").val().length>18 ||$("password").val().length<6 || $("#password").val().length>18)
-		{
-			swal("账号密码的长度应在6-18位之间");
-		}
-		
-				
+							
 		else {
             $.ajax({
                 //几个参数需要注意一下
                 type: "post",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "/API/check" ,//url
+                url: "/API/addUser" ,//url
                 data: $('#pageLoginForm').serialize(),
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
                     if (result.code == 1) {
-                        // swal("登录成功!", "", "success");
-                        setCookie("token",result.data.token);
-						setCookie("name",result.data.name);
-						setCookie("userid",result.data.id);
-                        console.log(result.data.token,result.data.name,result.data.id);
-                        window.location.href = '/index.html';
+						
+                         swal("注册成功!", "3秒后前往登录页面", "success");
+						 setTimeout("window.location.href = '/login.html' ", 3000 );
+                        // console.log(result.data.token,result.data.name,result.data.id);
+                        
                     }
-                    if(result.code==-3){
-                        swal("密码不正确哦!", "", "error");
+                    if(result.code==-1){
+                        swal("亲，该账号被注册啦！", "", "error");
 					}
                     if(result.code==-2){
-                        swal("账号不正确哦", "", "error");
+                        swal("账号密码不能低于6位数,最大不能超过18位", "", "error");
                     }
                     ;
                 },
