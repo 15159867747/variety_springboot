@@ -56,6 +56,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         final String headerToken=arg0.getHeader("XW-Token");
         //判断请求信息
         if(null==headerToken||headerToken.trim().equals("")){
+            arg1.sendRedirect(arg0.getContextPath()+"/login.html");
             resultWriter.write("你没有token,需要登录");
             return false;
         }
@@ -70,27 +71,32 @@ public class TokenInterceptor implements HandlerInterceptor {
             //数据库没有Token记录
             if(null==myToken) {
                 resultWriter.write("我没有你的token？,需要登录");
+                arg1.sendRedirect(arg0.getContextPath()+"/login.html");
                 return false;
             }
             //数据库Token与客户Token比较
             if( !headerToken.equals(myToken.getToken()) ){
                 resultWriter.write("你的token修改过？,需要登录");
+                arg1.sendRedirect(arg0.getContextPath()+"/login.html");
                 return false;
             }
             //判断Token过期
             Date tokenDate=(Date)claims.getExpiration();
             int chaoshi=(int)(new Date().getTime()-tokenDate.getTime())/1000;
             if(chaoshi>60*60*24*3){
+                arg1.sendRedirect(arg0.getContextPath()+"/login.html");
                 resultWriter.write("你的token过期了？,需要登录");
                 return false;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+            arg1.sendRedirect(arg0.getContextPath()+"/login.jsp");
             resultWriter.write("反正token不对,需要登录");
             return false;
         }
         //最后才放行
+        System.out.println("没有被拦截");
         return true;
     }
     @Override

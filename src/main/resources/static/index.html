@@ -92,10 +92,10 @@
 							<div class="btns">
 								
 								<a id="login-btn" href="http://localhost:8760/login.html">登录</a>
-								<a id="userinform" href="http://localhost:8760/userinform.html"></a>
+								<a id="userinform" href="javascript:getUserInform()" >个人中心</a>
 								<i class="line"></i>
 								<a id="register-btn" href="/register.html" >注册</a>
-								<a id="exit" href="javascript:exit()" >退出</a>
+								<a id="exitlogin" href="javascript:exitlogin()" >退出</a>
 							</div>
 						</div>
 						<div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
@@ -112,10 +112,7 @@
 								
 
 							
-									<div class="submenu-ft">
-										<a href="" class="submenu-set">设置</a>
-										<a href="" class="submenu-exit">退出</a>
-									</div>
+				
 								</div>
 							</div>
 						</div>
@@ -1020,34 +1017,71 @@
     }
     function refresh(){
         var token=getCookie("token");
-        if (token!=null){
-			
+        if (token!=null){			
             $("#login-btn").css("display","none");//隐藏登录显示个人中心
             $("#register-btn").css("display","none");
 
 		}
 		if(token==null||token=="")
-		{
-			
-		
+		{				
             $("#userinform").css("display","none");
-            $("#exit").css("display","none");
+            $("#exitlogin").css("display","none");
 		}
 
-
-
-
-
     }
-
-    function exit(){
-        delCookie("token")
+	 
+    function exitlogin(){
+        delCookie("token");
         console.log(getCookie("token"));
         // location.replace(document.referrer);返回上一个页面并刷新
-        location.replace(location)
+        location.replace(location);
     }
-    window.refresh();
+  
+	
+	
+	function getUserInform() {
+	    // console.log($("#id").val())
+		var token=getCookie("token");
+		var userid=getCookie("userid");
+	    if (token==null||token=="")
+		{
+	        window.location.href = '/login.html';
+	        // swal("Good!", "弹出了一个操作成功的提示框", "success");
+		}
+		else {
+			
+	        $.ajax({
+	            //几个参数需要注意一下
+	            type: "post",//方法类型
+	            dataType: "json",//预期服务器返回的数据类型
+	            url: "/API/index/userInform" ,//url
+	            data: {userid:userid,
+				},
+	            success: function (result) {
+	                console.log(result);//打印服务端返回的数据(调试用)
+	                if (result.code == 1) {
+	                    // swal("登录成功!", "", "success");
+	             
+	                    
+	                    window.location.href = '/userinform.html';
+	                }
+	                if(result.code==-3){
+	                    swal("密码不正确哦!", "", "error");
+					}
+	                if(result.code==-1){
+	                swal("系统异常!", "", "error");
+	            }
+	            },
+	            error : function(e) {
+	                alert("异常！");
+	            }
+	        });
+		}
+	
+	
 
+	}
+ window.refresh();
 </script>
 <div id="test-page-complete"></div>
 </body>
