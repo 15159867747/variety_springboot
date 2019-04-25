@@ -1055,7 +1055,7 @@
 	            type: "post",//方法类型
 	            dataType: "json",//预期服务器返回的数据类型
 	            url: "/API/index/userInform" ,//url
-	            data: {userid:userid,
+	            data: {userid:userid
 				},
 	            success: function (result) {
 	                console.log(result);//打印服务端返回的数据(调试用)
@@ -1070,8 +1070,8 @@
 					}
 	                if(result.code==-1){
 	                swal("系统异常!", "", "error");
-	            }
-	            },
+	                
+	            }},
 	            error : function(e) {
 	                alert("异常！");
 	            }

@@ -142,7 +142,7 @@ public class UserController implements IUserController {
     public JsonResult userInform(String userid) {
         UserInformParam userInformParam=new UserInformParam();
         userInformParam=userFacade.lookUserInform(userid);
-        if (userInformParam==null)
+        if (userInformParam==null||userid==null||userid.equals(""))
         {
             return new JsonResult(-1,"系统异常");
         }
