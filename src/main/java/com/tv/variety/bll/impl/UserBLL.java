@@ -88,7 +88,7 @@ public class UserBLL implements IUserBLL {
     @Override
     public int updateUserInform(User user) {
         EntityWrapper<User> wrapper = new EntityWrapper<User>();
-        wrapper.eq("userid", user.getId());
+        wrapper.eq("id", user.getId());
         int i =userMapper.update(user,wrapper);
         return i;
     }

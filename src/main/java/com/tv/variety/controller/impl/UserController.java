@@ -130,16 +130,22 @@ public class UserController implements IUserController {
     }
 
     @Override
-    @RequestMapping(value ="/exit", method = RequestMethod.DELETE)
+    @RequestMapping(value ="/exit", method = RequestMethod.POST)
     public JsonResult<String> Exit(String userid) {
+        int rs=userFacade.deletetoken(userid);
+        if(rs==1){
+            return new JsonResult<String>(1,"token删除成功，用户退出登录");
+        }
+        else {
+            return new JsonResult<String>(0,"该用户已退出登录");
+        }
 
-
-        return null;
     }
 
     @Override
     @RequestMapping(value = "/index/userInform" , method = RequestMethod.POST)
     public JsonResult userInform(String userid) {
+//        System.out.println(userid);
         UserInformParam userInformParam=new UserInformParam();
         userInformParam=userFacade.lookUserInform(userid);
         if (userInformParam==null||userid==null||userid.equals(""))

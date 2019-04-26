@@ -7,10 +7,8 @@
 <html class="page_index_ " data-fs="">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Description" content="新一代视频风行网,提供免费电影、电视剧、综艺、动漫、体育等视频内容的在线观看和下载.累积7亿用户的全平台,为传媒机构和品牌客户开设了官方视频服务账号,通过大数据分析与个性推荐订阅技术,实现海量独家内容与用户个性需求即时匹配." />
-<meta name="keywords" content="免费电影,电影下载,在线视频,在线电影" />
-<meta itemprop="image" content="img/logo.gif" />
-<title>风行网-中国领先的新一代视频平台</title>
+
+<title>	艺起看-综艺节目一起看</title>
 
 <!--[if lt IE 7 ]>
 <![endif]-->
@@ -18,7 +16,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
 <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
-
+	<script type="text/javascript" src="js/card.js"></script>
 	<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/v8.js"></script>
@@ -40,7 +38,7 @@
 		<div class="mod-wrap hd-wrap">
 			<div class="hd-left fix">
 				<div class="hd-logo">
-					<h1 class="logo"><a href="" title="风行网" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+					<h1 class="logo"><a href="/index.html" title="艺起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
 					<div class="hd-ad">
 						<div class="ad-wrap" data-deliver="ws_index__logo">
 						</div>
@@ -48,27 +46,15 @@
 					<div class="hd-line">
 						&nbsp;
 					</div>
-					<div class="hd-menu hd-nav hd-vmenu" id="verticalMenuLayout" data-hover-wrap="show-panel">
-						<a href="javascript:;" class="tit-inner head-btn fix" data-hover-ele="1">
-						<b class="lump "></b>
-						<b class="tit">导航</b>
-						<em class="icon"></em>
-						</a>
-					</div>
+
 					<div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
-						<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">
+						<!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
 						<b class="lump hd-nav-ico"></b>
 						<b class="hd-menu-ico"></b>
-						<b class="tit">分类</b>
+						<!--<b class="tit">分类</b>-->
 						<em class="icon"></em>
 						</a>
-						<div class="hd-menu-wrap">
-							<i class="menu-arrow"></i>
-							<div class="hd-menu-inner">
-								
-								
-							</div>
-						</div>
+
 					</div>
 					<div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
 						<form onsubmit="" name="msearch" id="msearch" action="" method="get">
@@ -1029,13 +1015,7 @@
 		}
 
     }
-	 
-    function exitlogin(){
-        delCookie("token");
-        console.log(getCookie("token"));
-        // location.replace(document.referrer);返回上一个页面并刷新
-        location.replace(location);
-    }
+
   
 	
 	
@@ -1055,25 +1035,22 @@
 	            type: "post",//方法类型
 	            dataType: "json",//预期服务器返回的数据类型
 	            url: "/API/index/userInform" ,//url
-	            data: {userid:userid
+	            data: {
+	                userid:userid
 				},
 	            success: function (result) {
 	                console.log(result);//打印服务端返回的数据(调试用)
 	                if (result.code == 1) {
 	                    // swal("登录成功!", "", "success");
-	             
-	                    
-	                    window.location.href = '/userinform.html';
+
+	                    window.location.href = '/userinform.html?name='+result.data.name+'&sex='+result.data.sex+'&birthday='+result.data.birthday;
 	                }
-	                if(result.code==-3){
-	                    swal("密码不正确哦!", "", "error");
-					}
 	                if(result.code==-1){
 	                swal("系统异常!", "", "error");
 	                
 	            }},
 	            error : function(e) {
-	                alert("异常！");
+                    exitlogin();
 	            }
 	        });
 		}

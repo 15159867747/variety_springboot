@@ -62,7 +62,7 @@ public class TokenInterceptor implements HandlerInterceptor {
                 break;
             }
         }
-        System.out.println(token);
+//        System.out.println(token);
 //        System.out.println(arg0.getCookies()[0].getName());
 
 
@@ -70,7 +70,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         logger.info("====拦截到了方法：{}，在该方法执行之前执行====", arg0.getRequestURI());
         String uri=arg0.getRequestURI();
 
-        if ("/API/addUser".equals(uri) || "/API/check".equals(uri)){
+        if ("/API/addUser".equals(uri) || "/API/check".equals(uri)||"/API/exit".equals(uri)){
             System.out.println("没有被拦截");
             return true;}
 

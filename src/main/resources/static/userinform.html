@@ -7,10 +7,8 @@
 <html class="page_index_ " data-fs="">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="Description" content="新一代视频风行网,提供免费电影、电视剧、综艺、动漫、体育等视频内容的在线观看和下载.累积7亿用户的全平台,为传媒机构和品牌客户开设了官方视频服务账号,通过大数据分析与个性推荐订阅技术,实现海量独家内容与用户个性需求即时匹配." />
-    <meta name="keywords" content="免费电影,电影下载,在线视频,在线电影" />
-    <meta itemprop="image" content="img/logo.gif" />
-    <title>风行网-中国领先的新一代视频平台</title>
+
+    <title>艺起看-综艺节目一起看</title>
 
     <!--[if lt IE 7 ]>
     <![endif]-->
@@ -31,6 +29,7 @@
 	<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 	
 	<script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
 	<script type="text/javascript" src="js/sweetalert-dev.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
 </head>
@@ -51,7 +50,7 @@
         <div class="mod-wrap hd-wrap">
             <div class="hd-left fix">
                 <div class="hd-logo">
-                    <h1 class="logo"><a href="" title="风行网" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <h1 class="logo"><a href="/index.html" title="一起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
                     <div class="hd-ad">
                         <div class="ad-wrap" data-deliver="ws_index__logo">
                         </div>
@@ -59,18 +58,21 @@
                     <div class="hd-line">
                         &nbsp;
                     </div>
-                    <div class="hd-menu hd-nav hd-vmenu" id="verticalMenuLayout" data-hover-wrap="show-panel">
-                        <a href="javascript:;" class="tit-inner head-btn fix" data-hover-ele="1">
-                            <b class="lump "></b>
-                            <b class="tit">导航</b>
-                            <em class="icon"></em>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+                        <b class="lump hd-nav-ico"></b>
+                        <b class="hd-menu-ico"></b>
+                        <!--<b class="tit">分类</b>-->
+                        <em class="icon"></em>
                         </a>
+
                     </div>
               
                     <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
                         <form onsubmit="" name="msearch" id="msearch" action="" method="get">
                             <div class="">
-                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="桃花依旧笑春风" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
                                 <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
                             </div>
 
@@ -88,34 +90,13 @@
                             <i class="login-bg"></i>
                             <div class="btns">
                                 <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
-                                <a id="userinform" href="http://localhost:8760/userinform.html">个人中心</a>
+                                <a id="userinform" href="javascript:getUserInform()">个人中心</a>
                                 <i class="line"></i>
                                 <a id="register-btn" href="/register.html" >注册</a>
-                                <a id="exit" href="javascript:exit()" >退出</a>
+                                <a id="exit" href="javascript:exitlogin()" >退出</a>
                             </div>
                         </div>
-                        <div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
-                            <a href="" title="" class="us-headpic head-btn arrow-btn" data-hover-ele="1">
-                                <img alt="" title="" width="30" height="30"/>
-                                <span class="vip-sign com-pic-vip"></span>
-                                <b class="us-name"></b>
-                                <i class="ico_arrow"></i>
-                            </a>
-                            <div class="logined-submenu">
-                                <i class="logined-arrow"></i>
-                                <div class="submenu-wrap">
-                                    <div class="submenu-login-info fix">
 
-
-
-                                        <div class="submenu-ft">
-                                            <a href="" class="submenu-set">设置</a>
-                                            <a href="" class="submenu-exit">退出</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
 
@@ -181,15 +162,15 @@
         <dl class="fix">
             <dt><em>*</em>昵称：</dt>
             <dd>
-                <input type="text" class="t" id="nickname" name="nickname" value="151***747">
+                <input type="text" class="t" id="name" name="nickname" >
                 <label class="show-err" id="for-nickname"></label>
             </dd>
         </dl>
         <dl class="fix">
             <dt><em>*</em>性别：</dt>
             <dd>
-                <input type="radio" name="sex" id="sexMale" class="b" value="male" checked=""><label class="sex" for="sexMale">男</label>
-                <input type="radio" name="sex" id="sexFemale" class="b s-female" value="female"><label class="sex" for="sexFemale">女</label>
+                <input type="radio" name="sex" id="sexMale" class="b" value="m"  ><label class="sex" for="sexMale">男</label>
+                <input type="radio" name="sex" id="sexFemale" class="b s-female" value="f" ><label class="sex" for="sexFemale">女</label>
                 <label class="show-err" id="for-sexFemale"></label>
             </dd>
         </dl>
@@ -201,7 +182,7 @@
 				<input type="text" id="test1" class="t" readonly="readonly">
         </dl>
 		<p class="">
-			<input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 142px;" value="登录" onclick="updateUserinform()">
+			<input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 142px;" value="确认修改" onclick="updateUserinform()">
 		
 	</p></div>
     </form>
@@ -233,8 +214,6 @@
 	</div>
 </div>
 	<!-- ================================================== -->
- 
-
 
     <div class="gototop fixed" id="gototopwrap">
         <div class="ad-game-tip" data-deliver="ws_all_game"></div>
@@ -252,134 +231,147 @@
     </script>
 
     <script type="text/javascript">
-        function getCookie(name) {
-            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-            if(arr = document.cookie.match(reg)) {
-                return unescape(arr[2]);
-            } else {
-                return null;
+
+
+
+        function setvalues() {
+            $("#name").val(getQueryVariable("name"));
+
+
+            if(getQueryVariable("sex")=="m")
+            {
+                $("#sexMale").attr("checked", true);
+            }
+            if (getQueryVariable("sex")=="f")
+            {
+                $("#sexFemale").attr("checked", true);
+            }
+            console.log(dateFormat_2(getQueryVariable("birthday")))
+            $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
+
+        }
+
+
+
+        function refresh(){
+            var token=getCookie("token");
+            if (token!=null){
+                $("#login-btn").css("display","none");
+                $("#register-btn").css("display","none");
+                setvalues();
+                // getUserInform()
+
+                // alert(getQueryVariable("name"));
+            }
+            if(token==null||token=="")
+            {
+                $("#userinform").css("display","none");
+                $("#exit").css("display","none");
+                window.location.href = '/index.html';
+
             }
         }
-        function delCookie(name) {
-            var exp = new Date();
-            exp.setTime(exp.getTime() - 1);
-            var cval = this.getCookie(name);
-            if(cval != null)
-                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
-        }
-        // function refresh(){
-        //     var token=getCookie("token");
-        //     if (token!=null){
-        //         $("#login-btn").css("display","none");
-        //         $("#register-btn").css("display","none");
-        //     }
-        //     if(token==null||token=="")
-        //     {
-        //         $("#userinform").css("display","none");
-        //         $("#exit").css("display","none");
-        //     }
-        // }
 		    function updateUserinform() {
 		    // console.log($("#id").val())
-		    if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()=="")
+                var id =getCookie("userid");
+                var name=$("#name").val();
+                var sex=$("input:radio:checked").val();
+                var date=dateTolong($("#test1").val());
+                console.log(name,sex,date);
+		    if (name==null||name=="")
 			{
-		        swal("账号密码为空!");
+		        swal("亲，昵称不能为空哦");
 		        // swal("Good!", "弹出了一个操作成功的提示框", "success");
 			}
+			else if(name.length>20)
+            {
+                swal("名字好像有点长哦，要不你取短点试试？");
+            }
 			else {
 		        $.ajax({
 		            //几个参数需要注意一下
 		            type: "post",//方法类型
 		            dataType: "json",//预期服务器返回的数据类型
-		            url: "/API/check" ,//url
-		            data: $('#pageLoginForm').serialize(),
+		            url: "/API/index/updateUserInform" ,//url
+		            data: {
+                        id:id,
+                        name:name,
+                        sex:sex,
+                        birthday:date
+                    },
 		            success: function (result) {
 		                console.log(result);//打印服务端返回的数据(调试用)
 		                if (result.code == 1) {
-		                    // swal("登录成功!", "", "success");
-		                    setCookie("token",result.data.token);
-							setCookie("name",result.data.name);
-							setCookie("userid",result.data.id);
-		                    console.log(result.data.token,result.data.name,result.data.id);
-		                    window.location.href = '/index.html';
+		                     // swal("!", "", "success");
+		                    // console.log(result.data.token,result.data.name,result.data.id);
+		                    // window.location.href = '/index.html';
+                            swal("修改成功!", "", "success");
+
+                            setTimeout("getUserInform()", 2000 );
+
 		                }
-		                if(result.code==-3){
-		                    swal("密码不正确哦!", "", "error");
+		                if(result.code==-1){
+		                    swal("修改失败啦，要不您再试试？", "", "error");
 						}
-		                if(result.code==-2){
-		                    swal("账号不正确哦", "", "error");
-		                }
+
 		                ;
 		            },
 		            error : function(e) {
-		                alert("异常！");
+                        exitTologin();
 		            }
 		        });
 			}		
 		}
 
-        function exit(){
-            delCookie("token")
-            console.log(getCookie("token"));
-            // location.replace(document.referrer);返回上一个页面并刷新
-            window.location.href = '/index.html';
-        }
         window.refresh();
-		
-		
-		function getUserInform() {
-		    // console.log($("#id").val())
-			var token=getCookie("token");
-		    if (token==null||token="")
-			{
-		        window.location.href = '/login.html';
-		        // swal("Good!", "弹出了一个操作成功的提示框", "success");
-			}
-			else {
-		        $.ajax({
-		            //几个参数需要注意一下
-		            type: "post",//方法类型
-		            dataType: "json",//预期服务器返回的数据类型
-		            url: "/API/check" ,//url
-		            data: $('#pageLoginForm').serialize(),
-		            success: function (result) {
-		                console.log(result);//打印服务端返回的数据(调试用)
-		                if (result.code == 1) {
-		                    // swal("登录成功!", "", "success");
-		                    setCookie("token",result.data.token);
-							setCookie("name",result.data.name);
-							setCookie("userid",result.data.id);
-		                    console.log(result.data.token,result.data.name,result.data.id);
-		                    window.location.href = '/index.html';
-		                }
-		                if(result.code==-3){
-		                    swal("密码不正确哦!", "", "error");
-						}
-		                if(result.code==-2){
-		                    swal("账号不正确哦", "", "error");
-		                }
-		                ;
-		            },
-		            error : function(e) {
-		                alert("异常！");
-		            }
-		        });
-			}
-		
-		
-		}
+
+
+
+
+        function getUserInform() {
+            // console.log($("#id").val())
+            var token=getCookie("token");
+            var userid=getCookie("userid");
+            if (token==null||token=="")
+            {
+                window.location.href = '/login.html';
+                // swal("Good!", "弹出了一个操作成功的提示框", "success");
+            }
+            else {
+
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/API/index/userInform" ,//url
+                    data: {
+                        userid:userid
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            // swal("登录成功!", "", "success");
+
+                            window.location.href = '/userinform.html?name='+result.data.name+'&sex='+result.data.sex+'&birthday='+result.data.birthday;
+                        }
+                        if(result.code==-1){
+                            swal("系统异常!", "", "error");
+
+                        }},
+                    error : function(e) {
+                        alert("异常！");
+                    }
+                });
+            }
+
+        }
 		
 
     </script>
-    <div id="test-page-complete"></div>
+
 	
 	
-	<script>
-//执行一个laydate实例
-laydate.render({
-  elem: '#test1' //指定元素
-});
-</script>
+
 
 </body>
 </html>

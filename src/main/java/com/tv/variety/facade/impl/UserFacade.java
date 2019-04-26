@@ -86,7 +86,7 @@ public class UserFacade implements IUserFacade {
     public int insertToken(User user) {
         String TokenStr = "";
         Date date = new Date();
-        long nowtime = (int) (date.getTime() / 1000);
+        long nowtime = (long) (date.getTime());
         //生成Token
         TokenStr = creatToken(user, date);
         Token token = new Token();
@@ -104,7 +104,7 @@ public class UserFacade implements IUserFacade {
         //有token，但是重新登录，所以更新Token信息
         String TokenStr = "";
         Date date = new Date();
-        long nowtime = (int) (date.getTime() / 1000);
+        long nowtime = (long)date.getTime();
         TokenStr = creatToken(user, date);
         Token token = new Token();
 
@@ -149,5 +149,11 @@ public class UserFacade implements IUserFacade {
         user.setName(userInformParam.getName());
         int rs =userBLL.updateUserInform(user);
         return rs;
+    }
+
+    @Override
+    public int deletetoken(String userid) {
+        int i =userBLL.deleteToken(userid);
+        return i;
     }
 }

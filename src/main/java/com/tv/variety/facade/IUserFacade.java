@@ -44,6 +44,8 @@ public interface IUserFacade {
     //更新用户信息
     int updateUserInform(UserInformParam userInformParam);
 
+    //删除token
+    int deletetoken(String userid);
 
 
 }
