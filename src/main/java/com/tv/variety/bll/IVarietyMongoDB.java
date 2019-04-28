@@ -1,10 +1,9 @@
 package com.tv.variety.bll;
 
+
 import com.tv.variety.mongodb.POJO.Variety;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Component;
+import com.tv.variety.util.mongodb.PageResult;
 
 /**
  * @author yrongqin@linwell.com
@@ -16,4 +15,10 @@ public interface IVarietyMongoDB {
 
     //根据综艺名查询综艺的节目信息
     Variety findVarietyByName(String name);
+
+    //根据综艺类型查询该类型下的所有节目
+    PageResult findVarietyByType(String type);
+
+
+
 }

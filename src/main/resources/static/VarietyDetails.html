@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]><html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>艺起看-综艺节目一起看</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+        <!--<link rel="stylesheet" type="text/css" href="css/base.css"/>-->
+        <!--<link rel="stylesheet" type="text/css" href="css/Torr.css"/>-->
+
+        <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
+        <!--<script type="text/javascript" charset="utf-8" src="js/core.js"></script>-->
+        <!--<script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+
+    <link rel="stylesheet"   href="css/base.css" />
+
+    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.comment.js" ></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+    <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style>
+        .container{
+    width: 1000px;
+    }
+    .commentbox{
+    width: 900px;
+    margin: 20px auto;
+    }
+    .mytextarea {
+    width: 100%;
+    overflow: auto;
+    word-break: break-all;
+    height: 100px;
+    color: #000;
+    font-size: 1em;
+    resize: none;
+    }
+    .comment-list{
+    width: 900px;
+    margin: 20px auto;
+    clear: both;
+    padding-top: 20px;
+    }
+    .comment-list .comment-info{
+    position: relative;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    }
+    .comment-list .comment-info header{
+    width: 10%;
+    position: absolute;
+    }
+    .comment-list .comment-info header img{
+    width: 100%;
+    border-radius: 50%;
+    padding: 5px;
+    }
+    .comment-list .comment-info .comment-right{
+    padding:5px 0px 5px 11%;
+    }
+    .comment-list .comment-info .comment-right h3{
+    margin: 5px 0px;
+    }
+    .comment-list .comment-info .comment-right .comment-content-header{
+    height: 25px;
+    }
+    .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
+    padding-right: 2em;
+    color: #aaa;
+    }
+    .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
+    cursor: pointer;
+    }
+    .comment-list .comment-info .comment-right .reply-list {
+    border-left: 3px solid #ccc;
+    padding-left: 7px;
+    }
+    .comment-list .comment-info .comment-right .reply-list .reply{
+    border-bottom: 1px dashed #ccc;
+    }
+    .comment-list .comment-info .comment-right .reply-list .reply div span{
+    padding-left: 10px;
+    }
+    .comment-list .comment-info .comment-right .reply-list .reply p span{
+    padding-right: 2em;
+    color: #aaa;
+    }
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="一起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+                        <b class="lump hd-nav-ico"></b>
+                        <b class="hd-menu-ico"></b>
+                        <!--<b class="tit">分类</b>-->
+                        <em class="icon"></em>
+                        </a>
+
+                    </div>
+
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+                            <div class="">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+                                <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+                                <a id="userinform" href="javascript:getUserInform()">个人中心</a>
+                                <i class="line"></i>
+                                <a id="register-btn" href="/register.html" >注册</a>
+                                <a id="exit" href="javascript:exitlogin()" >退出</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="page-progress" id="page-progress">
+            </div>
+        </div>
+        <div class="hd-content-sub z-app-footer fixed" id="nav-container-sub">
+            <div class="hd-content-sub-con fix">
+                <div class="mod-wrap sub-wrap">
+                    <div class="nav">
+                        <div class="prev">
+                            <a class="item large current" href="/">首页</a>
+                            <a class="item large new" href="">风行号<i></i></a>
+                            <a class="item large" href="">电影</a>
+                            <a class="item large" href="">电视剧</a>
+                            <a class="item large" href="">少儿</a>
+                            <a class="item large" href="">动漫</a>
+                            <a class="item large" href="">综艺</a>
+                            <i class="sep"></i>
+                            <a class="item" href="">天下</a>
+                            <a class="item" href="">娱乐</a>
+                            <a class="item" href="">游戏</a>
+                            <a class="item" href="">搞笑</a>
+                            <a class="item" href="">美食</a>
+                            <a class="item" href="">生活</a>
+                            <a class="item" href="">体育</a>
+                            <a class="item" href="">汽车</a>
+                        </div>
+                    </div>
+                    <a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>
+                    <div class="nav-ad">
+                        <div class="ad-wrap" data-deliver="ws_nav_guide">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 50px">
+        <div style="float: right;width:20%;height:600px;position:absolute;background-color: red;right: 200px;margin-top: 100px">
+            <div style="font-size: 40px">
+                猜你喜欢
+            </div>
+        </div>
+        <div class="subject-head fix z-2">
+            <div class="main crumbsline" style="padding-top: 100px;margin: 30px 0 15px 0;font-size: 14px">
+                <!--<a href="/" title="首页">首页</a>-->
+                <b>&gt;</b>
+                <!--<a href="/retrieve/c-e794b5e8a786e589a7" title="电视剧">电视剧</a>-->
+                <!--<b>&gt;</b>-->
+                <!--<a href="/retrieve/c-e794b5e8a786e589a7.a-e58685e59cb0" title="内地">内地</a>-->
+                <!--<b>&gt;</b>-->
+                <!--<a href="/retrieve/c-e794b5e8a786e589a7.t-e68898e4ba89" title="战争">战争</a>-->
+            </div>
+            <div class="pic" style="float: left;margin-right: 20px">
+                <a class="seedplay play-btn-a"  target="_blank" href="">
+                    <img src="" alt="" class="" id="img1">                    	</a>
+
+            </div>
+            <div class="info" style="float: left;">
+                <h3 class="tit">
+                    <a style="font-size: 30px;line-height: 40px"  target="_blank" class="seedplay play-btn-b" href="" id="name"></a>
+
+                    <!--<span class="update-info" style="font-size: 14px;">全集</span>-->
+                </h3>
+
+                <div class="rating fix"  style="margin: 15px 0 10px">
+                    <div class="karma" style="float: left;font-size: 20px;color: orange"><i>7.5</i></div>
+                    <!--<div class="rating-title" style="float: left;margin: 0 20px">我来评分：</div>-->
+
+                        <div class="xzw_starSys" style="float: left;margin: 0 15px;padding: 0">
+                            <div class="xzw_starBox">
+                                <ul class="star stars">
+                                    <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+                                    <li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+                                    <li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+                                    <li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+                                    <li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+                                </ul>
+                                <div class="current-rating showb"></div>
+                            </div>
+                            <!--&lt;!&ndash;评价文字&ndash;&gt;-->
+                            <!--<div class="description"></div>-->
+                            <!--&lt;!&ndash;评价选项&ndash;&gt;-->
+                            <!--<div class="option">-->
+                                <!--<ul class="option-con clearfix">-->
+                                    <!--<li><a href="">全是乱码</a></li>-->
+                                    <!--<li><a href="">标题和内容不符</a></li>-->
+                                    <!--<li><a href="">答案很多错误</a></li>-->
+                                    <!--<li><a href="">没有配图</a></li>-->
+                                    <!--<li><a href="">没有答案</a></li>-->
+                                <!--</ul>-->
+                                <!--<ul class="option-con clearfix" style="display:none">-->
+                                    <!--<li><a href="">扫描版有些模糊</a></li>-->
+                                    <!--<li><a href="">图片不清晰</a></li>-->
+                                    <!--<li><a href="">答案不完整</a></li>-->
+                                    <!--<li><a href="">没有解析</a></li>-->
+                                    <!--<li><a href="">教材版本不符</a></li>-->
+                                <!--</ul>-->
+                                <!--<ul class="option-con clearfix" style="display:none">-->
+                                    <!--<li><a href="">凑活能用</a></li>-->
+                                    <!--<li><a href="">重复率高</a></li>-->
+                                    <!--<li><a href="">没有排版</a></li>-->
+                                    <!--<li><a href="">解析有错误</a></li>-->
+                                    <!--<li><a href="">资料不够丰富</a></li>-->
+                                <!--</ul>-->
+                                <!--<ul class="option-con clearfix" style="display:none">-->
+                                    <!--<li><a href="">不太需要编辑</a></li>-->
+                                    <!--<li><a href="">资料有深度</a></li>-->
+                                    <!--<li><a href="">资料有创新</a></li>-->
+                                    <!--<li><a href="">还不错呦</a></li>-->
+                                    <!--<li><a href="">资料很合适</a></li>-->
+                                <!--</ul>-->
+                                <!--<ul class="option-con clearfix" style="display:none">-->
+                                    <!--<li><a href="">完美！</a></li>-->
+                                    <!--<li><a href="">拿来就能用</a></li>-->
+                                    <!--<li><a href="">精心制作</a></li>-->
+                                    <!--<li><a href="">解析非常好</a></li>-->
+                                    <!--<li><a href="">编排精美</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <!--<div class="prompt">请为资料打星</div>-->
+                        </div>
+
+
+                    <div class="com-rating" id="tit-rating" data-star="0" data-comtype="rating" data-rating="5">
+                        <div class="rating-box  disable">
+                            <a href="javascript:void(0)" class="rating z-5" title="很差"></a>
+                            <a href="javascript:void(0)" class="rating z-4" title="较差"></a>
+                            <a href="javascript:void(0)" class="rating z-3" title="一般"></a>
+                            <a href="javascript:void(0)" class="rating z-2" title="较好"></a>
+                            <a href="javascript:void(0)" class="rating rating-stars5 z-1 current" title="很好"></a>
+                        </div>
+                    </div>
+                    <div class="rating-tip" id="rating-tip"></div>
+                </div>
+                <div class="desc" style="margin: 10px 0;font-size: 14px">
+                    <i>更新时间：</i>
+                    <span id="updatetime"> </span>
+                </div>
+                <div class="desc" style="margin: 10px 0;font-size: 14px">
+                    <i>地区：</i>
+                    <span> <a href=""  target="_blank" id="area"></a></span>
+                </div>
+                <div class="desc" style="margin: 10px 0;font-size: 14px">
+                    <i>类型：</i>
+                    <a href=""  target="_blank" id="type"> </a>                                                             </div>
+
+                <div class="desc" style="margin: 10px 0;font-size: 14px">
+                    <i>播出频道：</i>
+                    <a href=""  target="_blank" id="fromtv"> </a>  /                                                                 <a href="/search/?word=徐囡楠" title="徐囡楠" target="_blank"> 徐囡楠</a>                                                             </div>
+                <div id="btngroup" class="btngroup " style="margin: 30px 0 0 0">
+                    <div style="position:relative;" class="fix"><a href="/vplay/g-323813/?from=subject" class="pbtn tryplay-btn"></a>
+                        <a href="javascript:;" class="pay-btn" target="_blank"></a>
+                        <a target="_blank" href="/vplay/g-323813/?from=subject" class="pbtn seedplay play-btn " data-storelink="/vplay/g-323813/?from=subject"></a><div class="op-group fix">
+                            <button style="float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px">立即播放</button>
+
+                            <div class="inner fix">
+
+                                <div class="clear"></div>
+                                <i></i>
+                                <a href="javascript:;" class="close" title="关闭面板"><em></em></a>
+                            </div>
+                        </div><div class="mobilebtn-wrap pop-wrap z-act-pop" style="display: none;">
+                            <div class="inner fix">
+
+                                <div class="line"></div>
+                                <div class="bottom fix">
+                                    <div class="qrcode"></div>
+
+                                </div>
+                                <i></i>
+
+                            </div>
+                        </div>
+                        </div></div>
+                </div>
+            </div>
+        <div style="width: 60%;border-top: 1px solid #ddd;margin: 30px 0"></div>
+        <div style="width: 60%;">
+            <div style="font-size: 20px;margin: 10px 0">简介：</div>
+            <p style="text-indent: 2em;font-size: 16px;line-height: 30px"></p>
+        </div>
+        <div style="width: 60%;border-top: 1px solid #ddd;margin: 30px 0"></div>
+        <div style="width: 60%;">
+            <div style="font-size: 20px;margin: 10px 0">评论：</div>
+            <div class="container" style="padding-left: 0">
+                <div class="commentbox">
+                    <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                    <div class="btn btn-info pull-right" id="comment">评论</div>
+                </div>
+                <div class="comment-list">
+                    <!--
+                        <div class="comment-info">
+                            <header><img src="./images/img.jpg"></header>
+                            <div class="comment-right">
+                                <h3>匿名</h3>
+                                <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i> 2017-10-17 11:42:53</span><span><i class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+                                <p class="content">mongodb 副本集配置副本集概念：就我的理解就是和主从复制 差不多，就是在主从复制的基础上多加了一个选举的机制。
+                                复制集 特点：数据一致性 主是唯一的，没有Mysql 那样的双主结构大多数原则，集群存活节点小于二分之一是集群不可写，
+                                只可读从库无法写入数据自动容灾通过下面的一个图来简单的了解下
+                                 配置过程：一、安装mongodb安装过程略，不懂得可以看前面的教程二、创建存储目录与配置文件创...</p>
+                                <div class="comment-content-footer">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <span><i class="glyphicon glyphicon-pushpin"></i> 来自:win10 </span><span><i class="glyphicon glyphicon-globe"></i> chrome 55.0.2883.87</span>
+                                        </div>
+                                        <div class="col-md-2"><span class="reply-btn">回复</span></div>
+                                    </div>
+                                </div>
+                                <div class="reply-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="comment-info">
+                            <header><img src="./images/img.jpg"></header>
+                            <div class="comment-right">
+                                <h3>匿名</h3>
+                                <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i> 2017-10-17 11:42:53</span><span><i class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+                                <p class="content">mongodb 副本集配置副本集概念：就我的理解就是和主从复制 差不多，就是在主从复制的基础上多加了一个选举的机制。
+                                复制集 特点：数据一致性 主是唯一的，没有Mysql 那样的双主结构大多数原则，集群存活节点小于二分之一是集群不可写，
+                                只可读从库无法写入数据自动容灾通过下面的一个图来简单的了解下
+                                 配置过程：一、安装mongodb安装过程略，不懂得可以看前面的教程二、创建存储目录与配置文件创...</p>
+                                <div class="comment-content-footer">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <span><i class="glyphicon glyphicon-pushpin"></i> 来自:win10 </span><span><i class="glyphicon glyphicon-globe"></i> chrome 55.0.2883.87</span>
+                                        </div>
+                                        <div class="col-md-2"><span class="reply-btn">回复</span></div>
+                                    </div>
+                                </div>
+                                <div class="reply-list">
+                                    <div class="reply">
+                                        <div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
+                                        <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
+                                    </div>
+                                    <div class="reply">
+                                        <div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
+                                        <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
+                                    </div>
+                                    <div class="reply">
+                                        <div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
+                                        <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     -->
+
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+</div>
+
+
+
+
+
+
+
+
+    <!-- <link rel="stylesheet" href="card.less"/>
+    <script type="text/javascript" src="js/card.js"></script> -->
+    <!-- 底部样式    -->
+    <div class="footer fix" id="footer">
+        <div class="mod-wrap">
+            <div class="foot-wrap">
+                <div class="foot-link fix" >
+                    <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- ================================================== -->
+
+    <div class="gototop fixed" id="gototopwrap">
+        <div class="ad-game-tip" data-deliver="ws_all_game"></div>
+        <a class="question-btn" href=""></a>
+        <a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>
+    </div>
+
+    <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
+
+    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        T.observer.send('app.ready');
+        console.log("app.ready");
+    </script>
+
+    <script type="text/javascript">
+
+
+
+        function setvalues() {
+            $("#name").val(getQueryVariable("name"));
+
+
+            if(getQueryVariable("sex")=="m")
+            {
+                $("#sexMale").attr("checked", true);
+            }
+            if (getQueryVariable("sex")=="f")
+            {
+                $("#sexFemale").attr("checked", true);
+            }
+            console.log(dateFormat_2(getQueryVariable("birthday")))
+            $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
+
+        }
+
+
+
+        function refresh(){
+            var token=getCookie("token");
+            if (token!=null){
+                $("#login-btn").css("display","none");
+                $("#register-btn").css("display","none");
+                // setvalues();
+                // getUserInform()
+
+                // alert(getQueryVariable("name"));
+            }
+            if(token==null||token=="")
+            {
+                $("#userinform").css("display","none");
+                $("#exit").css("display","none");
+                // window.location.href = '/index.html';
+
+            }
+
+            getVarietyDetails();
+        }
+        function updateUserinform() {
+            // console.log($("#id").val())
+            var id =getCookie("userid");
+            var name=$("#name").val();
+            var sex=$("input:radio:checked").val();
+            var date=dateTolong($("#test1").val());
+            console.log(name,sex,date);
+            if (name==null||name=="")
+            {
+                swal("亲，昵称不能为空哦");
+                // swal("Good!", "弹出了一个操作成功的提示框", "success");
+            }
+            else if(name.length>20)
+            {
+                swal("名字好像有点长哦，要不你取短点试试？");
+            }
+            else {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/API/index/updateUserInform" ,//url
+                    data: {
+                        id:id,
+                        name:name,
+                        sex:sex,
+                        birthday:date
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            // swal("!", "", "success");
+                            // console.log(result.data.token,result.data.name,result.data.id);
+                            // window.location.href = '/index.html';
+                            swal("修改成功!", "", "success");
+
+                            setTimeout("getUserInform()", 2000 );
+
+                        }
+                        if(result.code==-1){
+                            swal("修改失败啦，要不您再试试？", "", "error");
+                        }
+
+                        ;
+                    },
+                    error : function(e) {
+                        exitTologin();
+                    }
+                });
+            }
+        }
+
+
+
+
+
+
+        function getVarietyDetails() {
+            // console.log($("#id").val())
+            // var token=getCookie("token");
+            console.log("1")
+            // var userid=getCookie("userid");
+            var name=decodeURIComponent(getQueryVariable("name"));
+            // console.log(decodeURIComponent(name))
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/YqLook/varietyDetails" ,//url
+                    data: {
+                        name:name
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            $("#name").text(result.data.name);
+                            $("#fromtv").text(result.data.fromtv);
+                            $("#type").text(result.data.type);
+                            $("#updatetime").text(result.data.update);
+                            $("#area").text(result.data.area);
+                            // $("#img1").attr("src","img/星光大道 2018.jpg");
+                            $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
+
+
+
+                        }
+                        if(result.code==-1){
+                            swal("系统异常!", "", "error");
+
+                        }},
+                    error : function(e) {
+                        alert("异常！");
+                    }
+                });
+
+
+        }
+
+        window.refresh();
+    </script>
+<script type="text/javascript">
+    //初始化数据
+    var arr = [
+        {id:1,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[]},
+        {id:2,img:"./images/img.jpg",replyName:"匿名",beReplyName:"",content:"到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[{id:3,img:"",replyName:"帅大叔",beReplyName:"匿名",content:"来啊，我们一起吃鸡",time:"2017-10-17 11:42:53",address:"",osname:"",browse:"谷歌"}]},
+        {id:3,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"win10",browse:"谷歌",replyBody:[]}
+    ];
+    $(function(){
+        $(".comment-list").addCommentList({data:arr,add:""});
+        $("#comment").click(function(){
+            var obj = new Object();
+            obj.img="./images/img.jpg";
+            obj.replyName="匿名";
+            obj.content=$("#content").val();
+            obj.browse="深圳";
+            obj.osname="win10";
+            obj.replyBody="";
+            $(".comment-list").addCommentList({data:[],add:obj});
+        });
+    })
+</script>
+
+
+
+
+
+</body>
+</html>
+
+

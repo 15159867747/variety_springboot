@@ -1,10 +1,13 @@
 package com.tv.variety.controller.impl;
 
+
 import com.tv.variety.controller.IVarietyController;
 import com.tv.variety.facade.IVarietyFacade;
 import com.tv.variety.facade.impl.VarietyFacade;
 import com.tv.variety.mongodb.POJO.Variety;
+import com.tv.variety.param.VarietyParams;
 import com.tv.variety.util.JsonResult;
+import com.tv.variety.util.mongodb.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,5 +30,13 @@ public class VarietyController implements IVarietyController {
         Variety variety=new Variety();
         variety=varietyFacade.findVarietyByName(name);
         return new JsonResult(variety,"综艺节目详细信息返回 成功",1);
+    }
+
+    @Override
+    @RequestMapping(value ="/varietyByTye", method = RequestMethod.POST)
+    public JsonResult findVarietyByType(String type) {
+        PageResult<VarietyParams> paramsPageResult=new PageResult<VarietyParams>();
+        paramsPageResult=varietyFacade.findVarietyByType(type);
+        return new JsonResult(paramsPageResult,"成功",1);
     }
 }

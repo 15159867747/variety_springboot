@@ -1,5 +1,7 @@
 package com.tv.variety.controller;
 
+//import com.miao.PageResult;
+import com.tv.variety.param.VarietyParams;
 import com.tv.variety.util.JsonResult;
 
 /**
@@ -8,4 +10,6 @@ import com.tv.variety.util.JsonResult;
  */
 public interface IVarietyController {
     JsonResult findvarietyByName(String name);
+
+    JsonResult findVarietyByType(String type);
 }
