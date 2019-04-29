@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author yrongqin
- * @since 2019-04-23
+ * @since 2019-04-29
  */
 @Controller
 @RequestMapping("/token")

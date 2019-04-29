@@ -1,4 +1,5 @@
 //star
+
 $(document).ready(function(){
     var stepW = 30;
     var description = new Array("太差，根本无法使用","不好用","一般，勉强能用","还不错","非常完美的资料");

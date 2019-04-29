@@ -2,6 +2,7 @@ package com.tv.variety.controller.impl;
 
 
 import com.tv.variety.controller.IVarietyController;
+import com.tv.variety.dto.VarietyDetailsParam;
 import com.tv.variety.facade.IVarietyFacade;
 import com.tv.variety.facade.impl.VarietyFacade;
 import com.tv.variety.mongodb.POJO.Variety;
@@ -26,10 +27,10 @@ public class VarietyController implements IVarietyController {
 
     @Override
     @RequestMapping(value ="/varietyDetails", method = RequestMethod.POST)
-    public JsonResult findvarietyByName(String name) {
-        Variety variety=new Variety();
-        variety=varietyFacade.findVarietyByName(name);
-        return new JsonResult(variety,"综艺节目详细信息返回 成功",1);
+    public JsonResult findvarietyByName(String name,String userid) {
+        VarietyDetailsParam varietyDetailsParam=new VarietyDetailsParam();
+        varietyDetailsParam=varietyFacade.findVarietyByName(name,userid);
+        return new JsonResult(varietyDetailsParam,"综艺节目详细信息返回 成功",1);
     }
 
     @Override

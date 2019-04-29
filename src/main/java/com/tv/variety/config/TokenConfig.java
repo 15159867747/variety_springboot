@@ -22,7 +22,7 @@ public class TokenConfig implements WebMvcConfigurer {
 //    private TokenInterceptor tokenInterceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry ){
-        registry.addInterceptor( tokenInterceptor()).addPathPatterns("/API/**");
+        registry.addInterceptor( tokenInterceptor()).addPathPatterns("/API/**").addPathPatterns("/Ratings/**");
 //        registry.addInterceptor( new TokenInterceptor()).addPathPatterns("/**");
         //配置生成器：添加一个拦截器，拦截路径为API以后的路径
 //        super.addInterceptors(registry);

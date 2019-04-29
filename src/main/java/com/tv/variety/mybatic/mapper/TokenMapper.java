@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author yrongqin
- * @since 2019-04-23
+ * @since 2019-04-29
  */
 public interface TokenMapper extends BaseMapper<Token> {
 

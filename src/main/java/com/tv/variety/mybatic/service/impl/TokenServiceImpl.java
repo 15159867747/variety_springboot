@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author yrongqin
- * @since 2019-04-23
+ * @since 2019-04-29
  */
 @Service
 public class TokenServiceImpl extends ServiceImpl<TokenMapper, Token> implements TokenService {

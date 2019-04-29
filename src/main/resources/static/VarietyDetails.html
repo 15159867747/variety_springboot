@@ -34,7 +34,7 @@
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
     <link type="text/css" href="css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <style>
         .container{
     width: 1000px;
@@ -114,9 +114,6 @@
 
 
 
-
-
-
 <div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
     <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
         <div class="mod-wrap hd-wrap">
@@ -145,7 +142,7 @@
                         <form onsubmit="" name="msearch" id="msearch" action="" method="get">
                             <div class="">
                                 <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
-                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: orange;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
                             </div>
 
                         </form>
@@ -217,7 +214,7 @@
 
 
     <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 50px">
-        <div style="float: right;width:20%;height:600px;position:absolute;background-color: red;right: 200px;margin-top: 100px">
+        <div style="float: right;width:20%;height:600px;position:absolute;background-color: transparent;right: 200px;margin-top: 100px">
             <div style="font-size: 40px">
                 猜你喜欢
             </div>
@@ -225,7 +222,7 @@
         <div class="subject-head fix z-2">
             <div class="main crumbsline" style="padding-top: 100px;margin: 30px 0 15px 0;font-size: 14px">
                 <!--<a href="/" title="首页">首页</a>-->
-                <b>&gt;</b>
+                <!--<b>&gt;</b>-->
                 <!--<a href="/retrieve/c-e794b5e8a786e589a7" title="电视剧">电视剧</a>-->
                 <!--<b>&gt;</b>-->
                 <!--<a href="/retrieve/c-e794b5e8a786e589a7.a-e58685e59cb0" title="内地">内地</a>-->
@@ -234,7 +231,7 @@
             </div>
             <div class="pic" style="float: left;margin-right: 20px">
                 <a class="seedplay play-btn-a"  target="_blank" href="">
-                    <img src="" alt="" class="" id="img1">                    	</a>
+                    <img src="" alt="" class="" id="img1" style="width: 200px;height: 300px">                    	</a>
 
             </div>
             <div class="info" style="float: left;">
@@ -245,95 +242,59 @@
                 </h3>
 
                 <div class="rating fix"  style="margin: 15px 0 10px">
-                    <div class="karma" style="float: left;font-size: 20px;color: orange"><i>7.5</i></div>
+                    <div class="karma" style="float: left;font-size: 20px;color: orange"><i>我来评分</i></div>
                     <!--<div class="rating-title" style="float: left;margin: 0 20px">我来评分：</div>-->
 
                         <div class="xzw_starSys" style="float: left;margin: 0 15px;padding: 0">
                             <div class="xzw_starBox">
                                 <ul class="star stars">
-                                    <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
-                                    <li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
-                                    <li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
-                                    <li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
-                                    <li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+                                        <!--<a id="userinform" href="javascript:getUserInform()" >个人中心</a>-->
+                                    <li><a href="javascript:insertRatings(1)" id="r1" title="1" class="one-star">1</a></li>
+                                    <li><a href="javascript:insertRatings(2)" title="2" class="two-stars">2</a></li>
+                                    <li><a href="javascript:insertRatings(3)" title="3" class="three-stars">3</a></li>
+                                    <li><a href="javascript:insertRatings(4)" title="4" class="four-stars">4</a></li>
+                                    <li><a href="javascript:insertRatings(5)" title="5" class="five-stars" display="block">5</a></li>
                                 </ul>
-                                <div class="current-rating showb"></div>
+                                <div class="current-rating showb" id="showb" style="width: 0"></div>
                             </div>
-                            <!--&lt;!&ndash;评价文字&ndash;&gt;-->
-                            <!--<div class="description"></div>-->
-                            <!--&lt;!&ndash;评价选项&ndash;&gt;-->
-                            <!--<div class="option">-->
-                                <!--<ul class="option-con clearfix">-->
-                                    <!--<li><a href="">全是乱码</a></li>-->
-                                    <!--<li><a href="">标题和内容不符</a></li>-->
-                                    <!--<li><a href="">答案很多错误</a></li>-->
-                                    <!--<li><a href="">没有配图</a></li>-->
-                                    <!--<li><a href="">没有答案</a></li>-->
-                                <!--</ul>-->
-                                <!--<ul class="option-con clearfix" style="display:none">-->
-                                    <!--<li><a href="">扫描版有些模糊</a></li>-->
-                                    <!--<li><a href="">图片不清晰</a></li>-->
-                                    <!--<li><a href="">答案不完整</a></li>-->
-                                    <!--<li><a href="">没有解析</a></li>-->
-                                    <!--<li><a href="">教材版本不符</a></li>-->
-                                <!--</ul>-->
-                                <!--<ul class="option-con clearfix" style="display:none">-->
-                                    <!--<li><a href="">凑活能用</a></li>-->
-                                    <!--<li><a href="">重复率高</a></li>-->
-                                    <!--<li><a href="">没有排版</a></li>-->
-                                    <!--<li><a href="">解析有错误</a></li>-->
-                                    <!--<li><a href="">资料不够丰富</a></li>-->
-                                <!--</ul>-->
-                                <!--<ul class="option-con clearfix" style="display:none">-->
-                                    <!--<li><a href="">不太需要编辑</a></li>-->
-                                    <!--<li><a href="">资料有深度</a></li>-->
-                                    <!--<li><a href="">资料有创新</a></li>-->
-                                    <!--<li><a href="">还不错呦</a></li>-->
-                                    <!--<li><a href="">资料很合适</a></li>-->
-                                <!--</ul>-->
-                                <!--<ul class="option-con clearfix" style="display:none">-->
-                                    <!--<li><a href="">完美！</a></li>-->
-                                    <!--<li><a href="">拿来就能用</a></li>-->
-                                    <!--<li><a href="">精心制作</a></li>-->
-                                    <!--<li><a href="">解析非常好</a></li>-->
-                                    <!--<li><a href="">编排精美</a></li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                            <!--<div class="prompt">请为资料打星</div>-->
+
                         </div>
 
 
-                    <div class="com-rating" id="tit-rating" data-star="0" data-comtype="rating" data-rating="5">
-                        <div class="rating-box  disable">
-                            <a href="javascript:void(0)" class="rating z-5" title="很差"></a>
-                            <a href="javascript:void(0)" class="rating z-4" title="较差"></a>
-                            <a href="javascript:void(0)" class="rating z-3" title="一般"></a>
-                            <a href="javascript:void(0)" class="rating z-2" title="较好"></a>
-                            <a href="javascript:void(0)" class="rating rating-stars5 z-1 current" title="很好"></a>
-                        </div>
-                    </div>
+                    <!--<div class="com-rating" id="tit-rating" data-star="0" data-comtype="rating" data-rating="5">-->
+                        <!--<div class="rating-box  disable">-->
+                            <!--<a href="javascript:void(0)" class="rating z-5" title="很差"></a>-->
+                            <!--<a href="javascript:void(0)" class="rating z-4" title="较差"></a>-->
+                            <!--<a href="javascript:void(0)" class="rating z-3" title="一般"></a>-->
+                            <!--<a href="javascript:void(0)" class="rating z-2" title="较好"></a>-->
+                            <!--<a href="javascript:void(0)" class="rating rating-stars5 z-1 current" title="很好"></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div class="rating-tip" id="rating-tip"></div>
                 </div>
                 <div class="desc" style="margin: 10px 0;font-size: 14px">
                     <i>更新时间：</i>
                     <span id="updatetime"> </span>
                 </div>
-                <div class="desc" style="margin: 10px 0;font-size: 14px">
+                <div class="desc" style="margin: 10px 0;font-size: 14px" id="areadiv">
                     <i>地区：</i>
-                    <span> <a href=""  target="_blank" id="area"></a></span>
-                </div>
-                <div class="desc" style="margin: 10px 0;font-size: 14px">
-                    <i>类型：</i>
-                    <a href=""  target="_blank" id="type"> </a>                                                             </div>
 
-                <div class="desc" style="margin: 10px 0;font-size: 14px">
+                </div>
+                <div class="desc" style="margin: 10px 0;font-size: 14px" id="type">
+                    <i>类型：</i>
+                    <a href=""  target="_blank" > </a>                                                             </div>
+
+                <div class="desc" style="margin: 10px 0;font-size: 14px" id="fromtvdiv">
                     <i>播出频道：</i>
-                    <a href=""  target="_blank" id="fromtv"> </a>  /                                                                 <a href="/search/?word=徐囡楠" title="徐囡楠" target="_blank"> 徐囡楠</a>                                                             </div>
+                </div>
+                    <!--<a href=""  target="_blank" id= "fromtv"> </a>  /
+
+                                                                                                                                         <-->
                 <div id="btngroup" class="btngroup " style="margin: 30px 0 0 0">
                     <div style="position:relative;" class="fix"><a href="/vplay/g-323813/?from=subject" class="pbtn tryplay-btn"></a>
                         <a href="javascript:;" class="pay-btn" target="_blank"></a>
                         <a target="_blank" href="/vplay/g-323813/?from=subject" class="pbtn seedplay play-btn " data-storelink="/vplay/g-323813/?from=subject"></a><div class="op-group fix">
-                            <button style="float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px">立即播放</button>
+                            <button style="float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px" onclick="showTV()" id="show">立即播放</button>
 
                             <div class="inner fix">
 
@@ -356,17 +317,17 @@
                         </div></div>
                 </div>
             </div>
-        <div style="width: 60%;border-top: 1px solid #ddd;margin: 30px 0"></div>
+        <div style="width: 60%;border-top: 1px solid #ddd;margin: 33px 0"></div>
         <div style="width: 60%;">
             <div style="font-size: 20px;margin: 10px 0">简介：</div>
-            <p style="text-indent: 2em;font-size: 16px;line-height: 30px"></p>
+            <p style="text-indent: 2em;font-size: 16px;line-height: 30px" id="content-pane"></p>
         </div>
         <div style="width: 60%;border-top: 1px solid #ddd;margin: 30px 0"></div>
         <div style="width: 60%;">
             <div style="font-size: 20px;margin: 10px 0">评论：</div>
             <div class="container" style="padding-left: 0">
                 <div class="commentbox">
-                    <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                    <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" ></textarea>
                     <div class="btn btn-info pull-right" id="comment">评论</div>
                 </div>
                 <div class="comment-list">
@@ -440,10 +401,6 @@
 
 
 
-
-
-    <!-- <link rel="stylesheet" href="card.less"/>
-    <script type="text/javascript" src="js/card.js"></script> -->
     <!-- 底部样式    -->
     <div class="footer fix" id="footer">
         <div class="mod-wrap">
@@ -466,57 +423,64 @@
 
     <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
 
-    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        T.observer.send('app.ready');
-        console.log("app.ready");
+
     </script>
 
     <script type="text/javascript">
+        // window.onload = function(){
+        //     // var stepW = 30;
+        //     var n = 3
+        //     $(".showb").css({"width":30*n})
+        // }
 
 
 
-        function setvalues() {
-            $("#name").val(getQueryVariable("name"));
+        // function setvalues() {
+        //     $("#name").val(getQueryVariable("name"));
+        //
+        //
+        //     if(getQueryVariable("sex")=="m")
+        //     {
+        //         $("#sexMale").attr("checked", true);
+        //     }
+        //     if (getQueryVariable("sex")=="f")
+        //     {
+        //         $("#sexFemale").attr("checked", true);
+        //     }
+        //     console.log(dateFormat_2(getQueryVariable("birthday")))
+        //     $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
+        //
+        // }
 
 
-            if(getQueryVariable("sex")=="m")
-            {
-                $("#sexMale").attr("checked", true);
-            }
-            if (getQueryVariable("sex")=="f")
-            {
-                $("#sexFemale").attr("checked", true);
-            }
-            console.log(dateFormat_2(getQueryVariable("birthday")))
-            $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
 
-        }
-
-
-
-        function refresh(){
-            var token=getCookie("token");
-            if (token!=null){
-                $("#login-btn").css("display","none");
-                $("#register-btn").css("display","none");
-                // setvalues();
-                // getUserInform()
-
-                // alert(getQueryVariable("name"));
-            }
-            if(token==null||token=="")
-            {
-                $("#userinform").css("display","none");
-                $("#exit").css("display","none");
-                // window.location.href = '/index.html';
-
-            }
-
-            getVarietyDetails();
-        }
+        // function refresh(){
+        //     var token=getCookie("token");
+        //
+        //     if (token!=null){
+        //         $("#login-btn").css("display","none");
+        //         $("#register-btn").css("display","none");
+        //
+        //         // setvalues();
+        //         // getUserInform()
+        //
+        //         // alert(getQueryVariable("name"));
+        //     }
+        //     if(token==null||token=="")
+        //     {
+        //         $("#userinform").css("display","none");
+        //         $("#exit").css("display","none");
+        //         // window.location.href = '/index.html';
+        //
+        //     }
+        //
+        //     getVarietyDetails();
+        //
+        // }//页面刷新
         function updateUserinform() {
             // console.log($("#id").val())
             var id =getCookie("userid");
@@ -568,54 +532,134 @@
                 });
             }
         }
-
-
-
+        var showtvurl="";
+        function showTV() //跳转到播放地址
+        {
+            window.location.href = showtvurl;
+        }
 
 
 
         function getVarietyDetails() {
             // console.log($("#id").val())
             // var token=getCookie("token");
-            console.log("1")
+
             // var userid=getCookie("userid");
             var name=decodeURIComponent(getQueryVariable("name"));
+            var userid=getCookie("userid")
             // console.log(decodeURIComponent(name))
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "post",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "/YqLook/varietyDetails" ,//url
-                    data: {
-                        name:name
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/YqLook/varietyDetails" ,//url
+                data: {
+                    name:name,
+                    userid:userid
                     },
                     success: function (result) {
                         console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.code == 1) {
-                            $("#name").text(result.data.name);
-                            $("#fromtv").text(result.data.fromtv);
-                            $("#type").text(result.data.type);
-                            $("#updatetime").text(result.data.update);
-                            $("#area").text(result.data.area);
-                            // $("#img1").attr("src","img/星光大道 2018.jpg");
-                            $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
+                        if (result.data==null)
+                        {
+                            window.location.href = '/404.html';
+                        }
+                        if (result.code == 1 && result.data!=null ) {
+                            $("#name").text(result.data.variety.name);
+                            // $("#fromtv").text(result.data.fromtv);
+                            for (var i in result.data.variety.fromtv)
+                            {
+                                $("#fromtvdiv").append('<a href="#" id=fromtv"'+i+'">'+result.data.variety.fromtv[i]+'</a>&nbsp;');
+                            }
+                            for (var i in result.data.variety.type)
+                            {
+                                $("#type").append('<a href="#" id="atype'+i+'">'+result.data.variety.type[i]+'</a>&nbsp;');
+                                // $("#atype"+i).text(result.data.type[i]);
+                                // console.log(decodeURIComponent(result.data.type[i]))
+                            }
+                            $("#content-pane").text(result.data.variety.content);
+                            $("#updatetime").text(result.data.variety.update);
+                            // $("#area").text(result.data.area);
+                            for (var i in result.data.variety.area)
+                            {
+                                $("#areadiv").append('<a href="#" id="aarea'+i+'">'+result.data.variety.area[i]+'</a>&nbsp;');
+
+                            }
+                            $("#img1").attr("src",result.data.variety.picurl );
+                            showtvurl=result.data.variety.btn
+
+                            var n = parseInt(result.data.ratings)
+                            document.getElementById("showb").style.width = (30*n)+"px"
+                            //
+                            // $("#img1").attr("src","images/星光大道 2018.jpg");
+                            // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
 
 
 
                         }
                         if(result.code==-1){
-                            swal("系统异常!", "", "error");
+                            swal("系统异常啦，赶快联系管理员叭!", "", "error");
 
                         }},
                     error : function(e) {
-                        alert("异常！");
+                        swal("系统异常啦，赶快联系管理员叭!", "", "error");
                     }
                 });
 
 
         }
+        /* 单机li进行页面跳转 */
+        $(function(){
 
-        window.refresh();
+            $("ul li").click(function(){
+                /*当前标签下的a标签*/
+                var obj = $(this).children("a");
+                /*获取第一个a标签，进行跳转*/
+                window.location.href=$(obj[0]).attr("href");
+            });
+        })
+
+        function insertRatings(num) {
+            console.log("1");
+            var userid =getCookie("userid");
+            var varietyId=getQueryVariable("varietyId");
+            var num1=parseInt(num);
+            if (userid!=null||userid!="")
+            {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/Ratings/insertOrUpdateRatings" ,//url
+                    data: {
+                        varietyId:varietyId,
+                        userid:userid,
+                        ratings:num1
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code==1)
+                        {
+                            swal("评星成功!", "", "success");
+                        }
+                        if(result.code==-1){
+                            window.location.href = '/404.html';
+                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                        }},
+                    error : function(e) {
+                        // alert("异常！");
+                        swal("要评论需要先登录哦!", "", "error");
+                    }
+                });
+            }
+            else{
+                swal("要评论需要先登录哦!", "", "error");
+            }
+
+        }
+
+
+        // window.refresh();
     </script>
 <script type="text/javascript">
     //初始化数据
@@ -636,8 +680,38 @@
             obj.replyBody="";
             $(".comment-list").addCommentList({data:[],add:obj});
         });
+    }) //评论
+
+    $(document).ready(function () {
+        var token=getCookie("token");
+
+        if (token!=null){
+            $("#login-btn").css("display","none");
+            $("#register-btn").css("display","none");
+
+            // setvalues();
+            // getUserInform()
+
+            // alert(getQueryVariable("name"));
+        }
+        if(token==null||token=="")
+        {
+            $("#userinform").css("display","none");
+            $("#exit").css("display","none");
+            // window.location.href = '/index.html';
+
+        }
+        getVarietyDetails();
+        // if (getCookie("userid")!=null&&getCookie("userid")!="")
+        // {
+        //     var n = parseInt(3)
+        //     document.getElementById("showb").style.width = (30*n)+"px"
+        // }
+
+        //$(".showb").css({"width":30*n})
     })
 </script>
+
 
 
 

@@ -19,7 +19,7 @@ public class Generator {
         String packageName = "com.tv.variety.mybatic";
 //        List tablename={"user","user_token"};
         boolean serviceNameStartWithI = false;//auth -> UserService, 设置成true: auth -> IUserService
-        generateByTables(serviceNameStartWithI, packageName, "yrongqin", "test", "token");
+        generateByTables(serviceNameStartWithI, packageName, "yrongqin", "test", "ratings");
 
         System.out.println("completed...");
     }

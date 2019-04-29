@@ -9,7 +9,7 @@ import com.tv.variety.util.JsonResult;
  * @createtime ${date}${time}
  */
 public interface IVarietyController {
-    JsonResult findvarietyByName(String name);
+    JsonResult findvarietyByName(String name,String userid);
 
     JsonResult findVarietyByType(String type);
 }
