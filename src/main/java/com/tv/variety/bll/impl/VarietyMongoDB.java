@@ -51,4 +51,11 @@ public class VarietyMongoDB implements IVarietyMongoDB {
 
     }
 
+    @Override
+    public Variety findVarietyById(String id) {
+        Query query=new Query(Criteria.where("id").is(id));
+        Variety vatiety =  mongoTemplate.findOne(query , Variety.class);
+        return vatiety;
+    }
+
 }

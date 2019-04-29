@@ -47,4 +47,16 @@ public class VarietyFacade implements IVarietyFacade {
     public PageResult<VarietyParams> findVarietyByType(String type) {
         return varietyMongoDB.findVarietyByType(type);
     }
+
+    @Override
+    public String findVarietyById(String id) {
+        Variety variety=new Variety();
+        String id2="";
+        variety=varietyMongoDB.findVarietyById(id);
+        if (variety!=null)
+        {
+            id2=variety.getId();
+        }
+        return id2;
+    }
 }

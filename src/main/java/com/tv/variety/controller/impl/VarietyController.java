@@ -34,10 +34,21 @@ public class VarietyController implements IVarietyController {
     }
 
     @Override
-    @RequestMapping(value ="/varietyByTye", method = RequestMethod.POST)
+    @RequestMapping(value ="/varietyByType", method = RequestMethod.POST)
     public JsonResult findVarietyByType(String type) {
         PageResult<VarietyParams> paramsPageResult=new PageResult<VarietyParams>();
         paramsPageResult=varietyFacade.findVarietyByType(type);
         return new JsonResult(paramsPageResult,"成功",1);
+    }
+
+    @Override
+    @RequestMapping(value ="/varietyById", method = RequestMethod.POST)
+    public JsonResult findvarietyById(String id) {
+        String id2=varietyFacade.findVarietyById(id);
+        if (id2!=id){
+        return  new JsonResult(-1,"没有该节目哦");
+        }
+        return new JsonResult(1,"该节目存在");
+
     }
 }

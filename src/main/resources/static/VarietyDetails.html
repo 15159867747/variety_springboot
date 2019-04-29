@@ -598,10 +598,12 @@
                         }
                         if(result.code==-1){
                             swal("系统异常啦，赶快联系管理员叭!", "", "error");
+                            // window.location.href = '/404.html';
 
                         }},
                     error : function(e) {
                         swal("系统异常啦，赶快联系管理员叭!", "", "error");
+                        // window.location.href = '/404.html';
                     }
                 });
 
@@ -618,46 +620,87 @@
             });
         })
 
-        function insertRatings(num) {
-            console.log("1");
-            var userid =getCookie("userid");
-            var varietyId=getQueryVariable("varietyId");
-            var num1=parseInt(num);
-            if (userid!=null||userid!="")
-            {
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "post",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "/Ratings/insertOrUpdateRatings" ,//url
-                    data: {
-                        varietyId:varietyId,
-                        userid:userid,
-                        ratings:num1
-                    },
-                    success: function (result) {
-                        console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.code==1)
-                        {
-                            swal("评星成功!", "", "success");
-                        }
-                        if(result.code==-1){
-                            window.location.href = '/404.html';
-                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
-
-                        }},
-                    error : function(e) {
-                        // alert("异常！");
-                        swal("要评论需要先登录哦!", "", "error");
-                    }
-                });
-            }
-            else{
-                swal("要评论需要先登录哦!", "", "error");
-            }
+        /* 判断节目id是否存在*/
+        var check="";
+        function checkVarietyId(varietyid)
+        {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/YqLook/varietyById" ,//url
+                data: {
+                    id:varietyid
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    // if (result.code==1)
+                    // {
+                    //     swal("!", "", "success");
+                    // }
+                    if(result.code==-1){
+                        // window.location.href = '/404.html';
+                         swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                        check= "-1";
+                    }},
+                error : function(e) {
+                    // alert("异常！");
+                    // window.location.href = '/404.html';
+                    swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                    check= "-1";
+                }
+            });
 
         }
 
+
+        /* 评星 */
+        function insertRatings(num) {
+            // console.log("1");
+            var userid = getCookie("userid");
+            var varietyId = getQueryVariable("varietyId");
+            checkVarietyId(varietyId);
+            console.log(check);
+            if (check == "-1"||check=="") {
+                swal("当前页面有错误哦，不能进行评星", "", "error");
+            }
+            else {
+
+                var num1 = parseInt(num);
+                if (userid != null || userid != "") {
+                    $.ajax({
+                        //几个参数需要注意一下
+                        type: "post",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "/Ratings/insertOrUpdateRatings",//url
+                        data: {
+                            varietyId: varietyId,
+                            userid: userid,
+                            ratings: num1
+                        },
+                        success: function (result) {
+                            console.log(result);//打印服务端返回的数据(调试用)
+                            if (result.code == 1) {
+                                swal("评星成功!", "", "success");
+                            }
+                            if (result.code == -1) {
+                                window.location.href = '/404.html';
+                                // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                            }
+                        },
+                        error: function (e) {
+                            // alert("异常！");
+                            swal("要评论需要先登录哦!", "", "error");
+                        }
+                    });
+                }
+                else {
+                    swal("要评论需要先登录哦!", "", "error");
+                }
+
+            }
+        }
 
         // window.refresh();
     </script>
