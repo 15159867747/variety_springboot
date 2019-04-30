@@ -49,14 +49,13 @@ public class VarietyFacade implements IVarietyFacade {
     }
 
     @Override
-    public String findVarietyById(String id) {
+    public Variety findVarietyById(String id) {
         Variety variety=new Variety();
-        String id2="";
         variety=varietyMongoDB.findVarietyById(id);
-        if (variety!=null)
-        {
-            id2=variety.getId();
-        }
-        return id2;
+//        if (variety!=null)
+//        {
+//            id2=variety.getId();
+//        }
+        return variety;
     }
 }

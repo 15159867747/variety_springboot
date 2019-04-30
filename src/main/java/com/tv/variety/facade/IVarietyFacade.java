@@ -18,5 +18,5 @@ public interface IVarietyFacade {
     PageResult<VarietyParams> findVarietyByType(String type);
 
     //根据id查是否有该节目
-    String findVarietyById(String id);
+    Variety findVarietyById(String id);
 }

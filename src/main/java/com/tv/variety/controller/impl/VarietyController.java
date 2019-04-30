@@ -43,12 +43,16 @@ public class VarietyController implements IVarietyController {
 
     @Override
     @RequestMapping(value ="/varietyById", method = RequestMethod.POST)
-    public JsonResult findvarietyById(String id) {
-        String id2=varietyFacade.findVarietyById(id);
-        if (id2!=id){
-        return  new JsonResult(-1,"没有该节目哦");
+    public JsonResult findvarietyById(String id,String name) {
+        Variety variety=varietyFacade.findVarietyById(id);
+        if (variety.getId()!=null&&variety.getName()!=null){
+            if (variety.getId().equals(id)&&variety.getName().equals(name)){
+                return new JsonResult(1,"该节目存在");
+
+            }
         }
-        return new JsonResult(1,"该节目存在");
+
+        return  new JsonResult(-1,"没有该节目哦");
 
     }
 }

@@ -214,8 +214,9 @@
 
 
     <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 50px">
-        <div style="float: right;width:20%;height:600px;position:absolute;background-color: transparent;right: 200px;margin-top: 100px">
-            <div style="font-size: 40px">
+        <div style="float: right;width:20%;height:600px;position:absolute;background-color: red;right: 200px;margin-top: 100px">
+            <!--transparent 透明-->
+            <div style="font-size: 40px " >
                 猜你喜欢
             </div>
         </div>
@@ -327,8 +328,10 @@
             <div style="font-size: 20px;margin: 10px 0">评论：</div>
             <div class="container" style="padding-left: 0">
                 <div class="commentbox">
-                    <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" ></textarea>
-                    <div class="btn btn-info pull-right" id="comment">评论</div>
+                    <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                    <!--<div class="btn btn-info pull-right" id="comment">评论</div>-->
+                    <button style="float: right;width: 120px;height: 35px;background-color:gainsboro;cursor: pointer;color: black;border: none;border-radius: 5px " id="comment">评论</button>
+
                 </div>
                 <div class="comment-list">
                     <!--
@@ -439,99 +442,8 @@
 
 
 
-        // function setvalues() {
-        //     $("#name").val(getQueryVariable("name"));
-        //
-        //
-        //     if(getQueryVariable("sex")=="m")
-        //     {
-        //         $("#sexMale").attr("checked", true);
-        //     }
-        //     if (getQueryVariable("sex")=="f")
-        //     {
-        //         $("#sexFemale").attr("checked", true);
-        //     }
-        //     console.log(dateFormat_2(getQueryVariable("birthday")))
-        //     $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
-        //
-        // }
 
-
-
-        // function refresh(){
-        //     var token=getCookie("token");
-        //
-        //     if (token!=null){
-        //         $("#login-btn").css("display","none");
-        //         $("#register-btn").css("display","none");
-        //
-        //         // setvalues();
-        //         // getUserInform()
-        //
-        //         // alert(getQueryVariable("name"));
-        //     }
-        //     if(token==null||token=="")
-        //     {
-        //         $("#userinform").css("display","none");
-        //         $("#exit").css("display","none");
-        //         // window.location.href = '/index.html';
-        //
-        //     }
-        //
-        //     getVarietyDetails();
-        //
-        // }//页面刷新
-        function updateUserinform() {
-            // console.log($("#id").val())
-            var id =getCookie("userid");
-            var name=$("#name").val();
-            var sex=$("input:radio:checked").val();
-            var date=dateTolong($("#test1").val());
-            console.log(name,sex,date);
-            if (name==null||name=="")
-            {
-                swal("亲，昵称不能为空哦");
-                // swal("Good!", "弹出了一个操作成功的提示框", "success");
-            }
-            else if(name.length>20)
-            {
-                swal("名字好像有点长哦，要不你取短点试试？");
-            }
-            else {
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "post",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "/API/index/updateUserInform" ,//url
-                    data: {
-                        id:id,
-                        name:name,
-                        sex:sex,
-                        birthday:date
-                    },
-                    success: function (result) {
-                        console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.code == 1) {
-                            // swal("!", "", "success");
-                            // console.log(result.data.token,result.data.name,result.data.id);
-                            // window.location.href = '/index.html';
-                            swal("修改成功!", "", "success");
-
-                            setTimeout("getUserInform()", 2000 );
-
-                        }
-                        if(result.code==-1){
-                            swal("修改失败啦，要不您再试试？", "", "error");
-                        }
-
-                        ;
-                    },
-                    error : function(e) {
-                        exitTologin();
-                    }
-                });
-            }
-        }
+        var check="";
         var showtvurl="";
         function showTV() //跳转到播放地址
         {
@@ -621,33 +533,37 @@
         })
 
         /* 判断节目id是否存在*/
-        var check="";
-        function checkVarietyId(varietyid)
-        {
+
+        function checkVarietyId()
+        {  var name=decodeURIComponent(getQueryVariable("name"));
+           var varietyid=getQueryVariable("varietyId")
             $.ajax({
                 //几个参数需要注意一下
                 type: "post",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
                 url: "/YqLook/varietyById" ,//url
                 data: {
-                    id:varietyid
+                    id:varietyid,
+                    name:name
                 },
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
-                    // if (result.code==1)
-                    // {
-                    //     swal("!", "", "success");
-                    // }
-                    if(result.code==-1){
+                    if(result.code==1){
                         // window.location.href = '/404.html';
-                         swal("哎呀出错了，要不你稍后再试试？", "", "error");
-                        check= "-1";
-                    }},
+                        //   swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                        // check= "1";
+                        getVarietyDetails();
+                    }
+                    else{
+                        swal("哎呀出错了", "", "error");
+                    }
+                    },
                 error : function(e) {
                     // alert("异常！");
                     // window.location.href = '/404.html';
+                    // window.location.href = '/404.html';
                     swal("哎呀出错了，要不你稍后再试试？", "", "error");
-                    check= "-1";
+                    // check= "-1";
                 }
             });
 
@@ -659,12 +575,6 @@
             // console.log("1");
             var userid = getCookie("userid");
             var varietyId = getQueryVariable("varietyId");
-            checkVarietyId(varietyId);
-            console.log(check);
-            if (check == "-1"||check=="") {
-                swal("当前页面有错误哦，不能进行评星", "", "error");
-            }
-            else {
 
                 var num1 = parseInt(num);
                 if (userid != null || userid != "") {
@@ -694,20 +604,104 @@
                             swal("要评论需要先登录哦!", "", "error");
                         }
                     });
+
+
+            }
+        }
+
+        // window.refresh();
+        //新增评论
+        function insertComment(){
+            var userid = getCookie("userid");
+            var varietyId = getQueryVariable("varietyId");
+            var comment=$("#content").val();
+            // checkVarietyId(varietyId);
+            console.log(comment);
+            // if (check == "-1"||check=="") {
+            //     swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
+            // }
+            // else {
+
+                if (userid != null || userid != "") {
+                    $.ajax({
+                        //几个参数需要注意一下
+                        type: "post",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "/Comments/insertComment",//url
+                        data: {
+                            varietyId: varietyId,
+                            userid: userid,
+                            comment: comment
+                        },
+                        success: function (result) {
+                            console.log(result);//打印服务端返回的数据(调试用)
+                            if (result.code == 1) {
+                                swal("评论成功!", "", "success");
+                            }
+                            if (result.code == -1) {
+                                window.location.href = '/404.html';
+                                // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                            }
+                        },
+                        error: function (e) {
+                            // alert("异常！");
+                            swal("要评论需要先登录哦!", "", "error");
+                        }
+                    });
                 }
                 else {
                     swal("要评论需要先登录哦!", "", "error");
                 }
 
             }
-        }
 
-        // window.refresh();
+
+        //显示评论
+        function findcCommentByVarietyId(pageSize) {
+            var varietyId = getQueryVariable("varietyId");
+            checkVarietyId(varietyId);
+            console.log(check);
+            if (check == "-1"||check=="") {
+                swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
+            }
+            else{
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/Comments/getCommentListByVarietyId",//url
+                    data: {
+                        varietyId: varietyId,
+                        pageNum: 10,
+                        pageSize: pageSize
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            swal("评星成功!", "", "success");
+                        }
+                        if (result.code == -1) {
+                            window.location.href = '/404.html';
+                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                        }
+                    },
+                    error: function (e) {
+                        // alert("异常！");
+                        swal("要评论需要先登录哦!", "", "error");
+                    }
+                });
+
+
+            }
+
+        }
     </script>
 <script type="text/javascript">
     //初始化数据
     var arr = [
-        {id:1,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[]},
+        {id:1,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"",time:"",address:"",osname:"",browse:"",replyBody:[]},
         {id:2,img:"./images/img.jpg",replyName:"匿名",beReplyName:"",content:"到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[{id:3,img:"",replyName:"帅大叔",beReplyName:"匿名",content:"来啊，我们一起吃鸡",time:"2017-10-17 11:42:53",address:"",osname:"",browse:"谷歌"}]},
         {id:3,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"win10",browse:"谷歌",replyBody:[]}
     ];
@@ -716,14 +710,17 @@
         $("#comment").click(function(){
             var obj = new Object();
             obj.img="./images/img.jpg";
-            obj.replyName="匿名";
+            obj.replyName=getCookie("name");
             obj.content=$("#content").val();
-            obj.browse="深圳";
-            obj.osname="win10";
+            obj.browse="";
+            obj.osname="";
             obj.replyBody="";
             $(".comment-list").addCommentList({data:[],add:obj});
+            insertComment()
         });
     }) //评论
+
+
 
     $(document).ready(function () {
         var token=getCookie("token");
@@ -744,14 +741,9 @@
             // window.location.href = '/index.html';
 
         }
-        getVarietyDetails();
-        // if (getCookie("userid")!=null&&getCookie("userid")!="")
-        // {
-        //     var n = parseInt(3)
-        //     document.getElementById("showb").style.width = (30*n)+"px"
-        // }
 
-        //$(".showb").css({"width":30*n})
+        checkVarietyId()
+
     })
 </script>
 

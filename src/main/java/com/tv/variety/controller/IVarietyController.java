@@ -13,5 +13,5 @@ public interface IVarietyController {
 
     JsonResult findVarietyByType(String type);
 
-    JsonResult findvarietyById(String id);
+    JsonResult findvarietyById(String id,String name);
 }
