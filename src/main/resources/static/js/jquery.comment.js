@@ -27,36 +27,42 @@
 			</div>
 		</div>
 		 * */
-		
-		if(typeof(obj.time) == "undefined" || obj.time == ""){
-			obj.time = getNowDateFormat();
+
+            if(typeof(obj.commentDate) == "undefined" || obj.commentDate == ""){
+			obj.commentDate = getNowDateFormat();
+                var el = "<div class='comment-info'><header><img src='"+obj.img+"'></header><div class='comment-right'><h3 style='font-size: 33px'>"+obj.name+"</h3>"
+                    +"<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>"+obj.commentDate+"</span>";
 		}
+		else{
+                var el = "<div class='comment-info'><header><img src='"+obj.img+"'></header><div class='comment-right'><h3 style='font-size: 33px'>"+obj.name+"</h3>"
+                    +"<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>"+longTodate(obj.commentDate)+"</span>";
+
+            }
 		
-		var el = "<div class='comment-info'><header><img src='"+obj.img+"'></header><div class='comment-right'><h3>"+obj.replyName+"</h3>"
-				+"<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>"+obj.time+"</span>";
+
+		// if(typeof(obj.address) != "undefined" && obj.browse != ""){
+		// 	el =el+"<span><i class='glyphicon glyphicon-map-marker'></i>"+obj.address+"</span>";
+		// }
+		el = el+"</div><p class='content' style='font-size: 23px'>"+obj.comment+"</p><div class='comment-content-footer'><div class='row'><div class='col-md-10'> </div></div><div class='reply-list'></div>";
+		//
+		// if(typeof(obj.osname) != "undefined" && obj.osname != ""){
+		// 	el =el+"<span><i class='glyphicon glyphicon-pushpin'></i> 来自:"+obj.osname+"</span>";
+		// }
+		//
+		// if(typeof(obj.browse) != "undefined" && obj.browse != ""){
+		// 	el = el + "<span><i class='glyphicon glyphicon-globe'></i> "+obj.browse+"</span>";
+		// }
 		
-		if(typeof(obj.address) != "undefined" && obj.browse != ""){
-			el =el+"<span><i class='glyphicon glyphicon-map-marker'></i>"+obj.address+"</span>";
-		}
-		el = el+"</div><p class='content'>"+obj.content+"</p><div class='comment-content-footer'><div class='row'><div class='col-md-10'>";
-		
-		if(typeof(obj.osname) != "undefined" && obj.osname != ""){
-			el =el+"<span><i class='glyphicon glyphicon-pushpin'></i> 来自:"+obj.osname+"</span>";
-		}
-		
-		if(typeof(obj.browse) != "undefined" && obj.browse != ""){
-			el = el + "<span><i class='glyphicon glyphicon-globe'></i> "+obj.browse+"</span>";
-		}
-		
-		el = el + "</div><div class='col-md-2'><span class='reply-btn'>回复</span></div></div></div><div class='reply-list'>";
-		if(obj.replyBody != "" && obj.replyBody.length > 0){
-			var arr = obj.replyBody;
-			for(var j=0;j<arr.length;j++){
-				var replyObj = arr[j];
-				el = el+createReplyComment(replyObj);
-			}
-		}
-		el = el+"</div></div></div>";
+		// el = el + "</div><div class='col-md-2'><span class='reply-btn'>回复</span></div></div></div><div class='reply-list'>";
+
+		// if(obj.replyBody != "" && obj.replyBody.length > 0){//回复的人数
+		// 	var arr = obj.replyBody;
+		// 	for(var j=0;j<arr.length;j++){
+		// 		var replyObj = arr[j];
+		// 		el = el+createReplyComment(replyObj);
+		// 	}
+		// }
+		el = el+" </div></div></div>";
 		return el;
 	}
 	

@@ -11,4 +11,5 @@ public class InsertCommentParams {
     private String userid;
     private String varietyId;
     private String comment;
+    private String name;
 }

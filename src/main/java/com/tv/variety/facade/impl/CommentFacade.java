@@ -43,6 +43,7 @@ public class CommentFacade implements ICommentFacade {
         comment.setUserid(insertCommentParams.getUserid());
         comment.setCommentDate(nowtime);
         comment.setVarietyId(insertCommentParams.getVarietyId());
+        comment.setName(insertCommentParams.getName());
         int rs =iCommentBLL.insertComment(comment);
         return rs;
     }

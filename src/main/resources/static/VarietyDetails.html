@@ -22,11 +22,13 @@
         <!--<script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
 
 
-    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
     <link rel="stylesheet"   href="css/base.css" />
 
-    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.comment.js" ></script>
     <script type="text/javascript" src="js/sweetalert.min.js"></script>
     <script type="text/javascript" src="js/card.js"></script>
@@ -103,9 +105,31 @@
     padding-right: 2em;
     color: #aaa;
     }
+
+
+
+
+
+    </style>
+
+
+    <style>
+        /* 外面盒子样式---自己定义 */
+        .page_div{margin:20px 10px 20px 0;color:#666}
+        /* 页数按钮样式 */
+        .page_div button{display:inline-block;min-width:30px;height:28px;cursor:pointer;color:#666;font-size:13px;line-height:28px;background-color:#f9f9f9;border:1px solid #dce0e0;text-align:center;margin:0 4px;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+        #firstPage,#lastPage,#nextPage,#prePage{width:50px;color:#0073A9;border:1px solid #0073A9}
+        #nextPage,#prePage{width:70px}
+        .page_div .current{background-color:#0073A9;border-color:#0073A9;color:#FFF}
+        /* 页面数量 */
+        .totalPages{margin:0 10px}
+        .totalPages span,.totalSize span{color:#0073A9;margin:0 5px}
+        /*button禁用*/
+        .page_div button:disabled{opacity:.5;cursor:no-drop}
+
     </style>
 </head>
-<body>
+
 
 
 
@@ -213,7 +237,7 @@
 
 
 
-    <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 50px">
+    <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 200px">
         <div style="float: right;width:20%;height:600px;position:absolute;background-color: red;right: 200px;margin-top: 100px">
             <!--transparent 透明-->
             <div style="font-size: 40px " >
@@ -394,16 +418,18 @@
 
                 </div>
             </div>
-        </div>
 
         </div>
-</div>
+
+
+    <!--<div class="zxf_pagediv"></div>-->
 
 
 
+<div id="page" class="page_div" style="position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
 
 
-
+    </div>
     <!-- 底部样式    -->
     <div class="footer fix" id="footer">
         <div class="mod-wrap">
@@ -416,22 +442,27 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+
+
+
+    <
     <!-- ================================================== -->
 
-    <div class="gototop fixed" id="gototopwrap">
-        <div class="ad-game-tip" data-deliver="ws_all_game"></div>
-        <a class="question-btn" href=""></a>
-        <a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>
-    </div>
+    <!--<div class="gototop fixed" id="gototopwrap">-->
+        <!--<div class="ad-game-tip" data-deliver="ws_all_game"></div>-->
+        <!--<a class="question-btn" href=""></a>-->
+        <!--<a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>-->
+    <!--</div>-->
 
-    <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
+    <!--<div class="ad-client-tip" data-deliver="ws_all_bottom"></div>-->
 
     <!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
     <!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-
-    </script>
+<script type="text/javascript" src="js/pageMe.js"></script>
+    <script type="text/javascript"></script>
 
     <script type="text/javascript">
         // window.onload = function(){
@@ -553,6 +584,7 @@
                         //   swal("哎呀出错了，要不你稍后再试试？", "", "error");
                         // check= "1";
                         getVarietyDetails();
+                        findcCommentByVarietyId(1);
                     }
                     else{
                         swal("哎呀出错了", "", "error");
@@ -613,6 +645,7 @@
         //新增评论
         function insertComment(){
             var userid = getCookie("userid");
+            var name=getCookie("name");
             var varietyId = getQueryVariable("varietyId");
             var comment=$("#content").val();
             // checkVarietyId(varietyId);
@@ -631,12 +664,14 @@
                         data: {
                             varietyId: varietyId,
                             userid: userid,
-                            comment: comment
+                            comment: comment,
+                            name:name
                         },
                         success: function (result) {
                             console.log(result);//打印服务端返回的数据(调试用)
                             if (result.code == 1) {
                                 swal("评论成功!", "", "success");
+                                $("#content").val("");
                             }
                             if (result.code == -1) {
                                 window.location.href = '/404.html';
@@ -657,63 +692,64 @@
             }
 
 
-        //显示评论
-        function findcCommentByVarietyId(pageSize) {
-            var varietyId = getQueryVariable("varietyId");
-            checkVarietyId(varietyId);
-            console.log(check);
-            if (check == "-1"||check=="") {
-                swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
-            }
-            else{
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "post",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "/Comments/getCommentListByVarietyId",//url
-                    data: {
-                        varietyId: varietyId,
-                        pageNum: 10,
-                        pageSize: pageSize
-                    },
-                    success: function (result) {
-                        console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.code == 1) {
-                            swal("评星成功!", "", "success");
-                        }
-                        if (result.code == -1) {
-                            window.location.href = '/404.html';
-                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
 
-                        }
-                    },
-                    error: function (e) {
-                        // alert("异常！");
-                        swal("要评论需要先登录哦!", "", "error");
-                    }
-                });
-
-
-            }
-
-        }
     </script>
 <script type="text/javascript">
-    //初始化数据
-    var arr = [
-        {id:1,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"",time:"",address:"",osname:"",browse:"",replyBody:[]},
-        {id:2,img:"./images/img.jpg",replyName:"匿名",beReplyName:"",content:"到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",time:"2017-10-17 11:42:53",address:"深圳",osname:"",browse:"谷歌",replyBody:[{id:3,img:"",replyName:"帅大叔",beReplyName:"匿名",content:"来啊，我们一起吃鸡",time:"2017-10-17 11:42:53",address:"",osname:"",browse:"谷歌"}]},
-        {id:3,img:"./images/img.jpg",replyName:"帅大叔",beReplyName:"匿名",content:"同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",time:"2017-10-17 11:42:53",address:"深圳",osname:"win10",browse:"谷歌",replyBody:[]}
-    ];
+    // 初始化数据
+    // var arr = [
+    //     {userid:1,img:"./images/img.jpg",name:"rty",content:"123",commentDate:"",replyBody:[]},
+    //     {userid:2,img:"./images/img.jpg",name:"rty",content:"123",commentDate:"",replyBody:[]},
+    //     {userid:2,img:"./images/img.jpg",name:"rty",content:"123",commentDate:"",replyBody:[]},
+    //     {userid:2,img:"./images/img.jpg",name:"rty",content:"123",commentDate:"",replyBody:[]}
+    // ]
+
+// var arr=[]
+    // var arr =""
+    //显示评论
+    function findcCommentByVarietyId(pageSize) {
+        var varietyId = getQueryVariable("varietyId");
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/Comments/getCommentListByVarietyId",//url
+            data: {
+                varietyId: varietyId,
+                pageNum: pageSize, //默认第一页
+                pageSize: 10
+            },
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.code == 1) {
+                    // swal("评星成功!", "", "success");
+                    var arr=result.data.list
+                    $(".comment-list").addCommentList({data:arr,add:""});
+                    console.log(arr)
+                }
+                else  {
+                    // window.location.href = '/404.html';
+                    // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                }
+            },
+            error: function (e) {
+                // alert("异常！");
+                // swal("要评论需要先登录哦!", "", "error");
+            }
+        });
+
+
+
+
+    }
     $(function(){
-        $(".comment-list").addCommentList({data:arr,add:""});
         $("#comment").click(function(){
             var obj = new Object();
             obj.img="./images/img.jpg";
-            obj.replyName=getCookie("name");
-            obj.content=$("#content").val();
-            obj.browse="";
-            obj.osname="";
+            obj.name=getCookie("name");
+            obj.comment=$("#content").val();
+
             obj.replyBody="";
             $(".comment-list").addCommentList({data:[],add:obj});
             insertComment()
@@ -745,6 +781,15 @@
         checkVarietyId()
 
     })
+
+    $("#page").paging({
+        pageNum: 5, // 当前页面
+        totalNum: 14, // 总页码
+        totalList: 300, // 记录总数量
+        callback: function (num) { //回调函数
+            console.log(num);
+        }
+    });
 </script>
 
 
