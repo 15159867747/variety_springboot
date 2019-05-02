@@ -22,7 +22,7 @@
             var pageNum = me.options.pageNum;
             var totalNum = me.options.totalNum;
             var totalList = me.options.totalList;
-            content.push("<button type='button' id='firstPage'>首页</button><button type='button' id='prePage'>上一页</button>");
+            content.push("<button type='button' id='firstPage' >首页</button><button type='button' id='prePage'>上一页</button>");
             // 总页数大于6必显示省略号
             if (totalNum > 6) {
                 // 1、当前页码小于5且总页码大于6 省略号显示后面+总页码
@@ -93,21 +93,32 @@
                 if (id === 'prePage') {
                     if (pageNum !== 1) {
                         me.options.pageNum -= 1;
+                        $("#mydiv").html('');
+                        findcCommentByVarietyId(me.options.pageNum)
                     }
                 } else if (id === 'nextPage') {
                     if (pageNum !== me.options.totalNum) {
                         me.options.pageNum += 1;
+                        // document.getElementByID('mydiv').innerHtml = "";
+                        $("#mydiv").html('');
+                        findcCommentByVarietyId(me.options.pageNum)
                     }
                 } else if (id === 'firstPage') {
                     if (pageNum !== 1) {
                         me.options.pageNum = 1;
+                        $("#mydiv").html('');
+                        findcCommentByVarietyId(me.options.pageNum)
                     }
                 } else if (id === 'lastPage') {
                     if (pageNum !== me.options.totalNum) {
                         me.options.pageNum = me.options.totalNum;
+                        $("#mydiv").html('');
+                        findcCommentByVarietyId(me.options.pageNum)
                     }
                 } else {
                     me.options.pageNum = num;
+                    $("#mydiv").html('');
+                    findcCommentByVarietyId(me.options.pageNum)
                 }
                 me.createHtml();
                 if (me.options.callback) {

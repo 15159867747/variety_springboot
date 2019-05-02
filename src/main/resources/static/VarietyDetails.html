@@ -357,7 +357,7 @@
                     <button style="float: right;width: 120px;height: 35px;background-color:gainsboro;cursor: pointer;color: black;border: none;border-radius: 5px " id="comment">评论</button>
 
                 </div>
-                <div class="comment-list">
+                <div class="comment-list" id="mydiv">
                     <!--
                         <div class="comment-info">
                             <header><img src="./images/img.jpg"></header>
@@ -465,24 +465,71 @@
     <script type="text/javascript"></script>
 
     <script type="text/javascript">
-        // window.onload = function(){
-        //     // var stepW = 30;
-        //     var n = 3
-        //     $(".showb").css({"width":30*n})
-        // }
 
 
 
 
-        var check="";
         var showtvurl="";
+
+        /* 判断节目id是否存在*/
+
+        function checkVarietyId()
+        {  var name=decodeURIComponent(getQueryVariable("name"));
+            var varietyid=getQueryVariable("varietyId")
+            var check=0;
+
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                async : false,
+                url: "/YqLook/varietyById" ,//url
+                data: {
+                    id:varietyid,
+                    name:name
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if(result.code==1){
+                        // window.location.href = '/404.html';
+                        //   swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                        // check= "1";
+
+                        // getVarietyDetails();
+                        // findcCommentByVarietyId(1);
+                        check=1;
+                        // console.log(check);
+
+
+                    }
+                    else{
+                        swal("哎呀出错了", "", "error");
+                        check=-1;
+
+
+                    }
+                },
+                error : function(e) {
+                    // alert("异常！");
+                    // window.location.href = '/404.html';
+                    // window.location.href = '/404.html';
+                    swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                    check=-1;
+
+                    // check= "-1";
+                }
+
+            });
+            return check;
+        }
+
         function showTV() //跳转到播放地址
         {
             window.location.href = showtvurl;
         }
 
 
-
+        //节目详情
         function getVarietyDetails() {
             // console.log($("#id").val())
             // var token=getCookie("token");
@@ -490,66 +537,69 @@
             // var userid=getCookie("userid");
             var name=decodeURIComponent(getQueryVariable("name"));
             var userid=getCookie("userid")
+            var i=checkVarietyId();
             // console.log(decodeURIComponent(name))
-            $.ajax({
-                //几个参数需要注意一下
-                type: "post",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "/YqLook/varietyDetails" ,//url
-                data: {
-                    name:name,
-                    userid:userid
+            if(i==1) {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/YqLook/varietyDetails",//url
+                    data: {
+                        name: name,
+                        userid: userid
                     },
                     success: function (result) {
                         console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.data==null)
-                        {
+                        if (result.data == null) {
                             window.location.href = '/404.html';
                         }
-                        if (result.code == 1 && result.data!=null ) {
+                        if (result.code == 1 && result.data != null) {
                             $("#name").text(result.data.variety.name);
                             // $("#fromtv").text(result.data.fromtv);
-                            for (var i in result.data.variety.fromtv)
-                            {
-                                $("#fromtvdiv").append('<a href="#" id=fromtv"'+i+'">'+result.data.variety.fromtv[i]+'</a>&nbsp;');
+                            for (var i in result.data.variety.fromtv) {
+                                $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
                             }
-                            for (var i in result.data.variety.type)
-                            {
-                                $("#type").append('<a href="#" id="atype'+i+'">'+result.data.variety.type[i]+'</a>&nbsp;');
+                            for (var i in result.data.variety.type) {
+                                $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
                                 // $("#atype"+i).text(result.data.type[i]);
                                 // console.log(decodeURIComponent(result.data.type[i]))
                             }
                             $("#content-pane").text(result.data.variety.content);
                             $("#updatetime").text(result.data.variety.update);
                             // $("#area").text(result.data.area);
-                            for (var i in result.data.variety.area)
-                            {
-                                $("#areadiv").append('<a href="#" id="aarea'+i+'">'+result.data.variety.area[i]+'</a>&nbsp;');
+                            for (var i in result.data.variety.area) {
+                                $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
 
                             }
-                            $("#img1").attr("src",result.data.variety.picurl );
-                            showtvurl=result.data.variety.btn
+                            $("#img1").attr("src", result.data.variety.picurl);
+                            showtvurl = result.data.variety.btn
 
                             var n = parseInt(result.data.ratings)
-                            document.getElementById("showb").style.width = (30*n)+"px"
+                            document.getElementById("showb").style.width = (30 * n) + "px"
                             //
                             // $("#img1").attr("src","images/星光大道 2018.jpg");
                             // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
 
 
-
                         }
-                        if(result.code==-1){
+                        if (result.code == -1) {
                             swal("系统异常啦，赶快联系管理员叭!", "", "error");
                             // window.location.href = '/404.html';
 
-                        }},
-                    error : function(e) {
+                        }
+                    },
+                    error: function (e) {
                         swal("系统异常啦，赶快联系管理员叭!", "", "error");
                         // window.location.href = '/404.html';
                     }
                 });
-
+            }
+            else
+            {
+                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+                setTimeout("window.location.href = '/index.html' ", 2000 );
+            }
 
         }
         /* 单机li进行页面跳转 */
@@ -563,43 +613,7 @@
             });
         })
 
-        /* 判断节目id是否存在*/
 
-        function checkVarietyId()
-        {  var name=decodeURIComponent(getQueryVariable("name"));
-           var varietyid=getQueryVariable("varietyId")
-            $.ajax({
-                //几个参数需要注意一下
-                type: "post",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "/YqLook/varietyById" ,//url
-                data: {
-                    id:varietyid,
-                    name:name
-                },
-                success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
-                    if(result.code==1){
-                        // window.location.href = '/404.html';
-                        //   swal("哎呀出错了，要不你稍后再试试？", "", "error");
-                        // check= "1";
-                        getVarietyDetails();
-                        findcCommentByVarietyId(1);
-                    }
-                    else{
-                        swal("哎呀出错了", "", "error");
-                    }
-                    },
-                error : function(e) {
-                    // alert("异常！");
-                    // window.location.href = '/404.html';
-                    // window.location.href = '/404.html';
-                    swal("哎呀出错了，要不你稍后再试试？", "", "error");
-                    // check= "-1";
-                }
-            });
-
-        }
 
 
         /* 评星 */
@@ -607,8 +621,11 @@
             // console.log("1");
             var userid = getCookie("userid");
             var varietyId = getQueryVariable("varietyId");
+            var num1 = parseInt(num);
+            var i = checkVarietyId();
 
-                var num1 = parseInt(num);
+            if (i == 1) {
+
                 if (userid != null || userid != "") {
                     $.ajax({
                         //几个参数需要注意一下
@@ -638,6 +655,15 @@
                     });
 
 
+                }
+                else {
+                    window.location.href = '/login.html';//未登录返回登录界面
+                }
+            }
+            else{
+                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+                setTimeout("window.location.href = '/index.html' ", 2000 );
+                // setTimeout("", 2000 );
             }
         }
 
@@ -648,13 +674,14 @@
             var name=getCookie("name");
             var varietyId = getQueryVariable("varietyId");
             var comment=$("#content").val();
+            var i =checkVarietyId();
             // checkVarietyId(varietyId);
             console.log(comment);
             // if (check == "-1"||check=="") {
             //     swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
             // }
             // else {
-
+            if(i==1) {
                 if (userid != null || userid != "") {
                     $.ajax({
                         //几个参数需要注意一下
@@ -665,7 +692,7 @@
                             varietyId: varietyId,
                             userid: userid,
                             comment: comment,
-                            name:name
+                            name: name
                         },
                         success: function (result) {
                             console.log(result);//打印服务端返回的数据(调试用)
@@ -681,18 +708,45 @@
                         },
                         error: function (e) {
                             // alert("异常！");
-                            swal("要评论需要先登录哦!", "", "error");
+                            swal("登录信息过期了，需要重新登录哦", "", "error");
+                            delCookie("userid");
+                            delCookie("name");
+                            delCookie("token")
+                            setTimeout("window.location.href = '/login.html' ", 2000 );
                         }
                     });
                 }
                 else {
                     swal("要评论需要先登录哦!", "", "error");
                 }
+            }
+            else {
+                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+                setTimeout("window.location.href = '/index.html' ", 2000 );
+            }
 
             }
 
 
+        $(document).ready(function () {
+            var token=getCookie("token");
 
+            if (token!=null){
+                $("#login-btn").css("display","none");
+                $("#register-btn").css("display","none");
+
+            }
+            if(token==null||token=="")
+            {
+                $("#userinform").css("display","none");
+                $("#exit").css("display","none");
+            }
+            getVarietyDetails()
+            findcCommentByVarietyId(1);
+            // var i=checkVarietyId();
+            // console.log(i);
+
+        })
     </script>
 <script type="text/javascript">
     // 初始化数据
@@ -705,44 +759,57 @@
 
 // var arr=[]
     // var arr =""
+
+    var pageNum=0;// 当前页面
+    var totalNum=0;// 总页码
+    var totalList=0// 记录总数量
     //显示评论
     function findcCommentByVarietyId(pageSize) {
         var varietyId = getQueryVariable("varietyId");
+        var i=checkVarietyId();
+        if(i==1) {
 
-        $.ajax({
-            //几个参数需要注意一下
-            type: "post",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "/Comments/getCommentListByVarietyId",//url
-            data: {
-                varietyId: varietyId,
-                pageNum: pageSize, //默认第一页
-                pageSize: 10
-            },
-            success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.code == 1) {
-                    // swal("评星成功!", "", "success");
-                    var arr=result.data.list
-                    $(".comment-list").addCommentList({data:arr,add:""});
-                    console.log(arr)
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Comments/getCommentListByVarietyId",//url
+                data: {
+                    varietyId: varietyId,
+                    pageNum: pageSize, //默认第一页
+                    pageSize: 10
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.code == 1) {
+                        // swal("评星成功!", "", "success");
+                        var arr = result.data.list
+                        $(".comment-list").addCommentList({data: arr, add: ""});
+
+                        // console.log(arr)
+                    }
+                    else {
+                        // window.location.href = '/404.html';
+                        // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                    }
+                },
+                error: function (e) {
+                    // alert("异常！");
+                    // swal("要评论需要先登录哦!", "", "error");
                 }
-                else  {
-                    // window.location.href = '/404.html';
-                    // swal("哎呀出错了，要不你稍后再试试？", "", "error");
-
-                }
-            },
-            error: function (e) {
-                // alert("异常！");
-                // swal("要评论需要先登录哦!", "", "error");
-            }
-        });
-
+            });
+        }
+        else
+        {
+            swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+            setTimeout("window.location.href = '/index.html' ", 2000 );
+        }
 
 
 
     }
+
     $(function(){
         $("#comment").click(function(){
             var obj = new Object();
@@ -758,34 +825,12 @@
 
 
 
-    $(document).ready(function () {
-        var token=getCookie("token");
 
-        if (token!=null){
-            $("#login-btn").css("display","none");
-            $("#register-btn").css("display","none");
-
-            // setvalues();
-            // getUserInform()
-
-            // alert(getQueryVariable("name"));
-        }
-        if(token==null||token=="")
-        {
-            $("#userinform").css("display","none");
-            $("#exit").css("display","none");
-            // window.location.href = '/index.html';
-
-        }
-
-        checkVarietyId()
-
-    })
 
     $("#page").paging({
-        pageNum: 5, // 当前页面
-        totalNum: 14, // 总页码
-        totalList: 300, // 记录总数量
+        pageNum: 1, // 当前页面
+        totalNum: 2, // 总页码
+        totalList: 11, // 记录总数量
         callback: function (num) { //回调函数
             console.log(num);
         }

@@ -111,6 +111,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             if( !token.equals(tokendb) ){
                 System.out.println("你的token不正确");
                 System.out.println(tokendb);
+
 //                arg1.sendRedirect(arg0.getContextPath()+"/login.html");
                 return false;
             }
@@ -120,6 +121,8 @@ public class TokenInterceptor implements HandlerInterceptor {
             if(chaoshi>60*60*24*3){
 //                arg1.sendRedirect(arg0.getContextPath()+"/login.html");
                 System.out.println("你的token过期了");
+//                arg1.sendRedirect(arg0.getContextPath()+"/login.html");
+                arg1.sendRedirect("/login.html");
                 return false;
             }
 
