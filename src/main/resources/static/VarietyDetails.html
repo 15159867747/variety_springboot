@@ -668,85 +668,10 @@
         }
 
         // window.refresh();
-        //新增评论
-        function insertComment(){
-            var userid = getCookie("userid");
-            var name=getCookie("name");
-            var varietyId = getQueryVariable("varietyId");
-            var comment=$("#content").val();
-            var i =checkVarietyId();
-            // checkVarietyId(varietyId);
-            console.log(comment);
-            // if (check == "-1"||check=="") {
-            //     swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
-            // }
-            // else {
-            if(i==1) {
-                if (userid != null || userid != "") {
-                    $.ajax({
-                        //几个参数需要注意一下
-                        type: "post",//方法类型
-                        dataType: "json",//预期服务器返回的数据类型
-                        url: "/Comments/insertComment",//url
-                        data: {
-                            varietyId: varietyId,
-                            userid: userid,
-                            comment: comment,
-                            name: name
-                        },
-                        success: function (result) {
-                            console.log(result);//打印服务端返回的数据(调试用)
-                            if (result.code == 1) {
-                                swal("评论成功!", "", "success");
-                                $("#content").val("");
-                            }
-                            if (result.code == -1) {
-                                window.location.href = '/404.html';
-                                // swal("哎呀出错了，要不你稍后再试试？", "", "error");
-
-                            }
-                        },
-                        error: function (e) {
-                            // alert("异常！");
-                            swal("登录信息过期了，需要重新登录哦", "", "error");
-                            delCookie("userid");
-                            delCookie("name");
-                            delCookie("token")
-                            setTimeout("window.location.href = '/login.html' ", 2000 );
-                        }
-                    });
-                }
-                else {
-                    swal("要评论需要先登录哦!", "", "error");
-                }
-            }
-            else {
-                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
-                setTimeout("window.location.href = '/index.html' ", 2000 );
-            }
-
-            }
 
 
-        $(document).ready(function () {
-            var token=getCookie("token");
 
-            if (token!=null){
-                $("#login-btn").css("display","none");
-                $("#register-btn").css("display","none");
 
-            }
-            if(token==null||token=="")
-            {
-                $("#userinform").css("display","none");
-                $("#exit").css("display","none");
-            }
-            getVarietyDetails()
-            findcCommentByVarietyId(1);
-            // var i=checkVarietyId();
-            // console.log(i);
-
-        })
     </script>
 <script type="text/javascript">
     // 初始化数据
@@ -763,10 +688,76 @@
     var pageNum=0;// 当前页面
     var totalNum=0;// 总页码
     var totalList=0// 记录总数量
+
+    //新增评论
+    function insertComment(){
+        var userid = getCookie("userid");
+        var name=getCookie("name");
+        var varietyId = getQueryVariable("varietyId");
+        var comment=$("#content").val();
+        var i =checkVarietyId();
+        // checkVarietyId(varietyId);
+        console.log(comment);
+        // if (check == "-1"||check=="") {
+        //     swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
+        // }
+        // else {
+        if(i==1) {
+            if (userid != null || userid != "") {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/Comments/insertComment",//url
+                    data: {
+                        varietyId: varietyId,
+                        userid: userid,
+                        comment: comment,
+                        name: name
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            swal("评论成功!", "", "success");
+                            $("#content").val("");
+
+                            // findcCommentByVarietyId(1);
+
+                        }
+                        if (result.code == -1) {
+                            window.location.href = '/404.html';
+                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                        }
+                    },
+                    error: function (e) {
+                        // alert("异常！");
+                        swal("登录信息过期了，需要重新登录哦", "", "error");
+                        delCookie("userid");
+                        delCookie("name");
+                        delCookie("token")
+                        setTimeout("window.location.href = '/login.html' ", 2000 );
+                    }
+                });
+            }
+            else {
+                swal("要评论需要先登录哦!", "", "error");
+            }
+        }
+        else {
+            swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+            setTimeout("window.location.href = '/index.html' ", 2000 );
+        }
+
+    }
+
+
+
     //显示评论
     function findcCommentByVarietyId(pageSize) {
         var varietyId = getQueryVariable("varietyId");
         var i=checkVarietyId();
+        pageNum=pageSize;
         if(i==1) {
 
             $.ajax({
@@ -783,20 +774,46 @@
                     console.log(result);//打印服务端返回的数据(调试用)
                     if (result.code == 1) {
                         // swal("评星成功!", "", "success");
+                        totalList=result.data.total;
+                        totalNum=Math.ceil(totalList/10);
+                        console.log(totalNum)
+                        $("#page").paging({
+                            pageNum: pageNum, // 当前页面
+                            totalNum: totalNum, // 总页码
+                            totalList: totalList, // 记录总数量
+                            // callback: function (num) { //回调函数
+                            //     console.log(num);
+                            // }
+                        });
+                        // if(totalList%10==0)
+                        // {
+                        //     totalNum=totalList/10;
+                        //     console.log(Math.ceil(totalList/10))
+                        // }
+                        // if(totalList%10!=0)
+                        // {
+                        //     totalNum=Math.ceil(totalList/10);
+                        //     console.log(totalNum)
+                        // }
+
                         var arr = result.data.list
                         $(".comment-list").addCommentList({data: arr, add: ""});
-
                         // console.log(arr)
                     }
                     else {
                         // window.location.href = '/404.html';
-                        // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                         swal("哎呀出错了，要不你稍后再试试？", "", "error");
 
                     }
                 },
                 error: function (e) {
                     // alert("异常！");
                     // swal("要评论需要先登录哦!", "", "error");
+                    swal("登录信息过期了，需要重新登录哦", "", "error");
+                    delCookie("userid");
+                    delCookie("name");
+                    delCookie("token")
+                    setTimeout("window.location.href = '/login.html' ", 2000 );
                 }
             });
         }
@@ -824,17 +841,35 @@
     }) //评论
 
 
-
-
-
     $("#page").paging({
-        pageNum: 1, // 当前页面
-        totalNum: 2, // 总页码
-        totalList: 11, // 记录总数量
+        pageNum: pageNum, // 当前页面
+        totalNum: totalNum, // 总页码
+        totalList: totalList, // 记录总数量
         callback: function (num) { //回调函数
             console.log(num);
         }
     });
+
+
+    $(document).ready(function () {
+        var token=getCookie("token");
+
+        if (token!=null){
+            $("#login-btn").css("display","none");
+            $("#register-btn").css("display","none");
+
+        }
+        if(token==null||token=="")
+        {
+            $("#userinform").css("display","none");
+            $("#exit").css("display","none");
+        }
+        getVarietyDetails()
+        findcCommentByVarietyId(1);
+        // var i=checkVarietyId();
+        // console.log(i);
+
+    })
 </script>
 
 

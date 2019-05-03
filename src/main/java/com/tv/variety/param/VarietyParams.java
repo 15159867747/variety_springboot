@@ -10,4 +10,6 @@ import lombok.Data;
 public class VarietyParams {
     private String id;
     private String name;
+    private String picurl;
+    private String update;
 }

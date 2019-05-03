@@ -73,8 +73,8 @@
                 }
             }
             content.push("<button type='button' id='lastPage'>尾页</button><button type='button' id='nextPage'>下一页</button>");
-            content.push("<span class='totalNum'> 共 " + totalNum + " 页 </span>");
-            content.push("<span class='totalList'> 共 " + totalList + " 条记录 </span>");
+            // content.push("<span class='totalNum'> 共 " + totalNum + " 页 </span>");
+            // content.push("<span class='totalList'> 共 " + totalList + " 条记录 </span>");
             me.element.html(content.join(''));
 
             // DOM重新生成后每次调用是否禁用button
@@ -131,9 +131,22 @@
             var pageNum = me.options.pageNum;
             var totalNum = me.options.totalNum;
             if (pageNum === 1) {
-                me.element.children('#firstPage, #prePage').prop('disabled', true);
-            } else if (pageNum === totalNum) {
-                me.element.children('#lastPage, #nextPage').prop('disabled', true);
+                if(totalNum === 0){
+                    // me.element.children('#firstPage, #prePage,#lastPage, #nextPage').prop('disabled', true);
+                    me.element.children('#lastPage, #nextPage').prop('disabled', true);
+                    me.element.children('#firstPage, #prePage').prop('disabled', true);
+                }
+                else {
+                    me.element.children('#firstPage, #prePage').prop('disabled', true);
+                }
+
+            }
+          else if (pageNum === totalNum) {
+
+
+                  me.element.children('#lastPage, #nextPage').prop('disabled', true);
+
+
             }
         }
     };

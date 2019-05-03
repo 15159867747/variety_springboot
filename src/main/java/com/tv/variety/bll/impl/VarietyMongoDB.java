@@ -45,8 +45,15 @@ public class VarietyMongoDB implements IVarietyMongoDB {
     public PageResult<VarietyParams> findVarietyByType(String type ) {
 //        MongoPageHelper mongoPageHelper=new MongoPageHelper();
         final Query query = new Query(Criteria.where("type").is(type));
-        return mongoPageHelper.pageQuery(query, Variety.class, 12,
-                1,variety->{VarietyParams varietyParams1=new VarietyParams();varietyParams1.setId(variety.getId());varietyParams1.setName(variety.getName()); return varietyParams1;}, null);
+        return mongoPageHelper.pageQuery(query, Variety.class, 14,
+                1,variety->{
+                VarietyParams varietyParams1=new VarietyParams();
+                varietyParams1.setId(variety.getId());
+                varietyParams1.setName(variety.getName());
+                varietyParams1.setPicurl(variety.getPicurl());
+                varietyParams1.setUpdate(variety.getUpdate());
+                return varietyParams1;}
+                , null);
 
 
     }
