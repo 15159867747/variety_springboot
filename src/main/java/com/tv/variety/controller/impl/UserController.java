@@ -12,6 +12,7 @@ import com.tv.variety.mybatic.model.Token;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.mybatic.service.UserService;
 import com.tv.variety.param.UserAddParms;
+import com.tv.variety.param.UserSecretParams;
 import com.tv.variety.param.UserloginParas;
 import com.tv.variety.util.JsonResult;
 import com.tv.variety.util.MD5Utils;
@@ -130,6 +131,32 @@ public class UserController implements IUserController {
     }
 
     @Override
+    @RequestMapping(value = "/check2" , method = RequestMethod.POST)
+    public JsonResult<String> logincheck2( UserloginParas resqUser) {
+        MD5Utils md5Utils=new MD5Utils();
+        //判断用户信息为空
+        if ("".equals(resqUser.getId()) || "".equals(resqUser.getPassword())) {
+//            result.setMsg("传入的用户名/密码为空！");
+            return new JsonResult<String>(-1,"传入的用户名/密码为空！");
+        }
+
+
+        User myUser=userFacade.searchUser(resqUser.getId());
+
+        String password=string2MD5(resqUser.getPassword());
+        if (!password.equals(myUser.getPassword())) {
+
+            return new JsonResult<String>(-3,"原密码不正确");
+        }
+        else {
+            return new JsonResult<String>(1,"原密码正确");
+        }
+
+
+    }
+
+
+    @Override
     @RequestMapping(value ="/exit", method = RequestMethod.POST)
     public JsonResult<String> Exit(String userid) {
         int rs=userFacade.deletetoken(userid);
@@ -165,6 +192,17 @@ public class UserController implements IUserController {
         int rs=userFacade.updateUserInform(userInformParam);
         return new JsonResult(userInformParam,"个人信息修改成功",1);
 
+    }
+
+    @Override
+    @RequestMapping(value = "/User/updateSecret" , method = RequestMethod.POST)
+    public JsonResult updateSecret(UserSecretParams userSecretParams) {
+        if(userSecretParams==null||userSecretParams.getPassword()==null||userSecretParams.getPassword().trim().equals(""))
+        {
+            return new JsonResult(-1,"修改密码失败");
+        }
+        int rs=userFacade.updateUserSecret(userSecretParams);
+        return  new JsonResult(1,"修改密码成功");
     }
 
 

@@ -5,6 +5,7 @@ import com.tv.variety.mybatic.model.Token;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.param.TokenParams;
 import com.tv.variety.param.UserAddParms;
+import com.tv.variety.param.UserSecretParams;
 import com.tv.variety.param.UserloginParas;
 
 import java.util.Date;
@@ -44,6 +45,8 @@ public interface IUserFacade {
     //更新用户信息
     int updateUserInform(UserInformParam userInformParam);
 
+    //修改用户的密码
+    int updateUserSecret(UserSecretParams userSecretParams);
     //删除token
     int deletetoken(String userid);
 

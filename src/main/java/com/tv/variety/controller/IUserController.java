@@ -3,6 +3,7 @@ package com.tv.variety.controller;
 import com.tv.variety.dto.UserInformParam;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.param.UserAddParms;
+import com.tv.variety.param.UserSecretParams;
 import com.tv.variety.param.UserloginParas;
 import com.tv.variety.util.JsonResult;
 
@@ -31,5 +32,11 @@ public interface IUserController {
 
     //修改用户个人信息
    JsonResult  updateUserinform(UserInformParam userInformParam);
+
+    //修改用户个人信息
+    JsonResult  updateSecret(UserSecretParams userSecretParams);
+
+    //判断用户密码是否正确
+    JsonResult<String> logincheck2(UserloginParas resqUser);
 
 }

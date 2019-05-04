@@ -53,12 +53,13 @@ public class MD5Utils {
 
     // 测试主函数
     public static void main(String args[]) {
-        String s = new String("1211");
+        String s ="222222";
         System.out.println("原始：" + s);
         System.out.println("MD5后：" + string2MD5(s));
         System.out.println("加密的：" + convertMD5(s));
-        System.out.println("解密的：" + convertMD5(convertMD5("96e79218965eb72c92a549dd5a330112")));
-
+        System.out.println("解密的：" + convertMD5(convertMD5(s)));
+//        System.out.println("解密的：" + convertMD5(convertMD5(s)));
+//        6bcec5dc2245b3b5e9d2c033c10a57b4
     }
 
 }

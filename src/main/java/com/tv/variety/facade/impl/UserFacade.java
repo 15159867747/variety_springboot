@@ -8,6 +8,7 @@ import com.tv.variety.mybatic.model.Token;
 import com.tv.variety.mybatic.model.User;
 import com.tv.variety.param.TokenParams;
 import com.tv.variety.param.UserAddParms;
+import com.tv.variety.param.UserSecretParams;
 import com.tv.variety.param.UserloginParas;
 import com.tv.variety.util.UUIDGenerator;
 import io.jsonwebtoken.JwtBuilder;
@@ -43,6 +44,7 @@ public class UserFacade implements IUserFacade {
         }
         User user =new User();
         //初始化User
+        System.out.println(userloginParas.getPassword());
         user.setPassword(md5Utils.string2MD5(userloginParas.getPassword()));
         user.setId(userloginParas.getId());
         user.setName(userloginParas.getId());
@@ -147,6 +149,15 @@ public class UserFacade implements IUserFacade {
         user.setSex(userInformParam.getSex());
         user.setBirthday(userInformParam.getBirthday());
         user.setName(userInformParam.getName());
+        int rs =userBLL.updateUserInform(user);
+        return rs;
+    }
+
+    @Override
+    public int updateUserSecret(UserSecretParams userSecretParams) {
+        User user=new User();
+        user.setId(userSecretParams.getId());
+        user.setPassword(MD5Utils.string2MD5(userSecretParams.getPassword()));
         int rs =userBLL.updateUserInform(user);
         return rs;
     }

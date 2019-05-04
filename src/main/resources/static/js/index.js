@@ -1,8 +1,5 @@
-function test() {
-    var div = document.getElementById("qinzi");
-    div.innerHTML ="";
-}
-function findVarietyByType(type) {
+
+function findVarietyByType(type,id) {
     $.ajax({
         //几个参数需要注意一下
         type: "post",//方法类型
@@ -18,6 +15,7 @@ function findVarietyByType(type) {
                 var el="";
                 for (var n = 0; n < result.data.pageSize; n++)
                 {
+
                     //   console.log(result.data.list[n].name)
 
                     el =el+ "<div class=\"mod-vd-i \">\n" +
@@ -34,7 +32,7 @@ function findVarietyByType(type) {
                         "\t\t\t\t\t\t</div>\n" +
                         "\t\t\t\t\t</div>";
                 }
-                var div = document.getElementById("qinzi");
+                var div = document.getElementById(id);
                 div.innerHTML=el;
             }
             else{

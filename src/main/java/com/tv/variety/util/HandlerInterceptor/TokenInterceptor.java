@@ -110,6 +110,7 @@ public class TokenInterceptor implements HandlerInterceptor {
             //数据库Token与客户Token比较
             if( !token.equals(tokendb) ){
                 System.out.println("你的token不正确");
+                System.out.println(token);
                 System.out.println(tokendb);
 
 //                arg1.sendRedirect(arg0.getContextPath()+"/login.html");

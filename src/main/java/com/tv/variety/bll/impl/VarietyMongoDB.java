@@ -8,6 +8,7 @@ import com.tv.variety.util.mongodb.MongoPageHelper;
 import com.tv.variety.util.mongodb.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -44,7 +45,10 @@ public class VarietyMongoDB implements IVarietyMongoDB {
     @Override
     public PageResult<VarietyParams> findVarietyByType(String type ) {
 //        MongoPageHelper mongoPageHelper=new MongoPageHelper();
+//        Sort sort = new Sort(Sort.Direction.ASC, "DEVID").and(new Sort(Sort.Direction.ASC, "TIME"));//多条件DEVID、time
+
         final Query query = new Query(Criteria.where("type").is(type));
+        query.with(new Sort(Sort.Direction.DESC, "update"));
         return mongoPageHelper.pageQuery(query, Variety.class, 14,
                 1,variety->{
                 VarietyParams varietyParams1=new VarietyParams();
