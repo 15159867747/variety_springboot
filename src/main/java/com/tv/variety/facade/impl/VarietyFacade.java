@@ -4,6 +4,7 @@ package com.tv.variety.facade.impl;
 import com.tv.variety.bll.IRatingsBLL;
 import com.tv.variety.bll.IVarietyMongoDB;
 import com.tv.variety.bll.impl.VarietyMongoDB;
+import com.tv.variety.dto.SearchVarietyparams;
 import com.tv.variety.dto.VarietyDetailsParam;
 import com.tv.variety.facade.IRatingsFacade;
 import com.tv.variety.facade.IVarietyFacade;
@@ -58,4 +59,11 @@ public class VarietyFacade implements IVarietyFacade {
 //        }
         return variety;
     }
+
+    @Override
+    public PageResult<SearchVarietyparams> searcherVarietyAll(String all,int pageNum,int pageSize) {
+        return varietyMongoDB.search(all,pageNum,pageSize);
+    }
+
+
 }

@@ -33,6 +33,16 @@ public class CommentBLL implements ICommentBLL {
     }
 
     @Override
+    public Page<Comment> getCommentListByUserid(String userid, int pageNum, int pageSize) {
+        Page<Comment> page=new Page<Comment>(pageNum,pageSize);
+        EntityWrapper<Comment> entityWrapper=new EntityWrapper<Comment>();
+        entityWrapper.eq("userid",userid).orderBy("commentDate");
+        List<Comment> commentsList= commentMapper.selectPage(page,entityWrapper);
+        page.setRecords(commentsList);
+        return page;
+    }
+
+    @Override
     public int insertComment(Comment comment) {
         int rs=commentMapper.insert(comment);
         return rs;
@@ -43,16 +53,7 @@ public class CommentBLL implements ICommentBLL {
         EntityWrapper<Comment> entityWrapper=new EntityWrapper<Comment>();
         entityWrapper.eq("id",id);
         int rs=commentMapper.delete(entityWrapper);
-        return 0;
+        return rs;
     }
 
-    @Override
-    public Page<Comment> getCommentListByUserid(String userid, int pageNum, int pageSize) {
-        Page<Comment> page=new Page<Comment>(pageNum,pageSize);
-        EntityWrapper<Comment> entityWrapper=new EntityWrapper<Comment>();
-        entityWrapper.eq("userid",userid).orderBy("commentDate");
-        List<Comment> commentsList= commentMapper.selectPage(page,entityWrapper);
-        page.setRecords(commentsList);
-        return page;
-    }
 }

@@ -374,7 +374,7 @@
             <div style="font-size: 20px;margin: 10px 0">评论：</div>
             <div class="container" style="padding-left: 0">
                 <div class="commentbox">
-                    <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                    <textarea maxlength="300" cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
                     <!--<div class="btn btn-info pull-right" id="comment">评论</div>-->
                     <button style="float: right;width: 120px;height: 35px;background-color:gainsboro;cursor: pointer;color: black;border: none;border-radius: 5px " id="comment">评论</button>
 
@@ -392,7 +392,7 @@
     <!--<div class="zxf_pagediv"></div>-->
 
 
-
+<!--分页-->
 <div id="page" class="page_div" style="position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
 
 
@@ -748,6 +748,7 @@
                             pageNum: pageNum, // 当前页面
                             totalNum: totalNum, // 总页码
                             totalList: totalList, // 记录总数量
+                            flag:0
                             // callback: function (num) { //回调函数
                             //     console.log(num);
                             // }
@@ -800,7 +801,6 @@
             obj.img="./images/img.jpg";
             obj.name=getCookie("name");
             obj.comment=$("#content").val();
-
             obj.replyBody="";
             $(".comment-list").addCommentList({data:[],add:obj});
             insertComment()
@@ -812,6 +812,7 @@
         pageNum: pageNum, // 当前页面
         totalNum: totalNum, // 总页码
         totalList: totalList, // 记录总数量
+        flag:0,
         callback: function (num) { //回调函数
             console.log(num);
         }

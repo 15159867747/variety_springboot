@@ -28,14 +28,7 @@ public class CommentController implements ICommentController {
         {
             return new JsonResult<>(-1,"哎呀出错啦，可能是节目为空也");
         }
-//        if (pageNum==0)
-//        {
-//            pageNum=10;
-//        }
-//        if (pageSize==0)
-//        {
-//            pageSize=1;
-//        }
+
         return new JsonResult(iCommentFacade.getCommentList(varietyId,pageNum,pageSize),"评论显示成功啦",1);
 
     }
@@ -66,14 +59,6 @@ public class CommentController implements ICommentController {
         if (userid==null&&userid.equals(""))
         {
             return new JsonResult<>(-1,"哎呀出错啦，可能是节目为空也");
-        }
-        if (pageNum==0)
-        {
-            pageNum=10;
-        }
-        if (pageSize==0)
-        {
-            pageSize=1;
         }
         return new JsonResult(iCommentFacade.getCommentListByUserid(userid,pageNum,pageSize),"评论显示成功啦",1);
     }

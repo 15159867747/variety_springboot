@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]><html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>艺起看-综艺节目一起看</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+    <!--    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
+
+        <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+
+    <link rel="stylesheet"   href="css/base.css" />
+
+    <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style>
+        .container{
+            width: 1000px;
+        }
+        .commentbox{
+            width: 900px;
+            margin: 20px auto;
+        }
+        .mytextarea {
+            width: 100%;
+            overflow: auto;
+            word-break: break-all;
+            height: 100px;
+            color: #000;
+            font-size: 1em;
+            resize: none;
+        }
+        .comment-list{
+            width: 900px;
+            margin: 20px auto;
+            clear: both;
+            padding-top: 20px;
+        }
+        .comment-list .comment-info{
+            position: relative;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .comment-list .comment-info header{
+            width: 10%;
+            position: absolute;
+        }
+        .comment-list .comment-info header img{
+            width: 100%;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .comment-list .comment-info .comment-right{
+            padding:5px 0px 5px 11%;
+        }
+        .comment-list .comment-info .comment-right h3{
+            margin: 5px 0px;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header{
+            height: 25px;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
+            padding-right: 2em;
+            color: #aaa;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
+            cursor: pointer;
+        }
+        .comment-list .comment-info .comment-right .reply-list {
+            border-left: 3px solid #ccc;
+            padding-left: 7px;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply{
+            border-bottom: 1px dashed #ccc;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply div span{
+            padding-left: 10px;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply p span{
+            padding-right: 2em;
+            color: #aaa;
+        }
+    </style>
+    <style>
+        /* 外面盒子样式---自己定义 */
+        .page_div{margin:20px 10px 20px 0;color:#666}
+        /* 页数按钮样式 */
+        .page_div button{display:inline-block;min-width:30px;height:28px;cursor:pointer;color:#666;font-size:13px;line-height:28px;background-color:#f9f9f9;border:1px solid #dce0e0;text-align:center;margin:0 4px;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+        #firstPage,#lastPage,#nextPage,#prePage{width:50px;color:#0073A9;border:1px solid #0073A9}
+        #nextPage,#prePage{width:70px}
+        .page_div .current{background-color:#0073A9;border-color:#0073A9;color:#FFF}
+        /* 页面数量 */
+        .totalPages{margin:0 10px}
+        .totalPages span,.totalSize span{color:#0073A9;margin:0 5px}
+        /*button禁用*/
+        .page_div button:disabled{opacity:.5;cursor:no-drop}
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="一起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+                        <b class="lump hd-nav-ico"></b>
+                        <b class="hd-menu-ico"></b>
+                        <!--<b class="tit">分类</b>-->
+                        <em class="icon"></em>
+                        </a>
+
+                    </div>
+
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+                            <div class="">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+                                <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+                                <a id="userinform" href="javascript:getUserInform()">个人中心</a>
+                                <i class="line"></i>
+                                <a id="register-btn" href="/register.html" >注册</a>
+                                <a id="exit" href="javascript:exitlogin()" >退出</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="page-progress" id="page-progress">
+            </div>
+        </div>
+        <div class="hd-content-sub z-app-footer fixed" id="nav-container-sub">
+            <div class="hd-content-sub-con fix">
+                <div class="mod-wrap sub-wrap">
+                    <div class="nav">
+                        <div class="prev">
+                            <a class="item large current" href="/">首页</a>
+                            <a class="item large new" href="">风行号<i></i></a>
+                            <a class="item large" href="">电影</a>
+                            <a class="item large" href="">电视剧</a>
+                            <a class="item large" href="">少儿</a>
+                            <a class="item large" href="">动漫</a>
+                            <a class="item large" href="">综艺</a>
+                            <i class="sep"></i>
+                            <a class="item" href="">天下</a>
+                            <a class="item" href="">娱乐</a>
+                            <a class="item" href="">游戏</a>
+                            <a class="item" href="">搞笑</a>
+                            <a class="item" href="">美食</a>
+                            <a class="item" href="">生活</a>
+                            <a class="item" href="">体育</a>
+                            <a class="item" href="">汽车</a>
+                        </div>
+                    </div>
+                    <!--<a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>-->
+                    <!--<div class="nav-ad">-->
+                    <!--<div class="ad-wrap" data-deliver="ws_nav_guide">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="personal set-wrap" style="margin-top: 90px;">
+        <div class="left-navigate">
+            <div class="nav-con">
+                <div class="level1">
+                    <p class="homepage"><a href="/">首页</a></p>
+                    <p class="account-setting current"><a href="javascript:getUserInform()">个人资料</a></p>
+                    <p class="account-setting current"><a>我的节目评星</a></p>
+                    <p class="account-setting current"><a>我的节目评论</a></p>
+                    <p class="account-setting current"><a>修改密码</a></p>
+                </div>
+
+            </div>
+        </div>
+        <div class="setting-title">我的节目评分</div>
+
+<div id="mycomment">
+
+    </div>
+        <!--<div id="page" class="page_div" style=" background-color: red; position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>-->
+
+        <div id="page" class="page_div" style=" left: 38%; position: absolute;"></div>
+
+
+
+
+
+    <!--&lt;!&ndash; <link rel="stylesheet" href="card.less"/>-->
+    <!--<script type="text/javascript" src="js/card.js"></script> &ndash;&gt;-->
+
+    <!-- ================================================== -->
+
+    <!--<div class="gototop fixed" id="gototopwrap">-->
+    <!--<div class="ad-game-tip" data-deliver="ws_all_game"></div>-->
+    <!--<a class="question-btn" href=""></a>-->
+    <!--<a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>-->
+    <!--</div>-->
+
+        <!-- 底部样式    -->
+
+    </div>
+        <div class="footer fix" id="footer">
+            <div class="mod-wrap">
+                <div class="foot-wrap">
+                    <div class="foot-link fix" >
+                        <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.comment.js" ></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/pageMe.js"></script>
+    <script type="text/javascript">
+
+
+        var pageNum=0;// 当前页面
+        var totalNum=0;// 总页码
+        var totalList=0// 记录总数量
+            // pageMe.js 使用方法
+
+
+
+
+
+
+        //显示评论
+        function findCommentByUserId(pageSize) {
+            // var varietyId = getQueryVariable("varietyId");
+            var userid =getCookie("userid");
+
+            var i;
+            if (userid!=null||userid!="")
+            {
+                i=1;
+            }
+            pageNum=pageSize;
+            if(i==1) {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/Comments/getCommentListByUserid",//url
+                    data: {
+                        userid: userid,
+                        pageNum: pageSize, //默认第一页
+                        pageSize: 5
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        // console.log(result.data);
+                        if (result.code == 1) {
+                            if (result.data.list.length==0)
+                            {
+                                $("#page").css("display","none");
+                            }else {
+                                // swal("评星成功!", "", "success");
+                                totalList = result.data.total;
+                                // console.log(totalList);
+                                totalNum = Math.ceil(totalList / 5);
+                                // console.log(totalNum)
+                                findCommentByUserid(result.data.list)
+
+                                $("#page").paging({
+                                    pageNum: pageNum, // 当前页面
+                                    totalNum: totalNum, // 总页码
+                                    totalList: totalList, // 记录总数量
+                                    flag: 1
+                                });
+                            }
+                        }
+                        else {
+                            // window.location.href = '/404.html';
+                            swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                        }
+                    },
+                    error: function (e) {
+                        // alert("异常！");
+                        // swal("要评论需要先登录哦!", "", "error");
+                        swal("登录信息过期了，需要重新登录哦", "", "error");
+                        // delCookie("userid");
+                        // delCookie("name");
+                        // delCookie("token")
+                        // setTimeout("window.location.href = '/login.html' ", 2000 );
+                    }
+                });
+            }
+            else
+            {
+                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+                setTimeout("window.location.href = '/index.html' ", 2000 );
+            }
+
+
+
+        }
+
+        //删除评论
+        function deleteComment(id){
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Comments/deleteComment",//url
+                data: {
+                    id: id
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    // console.log(result.data);
+                    if (result.code == 1) {
+                        swal("删除成功");
+                        // var div = document.getElementById(id);
+                        //
+                        // div.remove();
+                        findCommentByUserId(1)
+                        // $("#mydiv").html('');
+
+                        // var arr = result.data.list
+                        // $(".comment-list").addCommentList({data: arr, add: ""});
+                        // console.log(arr)
+                    }
+                    else {
+                        // window.location.href = '/404.html';
+                        swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                    }
+                },
+                error: function (e) {
+                    // alert("异常！");
+                    // swal("要评论需要先登录哦!", "", "error");
+                    swal("登录信息过期了，需要重新登录哦", "", "error");
+                    delCookie("userid");
+                    delCookie("name");
+                    delCookie("token")
+                    setTimeout("window.location.href = '/login.html' ", 2000 );
+                }
+            });
+        }
+
+
+        // window.refresh();
+
+        // console.log(totalNum);
+        // $("#page").paging({
+        //     pageNum: pageNum, // 当前页面
+        //     totalNum: totalNum, // 总页码
+        //     totalList: totalList, // 记录总数量
+        //     flag:1,
+        //     callback: function (num) { //回调函数
+        //         console.log(num);
+        //     }
+        // });
+
+        //s刷新页面
+        $(document).ready(function () {
+            var token=getCookie("token");
+            if (token!=null){
+                $("#login-btn").css("display","none");
+                $("#register-btn").css("display","none");
+                findCommentByUserId(1);
+            }
+            if(token==null||token=="")
+            {
+                $("#userinform").css("display","none");
+                $("#exit").css("display","none");
+                window.location.href = '/index.html';
+
+            }
+
+        })
+
+    </script>
+
+
+
+
+
+</body>
+</html>
+
+

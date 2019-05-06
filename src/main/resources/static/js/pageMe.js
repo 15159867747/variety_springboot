@@ -6,6 +6,7 @@
             pageNum: options.pageNum || 1, // 当前页码
             totalNum: options.totalNum, // 总页码
             totalList: options.totalList, // 数据总记录
+            flag:options.flag,
             callback: options.callback // 回调函数
         };
         this.init();
@@ -22,6 +23,7 @@
             var pageNum = me.options.pageNum;
             var totalNum = me.options.totalNum;
             var totalList = me.options.totalList;
+
             content.push("<button type='button' id='firstPage' >首页</button><button type='button' id='prePage'>上一页</button>");
             // 总页数大于6必显示省略号
             if (totalNum > 6) {
@@ -84,6 +86,7 @@
         },
         bindEvent: function () {
             var me = this;
+            var flag=me.options.flag;
             me.element.off('click', 'button');
             // 委托新生成的dom监听事件
             me.element.on('click', 'button', function () {
@@ -94,42 +97,135 @@
                     if (pageNum !== 1) {
                         me.options.pageNum -= 1;
                         $("#mydiv").html('');
-                        findcCommentByVarietyId(me.options.pageNum)
+                        if (flag==1)
+                        {
+                            findCommentByUserId(me.options.pageNum)
+                        }
+                        if(flag==0)
+                        {
+                            findcCommentByVarietyId(me.options.pageNum)
+                        }
+                        if(flag==3)
+                        {
+                            findRatingsByUserid(me.options.pageNum)
+                        }
+                        if(flag==4)
+                        {
+                            searchVarietyAll(me.options.pageNum)
+                        }
                     }
                 } else if (id === 'nextPage') {
                     if (pageNum !== me.options.totalNum) {
                         me.options.pageNum += 1;
                         // document.getElementByID('mydiv').innerHtml = "";
                         $("#mydiv").html('');
-                        findcCommentByVarietyId(me.options.pageNum)
+                        if (flag==1)
+                        {
+                            findCommentByUserId(me.options.pageNum)
+                        }
+                        if(flag==0)
+                        {
+                            findcCommentByVarietyId(me.options.pageNum)
+                        }
+                        if(flag==3)
+                        {
+                            findRatingsByUserid(me.options.pageNum)
+                        }
+                        if(flag==4)
+                        {
+                            searchVarietyAll(me.options.pageNum)
+                        }
                     }
                 } else if (id === 'firstPage') {
                     if (pageNum !== 1) {
                         me.options.pageNum = 1;
                         $("#mydiv").html('');
-                        findcCommentByVarietyId(me.options.pageNum)
+                        if (flag==1)
+                        {
+                            findCommentByUserId(me.options.pageNum)
+                        }
+                        if(flag==0)
+                        {
+                            findcCommentByVarietyId(me.options.pageNum)
+                        }
+                        if(flag==3)
+                        {
+                            findRatingsByUserid(me.options.pageNum)
+                        }
+                        if(flag==4)
+                        {
+                            searchVarietyAll(me.options.pageNum)
+                        }
+
                     }
                 } else if (id === 'lastPage') {
                     if (pageNum !== me.options.totalNum) {
                         me.options.pageNum = me.options.totalNum;
                         $("#mydiv").html('');
-                        findcCommentByVarietyId(me.options.pageNum)
+                        if (flag==1)
+                        {
+                            findCommentByUserId(me.options.pageNum)
+                        }
+                        if(flag==0)
+                        {
+                            findcCommentByVarietyId(me.options.pageNum)
+                        }
+                        if(flag==3)
+                        {
+                            findRatingsByUserid(me.options.pageNum)
+                        }
+                        if(flag==4)
+                        {
+                            searchVarietyAll(me.options.pageNum)
+                        }
                     }
                 } else {
                     me.options.pageNum = num;
                     $("#mydiv").html('');
-                    findcCommentByVarietyId(me.options.pageNum)
+                    if (flag==1)
+                    {
+                        findCommentByUserId(me.options.pageNum)
+                    }
+                    if(flag==0)
+                    {
+                        findcCommentByVarietyId(me.options.pageNum)
+                    }
+                    if(flag==3)
+                    {
+                        findRatingsByUserid(me.options.pageNum)
+                    }
+                    if(flag==4)
+                    {
+                        searchVarietyAll(me.options.pageNum)
+                    }
                 }
                 me.createHtml();
                 if (me.options.callback) {
-                    me.options.callback(me.options.pageNum);
+                    if (flag==1)
+                    {
+                        findCommentByUserId(me.options.pageNum)
+                    }
+                    if(flag==0)
+                    {
+                        findcCommentByVarietyId(me.options.pageNum)
+                    }
+                    if(flag==3)
+                    {
+                        findRatingsByUserid(me.options.pageNum)
+                    }
+                    if(flag==4)
+                    {
+                        searchVarietyAll(me.options.pageNum)
+                    }
                 }
             });
         },
         dis: function () {
             var me = this;
+
             var pageNum = me.options.pageNum;
             var totalNum = me.options.totalNum;
+            console.log(totalNum)
             if (pageNum === 1) {
                 if(totalNum === 0){
                     // me.element.children('#firstPage, #prePage,#lastPage, #nextPage').prop('disabled', true);

@@ -2,6 +2,7 @@ package com.tv.variety.controller.impl;
 
 
 import com.tv.variety.controller.IVarietyController;
+import com.tv.variety.dto.SearchVarietyparams;
 import com.tv.variety.dto.VarietyDetailsParam;
 import com.tv.variety.facade.IVarietyFacade;
 import com.tv.variety.facade.impl.VarietyFacade;
@@ -54,5 +55,13 @@ public class VarietyController implements IVarietyController {
 
         return  new JsonResult(-1,"没有该节目哦");
 
+    }
+
+    @Override
+    @RequestMapping(value ="/search", method = RequestMethod.POST)
+    public JsonResult searcherVarietyAll(String all,int pageNum,int pageSize) {
+        PageResult<SearchVarietyparams> paramsPageResult=new PageResult<SearchVarietyparams>();
+        paramsPageResult=varietyFacade.searcherVarietyAll(all,pageNum,pageSize);
+        return new JsonResult(paramsPageResult,"成功",1);
     }
 }

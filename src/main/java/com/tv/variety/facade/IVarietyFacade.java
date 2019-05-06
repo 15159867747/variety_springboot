@@ -1,6 +1,7 @@
 package com.tv.variety.facade;
 
 
+import com.tv.variety.dto.SearchVarietyparams;
 import com.tv.variety.dto.VarietyDetailsParam;
 import com.tv.variety.mongodb.POJO.Variety;
 import com.tv.variety.param.VarietyParams;
@@ -19,4 +20,8 @@ public interface IVarietyFacade {
 
     //根据id查是否有该节目
     Variety findVarietyById(String id);
+
+    //搜索节目
+    PageResult<SearchVarietyparams> searcherVarietyAll(String all,int pageNum,int pageSize);
+
 }

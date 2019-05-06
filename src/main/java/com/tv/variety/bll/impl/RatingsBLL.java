@@ -1,8 +1,11 @@
 package com.tv.variety.bll.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.tv.variety.bll.IRatingsBLL;
+
 import com.tv.variety.mybatic.mapper.RatingsMapper;
+import com.tv.variety.mybatic.model.Comment;
 import com.tv.variety.mybatic.model.Ratings;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +41,15 @@ public class RatingsBLL implements IRatingsBLL {
         EntityWrapper<Ratings> wrapper = new EntityWrapper<Ratings>();
         wrapper.eq("userid",userid).eq("varietyId",varietyId);
         return ratingsMapper.selectList(wrapper);
+    }
+
+    @Override
+    public Page<Ratings> getRatingsListByUserid(String userid, int pageNum, int pageSize) {
+        Page<Ratings> page=new Page<Ratings>(pageNum,pageSize);
+        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+        entityWrapper.eq("userid",userid).orderBy("time");
+        List<Ratings> ratingsList= ratingsMapper.selectPage(page,entityWrapper);
+        page.setRecords(ratingsList);
+        return page;
     }
 }

@@ -2,6 +2,7 @@ package com.tv.variety.bll.impl;
 
 
 import com.tv.variety.bll.IVarietyMongoDB;
+import com.tv.variety.dto.SearchVarietyparams;
 import com.tv.variety.mongodb.POJO.Variety;
 import com.tv.variety.param.VarietyParams;
 import com.tv.variety.util.mongodb.MongoPageHelper;
@@ -16,6 +17,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -69,4 +71,38 @@ public class VarietyMongoDB implements IVarietyMongoDB {
         return vatiety;
     }
 
-}
+    @Override
+    public PageResult<SearchVarietyparams> search(String all,int pageNum,int pageSize) {
+
+        List<Variety>  vatiety=new ArrayList<Variety>();
+
+
+//        Criteria c1= Criteria.where("name").regex(all);
+//        Criteria c2=Criteria.where("actor").regex(all);
+//        Criteria c3=Criteria.where("fromtv").regex(all);
+//        Criteria c4=Criteria.where("type").regex(all);
+//        Criteria cr = new Criteria();
+//        cr.orOperator(c1,c2);
+        Query query = new Query(Criteria.where("name").regex(all));
+//        vatiety =  mongoTemplate.find(query,Variety.class);
+        return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                pageNum,variety->{
+                    SearchVarietyparams varietyParams1=new SearchVarietyparams();
+                    varietyParams1.setId(variety.getId());
+                    varietyParams1.setName(variety.getName());
+                    varietyParams1.setPicurl(variety.getPicurl());
+                    varietyParams1.setUpdate(variety.getUpdate());
+                    varietyParams1.setArea(variety.getArea());
+                    varietyParams1.setFromtv(variety.getFromtv());
+                    varietyParams1.setContent(variety.getContent());
+                    varietyParams1.setBtn(variety.getBtn());
+                    varietyParams1.setType(variety.getType());
+                    return varietyParams1;
+                }
+                , null);
+
+
+    }
+    }
+
+

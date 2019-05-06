@@ -1,16 +1,17 @@
 package com.tv.variety.facade.impl;
 
 import com.tv.variety.bll.IRatingsBLL;
+import com.tv.variety.bll.IVarietyMongoDB;
+import com.tv.variety.dto.FindRatingsByUseridParams;
 import com.tv.variety.facade.IRatingsFacade;
+import com.tv.variety.mongodb.POJO.Variety;
 import com.tv.variety.mybatic.model.Ratings;
 import com.tv.variety.param.InsertRatingsParams;
 import com.tv.variety.util.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author yrongqin@linwell.com
@@ -20,7 +21,8 @@ import java.util.List;
 public class RatingsFacade implements IRatingsFacade {
     @Autowired
     private IRatingsBLL iRatingsBLL;
-
+    @Autowired
+    private IVarietyMongoDB iVarietyMongoDB;
 
     @Override
     public int insertRatings(InsertRatingsParams insertRatingsParams) {
@@ -62,4 +64,41 @@ public class RatingsFacade implements IRatingsFacade {
 
         return insertRatingsParams;
     }
-}
+
+    @Override
+    public Map<String, Object> findRatingsByUserid(String userid, int pageNum, int pageSize) {
+
+        List<Ratings> ratings=new ArrayList<Ratings>();
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        List<FindRatingsByUseridParams> findRatingsByUseridParamsList=new ArrayList<FindRatingsByUseridParams>();
+
+        ratings=iRatingsBLL.getRatingsListByUserid(userid,pageNum,pageSize).getRecords();
+        for (int i=0;i<ratings.size();i++)
+        {
+            FindRatingsByUseridParams findRatingsByUseridParams=new FindRatingsByUseridParams();
+            Variety variety=new Variety();
+            findRatingsByUseridParams.setRatings(ratings.get(i).getRatings());
+            findRatingsByUseridParams.setTime(ratings.get(i).getTime());
+            findRatingsByUseridParams.setVarietyId(ratings.get(i).getVarietyId());
+
+
+//            System.out.println(comments.get(i).getName());
+//            System.out.println(comments.get(i).getName());
+            variety=iVarietyMongoDB.findVarietyById(ratings.get(i).getVarietyId());
+//            System.out.println("url"+variety.getPicurl());
+            findRatingsByUseridParams.setVarietyName(variety.getName());
+            findRatingsByUseridParams.setPicurl(variety.getPicurl());
+
+
+            findRatingsByUseridParamsList.add(findRatingsByUseridParams);
+
+        }
+        int total=iRatingsBLL.getRatingsListByUserid(userid,pageNum,pageSize).getTotal();
+        resultMap.put("total", total);
+        resultMap.put("list", findRatingsByUseridParamsList);
+        return resultMap;
+    }
+    }
+
+

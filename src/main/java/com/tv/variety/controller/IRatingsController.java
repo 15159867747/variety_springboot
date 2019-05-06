@@ -14,4 +14,7 @@ public interface IRatingsController {
 //    JsonResult updateRatings(InsertRatingsParams insertRatingsParams);
     //查询评分
     JsonResult seracherRatings(String userid, String varietyId);
+
+    //用户下所有的评星
+    JsonResult getRatingsByUserid(String userid, int pageNum, int pageSize);
 }

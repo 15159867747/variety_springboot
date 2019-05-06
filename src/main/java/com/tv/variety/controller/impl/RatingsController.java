@@ -56,4 +56,14 @@ public class RatingsController implements IRatingsController {
         insertRatingsParams=iRatingsFacade.seracherRatings(userid,varietyId);
         return null;
     }
+
+    @Override
+    @RequestMapping(value = "/getRatingsByUserid" , method = RequestMethod.POST)
+    public JsonResult getRatingsByUserid(String userid, int pageNum, int pageSize) {
+        if (userid==null&&userid.equals(""))
+        {
+            return new JsonResult<>(-1,"哎呀出错啦，可能是节目为空也");
+        }
+        return new JsonResult(iRatingsFacade.findRatingsByUserid(userid,pageNum,pageSize),"评星显示成功啦",1);
+    }
 }

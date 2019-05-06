@@ -1,7 +1,10 @@
 package com.tv.variety.facade.impl;
 
 import com.tv.variety.bll.ICommentBLL;
+import com.tv.variety.bll.IVarietyMongoDB;
+import com.tv.variety.dto.MyCommentParams;
 import com.tv.variety.facade.ICommentFacade;
+import com.tv.variety.mongodb.POJO.Variety;
 import com.tv.variety.mybatic.model.Comment;
 import com.tv.variety.param.InsertCommentParams;
 import com.tv.variety.util.UUIDGenerator;
@@ -18,7 +21,8 @@ import java.util.*;
 public class CommentFacade implements ICommentFacade {
     @Autowired
     private ICommentBLL iCommentBLL;
-
+    @Autowired
+    private IVarietyMongoDB iVarietyMongoDB;
 
     @Override
     public Map<String, Object> getCommentList(String varietyId, int pageNum, int pageSize) {
@@ -58,11 +62,31 @@ public class CommentFacade implements ICommentFacade {
     public Map<String, Object> getCommentListByUserid(String userid, int pageNum, int pageSize) {
         List<Comment> comments=new ArrayList<Comment>();
         Map<String, Object> resultMap = new HashMap<String, Object>();
-
+        List<MyCommentParams> myCommentParamsList=new ArrayList<MyCommentParams>();
         comments=iCommentBLL.getCommentListByUserid(userid,pageNum,pageSize).getRecords();
+        for (int i=0;i<comments.size();i++)
+        {
+            MyCommentParams myCommentParams=new MyCommentParams();
+            Variety variety=new Variety();
+
+            myCommentParams.setId(comments.get(i).getId());
+            myCommentParams.setVarietyId(comments.get(i).getVarietyId());
+            myCommentParams.setCommentDate(comments.get(i).getCommentDate());
+            myCommentParams.setComment(comments.get(i).getComment());
+//            System.out.println(comments.get(i).getName());
+//            System.out.println(comments.get(i).getName());
+            variety=iVarietyMongoDB.findVarietyById(comments.get(i).getVarietyId());
+//            System.out.println("url"+variety.getPicurl());
+            myCommentParams.setPicurl(variety.getPicurl());
+            myCommentParams.setName(variety.getName());
+
+
+            myCommentParamsList.add(myCommentParams);
+
+        }
         int total=iCommentBLL.getCommentListByUserid(userid,pageNum,pageSize).getTotal();
         resultMap.put("total", total);
-        resultMap.put("list", comments);
+        resultMap.put("list", myCommentParamsList);
         return resultMap;
     }
 }
