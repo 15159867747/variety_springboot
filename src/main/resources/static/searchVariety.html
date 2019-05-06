@@ -145,8 +145,8 @@
                     <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
                         <form onsubmit="" name="msearch" id="msearch" action="" method="get">
                             <div class="">
-                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
-                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: orange;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" id="sousuo" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: orange;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" onclick="searchVarietyAll(1)"  block="soframe_2_"/>
                             </div>
 
                         </form>
@@ -295,84 +295,90 @@
     var totalNum=0;// 总页码
     var totalList=0// 记录总数量
     function searchVarietyAll(pageSize) {
-        // var all=$("#submit-btn").val();
-        var all="星光大道"
-        pageNum=pageSize;
-        $.ajax({
-            //几个参数需要注意一下
-            type: "post",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "/YqLook/search",//url
-            data: {
-                all: all,
-                pageNum: pageSize, //默认第一页
-                pageSize: 3
+        var all=$("#sousuo").val();
+        console.log(all);
+        if(all!=null&&all!="") {
+            // var all="星光大道"
+            pageNum = pageSize;
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/YqLook/search",//url
+                data: {
+                    all: all,
+                    pageNum: pageSize, //默认第一页
+                    pageSize: 3
 
-            },
-            success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.data.length == 0) {
-                    window.location.href = '/404.html';
-                }
-                if (result.code == 1) {
-
-                    if(result.data.list.length==0)
-                    {
-                        $("#page").paging({
-                            pageNum: 1, // 当前页面
-                            totalNum: 0, // 总页码
-                            totalList: 0, // 记录总数量
-                            flag: 4
-                        });
-                        Searcherall(result.data.list)
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.data.length == 0) {
+                        window.location.href = '/404.html';
                     }
-                    else {
-                        totalList = result.data.total;
-                        // console.log(totalList);
-                        totalNum = Math.ceil(totalList / 3);
-                        $("#page").paging({
-                            pageNum: pageNum, // 当前页面
-                            totalNum: totalNum, // 总页码
-                            totalList: totalList, // 记录总数量
-                            flag: 4
-                        });
-                        Searcherall(result.data.list)
+                    if (result.code == 1) {
+
+                        if (result.data.list.length == 0) {
+                            $("#page").paging({
+                                pageNum: 1, // 当前页面
+                                totalNum: 0, // 总页码
+                                totalList: 0, // 记录总数量
+                                flag: 4
+                            });
+                            Searcherall(result.data.list)
+                        }
+                        else {
+                            totalList = result.data.total;
+                            // console.log(totalList);
+                            totalNum = Math.ceil(totalList / 3);
+                            $("#page").paging({
+                                pageNum: pageNum, // 当前页面
+                                totalNum: totalNum, // 总页码
+                                totalList: totalList, // 记录总数量
+                                flag: 4
+                            });
+                            Searcherall(result.data.list)
+                        }
+                        // $("#name").text(result.data.variety.name);
+                        // // $("#fromtv").text(result.data.fromtv);
+                        // for (var i in result.data.variety.fromtv) {
+                        //     $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
+                        // }
+                        // for (var i in result.data.variety.type) {
+                        //     $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
+                        //     // $("#atype"+i).text(result.data.type[i]);
+                        //     // console.log(decodeURIComponent(result.data.type[i]))
+                        // }
+                        // $("#content-pane").text(result.data.variety.content);
+                        // $("#updatetime").text(result.data.variety.update);
+                        // // $("#area").text(result.data.area);
+                        // for (var i in result.data.variety.area) {
+                        //     $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
+                        //
+                        // }
+                        // $("#img1").attr("src", result.data.variety.picurl);
+                        // showtvurl = result.data.variety.btn
+                        //
+                        // var n = parseInt(result.data.ratings)
+                        // document.getElementById("showb").style.width = (30 * n) + "px"
+                        //
+                        // $("#img1").attr("src","images/星光大道 2018.jpg");
+                        // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
+
+
                     }
-                    // $("#name").text(result.data.variety.name);
-                    // // $("#fromtv").text(result.data.fromtv);
-                    // for (var i in result.data.variety.fromtv) {
-                    //     $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
-                    // }
-                    // for (var i in result.data.variety.type) {
-                    //     $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
-                    //     // $("#atype"+i).text(result.data.type[i]);
-                    //     // console.log(decodeURIComponent(result.data.type[i]))
-                    // }
-                    // $("#content-pane").text(result.data.variety.content);
-                    // $("#updatetime").text(result.data.variety.update);
-                    // // $("#area").text(result.data.area);
-                    // for (var i in result.data.variety.area) {
-                    //     $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
-                    //
-                    // }
-                    // $("#img1").attr("src", result.data.variety.picurl);
-                    // showtvurl = result.data.variety.btn
-                    //
-                    // var n = parseInt(result.data.ratings)
-                    // document.getElementById("showb").style.width = (30 * n) + "px"
-                    //
-                    // $("#img1").attr("src","images/星光大道 2018.jpg");
-                    // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
 
-
+                },
+                error: function (e) {
+                    swal("系统异常啦，赶快联系管理员叭!", "", "error");
+                    // window.location.href = '/404.html';
                 }
-
-            },
-            error: function (e) {
-                swal("系统异常啦，赶快联系管理员叭!", "", "error");
-                // window.location.href = '/404.html';
-            }
-        });
+            });
+        }
+        else
+        {
+            swal("搜索框不能为空哦");
+        }
     }
 
 
@@ -479,7 +485,7 @@
             $("#userinform").css("display","none");
             $("#exit").css("display","none");
         }
-        searchVarietyAll(1);
+        // searchVarietyAll(1);
 
 
     })
