@@ -4,8 +4,11 @@ package com.tv.variety.facade;
 import com.tv.variety.dto.SearchVarietyparams;
 import com.tv.variety.dto.VarietyDetailsParam;
 import com.tv.variety.mongodb.POJO.Variety;
+import com.tv.variety.param.AllVarietyParams;
 import com.tv.variety.param.VarietyParams;
 import com.tv.variety.util.mongodb.PageResult;
+
+import java.util.List;
 
 /**
  * @author yrongqin@linwell.com
@@ -23,5 +26,9 @@ public interface IVarietyFacade {
 
     //搜索节目
     PageResult<SearchVarietyparams> searcherVarietyAll(String all,int pageNum,int pageSize);
+
+    //查询所有节目
+    List<AllVarietyParams> getAllVariety();
+
 
 }

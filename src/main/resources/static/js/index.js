@@ -33,7 +33,7 @@ function findVarietyByType(type,id) {
                         "\t\t\t\t\t</div>";
                 }
 
-                el+"<div id=\"page\" class=\"page_div\"></div>"
+                el=el+"<div id=\"page\" class=\"page_div\"></div>"
                 var div = document.getElementById(id);
                 div.innerHTML=el;
             }
@@ -133,94 +133,216 @@ function RatingsByUserid(data) {
 //搜索
 function Searcherall(data) {
     var el="";
-    for (var i=0;i<data.length;i++)
-    {
-        el =el+"<div class=\"subject-head fix z-2\">\n" +
-            "\n" +
-            "\n" +
-            "            <div >\n" +
-            "                <div>\n" +
-            "                    <div class=\"pic\" style=\"float: left;margin-right: 20px\">\n" +
-            "                        <img src="+data[i].picurl+" alt=\"\" class=\"\"  style=\"width: 200px;height: 300px\">                    \t</a>\n" +
-            "\n" +
-            "                    </div>\n" +
-            "                    <div class=\"info\" style=\"float: left;\">\n" +
-            "                        <h3 class=\"tit\">\n" +
-            "                            <a style=\"font-size: 30px;line-height: 40px\"  target=\"_blank\" class=\"seedplay play-btn-b\" href=\"\" >"+data[i].name+"</a>\n" +
-            "                        </h3>\n" +
-            "\n" +
-            "                        <div class=\"rating fix\"  style=\"margin: 15px 0 10px\">\n" +
-            "\n" +
-            "                        </div>\n" +
-            "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\">\n" +
-            "                            <i>更新时间：</i>\n" +
-            "                            <span>\n" +
-            "            "+ data[i].update+"    \n" +
-            "                </span>\n" +
-            "                        </div>\n" +
-            "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\">\n" +
-            "                            <i>地区：</i>\n" ;
-            for (var j in data[i].area)  {
-                el=el+ "<a href=\"\">"+data[i].area[j]+"</a>&nbsp;\n";
+
+        for (var i = 0; i < data.length; i++) {
+            el = el + "<div class=\"subject-head fix z-2\">\n" +
+                "\n" +
+                "\n" +
+                "            <div >\n" +
+                "                <div>\n" +
+                "                    <div class=\"pic\" style=\"float: left;margin-right: 20px\">\n" +
+                "                        <img src=" + data[i].picurl + " alt=\"\" class=\"\"  style=\"width: 200px;height: 300px\">                    \t</a>\n" +
+                "\n" +
+                "                    </div>\n" +
+                "                    <div class=\"info\" style=\"float: left;\">\n" +
+                "                        <h3 class=\"tit\">\n" +
+                "                            <a style=\"font-size: 30px;line-height: 40px\"  target=\"_blank\" class=\"seedplay play-btn-b\" href=\"\" >" + data[i].name + "</a>\n" +
+                "                        </h3>\n" +
+                "\n" +
+                "                        <div class=\"rating fix\"  style=\"margin: 15px 0 10px\">\n" +
+                "\n" +
+                "                        </div>\n" +
+                "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\">\n" +
+                "                            <i>更新时间：</i>\n" +
+                "                            <span>\n" +
+                "            " + data[i].update + "    \n" +
+                "                </span>\n" +
+                "                        </div>\n" +
+                "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\">\n" +
+                "                            <i>地区：</i>\n";
+            for (var j in data[i].area) {
+                el = el + "<a href=\"\">" + data[i].area[j] + "</a>&nbsp;\n";
             }
 
-           el=el+ "                        </div>\n" +
-            "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"type2\">\n" +
-            "                            <i>类型：</i>\n" ;
-            for (var j in data[i].type)  {
-                el=el+ "<a href=\"\"  target=\"_blank\" >"+data[i].type[j]+" </a>&nbsp;\n";
+            el = el + "                        </div>\n" +
+                "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"type2\">\n" +
+                "                            <i>类型：</i>\n";
+            for (var j in data[i].type) {
+                el = el + "<a href=\"\"  target=\"_blank\" >" + data[i].type[j] + " </a>&nbsp;\n";
             }
 
-           el=el+ "                     </div>\n" +
-            "\n" +
-            "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"fromtvdiv2\">\n" +
-            "                            <i>播出频道：</i>\n" +
-            "                        \n" ;
-        for (var j in data[i].fromtv)  {
-            el=el+ "<a href=\"\"  target=\"_blank\"> "+data[i].fromtv[j]+"</a>&nbsp;\n" ;
-        }
+            el = el + "                     </div>\n" +
+                "\n" +
+                "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"fromtvdiv2\">\n" +
+                "                            <i>播出频道：</i>\n" +
+                "                        \n";
+            for (var j in data[i].fromtv) {
+                el = el + "<a href=\"\"  target=\"_blank\"> " + data[i].fromtv[j] + "</a>&nbsp;\n";
+            }
 
 
-            el=el+"</div>\n" +
-            "                        \n" +
-            "                        <div  class=\"btngroup \" style=\"margin: 30px 0 0 0\">\n" +
-            "                            <div style=\"position:relative;\" class=\"fix\">\n" +
-            "                                <div class=\"op-group fix\">\n" +
-            "                                    <button style=\"float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px\" onclick=\"showTV('"+ data[i].btn+"')\" >立即播放</button>\n" +
-            "\n" +
-            "                                    <div class=\"inner fix\">\n" +
-            "\n" +
-            "                                        <div class=\"clear\"></div>\n" +
-            "                                        <i></i>\n" +
-            "\n" +
-            "                                    </div>\n" +
-            "                                </div>\n" +
-            "\n" +
-            "                                <div class=\"inner fix\">\n" +
-            "\n" +
-            "                                    <div class=\"line\">\n" +
-            "\n" +
-            "                                    </div>\n" +
-            "                                    <div class=\"bottom fix\">\n" +
-            "                                        <div class=\"qrcode\">\n" +
-            "\n" +
-            "                                        </div>\n" +
-            "\n" +
-            "                                    </div>\n" +
-            "                                    <i></i>\n" +
-            "\n" +
-            "                                </div>\n" +
-            "                            </div>\n" +
-            "                        </div>\n" +
-            "                    </div>\n" +
-            "                    <div style=\"width: 60%;border-top: 1px solid #ddd;margin: 33px 0\"></div>\n" +
-            "\n" +
-            "\n" +
-            "                </div>\n" +
-            "\n" +
-            "            </div><br>\n" +
-            "        </div>"
+            el = el + "</div>\n" +
+                "                        \n" +
+                "                        <div  class=\"btngroup \" style=\"margin: 30px 0 0 0\">\n" +
+                "                            <div style=\"position:relative;\" class=\"fix\">\n" +
+                "                                <div class=\"op-group fix\">\n" +
+                "                                    <button style=\"float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px\" onclick=\"showTV('" + data[i].btn + "')\" >立即播放</button>\n" +
+                "\n" +
+                "                                    <div class=\"inner fix\">\n" +
+                "\n" +
+                "                                        <div class=\"clear\"></div>\n" +
+                "                                        <i></i>\n" +
+                "\n" +
+                "                                    </div>\n" +
+                "                                </div>\n" +
+                "\n" +
+                "                                <div class=\"inner fix\">\n" +
+                "\n" +
+                "                                    <div class=\"line\">\n" +
+                "\n" +
+                "                                    </div>\n" +
+                "                                    <div class=\"bottom fix\">\n" +
+                "                                        <div class=\"qrcode\">\n" +
+                "\n" +
+                "                                        </div>\n" +
+                "\n" +
+                "                                    </div>\n" +
+                "                                    <i></i>\n" +
+                "\n" +
+                "                                </div>\n" +
+                "                            </div>\n" +
+                "                        </div>\n" +
+                "                    </div>\n" +
+                "                    <div style=\"width: 60%;border-top: 1px solid #ddd;margin: 33px 0\"></div>\n" +
+                "\n" +
+                "\n" +
+                "                </div>\n" +
+                "\n" +
+                "            </div><br>\n" +
+                "        </div>"
+
     }
     var div = document.getElementById("search");
     div.innerHTML=el;
 }
+
+
+//添加所有名字到下拉列表框
+function addAllVariety(data) {
+    var el="";
+    for (var i = 0; i < data.length; i++) {
+        el=el+"<li  class=\"on\"id='"+ data[i].id+"' >    "+data[i].name+" </li>"
+    }
+    el=el+"<p>无匹配项</p>"
+
+        var div = document.getElementById("allList1");
+        div.innerHTML=el;
+
+
+    }
+
+//显示轮播图
+function manageConfigPic(data){
+    var el="";
+    var n=["item z-1 1","item z-1 2","item z-1 3","item z-1 4","item z-1 5","item z-1 6"];
+    for (var i = 0; i < data.length; i++) {
+        var j=i+1;
+        //\"/VarietyDetails.html?name="+ result.data.list[n].name+ "&varietyId="+result.data.list[n].id +  "\"
+        el=el+"<li class='"+n[i]+"' style=\"opacity:1;display:block;\"><a   data-priority='"+j+"'  href='/VarietyDetails.html?name="+data[i].name+"&varietyId="+data[i].varietyId+"' class=\"foc-inner-list\">\n" +
+            "\t\t\t\t\t\t\t<img class=\"pic\"  src="+data[i].picurl+"><span class=\"foc-text\">\n" +
+            "\t\t\t\t\t\t\t<div class=\"foc-text-wrap\">\n" +
+            "\t\t\t\t\t\t\t\t<em class=\"playBtn\"></em>\n" +
+            "\t\t\t\t\t\t\t\t<b class=\"tit \">"+data[i].name+"</b><b class=\"info\">"+data[i].detail+"</b>\n" +
+            "\t\t\t\t\t\t\t</div>\n" +
+            "\t\t\t\t\t\t\t<i class=\"foc-cl\"></i>\n" +
+            "\t\t\t\t\t\t\t<i class=\"foc-cr\"></i>\n" +
+            "\t\t\t\t\t\t\t</span></a></li>";
+    }
+
+
+
+    var div = document.getElementById("focusConInner");
+    div.innerHTML=el;
+    }
+
+
+//显示爬虫配置表到表格
+function showConfigpy(data) {
+    var el=" <thead>\n" +
+        "                    <tr >\n" +
+        "                        <th>视频来源</th>\n" +
+        "                        <th>爬取周期</th>\n" +
+        "                        <th>爬取状态</th>\n" +
+        "                    </tr>\n" +
+        "                    </thead>";
+
+    for (var i = 0; i < data.length; i++) {
+        if(data[i].id==1) {
+            el = el + "<tr>\n" +
+                "                        <td>优酷</td>\n";
+        }
+        if(data[i].id==2){
+            el = el + "<tr>\n" +
+                "                        <td>芒果TV</td>\n";
+        }
+        if(data[i].actiontime==1000*60*10)
+        {
+            el=el+ "                        <td>间隔10分钟</td>\n"
+        }
+        if(data[i].actiontime==1000*60*30)
+        {
+            el=el+ "                        <td>间隔30分钟</td>\n"
+        }
+        if(data[i].actiontime==0)
+        {
+            el=el+ "                        <td>立即执行（只执行一次）</td>\n"
+        }
+        if(data[i].actiontime==1000*60*60)
+        {
+            el=el+ "                        <td>间隔1小时</td>\n"
+        }
+        if(data[i].actiontime==1000*60*60*12)
+        {
+            el=el+ "                        <td>间隔12小时</td>\n"
+        }
+        if(data[i].actiontime==1000*60*60*24)
+        {
+            el=el+ "                        <td>间隔24小时</td>\n"
+        }
+
+        if(data[i].status==1)
+        {
+            el=el+ "<td>正在执行</td>\n" +
+                "\n" +
+                "                    </tr>";
+        }
+        if(data[i].status==0)
+        {
+            el=el+ "<td>待执行</td>\n" +
+                "\n" +
+                "                    </tr>";
+        }
+        if(data[i].status==-1)
+        {
+            el=el+ "<td>无执行任务</td>\n" +
+                "\n" +
+                "                    </tr>";
+        }
+        if(data[i].status==2)
+        {
+            el=el+ "<td>执行成功</td>\n" +
+                "\n" +
+                "                    </tr>";
+        }
+
+    }
+
+    var div = document.getElementById("table");
+    div.innerHTML=el;
+
+
+}
+
+
+
+

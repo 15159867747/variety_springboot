@@ -10,11 +10,13 @@ import com.tv.variety.facade.IRatingsFacade;
 import com.tv.variety.facade.IVarietyFacade;
 import com.tv.variety.mongodb.POJO.Variety;
 import com.tv.variety.mybatic.model.Ratings;
+import com.tv.variety.param.AllVarietyParams;
 import com.tv.variety.param.VarietyParams;
 import com.tv.variety.util.mongodb.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,6 +65,23 @@ public class VarietyFacade implements IVarietyFacade {
     @Override
     public PageResult<SearchVarietyparams> searcherVarietyAll(String all,int pageNum,int pageSize) {
         return varietyMongoDB.search(all,pageNum,pageSize);
+    }
+
+    @Override
+    public List<AllVarietyParams> getAllVariety() {
+        List<AllVarietyParams> allVarietyParamsList=new ArrayList<AllVarietyParams>();
+        List<Variety> varietyList=new ArrayList<Variety>();
+        varietyList=varietyMongoDB.allVarietyList();
+        for (int i=0;i<varietyList.size();i++)
+        {
+            AllVarietyParams allVarietyParams=new AllVarietyParams();
+            allVarietyParams.setId(varietyList.get(i).getId());
+            allVarietyParams.setName(varietyList.get(i).getName());
+
+            allVarietyParamsList.add(allVarietyParams);
+        }
+
+        return allVarietyParamsList;
     }
 
 

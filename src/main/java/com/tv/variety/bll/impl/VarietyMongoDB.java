@@ -103,6 +103,13 @@ public class VarietyMongoDB implements IVarietyMongoDB {
 
 
     }
+
+    @Override
+    public List<Variety> allVarietyList() {
+        Query query=new Query(new Criteria());
+        List<Variety> vatiety =  mongoTemplate.find(query,Variety.class);
+        return vatiety;
     }
+}
 
 

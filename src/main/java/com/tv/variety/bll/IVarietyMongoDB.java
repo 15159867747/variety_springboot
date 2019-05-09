@@ -28,6 +28,11 @@ public interface IVarietyMongoDB {
     //搜索节目
     PageResult<SearchVarietyparams> search(String all,int pageNum,int pageSize);
 
+    //查询所有节目名
+
+    List<Variety> allVarietyList();
+
+
 
 
 

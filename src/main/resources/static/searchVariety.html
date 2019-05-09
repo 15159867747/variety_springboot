@@ -18,7 +18,7 @@
 
     <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
     <link rel="stylesheet"   href="css/base.css" />
-    <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
+    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.comment.js" ></script>
     <script type="text/javascript" src="js/index.js" ></script>
     <script type="text/javascript" src="js/sweetalert.min.js"></script>
@@ -145,8 +145,9 @@
                     <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
                         <form onsubmit="" name="msearch" id="msearch" action="" method="get">
                             <div class="">
-                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" id="sousuo" autocomplete="off" maxlength="30" lang="zh-cn"/>
-                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: orange;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" onclick="searchVarietyAll(1)"  block="soframe_2_"/>
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word"  id="vue" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <a style="font-size: 21px;line-height: 40px; background-color: orange; " target="_blank " class="seedplay play-btn-b" id="sousuo" >搜索</a>
+                                <!--<a style=" font-size: 10px; width: 65px;height: 32px;margin-left:-3px;border: none;background-color: orange;cursor: pointer;" id="submit-btn"   onclick="searchVarietyAll(1)"  block="soframe_2_">搜索</a>-->
                             </div>
 
                         </form>
@@ -219,7 +220,7 @@
     <div  class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 200px">
         <div style="float: right;width:20%;height:600px;position:absolute;background-color: transparent;right: 200px;margin-top: 100px">
             <!--transparent 透明-->
-
+            <div id="guess">
             <div style="font-size: 40px " >猜你喜欢</div>
             <div>&nbsp;</div>
             <div>
@@ -238,12 +239,15 @@
                 </div>
 
         </div>
-
+            </div>
 
         </div>
         <div class="main crumbsline" style="padding-top: 100px;margin: 30px 0 15px 0;font-size: 14px">
-        <div id="search">
 
+        <div id="search">
+        <div class="subject-head fix z-2">
+
+        </div>
         </div>
     </div>
 
@@ -272,32 +276,24 @@
     </div>
 </div>
 
-<
-<!-- ================================================== -->
-
-<!--<div class="gototop fixed" id="gototopwrap">-->
-<!--<div class="ad-game-tip" data-deliver="ws_all_game"></div>-->
-<!--<a class="question-btn" href=""></a>-->
-<!--<a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>-->
-<!--</div>-->
-
-<!--<div class="ad-client-tip" data-deliver="ws_all_bottom"></div>-->
-
-<!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
-<!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/pageMe.js"></script>
 <script type="text/javascript"></script>
 
 <script type="text/javascript">
 
+
+    $("#sousuo").click(function(){
+        $(this).attr("href","/searchVariety.html?word="+$("#vue").val());
+    })
+
     var pageNum=0;// 当前页面
     var totalNum=0;// 总页码
     var totalList=0// 记录总数量
     function searchVarietyAll(pageSize) {
-        var all=$("#sousuo").val();
+        var all=decodeURIComponent(getQueryVariable("word"));
         console.log(all);
-        if(all!=null&&all!="") {
+
             // var all="星光大道"
             pageNum = pageSize;
             $.ajax({
@@ -313,19 +309,14 @@
                 },
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
-                    if (result.data.length == 0) {
-                        window.location.href = '/404.html';
-                    }
+
                     if (result.code == 1) {
 
                         if (result.data.list.length == 0) {
-                            $("#page").paging({
-                                pageNum: 1, // 当前页面
-                                totalNum: 0, // 总页码
-                                totalList: 0, // 记录总数量
-                                flag: 4
-                            });
-                            Searcherall(result.data.list)
+                            swal("没有找到你要的资源哦");
+
+                            $("#guess").css("display","none");
+
                         }
                         else {
                             totalList = result.data.total;
@@ -339,34 +330,17 @@
                             });
                             Searcherall(result.data.list)
                         }
-                        // $("#name").text(result.data.variety.name);
-                        // // $("#fromtv").text(result.data.fromtv);
-                        // for (var i in result.data.variety.fromtv) {
-                        //     $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
-                        // }
-                        // for (var i in result.data.variety.type) {
-                        //     $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
-                        //     // $("#atype"+i).text(result.data.type[i]);
-                        //     // console.log(decodeURIComponent(result.data.type[i]))
-                        // }
-                        // $("#content-pane").text(result.data.variety.content);
-                        // $("#updatetime").text(result.data.variety.update);
-                        // // $("#area").text(result.data.area);
-                        // for (var i in result.data.variety.area) {
-                        //     $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
-                        //
-                        // }
-                        // $("#img1").attr("src", result.data.variety.picurl);
-                        // showtvurl = result.data.variety.btn
-                        //
-                        // var n = parseInt(result.data.ratings)
-                        // document.getElementById("showb").style.width = (30 * n) + "px"
-                        //
-                        // $("#img1").attr("src","images/星光大道 2018.jpg");
-                        // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
+
 
 
                     }
+                    if(result.code==-1)
+                    {
+                        swal("没有找到你要的资源哦");
+                        $("#guess").css("display","none");
+
+                    }
+
 
                 },
                 error: function (e) {
@@ -374,21 +348,15 @@
                     // window.location.href = '/404.html';
                 }
             });
-        }
-        else
-        {
-            swal("搜索框不能为空哦");
-        }
+
+
     }
 
 
 
 
     var showtvurl="";
-
     /* 判断节目id是否存在*/
-
-
 
     function showTV(url) //跳转到播放地址
     {
@@ -396,85 +364,9 @@
     }
 
 
-    // 节目详情
-    // function getVarietyDetails() {
-    //     // console.log($("#id").val())
-    //     // var token=getCookie("token");
-    //
-    //     // var userid=getCookie("userid");
-    //     var name=decodeURIComponent(getQueryVariable("name"));
-    //     var userid=getCookie("userid")
-    //     var i=checkVarietyId();
-    //     // console.log(decodeURIComponent(name))
-    //     if(i==1) {
-    //         $.ajax({
-    //             //几个参数需要注意一下
-    //             type: "post",//方法类型
-    //             dataType: "json",//预期服务器返回的数据类型
-    //             url: "/YqLook/varietyDetails",//url
-    //             data: {
-    //                 name: name,
-    //                 userid: userid
-    //             },
-    //             success: function (result) {
-    //                 console.log(result);//打印服务端返回的数据(调试用)
-    //                 if (result.data == null) {
-    //                     window.location.href = '/404.html';
-    //                 }
-    //                 if (result.code == 1 && result.data != null) {
-    //                     $("#name").text(result.data.variety.name);
-    //                     // $("#fromtv").text(result.data.fromtv);
-    //                     for (var i in result.data.variety.fromtv) {
-    //                         $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
-    //                     }
-    //                     for (var i in result.data.variety.type) {
-    //                         $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
-    //                         // $("#atype"+i).text(result.data.type[i]);
-    //                         // console.log(decodeURIComponent(result.data.type[i]))
-    //                     }
-    //                     $("#content-pane").text(result.data.variety.content);
-    //                     $("#updatetime").text(result.data.variety.update);
-    //                     // $("#area").text(result.data.area);
-    //                     for (var i in result.data.variety.area) {
-    //                         $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
-    //
-    //                     }
-    //                     $("#img1").attr("src", result.data.variety.picurl);
-    //                     showtvurl = result.data.variety.btn
-    //
-    //                     var n = parseInt(result.data.ratings)
-    //                     document.getElementById("showb").style.width = (30 * n) + "px"
-    //                     //
-    //                     // $("#img1").attr("src","images/星光大道 2018.jpg");
-    //                     // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
-    //
-    //
-    //                 }
-    //                 if (result.code == -1) {
-    //                     swal("系统异常啦，赶快联系管理员叭!", "", "error");
-    //                     // window.location.href = '/404.html';
-    //
-    //                 }
-    //             },
-    //             error: function (e) {
-    //                 swal("系统异常啦，赶快联系管理员叭!", "", "error");
-    //                 // window.location.href = '/404.html';
-    //             }
-    //         });
-    //     }
-    //     else
-    //     {
-    //         swal("当前 页面有错误哦，您从新进入试试!", "", "error");
-    //         setTimeout("window.location.href = '/index.html' ", 2000 );
-    //     }
-    //
-    // }
-
-
-
     $(document).ready(function () {
         var token=getCookie("token");
-
+        console.log("123")
         if (token!=null){
             $("#login-btn").css("display","none");
             $("#register-btn").css("display","none");
@@ -485,7 +377,7 @@
             $("#userinform").css("display","none");
             $("#exit").css("display","none");
         }
-        // searchVarietyAll(1);
+        searchVarietyAll(1);
 
 
     })

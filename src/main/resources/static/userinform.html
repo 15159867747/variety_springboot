@@ -226,12 +226,16 @@
 
     <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
-    <script type="text/javascript">
-        T.observer.send('app.ready');
-        console.log("app.ready");
-    </script>
+
 
     <script type="text/javascript">
+
+
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
 
 
      //从url上取值填充表单

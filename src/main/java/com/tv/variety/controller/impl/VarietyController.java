@@ -7,6 +7,7 @@ import com.tv.variety.dto.VarietyDetailsParam;
 import com.tv.variety.facade.IVarietyFacade;
 import com.tv.variety.facade.impl.VarietyFacade;
 import com.tv.variety.mongodb.POJO.Variety;
+import com.tv.variety.param.AllVarietyParams;
 import com.tv.variety.param.VarietyParams;
 import com.tv.variety.util.JsonResult;
 import com.tv.variety.util.mongodb.PageResult;
@@ -14,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author yrongqin@linwell.com
@@ -60,8 +64,20 @@ public class VarietyController implements IVarietyController {
     @Override
     @RequestMapping(value ="/search", method = RequestMethod.POST)
     public JsonResult searcherVarietyAll(String all,int pageNum,int pageSize) {
+        if(all.trim().equals(""))
+        {
+            return  new JsonResult(-1,"搜索失败哦");
+        }
         PageResult<SearchVarietyparams> paramsPageResult=new PageResult<SearchVarietyparams>();
         paramsPageResult=varietyFacade.searcherVarietyAll(all,pageNum,pageSize);
         return new JsonResult(paramsPageResult,"成功",1);
+    }
+
+    @Override
+    @RequestMapping(value ="/getAllVariety", method = RequestMethod.POST)
+    public JsonResult getAllVariety() {
+        List<AllVarietyParams> allVarietyParamsList=new ArrayList<AllVarietyParams>();
+        allVarietyParamsList=varietyFacade.getAllVariety();
+        return new JsonResult(allVarietyParamsList,"成功",1);
     }
 }

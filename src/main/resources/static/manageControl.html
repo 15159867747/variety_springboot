@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]><html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>艺起看-综艺节目一起看</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+    <!--    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
+
+        <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+
+    <link rel="stylesheet"   href="css/base.css" />
+
+    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+
+    <!--下拉列表-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconfont.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/ySearchSelect.css">
+    <script src="js/jQuery.Hz2Py-szm-min.js"></script>
+    <script src="js/ySearchSelect.js"></script>
+
+    <!-- 搜索下拉框 结束 -->
+    <style>
+        .layui-form {
+            margin-right: 30%;
+        }
+
+        .layui-form-label {
+            width: 100px;
+        }
+
+        .layui-input-block {
+            margin-left: 130px;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="一起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+                        <b class="lump hd-nav-ico"></b>
+                        <b class="hd-menu-ico"></b>
+                        <!--<b class="tit">分类</b>-->
+                        <em class="icon"></em>
+                        </a>
+
+                    </div>
+
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+                            <div class="">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+                                <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+                                <a id="userinform" href="javascript:getUserInform()">个人中心</a>
+                                <i class="line"></i>
+                                <a id="register-btn" href="/register.html" >注册</a>
+                                <a id="exit" href="javascript:exitlogin()" >退出</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="page-progress" id="page-progress">
+            </div>
+        </div>
+        <div class="hd-content-sub z-app-footer fixed" id="nav-container-sub">
+            <div class="hd-content-sub-con fix">
+                <div class="mod-wrap sub-wrap">
+                    <div class="nav">
+                        <div class="prev">
+                            <a class="item large current" href="/">首页</a>
+                            <a class="item large new" href="">风行号<i></i></a>
+                            <a class="item large" href="">电影</a>
+                            <a class="item large" href="">电视剧</a>
+                            <a class="item large" href="">少儿</a>
+                            <a class="item large" href="">动漫</a>
+                            <a class="item large" href="">综艺</a>
+                            <i class="sep"></i>
+                            <a class="item" href="">天下</a>
+                            <a class="item" href="">娱乐</a>
+                            <a class="item" href="">游戏</a>
+                            <a class="item" href="">搞笑</a>
+                            <a class="item" href="">美食</a>
+                            <a class="item" href="">生活</a>
+                            <a class="item" href="">体育</a>
+                            <a class="item" href="">汽车</a>
+                        </div>
+                    </div>
+                    <!--<a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>-->
+                    <!--<div class="nav-ad">-->
+                    <!--<div class="ad-wrap" data-deliver="ws_nav_guide">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="personal set-wrap" style="margin-top: 90px;">
+        <div class="left-navigate">
+            <div class="nav-con">
+                <div class="level1">
+                    <p class="homepage"><a href="/">首页</a></p>
+                    <p class="account-setting current"><a href="javascript:getUserInform()">轮播图设置</a></p>
+                    <p class="account-setting current"><a>节目爬取设置</a></p>
+                    <p class="account-setting current"><a>相似度离线处理</a></p>
+                </div>
+
+            </div>
+        </div>
+        <div class="setting-title">轮播图设置</div>
+        <form method="post"  class="fix account-info" id="FormUserInform">
+
+            <div class="prset-item fix">
+
+                <dl class="fix">
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <div style="margin-top:9px" class="layui-form-select ySearchSelect y1">
+                                <div class="layui-input" id="allList">选择节目名</div>
+                                <i class="layui-edge"></i>
+                                <ul id="allList1">
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </dl>
+
+                <dl class="fix">
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <div style="margin-top:9px" class="layui-form-select ySearchSelect y1">
+                                <div class="layui-input" id="change">选择轮播图</div>
+                                <i class="layui-edge"></i>
+                                <ul >
+                                    <li class="on" value="1">轮播图1</li>
+                                    <li class="on" value="1">轮播图2</li>
+                                    <li class="on" value="1">轮播图3</li>
+                                    <li class="on" value="1">轮播图4</li>
+                                    <li class="on" value="1">轮播图5</li>
+                                    <li class="on" value="1">轮播图6</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </dl>
+
+
+
+
+
+
+
+
+                <dl class="fix">
+
+                <div class="layui-form-item">
+
+                    <dd>
+                        <input type="text" class="t"   placeholder="轮播图片地址"  id="picurl"  >&nbsp;
+
+                    </dd>
+                </div>
+
+            </dl>
+
+
+                <dl class="fix">
+
+                    <div class="layui-form-item">
+
+                        <dd>
+                            <input type="text" class="t"   placeholder="节目详情"  id="detail"  >
+                        </dd>
+                    </div>
+
+                </dl>
+
+
+
+
+                <p class="">
+                    <input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 1px;" value="保存" onclick="updateConfigPic()">
+
+                </p>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+    <div class="page-wrap" style="margin-top: 90px;">
+
+    </div>
+
+
+
+    <!-- <link rel="stylesheet" href="card.less"/>
+    <script type="text/javascript" src="js/card.js"></script> -->
+    <!-- 底部样式    -->
+    <div class="footer fix" id="footer">
+        <div class="mod-wrap">
+            <div class="foot-wrap">
+                <div class="foot-link fix" >
+                    <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
+
+    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <!--<script type="text/javascript">-->
+    <!--T.observer.send('app.ready');-->
+    <!--console.log("app.ready");-->
+    <!--</script>-->
+
+    <script type="text/javascript">
+
+
+
+       $('#allList1').click(function(e){
+           setCookie("varietyid",e.target.id)
+       })
+
+        function updateConfigPic() {
+            console.log(varietyId)
+            var change =$("#change").text();
+            var name=$("#allList").text();
+            var picurl=$("#picurl").val();
+            var detail=$("#detail").val();
+
+            if (name=="请选择节目名")
+            {
+                swal("亲，节目名不能为空哦");
+            }
+            else if(change=="选择轮播图")
+            {
+                swal("亲，轮播图不能为空哦");
+            }
+            else if(picurl==null||picurl.trim()=="")
+            {
+                swal("亲，轮播图地址不能为空哦");
+            }
+            else {
+                if(detail.length>25)
+                {
+                    swal("亲，节目详情有字数限制哦");
+                }
+                else {
+                    change=parseInt(change.substring(3,4));
+                    var varietyId=getCookie("varietyid");
+                    $.ajax({
+                        //几个参数需要注意一下
+                        type: "post",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "/ConfigPic/updeteConfigpic" ,//url
+                        data: {
+                            id:change,
+                            name:name.trim(),
+                            picurl:picurl,
+                            detail:detail,
+                            varietyId:varietyId
+                        },
+                        success: function (result) {
+                            console.log(result);//打印服务端返回的数据(调试用)
+                            if (result.code == 1) {
+
+
+                                swal("修改成功!", "", "success");
+                                setTimeout("window.location.href = '/manageControl.html' ", 1000 );
+
+                            }
+                            if(result.code==-1){
+                                swal("修改失败啦，要不您再试试？", "", "error");
+                                window.html.href="/manageControl.html";
+                            }
+                            ;
+                        },
+                        error : function(e) {
+                            exitTologin();
+                        }
+                    });
+                }
+
+            }
+        }
+
+
+
+
+    function getAllVariety(){
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/YqLook/getAllVariety" ,//url
+            data: {},
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.code == 1) {
+                    addAllVariety(result.data)
+                }
+
+            },
+            error : function(e) {
+                swal("登录信息过期了，需要重新登录哦", "", "error");
+                // setTimeout("exitlogin()", 2000 );
+            }
+        });
+    }
+
+            $(function() {
+            $(".y1").ySearchSelect(); //调用自定义 高亮插件
+                getAllVariety();
+        });
+
+
+
+
+
+        //s刷新页面
+       $(document).ready(function () {
+           var token=getCookie("token");
+
+           if (token!=null){
+               $("#login-btn").css("display","none");
+               $("#register-btn").css("display","none");
+
+           }
+           if(token==null||token=="")
+           {
+               $("#userinform").css("display","none");
+               $("#exit").css("display","none");
+           }
+
+
+
+       })
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function getUserInform() {
+            // console.log($("#id").val())
+
+            var token=getCookie("token");
+            var userid=getCookie("userid");
+            if (token==null||token=="")
+            {
+                window.location.href = '/login.html';
+                // swal("Good!", "弹出了一个操作成功的提示框", "success");
+            }
+            else {
+
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/API/index/userInform" ,//url
+                    data: {
+                        userid:userid
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            // swal("登录成功!", "", "success");
+
+                            window.location.href = '/userinform.html?name='+result.data.name+'&sex='+result.data.sex+'&birthday='+result.data.birthday;
+                        }
+                        if(result.code==-1){
+                            swal("系统异常!", "", "error");
+
+                        }},
+                    error : function(e) {
+                        alert("异常！");
+                    }
+                });
+            }
+
+        }
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>
+
+
