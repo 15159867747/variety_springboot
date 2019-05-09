@@ -19,5 +19,5 @@ public interface IVarietyController {
 
     JsonResult getAllVariety();
 
-
+    JsonResult findVarietyByTypeOrArea(String area,String type,int pageNum,int pageSize);
 }

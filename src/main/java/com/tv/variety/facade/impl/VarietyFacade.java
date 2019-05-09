@@ -84,5 +84,10 @@ public class VarietyFacade implements IVarietyFacade {
         return allVarietyParamsList;
     }
 
+    @Override
+    public PageResult<VarietyParams> findVarietyByTypeOrArea(String area, String type,int pageNum,int pageSize) {
+        return varietyMongoDB.findVarietyByTypeOrArea(area,type,pageNum,pageSize);
+    }
+
 
 }

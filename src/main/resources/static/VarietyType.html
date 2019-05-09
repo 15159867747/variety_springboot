@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]><html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>艺起看-综艺节目一起看</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+    <!--<link rel="stylesheet" type="text/css" href="css/base.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/Torr.css"/>-->
+
+    <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/core.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+    <link rel="stylesheet"   href="css/base.css" />
+
+    <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery.comment.js" ></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+    <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
+    <style>
+        .container{
+            width: 1000px;
+        }
+        .commentbox{
+            width: 900px;
+            margin: 20px auto;
+        }
+        .mytextarea {
+            width: 100%;
+            overflow: auto;
+            word-break: break-all;
+            height: 100px;
+            color: #000;
+            font-size: 1em;
+            resize: none;
+        }
+        .comment-list{
+            width: 900px;
+            margin: 20px auto;
+            clear: both;
+            padding-top: 20px;
+        }
+        .comment-list .comment-info{
+            position: relative;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .comment-list .comment-info header{
+            width: 10%;
+            position: absolute;
+        }
+        .comment-list .comment-info header img{
+            width: 100%;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .comment-list .comment-info .comment-right{
+            padding:5px 0px 5px 11%;
+        }
+        .comment-list .comment-info .comment-right h3{
+            margin: 5px 0px;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header{
+            height: 25px;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
+            padding-right: 2em;
+            color: #aaa;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
+            cursor: pointer;
+        }
+        .comment-list .comment-info .comment-right .reply-list {
+            border-left: 3px solid #ccc;
+            padding-left: 7px;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply{
+            border-bottom: 1px dashed #ccc;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply div span{
+            padding-left: 10px;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply p span{
+            padding-right: 2em;
+            color: #aaa;
+        }
+
+
+
+
+
+    </style>
+
+
+    <style>
+        /* 外面盒子样式---自己定义 */
+        .page_div{margin:20px 10px 20px 0;color:#666}
+        /* 页数按钮样式 */
+        .page_div button{display:inline-block;min-width:30px;height:28px;cursor:pointer;color:#666;font-size:13px;line-height:28px;background-color:#f9f9f9;border:1px solid #dce0e0;text-align:center;margin:0 4px;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+        #firstPage,#lastPage,#nextPage,#prePage{width:50px;color:#0073A9;border:1px solid #0073A9}
+        #nextPage,#prePage{width:70px}
+        .page_div .current{background-color:#0073A9;border-color:#0073A9;color:#FFF}
+        /* 页面数量 */
+        .totalPages{margin:0 10px}
+        .totalPages span,.totalSize span{color:#0073A9;margin:0 5px}
+        /*button禁用*/
+        .page_div button:disabled{opacity:.5;cursor:no-drop}
+
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="一起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+                        <b class="lump hd-nav-ico"></b>
+                        <b class="hd-menu-ico"></b>
+                        <!--<b class="tit">分类</b>-->
+                        <em class="icon"></em>
+                        </a>
+
+                    </div>
+
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+                            <div class="">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: orange;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+                                <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+                                <a id="userinform" href="javascript:getUserInform()">个人中心</a>
+                                <i class="line"></i>
+                                <a id="register-btn" href="/register.html" >注册</a>
+                                <a id="exit" href="javascript:exitlogin()" >退出</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 200px">
+
+
+        <div style="margin-top: 50px;" class="ls-nav" id="ls-nav">
+            <div class="ls-nav-bar fix">
+                <label class="bar-name">地区</label>
+                <ul class="clearfix" id="area">
+                    <li class="bar-item " id="allarea"><a href="javascript:changeUrl('全部地区')">全部</a></li>
+                    <li class="bar-item" id="dl"><a href="javascript:changeUrl('内地')">内地</a></li>
+                    <li class="bar-item" id="xg"><a href="javascript:changeUrl('中国香港')">中国香港</a></li>
+                    <li class="bar-item" id="tw"><a  href="javascript:changeUrl('中国台湾')">中国台湾</a></li>
+                </ul>
+            </div>
+            <div class="ls-nav-bar fix">
+                <label class="bar-name">类型</label>
+                <ul class="clearfix">
+                    <li class="bar-item" id="alltype"><a href="javascript:changeUrl('全部类型')">全部</a></li>
+                    <li class="bar-item" id="gx"><a href="javascript:changeUrl('搞笑')">搞笑</a></li>
+                    <li class="bar-item" id="qg"><a href="javascript:changeUrl('情感')">情感</a></li>
+                    <li class="bar-item" id="zrx"><a href="javascript:changeUrl('真人秀')">真人秀</a></li>
+                    <li class="bar-item" id="qz"><a href="javascript:changeUrl('亲子')">亲子</a></li>
+                    <li class="bar-item" id="yl"><a href="javascript:changeUrl('娱乐')">娱乐</a></li>
+                    <li class="bar-item" id="xq"><a href="javascript:changeUrl('相亲')">相亲</a></li>
+                    <li class="bar-item" id="ms"><a href="javascript:changeUrl('美食')">美食</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!--显示-->
+        <div class="mod-videos">
+            <div class="mod-wrap-in mod-vd-lay fix" id="areaOrtype">
+            </div>
+            <!--<div class="mod-wrap-in mod-vd-lay fix" id="areaOrtype">-->
+                <!--<div class="mod-vd-i first  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-305267/" title="一刻talks" target="_blank" data-id="305267">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=f6f1eee24aaf5e7357f74a6e3425d3de&amp;w=200&amp;h=112" alt="一刻talks" class=""><span class="shadow"><i class="tip">2019-04-18期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.2</b><a href="/vplay/g-305267/" data-id="" title="一刻talks" target="_blank">一刻talks</a>-->
+                    <!--</h3><p class="desc">导演赵琦：如何打造爆款产品，99</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-301972/" title="电影恋爱学" target="_blank" data-id="301972">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=370953fba269e5d2293cee635c592c17&amp;w=200&amp;h=112" alt="电影恋爱学" class=""><span class="shadow"><i class="tip">全2018-01-24期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.2</b><a href="/vplay/g-301972/" data-id="" title="电影恋爱学" target="_blank">电影恋爱学</a>-->
+                    <!--</h3><p class="desc">让妹纸瞬间想嫁给你的求婚方式</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="" title="" target="_blank" >-->
+                            <!--<img src="" alt="" class="">-->
+                            <!--<span class="shadow"><i class="tip">更新至：</i></span>-->
+                            <!--<span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<a href="/vplay/g-202024/" data-id="" title="OMG玩美咖" target="_blank">OMG玩美咖</a>-->
+                    <!--</h3></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-317875/" title="大医本草堂2018" target="_blank" data-id="317875">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=1d4fc1520ea9f7495f8dcfa519c9cd02&amp;w=200&amp;h=112" alt="大医本草堂2018" class=""><span class="shadow"><i class="tip">全2018-12-18期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-317875/" data-id="" title="大医本草堂2018" target="_blank">大医本草堂2018</a>-->
+                    <!--</h3><p class="desc">高血压肾病 糖尿病肾病</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-302948/" title="超越" target="_blank" data-id="302948">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=608059e7c541d138fda581168ea8b183&amp;w=200&amp;h=112" alt="超越" class=""><span class="shadow"><i class="tip">更新至363集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.8</b><a href="/vplay/g-302948/" data-id="" title="超越" target="_blank">超越</a>-->
+                    <!--</h3><p class="desc">李良德：让你的善举无后顾之忧</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-118510/" title="领航" target="_blank" data-id="118510">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=e37d9362399c780fcd6b87946c280ffd&amp;w=200&amp;h=112" alt="领航" class=""><span class="shadow"><i class="tip">更新至228集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.1</b><a href="/vplay/g-118510/" data-id="" title="领航" target="_blank">领航</a>-->
+                    <!--</h3><p class="desc">谢敏慧：SDTL芬陀利破解生命细</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-308949/" title="问题大了" target="_blank" data-id="308949">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=3fe53ed01803cc0ea378f91d490e51d1&amp;w=200&amp;h=112" alt="问题大了" class=""><span class="shadow"><i class="tip">全2017-09-03期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.8</b><a href="/vplay/g-308949/" data-id="" title="问题大了" target="_blank">问题大了</a>-->
+                    <!--</h3><p class="desc">你怎么看待明星炒作？</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-307855/" title="海峡新干线2017" target="_blank" data-id="307855">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=85538637cf95d5727e1e59066e7a32ca&amp;w=200&amp;h=112" alt="海峡新干线2017" class=""><span class="shadow"><i class="tip">全2018-01-04期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.8</b><a href="/vplay/g-307855/" data-id="" title="海峡新干线2017" target="_blank">海峡新干线2017</a>-->
+                    <!--</h3><p class="desc">如何看待马来西亚疯传“不要让孩</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-208786/" title="海峡新干线" target="_blank" data-id="208786">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=b98c3d74654fbdaa4212ba440a35868c&amp;w=200&amp;h=112" alt="海峡新干线" class=""><span class="shadow"><i class="tip">全2016-12-31期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.2</b><a href="/vplay/g-208786/" data-id="" title="海峡新干线" target="_blank">海峡新干线</a>-->
+                    <!--</h3><p class="desc">怎么看蔡英文对于涉外关系的表达</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-307373/" title="态度" target="_blank" data-id="307373">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=5a37a6e189201d8aa8b6b22b5d827e6d&amp;w=200&amp;h=112" alt="态度" class=""><span class="shadow"><i class="tip">2019-05-01期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.9</b><a href="/vplay/g-307373/" data-id="" title="态度" target="_blank">态度</a>-->
+                    <!--</h3><p class="desc">《态度》——匠心筑梦 让运动更</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-317979/" title="非常完美2018" target="_blank" data-id="317979">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=3ebf5723713d8f74f6a2cbb8bb7d7a51&amp;w=200&amp;h=112" alt="非常完美2018" class=""><span class="shadow"><i class="tip">全2018-12-28期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.6</b><a href="/vplay/g-317979/" data-id="" title="非常完美2018" target="_blank">非常完美2018</a>-->
+                    <!--</h3><p class="desc">“复古女孩”大胆示爱心动男生</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-102698/" title="天籁之声" target="_blank" data-id="102698">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=e9dd3e9702439cbddef57591c74b22fa&amp;w=200&amp;h=112" alt="天籁之声" class=""><span class="shadow"><i class="tip">全2012-09-01期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.4</b><a href="/vplay/g-102698/" data-id="" title="天籁之声" target="_blank">天籁之声</a>-->
+                    <!--</h3><p class="desc">全国总决赛3进2对决</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-317985/" title="海峡新干线2018" target="_blank" data-id="317985">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=592f4cf758ac6db7b48b32e5b451e610&amp;w=200&amp;h=112" alt="海峡新干线2018" class=""><span class="shadow"><i class="tip">全2018-12-31期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.5</b><a href="/vplay/g-317985/" data-id="" title="海峡新干线2018" target="_blank">海峡新干线2018</a>-->
+                    <!--</h3><p class="desc">刘结一接受央视专访 谈两岸关系</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-302019/" title="军武次位面 第二季" target="_blank" data-id="302019">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=db0142c11d29c0031b6fa039a7ace6f9&amp;w=200&amp;h=112" alt="军武次位面 第二季" class=""><span class="shadow"><i class="tip">全32集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.5</b><a href="/vplay/g-302019/" data-id="" title="军武次位面 第二季" target="_blank">军武次位面 第二季</a>-->
+                    <!--</h3><p class="desc">提炼于刀光剑影炮火硝烟</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-318955/" title="军武次位面 第五季" target="_blank" data-id="318955">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=b55c3f7200a51e314f417a590781cda7&amp;w=200&amp;h=112" alt="军武次位面 第五季" class=""><span class="shadow"><i class="tip">全2018-12-28期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.6</b><a href="/vplay/g-318955/" data-id="" title="军武次位面 第五季" target="_blank">军武次位面 第五季</a>-->
+                    <!--</h3><p class="desc">美潜艇官兵竟和鱼雷睡一起</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-317981/" title="医生开讲2018" target="_blank" data-id="317981">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=8864a413e53303d62fdad60d3895522a&amp;w=200&amp;h=112" alt="医生开讲2018" class=""><span class="shadow"><i class="tip">全2018-12-31期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-317981/" data-id="" title="医生开讲2018" target="_blank">医生开讲2018</a>-->
+                    <!--</h3><p class="desc">痛风性关节炎危害大</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-329083/" title="有情世界" target="_blank" data-id="329083">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=5de07d4edca95cbaef262917dc82f1f8&amp;w=200&amp;h=112" alt="有情世界" class=""><span class="shadow"><i class="tip">更新至42集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.9</b><a href="/vplay/g-329083/" data-id="" title="有情世界" target="_blank">有情世界</a>-->
+                    <!--</h3><p class="desc">让我们拥有健康快乐的高品质生活</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-302762/" title="城会玩" target="_blank" data-id="302762">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=98ed46018cce78ee85b361a711e22c2d&amp;w=200&amp;h=112" alt="城会玩" class=""><span class="shadow"><i class="tip">全2017-01-20期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.6</b><a href="/vplay/g-302762/" data-id="" title="城会玩" target="_blank">城会玩</a>-->
+                    <!--</h3><p class="desc">街头美女鸡年拜年特辑</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-318757/" title="关键时刻" target="_blank" data-id="318757">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=5d569990d4b443e1128120d377fe7ea1&amp;w=200&amp;h=112" alt="关键时刻" class=""><span class="shadow"><i class="tip">全2018-03-27期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.8</b><a href="/vplay/g-318757/" data-id="" title="关键时刻" target="_blank">关键时刻</a>-->
+                    <!--</h3><p class="desc">10年荒山变原生态茶园</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-102127/" title="风行口水街" target="_blank" data-id="102127">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=4340d44c7d9226e43fd43151bd28af99&amp;w=200&amp;h=112" alt="风行口水街" class=""><span class="shadow"><i class="tip">全2013-07-12期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">9</b><a href="/vplay/g-102127/" data-id="" title="风行口水街" target="_blank">风行口水街</a>-->
+                    <!--</h3><p class="desc">蛇蝎美人绿茶婊出炉</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-98097/" title="风行星风范" target="_blank" data-id="98097">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=2fa20686e3683b0aa30e5580914c4e77&amp;w=200&amp;h=112" alt="风行星风范" class=""><span class="shadow"><i class="tip">全2017-05-31期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.8</b><a href="/vplay/g-98097/" data-id="" title="风行星风范" target="_blank">风行星风范</a>-->
+                    <!--</h3><p class="desc">张亮：不会走台步的厨子不是好演</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-315879/" title="听得到的美食" target="_blank" data-id="315879">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=63fcfb6f55b8f908ff92766a4fd1d10d&amp;w=200&amp;h=112" alt="听得到的美食" class=""><span class="shadow"><i class="tip">全2017-12-30期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-315879/" data-id="" title="听得到的美食" target="_blank">听得到的美食</a>-->
+                    <!--</h3><p class="desc">老板赵树海首度当帮厨</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-302266/" title="军武MINI" target="_blank" data-id="302266">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=5bba7947904ade626c628949e06bc9e1&amp;w=200&amp;h=112" alt="军武MINI" class=""><span class="shadow"><i class="tip">全19集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7</b><a href="/vplay/g-302266/" data-id="" title="军武MINI" target="_blank">军武MINI</a>-->
+                    <!--</h3><p class="desc">冰淇淋航母与饥饿岛</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-310085/" title="大医本草堂" target="_blank" data-id="310085">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=e4990c7e7571e384d16adcd17891ef7a&amp;w=200&amp;h=112" alt="大医本草堂" class=""><span class="shadow"><i class="tip">全2017-12-29期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7</b><a href="/vplay/g-310085/" data-id="" title="大医本草堂" target="_blank">大医本草堂</a>-->
+                    <!--</h3><p class="desc">多愁善感的肠道</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-102323/" title="电视剧风行榜" target="_blank" data-id="102323">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=f7254cb0a1b5b010c56b275cae0d6c0a&amp;w=200&amp;h=112" alt="电视剧风行榜" class=""><span class="shadow"><i class="tip">全2013-10-18期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">9.1</b><a href="/vplay/g-102323/" data-id="" title="电视剧风行榜" target="_blank">电视剧风行榜</a>-->
+                    <!--</h3><p class="desc">抗战剧扎堆再战荧屏</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-315225/" title="超强音浪 第四季" target="_blank" data-id="315225">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=91116d79de7b62cbe76389419ce71bf2&amp;w=200&amp;h=112" alt="超强音浪 第四季" class=""><span class="shadow"><i class="tip">全2017-12-31期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.4</b><a href="/vplay/g-315225/" data-id="" title="超强音浪 第四季" target="_blank">超强音浪 第四季</a>-->
+                    <!--</h3><p class="desc">周传雄被曝深爱两个女人</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-327447/" title="叮咚年夜FUN" target="_blank" data-id="327447">-->
+                            <!--<img src="http://img3.funshion.com/sdw?oid=4e6318218566f96ea3f35ac8a4c64877&amp;w=200&amp;h=112" alt="叮咚年夜FUN" class=""><span class="shadow"><i class="tip">全2019-02-03期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">9.3</b><a href="/vplay/g-327447/" data-id="" title="叮咚年夜FUN" target="_blank">叮咚年夜FUN</a>-->
+                    <!--</h3><p class="desc">李诞戚砚笛流落街头发传单</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-322541/" title="态度公开课" target="_blank" data-id="322541">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=79992856382f257362a8a3cad5ef17bf&amp;w=200&amp;h=112" alt="态度公开课" class=""><span class="shadow"><i class="tip">全2016-03-07期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-322541/" data-id="" title="态度公开课" target="_blank">态度公开课</a>-->
+                    <!--</h3><p class="desc">陈荣华：一个超级符号的态度</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-102463/" title="评影不离" target="_blank" data-id="102463">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=16e17e48b80e343495e3df2af19b478a&amp;w=200&amp;h=112" alt="评影不离" class=""><span class="shadow"><i class="tip">全2017-05-02期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">9</b><a href="/vplay/g-102463/" data-id="" title="评影不离" target="_blank">评影不离</a>-->
+                    <!--</h3><p class="desc">《黑寡妇合集》系列</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-309559/" title="小强来了" target="_blank" data-id="309559">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=027f822fdfa20dcd00cba464f595548d&amp;w=200&amp;h=112" alt="小强来了" class=""><span class="shadow"><i class="tip">2018-12-28期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.2</b><a href="/vplay/g-309559/" data-id="" title="小强来了" target="_blank">小强来了</a>-->
+                    <!--</h3><p class="desc">舒适圈</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-102085/" title="风行拉大剧" target="_blank" data-id="102085">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=3383d1c953a636e9de760270a2650664&amp;w=200&amp;h=112" alt="风行拉大剧" class=""><span class="shadow"><i class="tip">全2013-09-16期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.9</b><a href="/vplay/g-102085/" data-id="" title="风行拉大剧" target="_blank">风行拉大剧</a>-->
+                    <!--</h3><p class="desc">女闺蜜反转变情敌</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-327359/" title="大牌DUANG!" target="_blank" data-id="327359">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=aa4edcdda8fad7665587cca4482540cc&amp;w=200&amp;h=112" alt="大牌DUANG!" class="">            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.3</b><a href="/vplay/g-327359/" data-id="" title="大牌DUANG!" target="_blank">大牌DUANG!</a>-->
+                    <!--</h3><p class="desc">蔡徐坤惊喜连线女粉丝</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-319589/" title="拜托了妈妈2018" target="_blank" data-id="319589">-->
+                            <!--<img src="http://img.funshion.com/sdw?oid=fad65066389c47c159a9106e277251d4&amp;w=200&amp;h=112" alt="拜托了妈妈2018" class=""><span class="shadow"><i class="tip">全2018-12-27期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.5</b><a href="/vplay/g-319589/" data-id="" title="拜托了妈妈2018" target="_blank">拜托了妈妈2018</a>-->
+                    <!--</h3><p class="desc">潘斌龙新晋奶爸大挑战</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-313277/" title="军武次位面 第四季" target="_blank" data-id="313277">-->
+                            <!--<img src="http://img2.funshion.com/sdw?oid=116d39a63f4e6c6186306e2272de0707&amp;w=200&amp;h=112" alt="军武次位面 第四季" class=""><span class="shadow"><i class="tip">全2018-01-05期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.4</b><a href="/vplay/g-313277/" data-id="" title="军武次位面 第四季" target="_blank">军武次位面 第四季</a>-->
+                    <!--</h3><p class="desc">2017世界军力排名</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-313185/" title="牛商论道" target="_blank" data-id="313185">-->
+                            <!--<img src="http://img1.funshion.com/sdw?oid=e50236da8568cb7a091aa6c19a5eb623&amp;w=200&amp;h=112" alt="牛商论道" class=""><span class="shadow"><i class="tip">全21集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.8</b><a href="/vplay/g-313185/" data-id="" title="牛商论道" target="_blank">牛商论道</a>-->
+                    <!--</h3><p class="desc">互联网时代企业如何国际化</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-301971/" title="军武次位面 第一季" target="_blank" data-id="301971">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=8218d480e0e752116173883639ac1d10&amp;w=200&amp;h=112" alt="军武次位面 第一季" class="lazy-alpha-start">            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.1</b><a href="/vplay/g-301971/" data-id="" title="军武次位面 第一季" target="_blank">军武次位面 第一季</a>-->
+                    <!--</h3><p class="desc">贴近生活调侃和娱乐性</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-322689/" title="马路杀手2.0" target="_blank" data-id="322689">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img2.funshion.com/sdw?oid=26fcfa0a5e8c1ef1fb98ec36a4f544e2&amp;w=200&amp;h=112" alt="马路杀手2.0" class="lazy-alpha-start"><span class="shadow"><i class="tip">更新至12集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.9</b><a href="/vplay/g-322689/" data-id="" title="马路杀手2.0" target="_blank">马路杀手2.0</a>-->
+                    <!--</h3><p class="desc">聪明叫兽反被聪明误，淡定300笑</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-319361/" title="此时此刻" target="_blank" data-id="319361">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img2.funshion.com/sdw?oid=dba7f90fde056c9bf298bd9d4f4eb898&amp;w=200&amp;h=112" alt="此时此刻" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-03-11期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-319361/" data-id="" title="此时此刻" target="_blank">此时此刻</a>-->
+                    <!--</h3><p class="desc">艺考路上</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-320391/" title="挑战300秒" target="_blank" data-id="320391">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=2dbf3144bd431cb3a0a31c428a4e76b1&amp;w=200&amp;h=112" alt="挑战300秒" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-09-08期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8</b><a href="/vplay/g-320391/" data-id="" title="挑战300秒" target="_blank">挑战300秒</a>-->
+                    <!--</h3><p class="desc">梦想大不同 一起来挑战</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-311701/" title="军武MINI 第二季" target="_blank" data-id="311701">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img.funshion.com/sdw?oid=45d20eeb275d95ed78c07cce019ef15f&amp;w=200&amp;h=112" alt="军武MINI 第二季" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-04-09期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-311701/" data-id="" title="军武MINI 第二季" target="_blank">军武MINI 第二季</a>-->
+                    <!--</h3><p class="desc">应试教育令人深恶痛绝却是强国根</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-320387/" title="种草吧麻麻" target="_blank" data-id="320387">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img.funshion.com/sdw?oid=4049e101948abf1475180b04336de851&amp;w=200&amp;h=112" alt="种草吧麻麻" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-04-30期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.2</b><a href="/vplay/g-320387/" data-id="" title="种草吧麻麻" target="_blank">种草吧麻麻</a>-->
+                    <!--</h3><p class="desc">麻麻的浪漫旅行 上集</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-327225/" title="海峡新干线2019" target="_blank" data-id="327225">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=155430a14cb68b47dca97c1450659a2d&amp;w=200&amp;h=112" alt="海峡新干线2019" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-05-08期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-327225/" data-id="" title="海峡新干线2019" target="_blank">海峡新干线2019</a>-->
+                    <!--</h3><p class="desc">美国请求引渡阿桑奇一事会有怎样</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-321309/" title="国学小名士 第二季" target="_blank" data-id="321309">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=5f023272a98d1c76099443dc84576a91&amp;w=200&amp;h=112" alt="国学小名士 第二季" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-10-24期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.2</b><a href="/vplay/g-321309/" data-id="" title="国学小名士 第二季" target="_blank">国学小名士 第二季</a>-->
+                    <!--</h3><p class="desc">最终七星强者对抗</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-317983/" title="育儿大师2018" target="_blank" data-id="317983">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img.funshion.com/sdw?oid=c9c5bef430ff0bc04403fdd9f863e344&amp;w=200&amp;h=112" alt="育儿大师2018" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-12-23期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-317983/" data-id="" title="育儿大师2018" target="_blank">育儿大师2018</a>-->
+                    <!--</h3><p class="desc">熊孩子打闹耍混难管教</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-320481/" title="一张照片" target="_blank" data-id="320481">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img2.funshion.com/sdw?oid=3623b1d3820bb442bc38c17e1c9c301b&amp;w=200&amp;h=112" alt="一张照片" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-08-01期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.4</b><a href="/vplay/g-320481/" data-id="" title="一张照片" target="_blank">一张照片</a>-->
+                    <!--</h3><p class="desc">走进阿富汗喀布尔 拯救战火纷飞</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-308337/" title="青春最强音" target="_blank" data-id="308337">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=6547251ff1d5ff7cb138c9c666138fa8&amp;w=200&amp;h=112" alt="青春最强音" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2017-03-05期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7</b><a href="/vplay/g-308337/" data-id="" title="青春最强音" target="_blank">青春最强音</a>-->
+                    <!--</h3><p class="desc">三强势均力敌现场巅峰对决</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-316181/" title="2017山东卫视重阳节晚会" target="_blank" data-id="316181">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=2f8d667713d3d25fc3564d4054eb63a9&amp;w=200&amp;h=112" alt="2017山东卫视重阳节晚会" class="lazy-alpha-start">            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.4</b><a href="/vplay/g-316181/" data-id="" title="2017山东卫视重阳节晚会" target="_blank">2017山东卫视重阳节晚</a>-->
+                    <!--</h3><p class="desc">戴玉强何云伟暖心演出悟孝道</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-302020/" title="军武次位面 第三季" target="_blank" data-id="302020">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img2.funshion.com/sdw?oid=969ef1b02e9fb5bf806097dfa1432046&amp;w=200&amp;h=112" alt="军武次位面 第三季" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2017-01-19期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.1</b><a href="/vplay/g-302020/" data-id="" title="军武次位面 第三季" target="_blank">军武次位面 第三季</a>-->
+                    <!--</h3><p class="desc">地球最强坦克 英国篇</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-88439/" title="风行京华茶馆明星访谈之陈小春" target="_blank" data-id="88439">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=bcec8e763005844cf953af135528c93a&amp;w=200&amp;h=112" alt="风行京华茶馆明星访谈之陈小春" class="lazy-alpha-start"><span class="shadow"><i class="tip">全1集</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.3</b><a href="/vplay/g-88439/" data-id="" title="风行京华茶馆明星访谈之陈小春" target="_blank">风行京华茶馆明星访谈之</a>-->
+                    <!--</h3><p class="desc">京华茶馆访谈之陈小春</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-200220/" title="加油美女" target="_blank" data-id="200220">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=8720be99aad62dac3f0e5ad282fa090e&amp;w=200&amp;h=112" alt="加油美女" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2016-08-12期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.8</b><a href="/vplay/g-200220/" data-id="" title="加油美女" target="_blank">加油美女</a>-->
+                    <!--</h3><p class="desc">性感美女体验沙子浴</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-328857/" title="拜托了妈妈2019" target="_blank" data-id="328857">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=28c56231e66b9423ee148c285cd6a4c9&amp;w=200&amp;h=112" alt="拜托了妈妈2019" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-04-25期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.2</b><a href="/vplay/g-328857/" data-id="" title="拜托了妈妈2019" target="_blank">拜托了妈妈2019</a>-->
+                    <!--</h3><p class="desc">春季常见病 荨麻疹</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-319983/" title="军武大本营 第三季" target="_blank" data-id="319983">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img.funshion.com/sdw?oid=5aa92a6dcb82627eb7ee42906c81b000&amp;w=200&amp;h=112" alt="军武大本营 第三季" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-04-21期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.4</b><a href="/vplay/g-319983/" data-id="" title="军武大本营 第三季" target="_blank">军武大本营 第三季</a>-->
+                    <!--</h3><p class="desc">北大博士生中东被当成恐怖分子</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-328607/" title="现在的我们" target="_blank" data-id="328607">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img2.funshion.com/sdw?oid=51923690702f3a1015f30bd0a8928e1d&amp;w=200&amp;h=112" alt="现在的我们" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-05-05期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.4</b><a href="/vplay/g-328607/" data-id="" title="现在的我们" target="_blank">现在的我们</a>-->
+                    <!--</h3><p class="desc">试验舱成员体验外星球生活</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-325945/" title="花漾剧客厅" target="_blank" data-id="325945">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=197b2d2d86a11568c643bc314d911c2b&amp;w=200&amp;h=112" alt="花漾剧客厅" class="lazy-alpha-start"><span class="shadow"><i class="tip">2019-05-04期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.4</b><a href="/vplay/g-325945/" data-id="" title="花漾剧客厅" target="_blank">花漾剧客厅</a>-->
+                    <!--</h3><p class="desc">都挺好剧组分享拍戏趣事</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-319129/" title="超能理工派" target="_blank" data-id="319129">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=2363c3ed12b4b33cab95f43ae980c07c&amp;w=200&amp;h=112" alt="超能理工派" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-04-27期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.5</b><a href="/vplay/g-319129/" data-id="" title="超能理工派" target="_blank">超能理工派</a>-->
+                    <!--</h3><p class="desc">终场收官T台狂欢 复仇者绝地求</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-319213/" title="马上遇见你" target="_blank" data-id="319213">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img.funshion.com/sdw?oid=2f658e917c3baa11611586014967bd1c&amp;w=200&amp;h=112" alt="马上遇见你" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-05-25期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">7.1</b><a href="/vplay/g-319213/" data-id="" title="马上遇见你" target="_blank">马上遇见你</a>-->
+                    <!--</h3><p class="desc">小鲜肉沙滩惊艳表白，女神落泪感</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-324311/" title="向海而生：2018中国帆船公开赛纪实" target="_blank" data-id="324311">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=b3bfadfeb001cc37a4fac1b178780fcc&amp;w=200&amp;h=112" alt="向海而生：2018中国帆船公开赛纪实" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-11-02期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">9.2</b><a href="/vplay/g-324311/" data-id="" title="向海而生：2018中国帆船公开赛纪实" target="_blank">向海而生：2018中国帆</a>-->
+                    <!--</h3><p class="desc">梦想与坚持</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-323219/" title="美丽中国" target="_blank" data-id="323219">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=596f0b47b20fc9e1b333998b399309fe&amp;w=200&amp;h=112" alt="美丽中国" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-12-01期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.1</b><a href="/vplay/g-323219/" data-id="" title="美丽中国" target="_blank">美丽中国</a>-->
+                    <!--</h3><p class="desc">环保达人巧用塑料做T恤</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-316545/" title="创客英雄会 第二季" target="_blank" data-id="316545">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img3.funshion.com/sdw?oid=b86bc97110d4b632e17cb8e8f5f4f0db&amp;w=200&amp;h=112" alt="创客英雄会 第二季" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2017-11-14期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">6.9</b><a href="/vplay/g-316545/" data-id="" title="创客英雄会 第二季" target="_blank">创客英雄会 第二季</a>-->
+                    <!--</h3><p class="desc">让未来科技与儿童科普相结合</p></div></div>-->
+
+                <!--<div class="mod-vd-i  ">-->
+                    <!--<div class="pic">-->
+                        <!--<a data-gtype="variety" href="/vplay/g-323771/" title="中国帆船公开赛" target="_blank" data-id="323771">-->
+                            <!--<img src="//img.funshion.com/img/blank.gif" _lazysrc="http://img1.funshion.com/sdw?oid=6e0bbbcec1befc6eb6ba91e9f88777b3&amp;w=200&amp;h=112" alt="中国帆船公开赛" class="lazy-alpha-start"><span class="shadow"><i class="tip">全2018-10-16期</i></span>            <span class="mask">-->
+					<!--<i class="play-btn"></i>-->
+				<!--</span>-->
+                        <!--</a>-->
+                    <!--</div><div class="info">-->
+                    <!--<h3 class="tit">-->
+                        <!--<b class="score">8.5</b><a href="/vplay/g-323771/" data-id="" title="中国帆船公开赛" target="_blank">中国帆船公开赛</a>-->
+                    <!--</h3><p class="desc">航海小白第一次控帆被船长疯狂点</p></div></div>-->
+
+            <!--</div>-->
+        </div>
+
+        <!--显示底部-->
+
+
+        <!--分页-->
+        <div id="page" class="page_div" style="position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
+
+
+    </div>
+    <!-- 底部样式    -->
+    <div class="footer fix" id="footer">
+        <div class="mod-wrap">
+            <div class="foot-wrap">
+                <div class="foot-link fix" >
+                    <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<
+<!-- ================================================== -->
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/pageMe.js"></script>
+<script type="text/javascript"></script>
+
+<script type="text/javascript">
+    function changeUrl(id){
+        if(id=="内地"||id=="中国香港"||id=="中国台湾"||id=="全部地区")
+        {
+            var type=decodeURIComponent(getQueryVariable("type"));
+            window.location.href='/VarietyType.html?area='+id+'&type='+type;
+        }
+        if(id=="搞笑"||id=="情感"||id=="真人秀"||id=="亲子"||id=="娱乐"||id=="相亲"||id=="美食"||id=="全部类型")
+        {
+            var allarea=decodeURIComponent(getQueryVariable("area"));
+            window.location.href='/VarietyType.html?area='+allarea+'&type='+id;
+        }
+
+
+    }
+
+
+
+
+
+
+
+    var pageNum=0;// 当前页面
+    var totalNum=0;// 总页码
+    var totalList=0// 记录总数量
+
+
+    function changeStyle()
+    {
+        var area=decodeURIComponent(getQueryVariable("area"));
+        var type=decodeURIComponent(getQueryVariable("type"));
+        if(area=="内地"&&type=="搞笑")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("gx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="内地"&&type=="情感")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("qg").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="内地"&&type=="真人秀")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("zrx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="内地"&&type=="亲子")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("qz").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="内地"&&type=="娱乐")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("yl").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="内地"&&type=="相亲")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("xq").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+
+        else if(area=="内地"&&type=="美食")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("ms").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="搞笑")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("gx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="情感")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("qg").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="真人秀")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("zrx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="亲子")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("qz").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="娱乐")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("yl").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="相亲")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("xq").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="美食")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("ms").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="搞笑")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("gx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="情感")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("qg").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="真人秀")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("zrx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="亲子")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("qz").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="娱乐")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("yl").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="相亲")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("xq").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="美食")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("ms").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="搞笑")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("gx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="情感")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("qg").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="真人秀")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("zrx").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="亲子")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("qz").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+    }
+        else if(area=="全部地区"&&type=="娱乐")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("yl").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="相亲")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("xq").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="美食")
+        {
+            document.getElementById("allarea").className='bar-item bar-current';
+            document.getElementById("ms").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="内地"&&type=="全部类型")
+        {
+            document.getElementById("dl").className='bar-item bar-current';
+            document.getElementById("alltype").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国香港"&&type=="全部类型")
+        {
+            document.getElementById("xg").className='bar-item bar-current';
+            document.getElementById("alltype").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="中国台湾"&&type=="全部类型")
+        {
+            document.getElementById("tw").className='bar-item bar-current';
+            document.getElementById("alltype").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+        else if(area=="全部地区"&&type=="全部类型")
+        {
+            document.getElementById("alltype").className='bar-item bar-current';
+            document.getElementById("allarea").className='bar-item bar-current';
+            findVarietyByTypeOrArea(area,type,1);
+        }
+
+
+        else{
+            document.getElementById("alltype").className='bar-item bar-current';
+            document.getElementById("allarea").className='bar-item bar-current';
+            findVarietyByTypeOrArea("全部地区","全部类型",1);
+        }
+
+
+
+    }
+
+
+function findVarietyByTypeOrArea(area,type,pageNum)
+{
+    $.ajax({
+        //几个参数需要注意一下
+        type: "post",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        async : false,
+        url: "/YqLook/varietyByTypeOrArea" ,//url
+        data: {
+            area:area,
+            type:type,
+            pageNum:pageNum,
+            pageSize:30
+        },
+        success: function (result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            if(result.code==1){
+                 showVarietyByTypeOrArea(result.data.list);
+                if (result.data.list.length==0) {
+                    $("#page").css("display", "none");
+                }
+                $("#page").paging({
+                    pageNum: pageNum, // 当前页面
+                    totalNum:result.data.page , // 总页码
+                    totalList: result.data.total, // 记录总数量
+                    flag: 5
+                });
+
+
+
+            }
+            else{
+                swal("哎呀出错了", "", "error");
+
+            }
+        },
+        error : function(e) {
+            // alert("异常！");
+            // window.location.href = '/404.html';
+            // window.location.href = '/404.html';
+            swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+
+
+        }
+
+    });
+
+}
+
+
+
+
+
+
+
+
+    $(document).ready(function () {
+
+        var token=getCookie("token");
+        changeStyle();
+
+        if (token!=null){
+            $("#login-btn").css("display","none");
+            $("#register-btn").css("display","none");
+
+        }
+        if(token==null||token=="")
+        {
+            $("#userinform").css("display","none");
+            $("#exit").css("display","none");
+        }
+
+        // var i=checkVarietyId();
+        // console.log(i);
+
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
+
+

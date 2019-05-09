@@ -110,6 +110,68 @@ public class VarietyMongoDB implements IVarietyMongoDB {
         List<Variety> vatiety =  mongoTemplate.find(query,Variety.class);
         return vatiety;
     }
+
+    @Override
+    public PageResult findVarietyByTypeOrArea(String area, String type,int pageNum,int pageSize) {
+        if(type.trim().equals("全部类型")&&!area.trim().equals("全部地区"))
+        {
+            final Query query = new Query(Criteria.where("area").is(area));
+            query.with(new Sort(Sort.Direction.DESC, "update"));
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    1,variety->{
+                        VarietyParams varietyParams1=new VarietyParams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        return varietyParams1;}
+                    , null);
+        }
+        else if (!type.trim().equals("全部类型")&&area.trim().equals("全部地区"))
+        {
+            final Query query = new Query(Criteria.where("type").is(type));
+            query.with(new Sort(Sort.Direction.DESC, "update"));
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    1,variety->{
+                        VarietyParams varietyParams1=new VarietyParams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        return varietyParams1;}
+                    , null);
+
+        }
+        else if(type.trim().equals("全部类型")&&area.trim().equals("全部地区"))
+        {
+            final Query query = new Query();
+            query.with(new Sort(Sort.Direction.DESC, "update"));
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    1,variety->{
+                        VarietyParams varietyParams1=new VarietyParams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        return varietyParams1;}
+                    , null);
+        }
+        else{
+            final Query query = new Query(Criteria.where("type").is(type).and("area").is(area));
+            query.with(new Sort(Sort.Direction.DESC, "update"));
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    1,variety->{
+                        VarietyParams varietyParams1=new VarietyParams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        return varietyParams1;}
+                    , null);
+        }
+
+
+    }
 }
 
 

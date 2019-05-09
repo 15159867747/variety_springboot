@@ -344,5 +344,29 @@ function showConfigpy(data) {
 }
 
 
+//显示根据地区、类型查询的结果
+
+function showVarietyByTypeOrArea(data) {
+    var el="";
+    for (var i = 0; i < data.length; i++) {
+    el=el+"<div class=\"mod-vd-i  \">\n" +
+        "                    <div class=\"pic\">\n" +
+        "                        <a data-gtype=\"variety\" href='/VarietyDetails.html?name="+data[i].name+"&varietyId="+data[i].id+"' title="+data[i].name+" target=\"_blank\" >\n" +
+        "                            <img src="+data[i].picurl+" alt="+data[i].name+" class=\"\">\n" +
+        "                            <span class=\"shadow\"><i class=\"tip\">"+data[i].update+"</i></span>\n" +
+        "                            <span class=\"mask\">\n" +
+        "\t\t\t\t\t<i class=\"play-btn\"></i>\n" +
+        "\t\t\t\t</span>\n" +
+        "                        </a>\n" +
+        "                    </div><div class=\"info\">\n" +
+        "                    <h3 class=\"tit\">\n" +
+        "                        <a href='/VarietyDetails.html?name="+data[i].name+"&varietyId="+data[i].id+"'  title="+ data[i].name+" target=\"_blank\">"+data[i].name+"</a>\n" +
+        "                    </h3></div></div>";
+    }
+    var div = document.getElementById("areaOrtype");
+    div.innerHTML=el;
+}
+
+
 
 

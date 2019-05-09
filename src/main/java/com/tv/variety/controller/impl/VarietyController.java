@@ -80,4 +80,12 @@ public class VarietyController implements IVarietyController {
         allVarietyParamsList=varietyFacade.getAllVariety();
         return new JsonResult(allVarietyParamsList,"成功",1);
     }
+
+    @Override
+    @RequestMapping(value ="/varietyByTypeOrArea", method = RequestMethod.POST)
+    public JsonResult findVarietyByTypeOrArea(String area, String type,int pageNum,int pageSize) {
+        PageResult<VarietyParams> paramsPageResult=new PageResult<VarietyParams>();
+        paramsPageResult=varietyFacade.findVarietyByTypeOrArea(area,type,pageNum,pageSize);
+        return new JsonResult(paramsPageResult,"成功",1);
+    }
 }

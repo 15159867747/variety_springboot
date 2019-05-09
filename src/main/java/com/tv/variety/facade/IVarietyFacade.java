@@ -30,5 +30,8 @@ public interface IVarietyFacade {
     //查询所有节目
     List<AllVarietyParams> getAllVariety();
 
+    //根据类型和地区进行组合查询
+
+    PageResult<VarietyParams> findVarietyByTypeOrArea(String area,String type,int pageNum,int pageSize);
 
 }

@@ -113,6 +113,10 @@
                         {
                             searchVarietyAll(me.options.pageNum)
                         }
+                        if(flag==5)
+                        {
+                            findVarietyByTypeOrArea(decodeURIComponent(getQueryVariable("area")),decodeURIComponent(getQueryVariable("type")),me.options.pageNum)
+                        }
                     }
                 } else if (id === 'nextPage') {
                     if (pageNum !== me.options.totalNum) {
@@ -135,6 +139,10 @@
                         {
                             searchVarietyAll(me.options.pageNum)
                         }
+                        if(flag==5)
+                        {
+                            findVarietyByTypeOrArea(decodeURIComponent(getQueryVariable("area")),decodeURIComponent(getQueryVariable("type")),me.options.pageNum)
+                        }
                     }
                 } else if (id === 'firstPage') {
                     if (pageNum !== 1) {
@@ -155,6 +163,10 @@
                         if(flag==4)
                         {
                             searchVarietyAll(me.options.pageNum)
+                        }
+                        if(flag==5)
+                        {
+                            findVarietyByTypeOrArea(decodeURIComponent(getQueryVariable("area")),decodeURIComponent(getQueryVariable("type")),me.options.pageNum)
                         }
 
                     }
@@ -178,6 +190,10 @@
                         {
                             searchVarietyAll(me.options.pageNum)
                         }
+                        if(flag==5)
+                        {
+                            findVarietyByTypeOrArea(decodeURIComponent(getQueryVariable("area")),decodeURIComponent(getQueryVariable("type")),me.options.pageNum)
+                        }
                     }
                 } else {
                     me.options.pageNum = num;
@@ -198,6 +214,10 @@
                     {
                         searchVarietyAll(me.options.pageNum)
                     }
+                    if(flag==5)
+                    {
+                        findVarietyByTypeOrArea(decodeURIComponent(getQueryVariable("area")),decodeURIComponent(getQueryVariable("type")),me.options.pageNum)
+                    }
                 }
                 me.createHtml();
                 if (me.options.callback) {
@@ -216,6 +236,10 @@
                     if(flag==4)
                     {
                         searchVarietyAll(me.options.pageNum)
+                    }
+                    if(flag==5)
+                    {
+                        findVarietyByTypeOrArea(decodeURIComponent(getQueryVariable("area")),decodeURIComponent(getQueryVariable("type")),me.options.pageNum)
                     }
                 }
             });

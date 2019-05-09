@@ -32,6 +32,10 @@ public interface IVarietyMongoDB {
 
     List<Variety> allVarietyList();
 
+    //根据类型和地区查询节目
+    PageResult findVarietyByTypeOrArea(String area,String type,int pageNum,int pageSize);
+
+
 
 
 
