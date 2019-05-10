@@ -155,9 +155,9 @@
 
                     <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
                         <form onsubmit="" name="msearch" id="msearch" action="" method="get">
-                            <div class="">
-                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word" soword="" value="" autocomplete="off" maxlength="30" lang="zh-cn"/>
-                                <input style="width: 65px;height: 32px;margin-left:-3px;border: none;background-color: red;cursor: pointer;" type="submit" id="submit-btn" class="submit-btn" value="搜索" block="soframe_2_"/>
+                            <div style="margin-top: -8px">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;" block="soframe_1_0" type="text" class="" name="word"  id="vue" autocomplete="off" maxlength="30" lang="zh-cn"/>
+                                <a style="font-size: 21px;line-height: 40px; background-color: orange; " target="_blank " class="seedplay play-btn-b" id="sousuo" >搜索</a>
                             </div>
 
                         </form>
@@ -173,7 +173,7 @@
                         <div class="login-btn-wrap" id="loginLayout">
                             <i class="login-bg"></i>
                             <div class="btns">
-                                <a id="login-btn" href="http://localhost:8760/login.html">登录</a>
+                                <a id="login-btn" href="/login.html">登录</a>
                                 <a id="userinform" href="javascript:getUserInform()">个人中心</a>
                                 <i class="line"></i>
                                 <a id="register-btn" href="/register.html" >注册</a>
@@ -197,22 +197,20 @@
                 <div class="mod-wrap sub-wrap">
                     <div class="nav">
                         <div class="prev">
-                            <a class="item large current" href="/">首页</a>
-                            <a class="item large new" href="">风行号<i></i></a>
-                            <a class="item large" href="">电影</a>
-                            <a class="item large" href="">电视剧</a>
-                            <a class="item large" href="">少儿</a>
-                            <a class="item large" href="">动漫</a>
-                            <a class="item large" href="">综艺</a>
+                            <a class="item large current" href="/index.html">首页</a>
+                            <a class="item large new" href="/VarietyType.html?area=内地&type=全部类型">内地<i></i></a>
+                            <a class="item large" href="/VarietyType.html?area=中国台湾&type=全部类型">中国台湾</a>
+                            <a class="item large" href="/VarietyType.html?area=中国香港&type=全部类型">中国香港</a>
                             <i class="sep"></i>
-                            <a class="item" href="">天下</a>
-                            <a class="item" href="">娱乐</a>
-                            <a class="item" href="">游戏</a>
-                            <a class="item" href="">搞笑</a>
-                            <a class="item" href="">美食</a>
-                            <a class="item" href="">生活</a>
-                            <a class="item" href="">体育</a>
-                            <a class="item" href="">汽车</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=搞笑">搞笑</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=情感">情感</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=真人秀">真人秀</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=亲子">亲子</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=娱乐">娱乐</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=相亲">相亲</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=美食">美食</a>
+
+
                         </div>
                     </div>
                     <!--<a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>-->
@@ -232,11 +230,11 @@
         <div class="left-navigate">
             <div class="nav-con">
                 <div class="level1">
-                    <p class="homepage"><a href="/">首页</a></p>
+                    <p class="homepage"><a href="/index.html">首页</a></p>
                     <p class="account-setting current"><a href="javascript:getUserInform()">个人资料</a></p>
-                    <p class="account-setting current"><a>我的节目评星</a></p>
-                    <p class="account-setting current"><a>我的节目评论</a></p>
-                    <p class="account-setting current"><a>修改密码</a></p>
+                    <p class="account-setting current"><a href="/myRatings.html">我的节目评星</a></p>
+                    <p class="account-setting current"><a href="/mycomment.html">我的节目评论</a></p>
+                    <p class="account-setting current"><a href="/secret.html">修改密码</a></p>
                 </div>
 
             </div>
@@ -295,6 +293,11 @@
         var totalNum=0;// 总页码
         var totalList=0// 记录总数量
         // pageMe.js 使用方法
+
+
+        $("#sousuo").click(function(){
+            $(this).attr("href","/searchVariety.html?word="+$("#vue").val());
+        })
 
         //删除评星
         function deleteRatings(id){
@@ -406,7 +409,47 @@
 
         }
 
+        //跳转到个人中心
+        function getUserInform() {
+            // console.log($("#id").val())
+            var token=getCookie("token");
+            var userid=getCookie("userid");
+            if (token==null||token=="")
+            {
+                window.location.href = '/login.html';
+                // swal("Good!", "弹出了一个操作成功的提示框", "success");
+            }
+            else {
 
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/API/index/userInform" ,//url
+                    data: {
+                        userid:userid
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            // swal("登录成功!", "", "success");
+
+
+                            window.location.href = '/userinform.html?name='+result.data.name+'&sex='+result.data.sex+'&birthday='+result.data.birthday;
+                        }
+                        if(result.code==-1){
+                            swal("系统异常!", "", "error");
+
+                        }},
+                    error : function(e) {
+                        exitlogin();
+                    }
+                });
+            }
+
+
+
+        }
 
 
         //s刷新页面

@@ -71,7 +71,7 @@ function getQueryVariable(variable)
     return(false);
 }
 
-//退出登录到首页
+//退出登录到index
 function exitlogin(){
     var userid=getCookie("userid");
     // console.log(getCookie("token"));
@@ -89,8 +89,9 @@ function exitlogin(){
                 delCookie("token");
                 delCookie("name");
                 delCookie("userid");
-                // window.location.href = '/index.html';
-                window.history.back(-1);
+
+                // window.history.back(-1);
+                window.location.href = '/index.html';
             }
             if(result.code==-1){
                 window.location.href = '/index.html';
@@ -117,7 +118,7 @@ function setCookie(name, value) {
 }
 
 
-//退出登录到首页
+//退出登录到登录页
 function exitTologin(){
     var userid=getCookie("userid");
     // console.log(getCookie("token"));

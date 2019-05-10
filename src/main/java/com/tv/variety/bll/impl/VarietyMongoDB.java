@@ -83,7 +83,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
 //        Criteria c4=Criteria.where("type").regex(all);
 //        Criteria cr = new Criteria();
 //        cr.orOperator(c1,c2);
-        Query query = new Query(Criteria.where("name").regex(all));
+        Query query = new Query(Criteria.where("name").regex(all.trim()));
 //        vatiety =  mongoTemplate.find(query,Variety.class);
         return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
                 pageNum,variety->{
