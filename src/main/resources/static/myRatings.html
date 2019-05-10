@@ -296,12 +296,45 @@
         var totalList=0// 记录总数量
         // pageMe.js 使用方法
 
+        //删除评星
+        function deleteRatings(id){
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Ratings/deleteRatings",//url
+                data: {
+                    id: id
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    // console.log(result.data);
+                    if (result.code == 1) {
+                        swal("删除成功");
+                        findRatingsByUserid(1);
+                    }
+                    else {
+                        // window.location.href = '/404.html';
+                        swal("哎呀出错了，评星删除失败", "", "error");
+
+                    }
+                },
+                error: function (e) {
+                    // alert("异常！");
+                    // swal("要评论需要先登录哦!", "", "error");
+                    swal("登录信息过期了，需要重新登录哦", "", "error");
+                    // delCookie("userid");
+                    // delCookie("name");
+                    // delCookie("token")
+                    // setTimeout("window.location.href = '/login.html' ", 2000 );
+                }
+            });
+        }
 
 
 
 
-
-        //显示评论
+        //显示评星
         function findRatingsByUserid(pageSize) {
             // var varietyId = getQueryVariable("varietyId");
             var userid =getCookie("userid");
@@ -329,6 +362,7 @@
                             if (result.data.list.length==0)
                             {
                                 $("#page").css("display","none");
+                                RatingsByUserid(result.data.list);
                             }else {
                                 // swal("评星成功!", "", "success");
                                 totalList = result.data.total;

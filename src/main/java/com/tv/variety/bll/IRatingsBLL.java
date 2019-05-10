@@ -23,4 +23,7 @@ public interface IRatingsBLL {
 
     //查询用户下所有的评星
     Page<Ratings> getRatingsListByUserid(String userid, int pageNum, int pageSize);
+
+    //删除评星
+    int deleteRatings(String id);
 }

@@ -118,7 +118,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
             final Query query = new Query(Criteria.where("area").is(area));
             query.with(new Sort(Sort.Direction.DESC, "update"));
             return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
-                    1,variety->{
+                    pageNum,variety->{
                         VarietyParams varietyParams1=new VarietyParams();
                         varietyParams1.setId(variety.getId());
                         varietyParams1.setName(variety.getName());
@@ -132,7 +132,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
             final Query query = new Query(Criteria.where("type").is(type));
             query.with(new Sort(Sort.Direction.DESC, "update"));
             return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
-                    1,variety->{
+                    pageNum,variety->{
                         VarietyParams varietyParams1=new VarietyParams();
                         varietyParams1.setId(variety.getId());
                         varietyParams1.setName(variety.getName());
@@ -147,7 +147,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
             final Query query = new Query();
             query.with(new Sort(Sort.Direction.DESC, "update"));
             return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
-                    1,variety->{
+                    pageNum,variety->{
                         VarietyParams varietyParams1=new VarietyParams();
                         varietyParams1.setId(variety.getId());
                         varietyParams1.setName(variety.getName());
@@ -160,7 +160,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
             final Query query = new Query(Criteria.where("type").is(type).and("area").is(area));
             query.with(new Sort(Sort.Direction.DESC, "update"));
             return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
-                    1,variety->{
+                    pageNum,variety->{
                         VarietyParams varietyParams1=new VarietyParams();
                         varietyParams1.setId(variety.getId());
                         varietyParams1.setName(variety.getName());

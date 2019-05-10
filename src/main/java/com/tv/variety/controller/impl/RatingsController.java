@@ -66,4 +66,16 @@ public class RatingsController implements IRatingsController {
         }
         return new JsonResult(iRatingsFacade.findRatingsByUserid(userid,pageNum,pageSize),"评星显示成功啦",1);
     }
+
+    @Override
+    @RequestMapping(value = "/deleteRatings" , method = RequestMethod.POST)
+    public JsonResult getRatingsByUserid(String id) {
+        int rs=iRatingsFacade.deleteRatings(id);
+        if (rs==0)
+        {
+            return new JsonResult<>(-1,"哎呀出错啦，删除评星失败啦");
+        }
+         return new JsonResult<>(1,"删除评星成功");
+
+    }
 }

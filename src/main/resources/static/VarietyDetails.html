@@ -740,6 +740,9 @@
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
                     if (result.code == 1) {
+                        if (result.data.list.length==0) {
+                            $("#page").css("display", "none");
+                        }
                         // swal("评星成功!", "", "success");
                         totalList=result.data.total;
                         totalNum=Math.ceil(totalList/10);

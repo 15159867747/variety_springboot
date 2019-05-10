@@ -81,7 +81,7 @@ public class RatingsFacade implements IRatingsFacade {
             findRatingsByUseridParams.setRatings(ratings.get(i).getRatings());
             findRatingsByUseridParams.setTime(ratings.get(i).getTime());
             findRatingsByUseridParams.setVarietyId(ratings.get(i).getVarietyId());
-
+            findRatingsByUseridParams.setId(ratings.get(i).getId());
 
 //            System.out.println(comments.get(i).getName());
 //            System.out.println(comments.get(i).getName());
@@ -99,6 +99,11 @@ public class RatingsFacade implements IRatingsFacade {
         resultMap.put("list", findRatingsByUseridParamsList);
         return resultMap;
     }
+
+    @Override
+    public int deleteRatings(String id) {
+        return iRatingsBLL.deleteRatings(id);
     }
+}
 
 

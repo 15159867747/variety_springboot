@@ -8,6 +8,7 @@ import lombok.Data;
  */
 @Data
 public class FindRatingsByUseridParams {
+    String id;
     String varietyId;
     String varietyName;
     long time;

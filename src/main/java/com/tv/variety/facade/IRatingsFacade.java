@@ -24,4 +24,8 @@ public interface IRatingsFacade {
     //查询用户所有的评星
     Map<String, Object> findRatingsByUserid(String userid, int pageNum, int pageSize);
 
+    //删除用户评星
+    int deleteRatings(String id);
+
+
 }

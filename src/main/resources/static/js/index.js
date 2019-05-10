@@ -110,7 +110,7 @@ function RatingsByUserid(data) {
             // "            <h3 style=\"font-size: 33px\">"+ data[i].name+"</h3>\n" +
             "            <h3 style=\"font-size: 33px\"><a href='VarietyDetails.html?name="+ data[i].varietyName+"&varietyId="+ data[i].varietyId+" '>"+ data[i].varietyName+"</a></h3>\n" +
             "            <div class=\"comment-content-header\">\n" +
-            "            <span><i class=\"glyphicon glyphicon-time\"></i>"+ longTodate(data[i].time)+"</span>\n" +
+            "            <span><i class=\"glyphicon glyphicon-time\"></i>"+ longTodate(data[i].time)+"<a href=\"javascript:deleteRatings('"+data[i].id+" ')\" style=\" left: 96%; position: absolute;\">删除</a></span>\n" +
             "            </div>\n" +
             "            <p class=\"content\" style=\"font-size: 28px\">&nbsp;<img src=\"images/xing.png\">X"+ data[i].ratings+"</p>\n" +
             "            <div class=\"comment-content-footer\">\n" +

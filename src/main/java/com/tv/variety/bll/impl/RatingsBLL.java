@@ -52,4 +52,12 @@ public class RatingsBLL implements IRatingsBLL {
         page.setRecords(ratingsList);
         return page;
     }
+
+    @Override
+    public int deleteRatings(String id) {
+        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+        entityWrapper.eq("id",id);
+        int rs=ratingsMapper.delete(entityWrapper);
+        return rs;
+    }
 }

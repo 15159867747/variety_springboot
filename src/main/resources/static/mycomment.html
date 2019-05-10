@@ -330,8 +330,9 @@
                             if (result.data.list.length==0)
                             {
                                 $("#page").css("display","none");
+                                findCommentByUserid(result.data.list)
                             }else {
-                                // swal("评星成功!", "", "success");
+
                                 totalList = result.data.total;
                                 // console.log(totalList);
                                 totalNum = Math.ceil(totalList / 5);
@@ -388,6 +389,7 @@
                     // console.log(result.data);
                     if (result.code == 1) {
                         swal("删除成功");
+
                         // var div = document.getElementById(id);
                         //
                         // div.remove();

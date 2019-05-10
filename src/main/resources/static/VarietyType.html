@@ -25,6 +25,7 @@
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 
 
+    <script type="text/javascript" src="js/pageMe.js"></script>
     <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
     <link rel="stylesheet"   href="css/base.css" />
 
@@ -966,7 +967,7 @@
 
 
         <!--分页-->
-        <div id="page" class="page_div" style="position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
+        <div id="page" class="page_div" style="position: absolute;left: 33%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
 
 
     </div>
@@ -1016,7 +1017,7 @@
 
 
 
-    var pageNum=0;// 当前页面
+    var pageNow=0;// 当前页面
     var totalNum=0;// 总页码
     var totalList=0// 记录总数量
 
@@ -1233,6 +1234,9 @@
 
 function findVarietyByTypeOrArea(area,type,pageNum)
 {
+    console.log(area);
+    console.log(type);
+    console.log(pageNum)
     $.ajax({
         //几个参数需要注意一下
         type: "post",//方法类型
@@ -1250,12 +1254,20 @@ function findVarietyByTypeOrArea(area,type,pageNum)
             if(result.code==1){
                  showVarietyByTypeOrArea(result.data.list);
                 if (result.data.list.length==0) {
+                    swal("没有此类的节目，看看其他的吧");
                     $("#page").css("display", "none");
                 }
+                // console.log(pageNum);
+                // console.log(result.data.pages);
+                // console.log(result.data.total);
+                pageNow=pageNum;
+                totalNum=result.data.pages;
+                totalList=result.data.total;
+
                 $("#page").paging({
-                    pageNum: pageNum, // 当前页面
-                    totalNum:result.data.page , // 总页码
-                    totalList: result.data.total, // 记录总数量
+                    pageNum:pageNow , // 当前页面
+                    totalNum:totalNum , // 总页码
+                    totalList:totalList , // 记录总数量
                     flag: 5
                 });
 

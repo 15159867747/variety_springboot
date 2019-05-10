@@ -17,4 +17,7 @@ public interface IRatingsController {
 
     //用户下所有的评星
     JsonResult getRatingsByUserid(String userid, int pageNum, int pageSize);
+
+    //删除评星
+    JsonResult getRatingsByUserid(String id);
 }
