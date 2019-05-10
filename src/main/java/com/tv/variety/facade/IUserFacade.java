@@ -50,5 +50,4 @@ public interface IUserFacade {
     //删除token
     int deletetoken(String userid);
 
-
 }

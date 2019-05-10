@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <link rel="stylesheet"   href="css/base.css" /> -->
+    <link rel="stylesheet"   href="css/base.css" />
+
+    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+
+</head>
+<body>
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="艺起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                        </div>
+                        <div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
+                            <a href="" title="" class="us-headpic head-btn arrow-btn" data-hover-ele="1">
+
+                                <span class="vip-sign com-pic-vip"></span>
+                                <b class="us-name"></b>
+                                <i class="ico_arrow"></i>
+                            </a>
+                            <div class="logined-submenu">
+                                <i class="logined-arrow"></i>
+                                <div class="submenu-wrap">
+                                    <div class="submenu-login-info fix">
+                                        <div class="img-avatar js-subAvatar">
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="submenu-line">
+                                    </div>
+
+                                    <div class="submenu-ft">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <div class="page-progress" id="page-progress">
+        </div>
+
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+
+
+    <!-- --------------------------------------------------------------------------------------------------->
+    <div class="fixed-header-padding w-layout" id="login-main" style="margin-top: 200px;">
+
+        <div class="main-left page fix">
+            <div class="fix">
+                <div class="login-conn">
+                    <p class="login-tip">...敬请期待以下登录方式</p>
+                    <div class="login-site clearfix" id="login-site">
+                        <div class="site tencent"><img src="img/QQ.png"></img></div>
+                        <div class="site sina"><img src="img/weibo.png"></div>
+                        <div class="site weixin"><img src="img/wechat.png"></div>
+                    </div>
+                </div>
+                <div class="login-form">
+                    <form id="pageLoginForm">
+
+                        <p class="login-tip"><span class="show_text" id="show_text">风行管理员登录</span></p>
+
+                        <div id="acount_login_container" style="display:block;">
+                            <p class="f-p">
+                                <!-- <input type="text" class="inputstyle hide" id="login-error-show" onfocus="this.blur()"> -->
+                                <a class="close-error hide" id="close-error"></a>
+                                <input type="text" class="inputstyle" name="id"  placeholder="用户名"  id="id" >
+
+                                <span class="login-error inline-block">
+                                <span id="et_panel_account" class="login-error-right" style="display:none;">账号不能为空</span>
+                            </span>
+                            </p>
+                            <p></p>
+                            <p class="f-p">
+                                <input type="password" class="inputstyle" placeholder="密码"  name="password" id="password">
+
+                                <span class="login-error inline-block">
+                                <span id="et_panel_password" class="login-error-right" style="display:none;">密码不能为空</span>
+                            </span>
+                            </p>
+                            <p class="act clearfix">
+                                <!-- <button type="button" id="btn">提交</button> -->
+                                <input type="button" class="login_submit" style="border: 1px solid #BBBBBB;color: #000000;background-color: rgba(51,51,51,0.1);font-size: 17px;font-family: "微软雅黑";" value="登录" onclick="login()">
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------------------------		 -->
+    <!-- 底部样式    -->
+    <div class="footer fix" id="footer">
+        <div class="mod-wrap">
+            <div class="foot-wrap">
+                <div class="foot-link fix" >
+                    <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- ================================================== -->
+
+
+
+
+
+
+
+</div>
+
+</body>
+<script type="text/javascript">
+
+
+
+
+
+    function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+
+    }
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+            return unescape(arr[2]);
+        } else {
+            return null;
+        }
+    }
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = this.getCookie(name);
+        if(cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+
+    function login() {
+        // console.log($("#id").val())
+        if ($("#id").val()==null||$("#id").val()==""||$("#password").val()==null||$("#password").val()=="")
+        {
+            swal("账号密码为空!");
+            // swal("Good!", "弹出了一个操作成功的提示框", "success");
+        }
+        else {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/API/check" ,//url
+                data: $('#pageLoginForm').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.code == 1) {
+                        if(result.data.is_manage==1)
+                        {
+                            setCookie("token",result.data.token);
+                            setCookie("name",result.data.name);
+                            setCookie("userid",result.data.id);
+                            setCookie("is_manage",1);
+                            console.log(result.data.token,result.data.name,result.data.id);
+                            window.location.href="/manageControl.html";
+                        }
+                        // swal("登录成功!", "", "success");
+
+                        // window.location.href = '/index.html';
+
+                    }
+                    if(result.code==-3){
+                        swal("密码不正确哦!", "", "error");
+                    }
+                    if(result.code==-2){
+                        swal("账号不正确哦", "", "error");
+                    }
+                    ;
+                },
+                error : function(e) {
+                    alert("异常！");
+                }
+            });
+        }
+
+
+    }
+
+    //s刷新页面
+    $(document).ready(function () {
+        var token=getCookie("token");
+        var is_manage=getCookie("is_manage");
+        if (token!=null&&token.trim()!=""&&is_manage==1){
+            window.location.href = '/manageControl.html';
+        }
+
+
+
+
+    })
+
+
+
+
+</script>
+
+</html>

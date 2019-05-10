@@ -11,4 +11,5 @@ public class LoginSuccessParam {
     private String id;
     private String name;
     private  String token;
+    private  int is_manage;
 }

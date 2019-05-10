@@ -89,6 +89,7 @@ function exitlogin(){
                 delCookie("token");
                 delCookie("name");
                 delCookie("userid");
+                delCookie("is_manage");
 
                 // window.history.back(-1);
                 window.location.href = '/index.html';
@@ -136,6 +137,7 @@ function exitTologin(){
                 delCookie("token");
                 delCookie("name");
                 delCookie("userid");
+                delCookie("is_manage");
                 // window.location.href = '/login.html';
                 window.history.back(-1);
             }
@@ -153,6 +155,46 @@ function exitTologin(){
     // location.replace(document.referrer);返回上一个页面并刷新
     // window.location.href = '/index.html';
 }
+
+
+function exitToAdmin(){
+    var userid=getCookie("userid");
+    // console.log(getCookie("token"));
+    $.ajax({
+        //几个参数需要注意一下
+        type: "post",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "/API/exit" ,//url
+        data: {
+            userid:userid
+        },
+        success: function (result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            if (result.code == 1) {
+                delCookie("token");
+                delCookie("name");
+                delCookie("userid");
+                delCookie("is_manage");
+
+                // window.history.back(-1);
+                window.location.href = '/adminLogin.html';
+            }
+            if(result.code==-1){
+                window.location.href = '/adminLogin.html';
+            }
+            ;
+        },
+        error : function(e) {
+            alert("异常！");
+            window.location.href = '/adminLogin.html';
+        }
+    });
+
+    // location.replace(document.referrer);返回上一个页面并刷新
+    // window.location.href = '/index.html';
+}
+
+
 
 //根据类型猜你喜欢
 function guessBytype(type) {

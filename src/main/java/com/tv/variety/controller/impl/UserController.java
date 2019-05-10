@@ -95,19 +95,8 @@ public class UserController implements IUserController {
         //根据数据库的用户信息查询Token
 //        Token token = tokenmapper.selectById(myUser.getId());
         Token token =userFacade.searchToken(myUser.getId());
-        //为生成Token准备
-//        String TokenStr = "";
-//        Date date = new Date();
-//        long nowtime = (int) (date.getTime() / 1000);
-//        //生成Token
-//        TokenStr = creatToken(myUser, date);
+
         if (null == token) {
-            //没有token需要登陆
-//            token = new Token();
-//            token.setToken(TokenStr);
-//            token.setBuildtime(nowtime);
-//            token.setUserid(myUser.getId());
-//            tokenmapper.insert(token);
             userFacade.insertToken(myUser);
         }else{
             //登陆就更新Token信息
@@ -122,6 +111,7 @@ public class UserController implements IUserController {
         LoginSuccessParam loginSuccessParam=new LoginSuccessParam();
         loginSuccessParam.setId(myUser.getId());
         loginSuccessParam.setName(myUser.getName());
+        loginSuccessParam.setIs_manage(myUser.getIsManage());
         loginSuccessParam.setToken(TokenStr);
 
         //返回Token信息给客户端
@@ -164,7 +154,7 @@ public class UserController implements IUserController {
             return new JsonResult<String>(1,"token删除成功，用户退出登录");
         }
         else {
-            return new JsonResult<String>(0,"该用户已退出登录");
+            return new JsonResult<String>(-1,"该用户已退出登录");
         }
 
     }
