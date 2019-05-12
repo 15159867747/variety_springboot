@@ -75,31 +75,79 @@ public class VarietyMongoDB implements IVarietyMongoDB {
     public PageResult<SearchVarietyparams> search(String all,int pageNum,int pageSize) {
 
         List<Variety>  vatiety=new ArrayList<Variety>();
+        Query query1 = new Query(Criteria.where("type").regex(all));
+        Query query2 = new Query(Criteria.where("name").regex(all));
+        if ( mongoTemplate.find(query1 , Variety.class).size()==0)
+        {
+            Query query = new Query(Criteria.where("name").regex(all.trim()));
+
+//        vatiety =  mongoTemplate.find(query,Variety.class);
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    pageNum,variety->{
+                        SearchVarietyparams varietyParams1=new SearchVarietyparams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        varietyParams1.setArea(variety.getArea());
+                        varietyParams1.setFromtv(variety.getFromtv());
+                        varietyParams1.setContent(variety.getContent());
+                        varietyParams1.setBtn(variety.getBtn());
+                        varietyParams1.setType(variety.getType());
+                        return varietyParams1;
+                    }
+                    , null);
+        }
+        else if(mongoTemplate.find(query2 , Variety.class).size()==0)
+        {
+            Query query = new Query(Criteria.where("type").regex(all.trim()));
+
+//        vatiety =  mongoTemplate.find(query,Variety.class);
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    pageNum,variety->{
+                        SearchVarietyparams varietyParams1=new SearchVarietyparams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        varietyParams1.setArea(variety.getArea());
+                        varietyParams1.setFromtv(variety.getFromtv());
+                        varietyParams1.setContent(variety.getContent());
+                        varietyParams1.setBtn(variety.getBtn());
+                        varietyParams1.setType(variety.getType());
+                        return varietyParams1;
+                    }
+                    , null);
+        }
+        else{
+            Query query = new Query(Criteria.where("name").regex(all.trim()).orOperator(Criteria.where("type").regex(all.trim())));
+
+            return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
+                    pageNum,variety->{
+                        SearchVarietyparams varietyParams1=new SearchVarietyparams();
+                        varietyParams1.setId(variety.getId());
+                        varietyParams1.setName(variety.getName());
+                        varietyParams1.setPicurl(variety.getPicurl());
+                        varietyParams1.setUpdate(variety.getUpdate());
+                        varietyParams1.setArea(variety.getArea());
+                        varietyParams1.setFromtv(variety.getFromtv());
+                        varietyParams1.setContent(variety.getContent());
+                        varietyParams1.setBtn(variety.getBtn());
+                        varietyParams1.setType(variety.getType());
+                        return varietyParams1;
+                    }
+                    , null);
+        }
 
 
 //        Criteria c1= Criteria.where("name").regex(all);
 //        Criteria c2=Criteria.where("actor").regex(all);
 //        Criteria c3=Criteria.where("fromtv").regex(all);
 //        Criteria c4=Criteria.where("type").regex(all);
+
 //        Criteria cr = new Criteria();
 //        cr.orOperator(c1,c2);
-        Query query = new Query(Criteria.where("name").regex(all.trim()));
-//        vatiety =  mongoTemplate.find(query,Variety.class);
-        return mongoPageHelper.pageQuery(query, Variety.class, pageSize,
-                pageNum,variety->{
-                    SearchVarietyparams varietyParams1=new SearchVarietyparams();
-                    varietyParams1.setId(variety.getId());
-                    varietyParams1.setName(variety.getName());
-                    varietyParams1.setPicurl(variety.getPicurl());
-                    varietyParams1.setUpdate(variety.getUpdate());
-                    varietyParams1.setArea(variety.getArea());
-                    varietyParams1.setFromtv(variety.getFromtv());
-                    varietyParams1.setContent(variety.getContent());
-                    varietyParams1.setBtn(variety.getBtn());
-                    varietyParams1.setType(variety.getType());
-                    return varietyParams1;
-                }
-                , null);
+
 
 
     }
@@ -171,6 +219,22 @@ public class VarietyMongoDB implements IVarietyMongoDB {
         }
 
 
+    }
+
+    @Override
+    public PageResult findVarietyByType(String type, String name) {
+
+        final Query query = new Query(Criteria.where("type").is(type).and("name").ne(name));
+        query.with(new Sort(Sort.Direction.DESC, "update"));
+        return mongoPageHelper.pageQuery(query, Variety.class, 9,
+                1,variety->{
+                    VarietyParams varietyParams1=new VarietyParams();
+                    varietyParams1.setId(variety.getId());
+                    varietyParams1.setName(variety.getName());
+                    varietyParams1.setPicurl(variety.getPicurl());
+                    varietyParams1.setUpdate(variety.getUpdate());
+                    return varietyParams1;}
+                , null);
     }
 }
 

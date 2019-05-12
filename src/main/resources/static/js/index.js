@@ -145,13 +145,13 @@ function Searcherall(data) {
                 "\n" +
                 "                    </div>\n" +
                 "                    <div class=\"info\" style=\"float: left;\">\n" +
-                "                        <h3 class=\"tit\">\n" +
-                "                            <a style=\"font-size: 30px;line-height: 40px\"  target=\"_blank\" class=\"seedplay play-btn-b\" href=\"\" >" + data[i].name + "</a>\n" +
+                "                        <h3 class=\"tit\">\n" +                                                                                           //'VarietyDetails.html?name="+ data[i].varietyName+"&varietyId="+ data[i].varietyId+" '
+                "                            <a style=\"font-size: 30px;line-height: 40px\"  target=\"_blank\" class=\"seedplay play-btn-b\" href=\"/VarietyDetails.html?name="+ data[i].name+"&varietyId="+ data[i].id+"\" >" + data[i].name + "</a>\n" +
                 "                        </h3>\n" +
                 "\n" +
-                "                        <div class=\"rating fix\"  style=\"margin: 15px 0 10px\">\n" +
+                "                        \n" +
                 "\n" +
-                "                        </div>\n" +
+                "                        \n" +
                 "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\">\n" +
                 "                            <i>更新时间：</i>\n" +
                 "                            <span>\n" +
@@ -183,9 +183,9 @@ function Searcherall(data) {
 
             el = el + "</div>\n" +
                 "                        \n" +
-                "                        <div  class=\"btngroup \" style=\"margin: 30px 0 0 0\">\n" +
+                "                        <div  class=\"btngroup \" style=\"margin: 30px 0 -74px 0\">\n" +
                 "                            <div style=\"position:relative;\" class=\"fix\">\n" +
-                "                                <div class=\"op-group fix\">\n" +
+                "                                <div class=\"\">\n" +
                 "                                    <button style=\"float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px\" onclick=\"showTV('" + data[i].btn + "')\" >立即播放</button>\n" +
                 "\n" +
                 "                                    <div class=\"inner fix\">\n" +
@@ -331,6 +331,12 @@ function showConfigpy(data) {
         if(data[i].status==2)
         {
             el=el+ "<td>执行成功</td>\n" +
+                "\n" +
+                "                    </tr>";
+        }
+        if(data[i].status==3)
+        {
+            el=el+ "<td>爬取失败</td>\n" +
                 "\n" +
                 "                    </tr>";
         }

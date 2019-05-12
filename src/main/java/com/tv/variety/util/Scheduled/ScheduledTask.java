@@ -49,17 +49,34 @@ public class ScheduledTask {
                     if(configpy.getId()==2)
                     {   System.out.println("正在爬取芒果TV视频...，执行周期为"+1000*60*10);
                         int rs=python.MongoTvAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
                         System.out.println("爬取完成");
                         configpy.setStatus(0);
                         configPythonBLL.update(configpy);
+                        }
                     }
                     if(configpy.getId()==1)
                     {
                         System.out.println("正在爬取优酷视频...，执行周期为"+1000*60*10);
-                        python.youkuAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.youkuAction();
+
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
 
                 }
@@ -92,18 +109,34 @@ public class ScheduledTask {
                     configPythonBLL.update(configpy);
                     if(configpy.getId()==2)
                     {   System.out.println("正在爬取芒果TV视频...，执行周期为"+1000*60*30);
-                        python.MongoTvAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs =python.MongoTvAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
                     if(configpy.getId()==1)
                     {
                         System.out.println("正在爬取优酷视频...，执行周期为"+1000*60*30);
-                        python.youkuAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.youkuAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
 
                 }
@@ -139,18 +172,34 @@ public class ScheduledTask {
                     configPythonBLL.update(configpy);
                     if(configpy.getId()==2)
                     {   System.out.println("正在爬取芒果TV视频...，执行周期为"+1000*60*60);
-                        python.MongoTvAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.MongoTvAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
                     if(configpy.getId()==1)
                     {
                         System.out.println("正在爬取优酷视频...，执行周期为"+1000*60*60);
-                        python.youkuAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.youkuAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
 
                 }
@@ -184,18 +233,34 @@ public class ScheduledTask {
                     configPythonBLL.update(configpy);
                     if(configpy.getId()==2)
                     {   System.out.println("正在爬取芒果TV视频...，执行周期为"+1000*60*60*12);
-                        python.MongoTvAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.MongoTvAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
                     if(configpy.getId()==1)
                     {
                         System.out.println("正在爬取优酷视频...，执行周期为"+1000*60*60*12);
-                        python.youkuAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.youkuAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
 
                 }
@@ -228,18 +293,34 @@ public class ScheduledTask {
                     configPythonBLL.update(configpy);
                     if(configpy.getId()==2)
                     {   System.out.println("正在爬取芒果TV视频...，执行周期为"+1000*60*60*24);
-                        python.MongoTvAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.MongoTvAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
                     if(configpy.getId()==1)
                     {
                         System.out.println("正在爬取优酷视频...，执行周期为"+1000*60*60*24);
-                        python.youkuAction();
-                        System.out.println("爬取完成");
-                        configpy.setStatus(0);
-                        configPythonBLL.update(configpy);
+                        int rs=python.youkuAction();
+                        if(rs==0)
+                        {
+                            System.out.println("爬取中发现错误");
+                            configpy.setStatus(3);
+                            configPythonBLL.update(configpy);
+                        }
+                        else {
+                            System.out.println("爬取完成");
+                            configpy.setStatus(0);
+                            configPythonBLL.update(configpy);
+                        }
                     }
 
                 }

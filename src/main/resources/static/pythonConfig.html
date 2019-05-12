@@ -348,13 +348,8 @@
                     id:id
                 },
                 success: function (result) {
-                    // console.log(result);//打印服务端返回的数据(调试用)
-                    // // console.log(result.data)
-                    // if (result.code == 1) {
-                    //     showConfigpy(result.data);
-                    // }
-                    //
-                    // ;
+                    console.log(result);
+
                 },
                 error : function(e) {
                     swal("系统异常，请联系管理员", "", "error");
@@ -418,7 +413,7 @@
                         console.log(result);//打印服务端返回的数据(调试用)
                         // console.log(result.data)
                         if (result.code == 1) {
-                            if(result.data.status==0||result.data.status==-1||result.data.status==2)
+                            if(result.data.status==0||result.data.status==-1||result.data.status==2||result.data.status==3)
                             {
                                 $.ajax({
                                     //几个参数需要注意一下
@@ -438,11 +433,11 @@
                                                 swal("修改成功,开始爬取!", "", "success");
 
                                                 BeginNow(id);
-                                                setTimeout("window.location.href = '/pythonConfig.html' ", 1000 );
+                                                setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
                                             }
                                             else{
                                                 swal("爬虫任务配置成功!", "", "success");
-                                                setTimeout("window.location.href = '/pythonConfig.html' ", 1000 );
+                                                setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
                                             }
 
 

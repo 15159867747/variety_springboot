@@ -14,12 +14,12 @@
     <![endif]-->
 
 
-        <!--<link rel="stylesheet" type="text/css" href="css/base.css"/>-->
-        <!--<link rel="stylesheet" type="text/css" href="css/Torr.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/base.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/Torr.css"/>-->
 
-        <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
-        <!--<script type="text/javascript" charset="utf-8" src="js/core.js"></script>-->
-        <!--<script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+    <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/core.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
 
 
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
@@ -27,6 +27,8 @@
 
     <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
     <link rel="stylesheet"   href="css/base.css" />
+
+    <link rel="stylesheet"   href="css/recommend.css" />
 
     <!--<script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.comment.js" ></script>
@@ -40,72 +42,72 @@
     <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
     <style>
         .container{
-    width: 1000px;
-    }
-    .commentbox{
-    width: 900px;
-    margin: 20px auto;
-    }
-    .mytextarea {
-    width: 100%;
-    overflow: auto;
-    word-break: break-all;
-    height: 100px;
-    color: #000;
-    font-size: 1em;
-    resize: none;
-    }
-    .comment-list{
-    width: 900px;
-    margin: 20px auto;
-    clear: both;
-    padding-top: 20px;
-    }
-    .comment-list .comment-info{
-    position: relative;
-    margin-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-    }
-    .comment-list .comment-info header{
-    width: 10%;
-    position: absolute;
-    }
-    .comment-list .comment-info header img{
-    width: 100%;
-    border-radius: 50%;
-    padding: 5px;
-    }
-    .comment-list .comment-info .comment-right{
-    padding:5px 0px 5px 11%;
-    }
-    .comment-list .comment-info .comment-right h3{
-    margin: 5px 0px;
-    }
-    .comment-list .comment-info .comment-right .comment-content-header{
-    height: 25px;
-    }
-    .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
-    padding-right: 2em;
-    color: #aaa;
-    }
-    .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
-    cursor: pointer;
-    }
-    .comment-list .comment-info .comment-right .reply-list {
-    border-left: 3px solid #ccc;
-    padding-left: 7px;
-    }
-    .comment-list .comment-info .comment-right .reply-list .reply{
-    border-bottom: 1px dashed #ccc;
-    }
-    .comment-list .comment-info .comment-right .reply-list .reply div span{
-    padding-left: 10px;
-    }
-    .comment-list .comment-info .comment-right .reply-list .reply p span{
-    padding-right: 2em;
-    color: #aaa;
-    }
+            width: 1000px;
+        }
+        .commentbox{
+            width: 900px;
+            margin: 20px auto;
+        }
+        .mytextarea {
+            width: 100%;
+            overflow: auto;
+            word-break: break-all;
+            height: 100px;
+            color: #000;
+            font-size: 1em;
+            resize: none;
+        }
+        .comment-list{
+            width: 900px;
+            margin: 20px auto;
+            clear: both;
+            padding-top: 20px;
+        }
+        .comment-list .comment-info{
+            position: relative;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .comment-list .comment-info header{
+            width: 10%;
+            position: absolute;
+        }
+        .comment-list .comment-info header img{
+            width: 100%;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .comment-list .comment-info .comment-right{
+            padding:5px 0px 5px 11%;
+        }
+        .comment-list .comment-info .comment-right h3{
+            margin: 5px 0px;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header{
+            height: 25px;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span{
+            padding-right: 2em;
+            color: #aaa;
+        }
+        .comment-list .comment-info .comment-right .comment-content-header span,.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,.send,.reply-list-btn{
+            cursor: pointer;
+        }
+        .comment-list .comment-info .comment-right .reply-list {
+            border-left: 3px solid #ccc;
+            padding-left: 7px;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply{
+            border-bottom: 1px dashed #ccc;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply div span{
+            padding-left: 10px;
+        }
+        .comment-list .comment-info .comment-right .reply-list .reply p span{
+            padding-right: 2em;
+            color: #aaa;
+        }
 
 
 
@@ -155,11 +157,6 @@
 
                     <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
                         <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
-                        <b class="lump hd-nav-ico"></b>
-                        <b class="hd-menu-ico"></b>
-                        <!--<b class="tit">分类</b>-->
-                        <em class="icon"></em>
-                        </a>
 
                     </div>
 
@@ -238,45 +235,69 @@
 
     <div class="personal set-wrap" style="height:auto;margin-top: 0px;margin-left: -100px;padding-bottom: 200px">
         <div style="float: right;width:20%;height:600px;position:absolute;background-color: transparent;right: 200px;margin-top: 100px">
-            <!--transparent 透明-->
-            <div style="font-size: 40px " >猜你喜欢</div>
-            <div>&nbsp;</div>
-            <div>
-                <div class="mod-frag">
-                    <ul class="img">
-                        <li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>
-                        <!--<div class="info">-->
-                            <!--<h3 class="tit"><a href=""  title="探索在路上（十）：重庆涪陵白鹤梁，世界首座水下博物馆">天哪天</a>-->
-                            <!--</h3>-->
-                        <!--</div>-->
-                        <li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>
-                        <li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>
-                        <li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>
-                        <li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>
+            <!--&lt;!&ndash;transparent 透明&ndash;&gt;-->
+            <!--<div style="font-size: 40px " >猜你喜欢</div>-->
+            <!--<div>&nbsp;</div>-->
+            <!--<div>-->
+                <!--<div class="mod-frag">-->
+                    <!--<ul class="img">-->
+                        <!--<li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>-->
+                        <!--&lt;!&ndash;<div class="info">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<h3 class="tit"><a href=""  title="探索在路上（十）：重庆涪陵白鹤梁，世界首座水下博物馆">天哪天</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</h3>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--<li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>-->
+                        <!--<li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>-->
+                        <!--<li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>-->
+                        <!--<li><a href=""><img src="http://0img.hitv.com/preview/internettv/sp_images/ott/2016/zongyi/117447/20160506140629837-new.jpg_220x123.jpg"  alt="中国" /></a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="media-tab media-tab-pic-v">
+                <div class="tab-inner">
+                    <ul class="fix">
+                        <li class="fix-width current"><span class="sub">相关影视</span><span class="tit-line"><em class="arr"></em></span></li>
                     </ul>
                 </div>
+                <div class="tab-content">
+                    <div class="tab-content-item current">
+                        <div class="m-vd-list guess-group">
+                            <div class="mod-wrap-in" id="media-rel-data">
+
+
+                                <div class="mod-vd-group-i fix" id="VarietySame">
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--<div class="mod-frag">-->
-                <!--<ul class="text">-->
-                    <!--<li><a href="">相声小品反串无底线</a></li>-->
-                    <!--<li><a href="">金嗓子！华语歌坛行走的CD</a></li>-->
-                    <!--<li><a href="">小萌娃唱大戏，有腔有韵真给力</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
         </div>
+
+
+
         <div class="subject-head fix z-2">
             <div class="main crumbsline" style="padding-top: 100px;margin: 30px 0 15px 0;font-size: 14px">
-                <!--<a href="/" title="首页">首页</a>-->
-                <!--<b>&gt;</b>-->
-                <!--<a href="/retrieve/c-e794b5e8a786e589a7" title="电视剧">电视剧</a>-->
-                <!--<b>&gt;</b>-->
-                <!--<a href="/retrieve/c-e794b5e8a786e589a7.a-e58685e59cb0" title="内地">内地</a>-->
-                <!--<b>&gt;</b>-->
-                <!--<a href="/retrieve/c-e794b5e8a786e589a7.t-e68898e4ba89" title="战争">战争</a>-->
+
             </div>
             <div class="pic" style="float: left;margin-right: 20px">
                 <a class="seedplay play-btn-a"  target="_blank" href="">
-                    <img src="" alt="" class="" id="img1" style="width: 200px;height: 300px">                    	</a>
+                    <img src="" alt="" class="" id="img1" style="width: 200px;height: 300px">
+                </a>
 
             </div>
             <div class="info" style="float: left;">
@@ -290,31 +311,23 @@
                     <div class="karma" style="float: left;font-size: 20px;color: orange"><i>我来评分</i></div>
                     <!--<div class="rating-title" style="float: left;margin: 0 20px">我来评分：</div>-->
 
-                        <div class="xzw_starSys" style="float: left;margin: 0 15px;padding: 0">
-                            <div class="xzw_starBox">
-                                <ul class="star stars">
-                                        <!--<a id="userinform" href="javascript:getUserInform()" >个人中心</a>-->
-                                    <li><a href="javascript:insertRatings(1)" id="r1" title="1" class="one-star">1</a></li>
-                                    <li><a href="javascript:insertRatings(2)" title="2" class="two-stars">2</a></li>
-                                    <li><a href="javascript:insertRatings(3)" title="3" class="three-stars">3</a></li>
-                                    <li><a href="javascript:insertRatings(4)" title="4" class="four-stars">4</a></li>
-                                    <li><a href="javascript:insertRatings(5)" title="5" class="five-stars" display="block">5</a></li>
-                                </ul>
-                                <div class="current-rating showb" id="showb" style="width: 0"></div>
-                            </div>
-
+                    <div class="xzw_starSys" style="float: left;margin: 0 15px;padding: 0">
+                        <div class="xzw_starBox">
+                            <ul class="star stars">
+                                <!--<a id="userinform" href="javascript:getUserInform()" >个人中心</a>-->
+                                <li><a href="javascript:insertRatings(1)" id="r1" title="1" class="one-star">1</a></li>
+                                <li><a href="javascript:insertRatings(2)" title="2" class="two-stars">2</a></li>
+                                <li><a href="javascript:insertRatings(3)" title="3" class="three-stars">3</a></li>
+                                <li><a href="javascript:insertRatings(4)" title="4" class="four-stars">4</a></li>
+                                <li><a href="javascript:insertRatings(5)" title="5" class="five-stars" display="block">5</a></li>
+                            </ul>
+                            <div class="current-rating showb" id="showb" style="width: 0"></div>
                         </div>
 
+                    </div>
 
-                    <!--<div class="com-rating" id="tit-rating" data-star="0" data-comtype="rating" data-rating="5">-->
-                        <!--<div class="rating-box  disable">-->
-                            <!--<a href="javascript:void(0)" class="rating z-5" title="很差"></a>-->
-                            <!--<a href="javascript:void(0)" class="rating z-4" title="较差"></a>-->
-                            <!--<a href="javascript:void(0)" class="rating z-3" title="一般"></a>-->
-                            <!--<a href="javascript:void(0)" class="rating z-2" title="较好"></a>-->
-                            <!--<a href="javascript:void(0)" class="rating rating-stars5 z-1 current" title="很好"></a>-->
-                        <!--</div>-->
-                    <!--</div>-->
+
+
                     <div class="rating-tip" id="rating-tip"></div>
                 </div>
                 <div class="desc" style="margin: 10px 0;font-size: 14px">
@@ -332,39 +345,37 @@
                 <div class="desc" style="margin: 10px 0;font-size: 14px" id="fromtvdiv">
                     <i>播出频道：</i>
                 </div>
-                    <!--<a href=""  target="_blank" id= "fromtv"> </a>  /
+                <!--<a href=""  target="_blank" id= "fromtv"> </a>  /
 
-                                                                                                                                         <-->
+                                                                                                                                     <-->
                 <div id="btngroup" class="btngroup " style="margin: 30px 0 0 0">
                     <div style="position:relative;" class="fix"><a href="/vplay/g-323813/?from=subject" class="pbtn tryplay-btn"></a>
-                        <a href="javascript:;" class="pay-btn" target="_blank"></a>
-                        <a target="_blank" href="/vplay/g-323813/?from=subject" class="pbtn seedplay play-btn " data-storelink="/vplay/g-323813/?from=subject"></a><div class="op-group fix">
+                        <div class="op-group fix">
                             <button style="float: left;width: 120px;height: 35px;background-color: #5FB878;cursor: pointer;color: #fff;border: none;border-radius: 5px" onclick="showTV()" id="show">立即播放</button>
 
                             <div class="inner fix">
 
                                 <div class="clear"></div>
                                 <i></i>
-                                <a href="javascript:;" class="close" title="关闭面板"><em></em></a>
-                            </div>
-                        </div><div class="mobilebtn-wrap pop-wrap z-act-pop" style="display: none;">
-                            <div class="inner fix">
-
-                                <div class="line"></div>
-                                <div class="bottom fix">
-                                    <div class="qrcode"></div>
-
-                                </div>
-                                <i></i>
 
                             </div>
                         </div>
-                        </div></div>
+                        <div class="mobilebtn-wrap pop-wrap z-act-pop" style="display: none;">
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        <div style="width: 60%;border-top: 1px solid #ddd;margin: 33px 0"></div>
+
+        </div>
+        <!--横线-->
+
+
+        <div>
+            <div style="width: 60%;border-top: 1px solid #ddd;margin-top: 164px;"></div>
         <div style="width: 60%;">
-            <div style="font-size: 20px;margin: 10px 0">简介：</div>
+
+            <div style="font-size: 20px;margin: 10px 0"></div>
             <p style="text-indent: 2em;font-size: 16px;line-height: 30px" id="content-pane"></p>
         </div>
         <div style="width: 60%;border-top: 1px solid #ddd;margin: 30px 0"></div>
@@ -385,13 +396,14 @@
             </div>
 
         </div>
+    </div>
 
 
-    <!--<div class="zxf_pagediv"></div>-->
+        <!--<div class="zxf_pagediv"></div>-->
 
 
-<!--分页-->
-<div id="page" class="page_div" style="position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
+        <!--分页-->
+        <div id="page" class="page_div" style="position: absolute;left: 20%;buttom: 0;z-index:999999;margin: 30px 0 50px"></div>
 
 
     </div>
@@ -412,232 +424,305 @@
 
 
 
-    <
-    <!-- ================================================== -->
+<
+<!-- ================================================== -->
 
-    <!--<div class="gototop fixed" id="gototopwrap">-->
-        <!--<div class="ad-game-tip" data-deliver="ws_all_game"></div>-->
-        <!--<a class="question-btn" href=""></a>-->
-        <!--<a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>-->
-    <!--</div>-->
+<!--<div class="gototop fixed" id="gototopwrap">-->
+<!--<div class="ad-game-tip" data-deliver="ws_all_game"></div>-->
+<!--<a class="question-btn" href=""></a>-->
+<!--<a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>-->
+<!--</div>-->
 
-    <!--<div class="ad-client-tip" data-deliver="ws_all_bottom"></div>-->
+<!--<div class="ad-client-tip" data-deliver="ws_all_bottom"></div>-->
 
-    <!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
-    <!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
+<!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/pageMe.js"></script>
-    <script type="text/javascript"></script>
+<script type="text/javascript"></script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+
+    // 显示相关节目
+function VarietySame(type,name) {
+
+    $.ajax({
+        //几个参数需要注意一下
+        type: "post",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        async : false,
+        url: "/YqLook/varietySame" ,//url
+        data: {
+            type:type,
+            name:name
+        },
+        success: function (result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            if(result.code==1){
+
+                var el="";
+                for (var n = 0; n < result.data.pageSize; n++)
+                {
+
+                    //   console.log(result.data.list[n].name)
+
+                    el =el+ "  <div class=\"mod-vd-i fix\">\n" +
+                        "                                        <div class=\"pic\">\n" +
+                        "                                            <a href=\"/VarietyDetails.html?name="+ result.data.list[n].name+ "&varietyId="+result.data.list[n].id +  "\" data-gtype=\"tv\" block=\"guess_1_media\" data-id=\"316099\"  title="+ result.data.list[n].name+"    target=\"_blank\">\n" +
+                        "                                                <img src="+result.data.list[n].picurl+">\n" +
+                        "                                                <span class=\"mask\"><i class=\"play-btn\"></i></span>\n" +
+                        "                                            </a>\n" +
+                        "                                        </div>\n" +
+                        "                                        <div class=\"info\">\n" +
+                        "                                            <h3 class=\"tit\"><a href=\"/VarietyDetails.html?name="+ result.data.list[n].name+ "&varietyId="+result.data.list[n].id +  "\"   title="+ result.data.list[n].name+"   block=\"guess_1_media\" target=\"_blank\">"+result.data.list[n].name+"</a></h3>\n" +
+                        "                                            <p>"+result.data.list[n].name+"</p>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>";
+                }
+
+                var div = document.getElementById("VarietySame");
+                div.innerHTML=el;
+            }
+            else{
+                swal("哎呀出错了", "", "error");
 
 
 
+            }
+        },
+        error : function(e) {
+            // alert("异常！");
+            // window.location.href = '/404.html';
+            // window.location.href = '/404.html';
+            swal("哎呀出错了，要不你稍后再试试？", "", "error");
 
-        var showtvurl="";
 
-        /* 判断节目id是否存在*/
+            // check= "-1";
+        }
 
-        function checkVarietyId()
-        {  var name=decodeURIComponent(getQueryVariable("name"));
-            var varietyid=getQueryVariable("varietyId")
-            var check=0;
+    });
 
+}
+
+
+
+    var showtvurl="";
+
+    /* 判断节目id是否存在*/
+
+    function checkVarietyId()
+    {  var name=decodeURIComponent(getQueryVariable("name"));
+        var varietyid=getQueryVariable("varietyId")
+        var check=0;
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            async : false,
+            url: "/YqLook/varietyById" ,//url
+            data: {
+                id:varietyid,
+                name:name
+            },
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if(result.code==1){
+                    // window.location.href = '/404.html';
+                    //   swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                    // check= "1";
+
+                    // getVarietyDetails();
+                    // findcCommentByVarietyId(1);
+                    check=1;
+                    // console.log(check);
+
+
+                }
+                else{
+                    swal("哎呀出错了", "", "error");
+                    check=-1;
+
+
+                }
+            },
+            error : function(e) {
+                // alert("异常！");
+                // window.location.href = '/404.html';
+                // window.location.href = '/404.html';
+                swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                check=-1;
+
+                // check= "-1";
+            }
+
+        });
+        return check;
+    }
+
+    function showTV() //跳转到播放地址
+    {
+        window.location.href = showtvurl;
+    }
+
+
+    //节目详情
+    function getVarietyDetails() {
+        // console.log($("#id").val())
+        // var token=getCookie("token");
+
+        // var userid=getCookie("userid");
+        var name=decodeURIComponent(getQueryVariable("name"));
+        var userid=getCookie("userid")
+        var i=checkVarietyId();
+        // console.log(decodeURIComponent(name))
+        if(i==1) {
             $.ajax({
                 //几个参数需要注意一下
                 type: "post",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                async : false,
-                url: "/YqLook/varietyById" ,//url
+                url: "/YqLook/varietyDetails",//url
                 data: {
-                    id:varietyid,
-                    name:name
+                    name: name,
+                    userid: userid
                 },
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
-                    if(result.code==1){
-                        // window.location.href = '/404.html';
-                        //   swal("哎呀出错了，要不你稍后再试试？", "", "error");
-                        // check= "1";
+                    if (result.data == null) {
+                        window.location.href = '/404.html';
+                    }
+                    if (result.code == 1 && result.data != null) {
+                        $("#name").text(result.data.variety.name);
+                        // $("#fromtv").text(result.data.fromtv);
+                        for (var i in result.data.variety.fromtv) {
+                            $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
+                        }
+                        for (var i in result.data.variety.type) {
+                            $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
+                            // $("#atype"+i).text(result.data.type[i]);
+                            // console.log(decodeURIComponent(result.data.type[i]))
+                        }
+                        $("#content-pane").text(result.data.variety.content);
+                        $("#updatetime").text(result.data.variety.update);
+                        // $("#area").text(result.data.area);
+                        for (var i in result.data.variety.area) {
+                            $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
 
-                        // getVarietyDetails();
-                        // findcCommentByVarietyId(1);
-                        check=1;
-                        // console.log(check);
+                        }
+                        $("#img1").attr("src", result.data.variety.picurl);
+                        showtvurl = result.data.variety.btn
+
+                        var n = parseInt(result.data.ratings)
+                        document.getElementById("showb").style.width = (30 * n) + "px"
+                        //
+                        // $("#img1").attr("src","images/星光大道 2018.jpg");
+                        // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
+                        if (result.data.variety.type.length>1)
+                        {
+
+                            var num=RandomNum(0,result.data.variety.type.length);
+                            console.log(num);
+                            console.log(result.data.variety.name);
+                            VarietySame(result.data.variety.type[num],result.data.variety.name);
+                        }
+                        else{
+                            console.log(result.data.variety.name);
+                            VarietySame(result.data.variety.type[0],result.data.variety.name);
+                        }
+
 
 
                     }
-                    else{
-                        swal("哎呀出错了", "", "error");
-                        check=-1;
-
+                    if (result.code == -1) {
+                        swal("系统异常啦，赶快联系管理员叭!", "", "error");
+                        // window.location.href = '/404.html';
 
                     }
                 },
-                error : function(e) {
-                    // alert("异常！");
+                error: function (e) {
+                    swal("系统异常啦，赶快联系管理员叭!", "", "error");
                     // window.location.href = '/404.html';
-                    // window.location.href = '/404.html';
-                    swal("哎呀出错了，要不你稍后再试试？", "", "error");
-                    check=-1;
-
-                    // check= "-1";
                 }
-
             });
-            return check;
         }
-
-        function showTV() //跳转到播放地址
+        else
         {
-            window.location.href = showtvurl;
+            swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+            setTimeout("window.location.href = '/index.html' ", 2000 );
         }
 
+    }
+    /* 单机li进行页面跳转 */
+    $(function(){
 
-        //节目详情
-        function getVarietyDetails() {
-            // console.log($("#id").val())
-            // var token=getCookie("token");
+        $("ul li").click(function(){
+            /*当前标签下的a标签*/
+            var obj = $(this).children("a");
+            /*获取第一个a标签，进行跳转*/
+            window.location.href=$(obj[0]).attr("href");
+        });
+    })
 
-            // var userid=getCookie("userid");
-            var name=decodeURIComponent(getQueryVariable("name"));
-            var userid=getCookie("userid")
-            var i=checkVarietyId();
-            // console.log(decodeURIComponent(name))
-            if(i==1) {
+
+
+
+    /* 评星 */
+    function insertRatings(num) {
+        // console.log("1");
+        var userid = getCookie("userid");
+        var varietyId = getQueryVariable("varietyId");
+        var num1 = parseInt(num);
+        var i = checkVarietyId();
+
+        if (i == 1) {
+
+            if (userid != null || userid != "") {
                 $.ajax({
                     //几个参数需要注意一下
                     type: "post",//方法类型
                     dataType: "json",//预期服务器返回的数据类型
-                    url: "/YqLook/varietyDetails",//url
+                    url: "/Ratings/insertOrUpdateRatings",//url
                     data: {
-                        name: name,
-                        userid: userid
+                        varietyId: varietyId,
+                        userid: userid,
+                        ratings: num1
                     },
                     success: function (result) {
                         console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.data == null) {
-                            window.location.href = '/404.html';
-                        }
-                        if (result.code == 1 && result.data != null) {
-                            $("#name").text(result.data.variety.name);
-                            // $("#fromtv").text(result.data.fromtv);
-                            for (var i in result.data.variety.fromtv) {
-                                $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
-                            }
-                            for (var i in result.data.variety.type) {
-                                $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
-                                // $("#atype"+i).text(result.data.type[i]);
-                                // console.log(decodeURIComponent(result.data.type[i]))
-                            }
-                            $("#content-pane").text(result.data.variety.content);
-                            $("#updatetime").text(result.data.variety.update);
-                            // $("#area").text(result.data.area);
-                            for (var i in result.data.variety.area) {
-                                $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
-
-                            }
-                            $("#img1").attr("src", result.data.variety.picurl);
-                            showtvurl = result.data.variety.btn
-
-                            var n = parseInt(result.data.ratings)
-                            document.getElementById("showb").style.width = (30 * n) + "px"
-                            //
-                            // $("#img1").attr("src","images/星光大道 2018.jpg");
-                            // $("#img1").attr("src","C:/Users/Dell/Desktop/pic/youku/星光大道 2018.jpg");
-
-
+                        if (result.code == 1) {
+                            swal("评星成功!", "", "success");
                         }
                         if (result.code == -1) {
-                            swal("系统异常啦，赶快联系管理员叭!", "", "error");
-                            // window.location.href = '/404.html';
+                            window.location.href = '/404.html';
+                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
 
                         }
                     },
                     error: function (e) {
-                        swal("系统异常啦，赶快联系管理员叭!", "", "error");
-                        // window.location.href = '/404.html';
+                        // alert("异常！");
+                        swal("要评论需要先登录哦!", "", "error");
                     }
                 });
+
+
             }
-            else
-            {
-                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
-                setTimeout("window.location.href = '/index.html' ", 2000 );
-            }
-
-        }
-        /* 单机li进行页面跳转 */
-        $(function(){
-
-            $("ul li").click(function(){
-                /*当前标签下的a标签*/
-                var obj = $(this).children("a");
-                /*获取第一个a标签，进行跳转*/
-                window.location.href=$(obj[0]).attr("href");
-            });
-        })
-
-
-
-
-        /* 评星 */
-        function insertRatings(num) {
-            // console.log("1");
-            var userid = getCookie("userid");
-            var varietyId = getQueryVariable("varietyId");
-            var num1 = parseInt(num);
-            var i = checkVarietyId();
-
-            if (i == 1) {
-
-                if (userid != null || userid != "") {
-                    $.ajax({
-                        //几个参数需要注意一下
-                        type: "post",//方法类型
-                        dataType: "json",//预期服务器返回的数据类型
-                        url: "/Ratings/insertOrUpdateRatings",//url
-                        data: {
-                            varietyId: varietyId,
-                            userid: userid,
-                            ratings: num1
-                        },
-                        success: function (result) {
-                            console.log(result);//打印服务端返回的数据(调试用)
-                            if (result.code == 1) {
-                                swal("评星成功!", "", "success");
-                            }
-                            if (result.code == -1) {
-                                window.location.href = '/404.html';
-                                // swal("哎呀出错了，要不你稍后再试试？", "", "error");
-
-                            }
-                        },
-                        error: function (e) {
-                            // alert("异常！");
-                            swal("要评论需要先登录哦!", "", "error");
-                        }
-                    });
-
-
-                }
-                else {
-                    window.location.href = '/login.html';//未登录返回登录界面
-                }
-            }
-            else{
-                swal("当前 页面有错误哦，您从新进入试试!", "", "error");
-                setTimeout("window.location.href = '/index.html' ", 2000 );
-                // setTimeout("", 2000 );
+            else {
+                window.location.href = '/login.html';//未登录返回登录界面
             }
         }
+        else{
+            swal("当前 页面有错误哦，您从新进入试试!", "", "error");
+            setTimeout("window.location.href = '/index.html' ", 2000 );
+            // setTimeout("", 2000 );
+        }
+    }
 
-        // window.refresh();
+    // window.refresh();
 
 
 
 
-    </script>
+</script>
 <script type="text/javascript">
     // 初始化数据
     // var arr = [
@@ -647,7 +732,7 @@
     //     {userid:2,img:"./images/img.jpg",name:"rty",content:"123",commentDate:"",replyBody:[]}
     // ]
 
-// var arr=[]
+    // var arr=[]
     // var arr =""
 
     var pageNum=0;// 当前页面
@@ -662,45 +747,49 @@
         var comment=$("#content").val();
         var i =checkVarietyId();
         // checkVarietyId(varietyId);
-        console.log(comment);
-        // if (check == "-1"||check=="") {
-        //     swal("当前页面有错误哦，要不您重新进入该页面试试", "", "error");
-        // }
-        // else {
+
+
         if(i==1) {
-            if (userid != null || userid != "") {
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "post",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "/Comments/insertComment",//url
-                    data: {
-                        varietyId: varietyId,
-                        userid: userid,
-                        comment: comment,
-                        name: name
-                    },
-                    success: function (result) {
-                        console.log(result);//打印服务端返回的数据(调试用)
-                        if (result.code == 1) {
-                            swal("评论成功!", "", "success");
-                            $("#content").val("");
+            if (userid != null || userid!="") {
 
-                            // findcCommentByVarietyId(1);
+                if (comment.trim()==""||comment==null)
+                {
+                    swal("请输入评论内容");
+                }
+                else {
+                    $.ajax({
+                        //几个参数需要注意一下
+                        type: "post",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "/Comments/insertComment",//url
+                        data: {
+                            varietyId: varietyId,
+                            userid: userid,
+                            comment: comment,
+                            name: name
+                        },
+                        success: function (result) {
+                            console.log(result);//打印服务端返回的数据(调试用)
+                            if (result.code == 1) {
+                                swal("评论成功!", "", "success");
+                                $("#content").val("");
 
+                                // findcCommentByVarietyId(1);
+
+                            }
+                            if (result.code == -1) {
+                                window.location.href = '/404.html';
+                                // swal("哎呀出错了，要不你稍后再试试？", "", "error");
+
+                            }
+                        },
+                        error: function (e) {
+                            // alert("异常！");
+                            swal("请登录！", "", "error");
+                            setTimeout("exitTologin()", 2000);
                         }
-                        if (result.code == -1) {
-                            window.location.href = '/404.html';
-                            // swal("哎呀出错了，要不你稍后再试试？", "", "error");
-
-                        }
-                    },
-                    error: function (e) {
-                        // alert("异常！");
-                        swal("登录信息过期了，需要重新登录哦", "", "error");
-                         exitlogin();
-                    }
-                });
+                    });
+                }
             }
             else {
                 swal("要评论需要先登录哦!", "", "error");
@@ -771,7 +860,7 @@
                     }
                     else {
                         // window.location.href = '/404.html';
-                         swal("哎呀出错了，要不你稍后再试试？", "", "error");
+                        swal("哎呀出错了，要不你稍后再试试？", "", "error");
 
                     }
                 },

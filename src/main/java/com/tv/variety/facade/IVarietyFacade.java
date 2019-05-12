@@ -34,4 +34,7 @@ public interface IVarietyFacade {
 
     PageResult<VarietyParams> findVarietyByTypeOrArea(String area,String type,int pageNum,int pageSize);
 
+    //根据类型查询所有节目，除了该节目
+    PageResult<VarietyParams> findVarietyByType(String type,String name);
+
 }

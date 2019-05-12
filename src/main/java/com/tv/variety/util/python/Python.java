@@ -10,8 +10,7 @@ import java.io.InputStreamReader;
 
 public class Python {
 
-    public int MongoTvAction()
-    {
+    public int MongoTvAction() {
         Process proc;
         try {
             System.out.println("mongo");
@@ -36,11 +35,18 @@ public class Python {
     }
 
 
-    public int youkuAction()
-    {
+    public int youkuAction() {
         Process proc;
         try {
-            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\youku_mongotv\\youku20190327.py");// 执行py文件
+            System.out.println("youku");
+            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\youku_mongotv\\demo2.py");// 执行py文件
+            //用输入输出流来截取结果
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
             proc.waitFor();
             return 1;
         } catch (IOException e) {
@@ -54,13 +60,12 @@ public class Python {
     }
 
 
-
 //    public static void main(String[] args) {
 //        // TODO Auto-generated method stub
 //        Process proc;
 //        try {
-////            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\youku_mongotv\\mongotv20190329.py");// 执行py文件
-//            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\youku_mongotv\\mongotv20190329.py");// 执行py文件
+//            System.out.println("mongo");
+//            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\youku_mongotv\\demo2.py");// 执行py文件
 //            //用输入输出流来截取结果
 //            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 //            String line = null;
@@ -69,10 +74,17 @@ public class Python {
 //            }
 //            in.close();
 //            proc.waitFor();
+//
 //        } catch (IOException e) {
 //            e.printStackTrace();
+//
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
+//
 //        }
 //    }
+
+
+
+
 }

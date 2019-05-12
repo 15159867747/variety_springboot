@@ -35,6 +35,8 @@ public interface IVarietyMongoDB {
     //根据类型和地区查询节目
     PageResult findVarietyByTypeOrArea(String area,String type,int pageNum,int pageSize);
 
+    //根据综艺类型查询该类型下的所有节目 除了该节目
+    PageResult findVarietyByType(String type,String name);
 
 
 

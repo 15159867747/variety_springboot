@@ -134,11 +134,20 @@ public class UserFacade implements IUserFacade {
         UserInformParam userInformParam=new UserInformParam();
         User user=new User();
         user=userBLL.lookUserInform(userid);
+        long date=0;
+        String sex=null;
+        if (user.getBirthday()!=null){
+            sex=user.getSex();
+        }
+        if(user.getBirthday()!=null)
+        {
+            date=user.getBirthday();
+        }
 
         userInformParam.setId(user.getId());
-        userInformParam.setBirthday(user.getBirthday());
+        userInformParam.setBirthday(date);
         userInformParam.setName(user.getName());
-        userInformParam.setSex(user.getSex());
+        userInformParam.setSex(sex);
         return userInformParam;
     }
 

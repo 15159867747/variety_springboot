@@ -57,25 +57,39 @@ public class ConfigpyController implements IConfigpyController {
     public JsonResult actionPyNow(int id) {
         Configpy configpy=new Configpy();
         configpy=iConfigpyFacade.showConfigpy(id);
-        if(configpy.getStatus()==0)
+        if(configpy.getStatus()==0||configpy.getStatus()==3||configpy.getStatus()==2||configpy.getStatus()==-1)
         {
             iConfigpyFacade.updateConfigpy(configpy.getId(),1);
             Python python=new Python();
             if (id==1){
-                python.youkuAction();
+                int rs=python.youkuAction();
+                if(rs==0)
+                {
+                    iConfigpyFacade.updateConfigpy(configpy.getId(),3);
+                    System.out.println("立即爬取优酷失败");
+                    return new JsonResult<>(-1,"立即爬取优酷失败，执行过程出错");
+                }
+                System.out.println("立即爬取优酷成功");
                 iConfigpyFacade.updateConfigpy(configpy.getId(),2);
                 return new JsonResult<>(1,"立即爬取优酷成功");
             }
             if (id==2)
             {
-                python.MongoTvAction();
+                int rs=python.MongoTvAction();
+                if(rs==0)
+                {
+                    iConfigpyFacade.updateConfigpy(configpy.getId(),3);
+                    System.out.println("立即爬取芒果tv失败");
+                    return new JsonResult<>(-1,"立即爬取芒果tv，执行过程出错");
+                }
                 iConfigpyFacade.updateConfigpy(configpy.getId(),2);
+                System.out.println("立即爬取芒果tv成功");
                 return new JsonResult<>(1,"立即爬取芒果tv成功");
             }
 
         }
 
-        return new JsonResult<>(-1,"立即爬取失败");
+        return new JsonResult<>(0,"立即爬取失败，该任务不是处于待执行状态");
     }
 
 

@@ -1,4 +1,16 @@
-﻿function getMonth(date){
+﻿
+function RandomNum(Min,Max) {
+    var Range=Max-Min;
+    var Rand =Math.random();
+    var num=Min+Math.floor(Rand*Range);
+    return num;
+    
+}
+
+
+
+
+function getMonth(date){
     var month = "";
     month = date.getMonth() + 1; //getMonth()得到的月份是0-11
     if(month<10){

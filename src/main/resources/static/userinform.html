@@ -220,10 +220,6 @@
 
     <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
 
-    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
-
-
     <script type="text/javascript">
 
         $("#sousuo").click(function(){
@@ -251,7 +247,14 @@
                 $("#sexFemale").attr("checked", true);
             }
             console.log(dateFormat_2(getQueryVariable("birthday")))
-            $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
+            if (getQueryVariable("birthday")!=0)
+            {
+                $("#test1").val(dateFormat_2(getQueryVariable("birthday")));
+            }
+            else{
+                $("#test1").val("");
+            }
+
 
         }
 
@@ -281,7 +284,13 @@
                 var id =getCookie("userid");
                 var name=$("#name").val();
                 var sex=$("input:radio:checked").val();
-                var date=dateTolong($("#test1").val());
+                var date=0;
+                if ($("#test1").val()!="")
+                {
+                    date=dateTolong($("#test1").val());;
+                }
+
+
                 console.log(name,sex,date);
 		    if (name==null||name=="")
 			{
@@ -291,6 +300,13 @@
 			else if(name.length>20)
             {
                 swal("名字好像有点长哦，要不你取短点试试？");
+            }
+            else if(sex==null||sex.trim()=="")
+            {
+                swal("您好像还没选择性别");
+            }
+            else if(date==0||date==""){
+                swal("您好像还没填写生日");
             }
 			else {
 		        $.ajax({
