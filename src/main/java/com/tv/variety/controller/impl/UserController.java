@@ -113,6 +113,7 @@ public class UserController implements IUserController {
         loginSuccessParam.setName(myUser.getName());
         loginSuccessParam.setIs_manage(myUser.getIsManage());
         loginSuccessParam.setToken(TokenStr);
+        loginSuccessParam.setPicurl(myUser.getPicurl());
 
         //返回Token信息给客户端
 
@@ -143,6 +144,33 @@ public class UserController implements IUserController {
         }
 
 
+    }
+
+    @Override
+    @RequestMapping(value = "/updateHead" , method = RequestMethod.POST)
+    public JsonResult updateHead(String id, String picurl) {
+        if(id==null||id.equals(""))
+        {
+            return  new JsonResult(-1,"头像修改失败");
+        }
+        int rs=userFacade.updateHead(id,picurl);
+        if (rs>0)
+        {
+            return  new JsonResult(1,"头像修改成功");
+        }
+        return  new JsonResult(-1,"失败");
+
+
+    }
+
+    @Override
+    @RequestMapping(value ="/userHead", method = RequestMethod.POST)
+    public JsonResult userHead(String userid) {
+        if (userid==null||userid.trim().equals(""))
+        {
+            return new JsonResult("images/img.jpg","返回个人头像",1);
+        }
+        return new JsonResult(userFacade.userHead(userid),"返回个人头像",1);
     }
 
 

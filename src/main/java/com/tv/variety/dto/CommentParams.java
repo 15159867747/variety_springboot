@@ -7,11 +7,13 @@ import lombok.Data;
  * @createtime ${date}${time}
  */
 @Data
-public class LoginSuccessParam {
+public class CommentParams {
      String id;
+     String userid;
+     String varietyId;
+     String comment;
+     Long commentDate;
      String name;
-      String token;
-      int is_manage;
-      String picurl;
+     String picurl;
 
 }

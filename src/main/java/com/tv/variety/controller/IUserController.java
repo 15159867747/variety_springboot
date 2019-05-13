@@ -39,4 +39,9 @@ public interface IUserController {
     //判断用户密码是否正确
     JsonResult<String> logincheck2(UserloginParas resqUser);
 
+    //修改头像
+    JsonResult updateHead(String id,String picurl);
+
+    //返回用户个人信息
+    JsonResult userHead(String userid);
 }

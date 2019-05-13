@@ -47,10 +47,12 @@ public class UserFacade implements IUserFacade {
         System.out.println(userloginParas.getPassword());
         user.setPassword(md5Utils.string2MD5(userloginParas.getPassword()));
         user.setId(userloginParas.getId());
-        user.setName(userloginParas.getId());
+
+        user.setName("新用戶"+UUID.randomUUID().toString().substring(0,7));
         user.setIsManage(0);
         user.setBirthday(null);
         user.setSex(null);
+        user.setPicurl("/images/img.jpg");
         int rs=userBLL.addUser(user);
         return rs;
 
@@ -175,6 +177,22 @@ public class UserFacade implements IUserFacade {
     public int deletetoken(String userid) {
         int i =userBLL.deleteToken(userid);
         return i;
+    }
+
+    @Override
+    public int updateHead(String id, String picurl) {
+        User user=new User();
+        user.setId(id);
+       user.setPicurl(picurl);
+        int rs =userBLL.updateUserInform(user);
+        return rs;
+    }
+
+    @Override
+    public String userHead(String userid) {
+        User user=new User();
+        user=userBLL.lookUserInform(userid);
+        return user.getPicurl();
     }
 
 

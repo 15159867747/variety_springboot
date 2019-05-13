@@ -2,8 +2,10 @@ package com.tv.variety.facade.impl;
 
 import com.tv.variety.bll.ICommentBLL;
 import com.tv.variety.bll.IVarietyMongoDB;
+import com.tv.variety.dto.CommentParams;
 import com.tv.variety.dto.MyCommentParams;
 import com.tv.variety.facade.ICommentFacade;
+import com.tv.variety.facade.IUserFacade;
 import com.tv.variety.mongodb.POJO.Variety;
 import com.tv.variety.mybatic.model.Comment;
 import com.tv.variety.param.InsertCommentParams;
@@ -23,16 +25,35 @@ public class CommentFacade implements ICommentFacade {
     private ICommentBLL iCommentBLL;
     @Autowired
     private IVarietyMongoDB iVarietyMongoDB;
-
+    @Autowired
+    private IUserFacade iUserFacade;
     @Override
     public Map<String, Object> getCommentList(String varietyId, int pageNum, int pageSize) {
         List<Comment> comments=new ArrayList<Comment>();
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
         comments=iCommentBLL.getCommentList(varietyId,pageNum,pageSize).getRecords();
+        List<CommentParams> commentParamsList=new ArrayList<CommentParams>();
+        for (int i=0;i<comments.size();i++)
+        {
+            CommentParams commentParams=new CommentParams();
+
+            commentParams.setComment(comments.get(i).getComment());
+            commentParams.setCommentDate(comments.get(i).getCommentDate());
+            commentParams.setId(comments.get(i).getId());
+            commentParams.setName(comments.get(i).getName());
+            commentParams.setUserid(comments.get(i).getUserid());
+            commentParams.setVarietyId(comments.get(i).getVarietyId());
+
+            commentParams.setPicurl(iUserFacade.userHead(comments.get(i).getUserid()));
+            commentParamsList.add(commentParams);
+        }
+
+
+
         int total=iCommentBLL.getCommentList(varietyId,pageNum,pageSize).getTotal();
         resultMap.put("total", total);
-        resultMap.put("list", comments);
+        resultMap.put("list", commentParamsList);
         return resultMap;
     }
 

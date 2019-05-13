@@ -214,8 +214,7 @@
 
     <div class="gototop fixed" id="gototopwrap">
         <div class="ad-game-tip" data-deliver="ws_all_game"></div>
-        <a class="question-btn" href=""></a>
-        <a class="totop-btn" id="totopBtn" href="javascript:void(window.scroll(0,0));" hidefocus></a>
+a>
     </div>
 
     <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
@@ -235,7 +234,7 @@
 
      //从url上取值填充表单
         function setvalues() {
-            $("#name").val(getQueryVariable("name"));
+            $("#name").val(decodeURIComponent(getQueryVariable("name")));
 
 
             if(getQueryVariable("sex")=="m")

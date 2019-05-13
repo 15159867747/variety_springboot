@@ -8,7 +8,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yrongqin
- * @since 2019-04-17
+ * @since 2019-05-13
  */
 public class User implements Serializable {
 
@@ -29,6 +29,7 @@ public class User implements Serializable {
      * 是否为管理员（1管理员，0普通用户），默认0
      */
     private Integer isManage;
+    private String picurl;
 
 
     public String getId() {
@@ -79,6 +80,14 @@ public class User implements Serializable {
         this.isManage = isManage;
     }
 
+    public String getPicurl() {
+        return picurl;
+    }
+
+    public void setPicurl(String picurl) {
+        this.picurl = picurl;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -88,6 +97,7 @@ public class User implements Serializable {
         ", sex=" + sex +
         ", password=" + password +
         ", isManage=" + isManage +
+        ", picurl=" + picurl +
         "}";
     }
 }

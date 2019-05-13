@@ -830,7 +830,7 @@ function VarietySame(type,name) {
                         if (result.data.list.length==0) {
                             $("#page").css("display", "none");
                         }
-                        // swal("评星成功!", "", "success");
+
                         totalList=result.data.total;
                         totalNum=Math.ceil(totalList/10);
                         console.log(totalNum)
@@ -854,7 +854,7 @@ function VarietySame(type,name) {
                         //     console.log(totalNum)
                         // }
 
-                        var arr = result.data.list
+                        var arr = result.data.list;
                         $(".comment-list").addCommentList({data: arr, add: ""});
                         // console.log(arr)
                     }
@@ -883,35 +883,37 @@ function VarietySame(type,name) {
 
     }
 
+
     $(function(){
         $("#comment").click(function(){
+            var headpic=getCookie("headpic")
             var obj = new Object();
-            obj.img="./images/img.jpg";
+            obj.picurl=headpic;
             obj.name=getCookie("name");
             obj.comment=$("#content").val();
             obj.replyBody="";
+            obj.userid=getCookie("userid");
             $(".comment-list").addCommentList({data:[],add:obj});
             insertComment()
         });
     }) //评论
 
 
-    $("#page").paging({
-        pageNum: pageNum, // 当前页面
-        totalNum: totalNum, // 总页码
-        totalList: totalList, // 记录总数量
-        flag:0,
-        callback: function (num) { //回调函数
-            console.log(num);
-        }
-    });
+    // $("#page").paging({
+    //     pageNum: pageNum, // 当前页面
+    //     totalNum: totalNum, // 总页码
+    //     totalList: totalList, // 记录总数量
+    //     flag:0,
+    //     callback: function (num) { //回调函数
+    //         console.log(num);
+    //     }
+    // });
 
 
 
 
     $(document).ready(function () {
         var token=getCookie("token");
-
         if (token!=null){
             $("#login-btn").css("display","none");
             $("#register-btn").css("display","none");

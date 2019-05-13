@@ -50,4 +50,10 @@ public interface IUserFacade {
     //删除token
     int deletetoken(String userid);
 
+    //修改头像
+    int updateHead(String id,String picurl);
+
+    //查询用户头像
+    String userHead(String userid);
+
 }

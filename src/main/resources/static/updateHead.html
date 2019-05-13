@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]>
+<html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]>
+<html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]>
+<html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]>
+<html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>艺起看-综艺节目一起看</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+    <!--    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
+
+        <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+
+    <link rel="stylesheet" href="css/base.css"/>
+
+    <script charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+</head>
+<body>
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="艺起看" hidefocus><img style="overflow: hidden;"
+                                                                                      src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+                        <b class="lump hd-nav-ico"></b>
+                        <b class="hd-menu-ico"></b>
+                        <!--<b class="tit">分类</b>-->
+                        <em class="icon"></em>
+                        </a>
+
+                    </div>
+
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+                            <div style="margin-top: -8px">
+                                <input style="width: 280px;height: 30px;margin-left:0;border:1px solid #ddd;border-right: none;padding-left: 10px;"
+                                       block="soframe_1_0" type="text" class="" name="word" id="vue" autocomplete="off"
+                                       maxlength="30" lang="zh-cn"/>
+                                <a style="font-size: 21px;line-height: 40px; background-color: orange; "
+                                   target="_blank " class="seedplay play-btn-b" id="sousuo">搜索</a>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+                                <a id="login-btn" href="/login.html">登录</a>
+                                <a id="userinform" href="javascript:getUserInform()">个人中心</a>
+                                <i class="line"></i>
+                                <a id="register-btn" href="/register.html">注册</a>
+                                <a id="exit" href="javascript:exitlogin()">退出</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="page-progress" id="page-progress">
+            </div>
+        </div>
+        <div class="hd-content-sub z-app-footer fixed" id="nav-container-sub">
+            <div class="hd-content-sub-con fix">
+                <div class="mod-wrap sub-wrap">
+                    <div class="nav">
+                        <div class="prev">
+                            <a class="item large current" href="/index.html">首页</a>
+                            <a class="item large new" href="/VarietyType.html?area=内地&type=全部类型">内地<i></i></a>
+                            <a class="item large" href="/VarietyType.html?area=中国台湾&type=全部类型">中国台湾</a>
+                            <a class="item large" href="/VarietyType.html?area=中国香港&type=全部类型">中国香港</a>
+                            <i class="sep"></i>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=搞笑">搞笑</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=情感">情感</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=真人秀">真人秀</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=亲子">亲子</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=娱乐">娱乐</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=相亲">相亲</a>
+                            <a class="item" href="/VarietyType.html?area=全部地区&type=美食">美食</a>
+                        </div>
+                    </div>
+                    <!--<a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>-->
+                    <!--<div class="nav-ad">-->
+                    <!--<div class="ad-wrap" data-deliver="ws_nav_guide">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="personal set-wrap" style="margin-top: 90px;">
+        <div class="left-navigate">
+            <div class="nav-con">
+                <div class="level1">
+                    <p class="homepage"><a href="/index.html">首页</a></p>
+                    <p class="account-setting current"><a href="javascript:getUserInform()">个人资料</a></p>
+                    <p class="account-setting current"><a href="/myRatings.html">我的节目评星</a></p>
+                    <p class="account-setting current"><a href="/mycomment.html">我的节目评论</a></p>
+                    <p class="account-setting current"><a href="/updateHead.html">头像管理</a></p>
+                    <p class="account-setting current"><a href="/secret.html">修改密码</a></p>
+                </div>
+
+            </div>
+        </div>
+        <div class="setting-title">头像管理</div>
+        <form method="post" class="fix account-info" id="FormUserInform">
+            <div class="prset-item fix">
+                <dl class="fix">
+
+                    <div class="layui-form-item">
+
+                        <dd>
+                            <input id="picurl"  value="选择头像" type="file" name="file" accept="image/*" onchange="changImg(event)" >  
+                        </dd>
+                    </div>
+
+                </dl>
+
+                <dl class="fix">
+                    <div STYLE="background-color: gainsboro;width: 200px;height: 200px" >
+                        <img id="image" src="" height="200px" width="200px">   
+                    </div>
+                </dl>
+                <dl class="fix" style="margin-top: 4px">
+                <p >
+                    <!--<input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 1px;" value="保存" onclick="updateConfigPic()">-->
+                    <input  type="button" class="login_submit" style="width:199px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 1px;" value="上传" onclick="updateHead()">
+                </p>
+                </dl>
+
+            </div>
+        </form>
+    </div>
+
+
+    <div class="page-wrap" style="margin-top: 90px;">
+
+    </div>
+
+
+    <!-- <link rel="stylesheet" href="card.less"/>
+    <script type="text/javascript" src="js/card.js"></script> -->
+    <!-- 底部样式    -->
+    <div class="footer fix" id="footer">
+        <div class="mod-wrap">
+            <div class="foot-wrap">
+                <div class="foot-link fix">
+                    <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- ================================================== -->
+
+    <div class="gototop fixed" id="gototopwrap">
+        <div class="ad-game-tip" data-deliver="ws_all_game"></div>
+
+    </div>
+
+    <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
+
+    <script type="text/javascript">
+
+
+        function testPic() {
+            var file_obj = document.getElementById('picurl').files[0];
+
+            var formData = new FormData($("#FormPic"));
+            var filename="";
+            formData.append('file', file_obj);
+            var size = file_obj.size;
+            var max_size=3000;
+            if (size > max_size * 1024) {
+                alert("图片大小不能超过3m");
+
+            }
+            else{
+                $.ajax({
+                    type: "post",
+                    url: "/ConfigPic/uploadPic",
+                    //传入组装的参数
+                    data: formData
+                    ,
+                    dataType: "json",
+                    async: false,
+                    cache: false,   //上传文件不需要缓存
+                    contentType: false,  //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+                    processData: false,  //需设置为false。因为data值是FormData对象，不需要对数据做处理
+                    success: function (res) {
+                        // console.log(res.data)
+                        if(res.code === 1){
+                            //成功执行的代
+                            filename=res.data
+
+                        }
+                    },
+                    error:function(){
+
+                        alert("异常")
+                    }
+                });}
+
+            // console.log(formData.get("name"))
+
+
+            return filename;
+        }
+
+
+        function changImg(e){
+            $("#image").attr("src","");  //显示图片.
+            for (var i = 0; i < e.target.files.length; i++) {
+                var file = e.target.files.item(i);
+                //验证是否为图片，不是就跳出循环
+                if (!(/^image\/.*$/i.test(file.type))) {
+                    swal("不是图片");
+                    $("#picurl").val("");
+                    continue;
+                }
+                //实例化FileReader API  
+                var freader = new FileReader();
+                freader.readAsDataURL(file);
+                freader.onload = function(e) {
+
+                    $("#image").attr("src",e.target.result);  //显示图片
+                }
+            }
+            // console.log($("#s1").val())
+        }
+
+
+        $("#sousuo").click(function () {
+            $(this).attr("href", "/searchVariety.html?word=" + $("#vue").val());
+        })
+
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+
+
+        //从url上取值填充表单
+
+
+        //s刷新页面
+        // function refresh() {
+        //     var token = getCookie("token");
+        //     if (token != null) {
+        //         $("#login-btn").css("display", "none");
+        //         $("#register-btn").css("display", "none");
+        //
+        //         // getUserInform()
+        //
+        //         // alert(getQueryVariable("name"));
+        //     }
+        //     if (token == null || token == "") {
+        //         $("#userinform").css("display", "none");
+        //         $("#exit").css("display", "none");
+        //         window.location.href = '/index.html';
+        //
+        //     }
+        // }
+
+        //修改头像
+        function updateHead() {
+            // console.log($("#id").val())
+            var id = getCookie("userid");
+            var picurl=$("#picurl").val();
+
+
+            if (picurl == null || picurl == "") {
+                swal("请选择图片哦");
+                // swal("Good!", "弹出了一个操作成功的提示框", "success");
+            }
+            else {
+
+                var picurl2=testPic();
+                console.log(picurl2);
+                if (picurl2==""||picurl2==null)
+                {
+                    swal("图片路径有问题哦");
+                }
+                else{
+                    $.ajax({
+                        //几个参数需要注意一下
+                        type: "post",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "/API/updateHead",//url
+                        data: {
+                            id: id,
+                            picurl: picurl2
+                        },
+                        success: function (result) {
+                            console.log(result);//打印服务端返回的数据(调试用)
+                            if (result.code == 1) {
+
+                                swal("修改成功!", "", "success");
+                                setCookie("headpic",picurl2);
+                                setTimeout("window.location.href='/updateHead.html'", 2000);
+
+                            }
+                            if (result.code == -1) {
+                                swal("修改失败啦，要不您再试试？", "", "error");
+                            }
+
+                            ;
+                        },
+                        error: function (e) {
+                            swal("身份验证失败请重新登录", "", "error");
+                            // exitTologin();
+                        }
+                    });
+                }
+
+
+
+            }
+        }
+
+        //跳转到个人中心
+        function getUserInform() {
+            // console.log($("#id").val())
+            var token = getCookie("token");
+            var userid = getCookie("userid");
+            if (token == null || token == "") {
+                window.location.href = '/login.html';
+                // swal("Good!", "弹出了一个操作成功的提示框", "success");
+            }
+            else {
+
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/API/index/userInform",//url
+                    data: {
+                        userid: userid
+                    },
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (result.code == 1) {
+                            // swal("登录成功!", "", "success");
+
+
+                            window.location.href = '/userinform.html?name=' + result.data.name + '&sex=' + result.data.sex + '&birthday=' + result.data.birthday;
+                        }
+                        if (result.code == -1) {
+                            swal("系统异常!", "", "error");
+
+                        }
+                    },
+                    error: function (e) {
+                        swal("身份验证失败请重新登录", "", "error");
+                        exitTologin();
+                    }
+                });
+            }
+
+
+        }
+
+        $(document).ready(function () {
+            var token = getCookie("token");
+            var head=getCookie("headpic");
+            $("#image").attr("src",head);  //显示图片
+
+            if (token != null) {
+                $("#login-btn").css("display", "none");
+                $("#register-btn").css("display", "none");
+
+                // getUserInform()
+
+                // alert(getQueryVariable("name"));
+            }
+            if (token == null || token == "") {
+                $("#userinform").css("display", "none");
+                $("#exit").css("display", "none");
+                window.location.href = '/index.html';
+
+            }
+
+
+        })
+
+
+    </script>
+
+
+</body>
+</html>
+
+

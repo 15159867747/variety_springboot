@@ -1,5 +1,14 @@
+
+
+
 (function($){
+
+
 	function crateCommentInfo(obj){
+
+
+
+
 		/*
 		 * <div class="comment-info">
 			<header><img src="./images/img.jpg"></header>
@@ -29,12 +38,14 @@
 		 * */
 
             if(typeof(obj.commentDate) == "undefined" || obj.commentDate == ""){
+
 			obj.commentDate = getNowDateFormat();
-                var el = "<div class='comment-info'><header><img src='/images/img.jpg'></header><div class='comment-right'><h3 style='font-size: 33px'>"+obj.name+"</h3>"
+                var el = "<div class='comment-info'><header><img height='80' width='80' src='"+obj.picurl+"'></header><div class='comment-right'><h3 style='font-size: 33px'>"+obj.name+"</h3>"
                     +"<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>"+obj.commentDate+"</span>";
 		}
 		else{
-                var el = "<div class='comment-info'><header><img src='/images/img.jpg'></header><div class='comment-right'><h3 style='font-size: 33px'>"+obj.name+"</h3>"
+
+                var el = "<div class='comment-info'><header><img  height='80' width='80' src='"+obj.picurl+"'></header><div class='comment-right'><h3 style='font-size: 33px'>"+obj.name+"</h3>"
                     +"<div class='comment-content-header'><span><i class='glyphicon glyphicon-time'></i>"+longTodate(obj.commentDate)+"</span>";
 
             }

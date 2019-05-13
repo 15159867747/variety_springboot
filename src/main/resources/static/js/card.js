@@ -150,6 +150,7 @@ function exitTologin(){
                 delCookie("name");
                 delCookie("userid");
                 delCookie("is_manage");
+                delCookie("headpic")
                 // window.location.href = '/login.html';
                 window.history.back(-1);
             }
@@ -187,6 +188,7 @@ function exitToAdmin(){
                 delCookie("name");
                 delCookie("userid");
                 delCookie("is_manage");
+                delCookie("headpic")
 
                 // window.history.back(-1);
                 window.location.href = '/adminLogin.html';
