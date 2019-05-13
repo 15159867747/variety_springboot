@@ -1,6 +1,7 @@
 package com.tv.variety.facade;
 
 import com.tv.variety.mybatic.model.Configpic;
+import com.tv.variety.param.ConfigpicParams;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public interface IConfigFacade {
     //修改轮播图
-    int updateConfigPic(Configpic configpic);
+    int updateConfigPic(ConfigpicParams configpic);
 
     //展示轮播图
 

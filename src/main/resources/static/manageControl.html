@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="setting-title">轮播图设置</div>
-        <form method="post"  class="fix account-info" id="FormUserInform">
+        <form method="post"  class="fix account-info" id="FormPic" enctype="multipart/form-data">
 
             <div class="prset-item fix">
 
@@ -203,17 +203,30 @@
 
 
 
+                <!--<dl class="fix">-->
+
+                <!--<div class="layui-form-item">-->
+
+                    <!--<dd>-->
+                        <!--<input type="text" class="t"   placeholder="轮播图片地址"  id="picurl"  >&nbsp;-->
+
+                    <!--</dd>-->
+                <!--</div>-->
+
+            <!--</dl>-->
+
+
                 <dl class="fix">
 
                 <div class="layui-form-item">
 
                     <dd>
-                        <input type="text" class="t"   placeholder="轮播图片地址"  id="picurl"  >&nbsp;
-
+                        <input type="text" class="t"   placeholder="节目详情"  id="detail"  >
                     </dd>
                 </div>
 
             </dl>
+
 
 
                 <dl class="fix">
@@ -221,8 +234,19 @@
                     <div class="layui-form-item">
 
                         <dd>
-                            <input type="text" class="t"   placeholder="节目详情"  id="detail"  >
+                            <input id="picurl"  value="选择图片" type="file" name="file" accept="image/*" onchange="changImg(event)" >  
                         </dd>
+                    </div>
+
+                </dl>
+
+                <dl class="fix">
+
+                    <div class="layui-form-item">
+
+
+                            <img id="image" src="" height="100",width="200px">   
+
                     </div>
 
                 </dl>
@@ -231,8 +255,8 @@
 
 
                 <p class="">
-                    <input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 1px;" value="保存" onclick="updateConfigPic()">
-
+                    <!--<input type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 1px;" value="保存" onclick="updateConfigPic()">-->
+                    <input  type="button" class="login_submit" style="width:245px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 1px;" value="上传" onclick="updateConfigPic()">
                 </p>
             </div>
         </form>
@@ -267,14 +291,82 @@
 
     <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
 
-    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
     <!--<script type="text/javascript">-->
     <!--T.observer.send('app.ready');-->
     <!--console.log("app.ready");-->
     <!--</script>-->
 
     <script type="text/javascript">
+
+
+        function testPic() {
+            var file_obj = document.getElementById('picurl').files[0];
+
+            var formData = new FormData($("#FormPic"));
+            var filename="";
+            formData.append('file', file_obj);
+            var size = file_obj.size;
+            var max_size=3000;
+            if (size > max_size * 1024) {
+                alert("图片大小不能超过3m");
+
+            }
+            else{
+                $.ajax({
+                type: "post",
+                url: "/ConfigPic/uploadPic",
+                //传入组装的参数
+                data:
+                formData
+                ,
+                dataType: "json",
+                async: false,
+                cache: false,   //上传文件不需要缓存
+                contentType: false,  //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+                processData: false,  //需设置为false。因为data值是FormData对象，不需要对数据做处理
+                success: function (res) {
+                    // console.log(res.data)
+                    if(res.code === 1){
+                        //成功执行的代
+                        filename=res.data
+
+                    }
+                },
+                error:function(){
+
+                    alert("异常")
+                }
+            });}
+
+            // console.log(formData.get("name"))
+
+
+        return filename;
+        }
+
+
+        function changImg(e){
+            $("#image").attr("src","");  //显示图片.
+            for (var i = 0; i < e.target.files.length; i++) {
+                var file = e.target.files.item(i);
+                //验证是否为图片，不是就跳出循环
+                if (!(/^image\/.*$/i.test(file.type))) {
+                    swal("不是图片");
+                    $("#picurl").val("");
+                    continue;
+                }
+                //实例化FileReader API  
+                var freader = new FileReader();
+                freader.readAsDataURL(file);
+                freader.onload = function(e) {
+
+                    $("#image").attr("src",e.target.result);  //显示图片
+                }
+            }
+            console.log($("#s1").val())
+        }
 
 
 
@@ -287,7 +379,9 @@
             var change =$("#change").text();
             var name=$("#allList").text();
             var picurl=$("#picurl").val();
+            console.log(picurl);
             var detail=$("#detail").val();
+            var userid=getCookie("userid");
 
             if (name=="请选择节目名")
             {
@@ -309,37 +403,47 @@
                 else {
                     change=parseInt(change.substring(3,4));
                     var varietyId=getCookie("varietyid");
-                    $.ajax({
-                        //几个参数需要注意一下
-                        type: "post",//方法类型
-                        dataType: "json",//预期服务器返回的数据类型
-                        url: "/ConfigPic/updeteConfigpic" ,//url
-                        data: {
-                            id:change,
-                            name:name.trim(),
-                            picurl:picurl,
-                            detail:detail,
-                            varietyId:varietyId
-                        },
-                        success: function (result) {
-                            console.log(result);//打印服务端返回的数据(调试用)
-                            if (result.code == 1) {
+                    var picurl2=testPic();
+                    console.log(picurl2);
+                    if (picurl2==""||picurl2==null)
+                    {
+                        swal("图片路径有问题哦");
+                    }
+                    else{
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "post",//方法类型
+                            dataType: "json",//预期服务器返回的数据类型
+                            url: "/ConfigPic/updeteConfigpic" ,//url
+                            data: {
+                                id:change,
+                                name:name.trim(),
+                                picurl:picurl2,
+                                detail:detail,
+                                varietyId:varietyId,
+                                updateUserid:userid
+                            },
+                            success: function (result) {
+                                console.log(result);//打印服务端返回的数据(调试用)
+                                if (result.code == 1) {
 
 
-                                swal("修改成功!", "", "success");
-                                setTimeout("window.location.href = '/manageControl.html' ", 1000 );
+                                    swal("修改成功!", "", "success");
+                                    setTimeout("window.location.href = '/manageControl.html' ", 1000 );
 
+                                }
+                                if(result.code==-1){
+                                    swal("修改失败啦，要不您再试试？", "", "error");
+                                    window.html.href="/manageControl.html";
+                                }
+                                ;
+                            },
+                            error : function(e) {
+                                exitTologin();
                             }
-                            if(result.code==-1){
-                                swal("修改失败啦，要不您再试试？", "", "error");
-                                window.html.href="/manageControl.html";
-                            }
-                            ;
-                        },
-                        error : function(e) {
-                            exitTologin();
-                        }
-                    });
+                        });
+                    }
+
                 }
 
             }

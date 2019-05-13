@@ -9,7 +9,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author yrongqin
- * @since 2019-05-07
+ * @since 2019-05-13
  */
 public class Configpic implements Serializable {
 
@@ -21,6 +21,9 @@ public class Configpic implements Serializable {
     private String varietyId;
     private String picurl;
     private String detail;
+    private Long updatetime;
+    @TableField("updateUserid")
+    private String updateUserid;
 
 
     public Integer getId() {
@@ -63,6 +66,22 @@ public class Configpic implements Serializable {
         this.detail = detail;
     }
 
+    public Long getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Long updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public String getUpdateUserid() {
+        return updateUserid;
+    }
+
+    public void setUpdateUserid(String updateUserid) {
+        this.updateUserid = updateUserid;
+    }
+
     @Override
     public String toString() {
         return "Configpic{" +
@@ -71,6 +90,8 @@ public class Configpic implements Serializable {
         ", varietyId=" + varietyId +
         ", picurl=" + picurl +
         ", detail=" + detail +
+        ", updatetime=" + updatetime +
+        ", updateUserid=" + updateUserid +
         "}";
     }
 }

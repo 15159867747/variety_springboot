@@ -41,12 +41,12 @@ public class Python {
             System.out.println("youku");
             proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\youku_mongotv\\demo2.py");// 执行py文件
             //用输入输出流来截取结果
-            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String line = null;
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
-            }
-            in.close();
+//            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+//            String line = null;
+//            while ((line = in.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//            in.close();
             proc.waitFor();
             return 1;
         } catch (IOException e) {

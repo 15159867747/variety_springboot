@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author yrongqin
- * @since 2019-05-07
+ * @since 2019-05-13
  */
 public interface ConfigpicService extends IService<Configpic> {
 

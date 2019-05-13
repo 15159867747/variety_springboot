@@ -32,6 +32,7 @@ public class TokenConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/uploadImage/**").addResourceLocations("file:D:/uploadImage/");
 
 
 }}

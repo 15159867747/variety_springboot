@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author yrongqin
- * @since 2019-05-07
+ * @since 2019-05-13
  */
 public interface ConfigpicMapper extends BaseMapper<Configpic> {
 
