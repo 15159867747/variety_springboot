@@ -335,16 +335,40 @@
             data: {
                 userid: userid,
                 type:type
+
             },
             success: function (result) {
                 console.log(result);//打印服务端返回的数据(调试用)
 
                 if (result.code == 1) {
+                    var el="";
+                    for (var n = 0; n < result.data.length; n++)
+                    {
+
+                        //   console.log(result.data.list[n].name)
+
+                        el =el+ "  <div class=\"mod-vd-i fix\">\n" +
+                            "                                        <div class=\"pic\">\n" +
+                            "                                            <a href=\"/VarietyDetails.html?name="+ result.data[n].name+ "&varietyId="+result.data[n].id +  "\" data-gtype=\"tv\" block=\"guess_1_media\" data-id=\"316099\"  title="+ result.data[n].name+"    target=\"_blank\">\n" +
+                            "                                                <img src="+result.data[n].picurl+">\n" +
+                            "                                                <span class=\"mask\"><i class=\"play-btn\"></i></span>\n" +
+                            "                                            </a>\n" +
+                            "                                        </div>\n" +
+                            "                                        <div class=\"info\">\n" +
+                            "                                            <h3 class=\"tit\"><a href=\"/VarietyDetails.html?name="+ result.data[n].name+ "&varietyId="+result.data[n].id +  "\"   title="+ result.data[n].name+"   block=\"guess_1_media\" target=\"_blank\">"+result.data[n].name+"</a></h3>\n" +
+                            "                                            <p>"+result.data[n].name+"</p>\n" +
+                            "                                        </div>\n" +
+                            "                                    </div>";
+                    }
+
+                    var div = document.getElementById("Varietylike");
+                    div.innerHTML=el;
+
 
                 }
                 if(result.code==-1)
                 {
-
+                    $("#guess").css("display","none");
 
                 }
 

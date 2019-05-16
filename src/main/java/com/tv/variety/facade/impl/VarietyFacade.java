@@ -49,10 +49,7 @@ public class VarietyFacade implements IVarietyFacade {
         return varietyDetailsParam;
     }
 
-    @Override
-    public PageResult<VarietyParams> findVarietyByType(String type) {
-        return varietyMongoDB.findVarietyByType(type);
-    }
+
 
     @Override
     public Variety findVarietyById(String id) {
@@ -115,11 +112,16 @@ public class VarietyFacade implements IVarietyFacade {
         }
         return varietyParamsList;
     }
-
+    @Override
+    public PageResult<VarietyParams> findVarietyByType(String type) {
+        return varietyMongoDB.findVarietyByType(type);
+    }
     @Override
     public PageResult<VarietyParams> findVarietyByTypeForRecommend(String type) {
         return varietyMongoDB.findVarietyByTypeforRecommend(type);
     }
+
+
 
 
 }

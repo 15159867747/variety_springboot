@@ -239,7 +239,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
 
     @Override
     public PageResult findVarietyByTypeforRecommend(String type) {
-        final Query query = new Query(Criteria.where("type").is(type));
+        final Query query = new Query(Criteria.where("type").is(type.trim()));
         query.with(new Sort(Sort.Direction.DESC, "update"));
         return mongoPageHelper.pageQuery(query, Variety.class, 9,
                 1,variety->{
