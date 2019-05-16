@@ -27,5 +27,9 @@ public interface IRatingsFacade {
     //删除用户评星
     int deleteRatings(String id);
 
+    //判断用户是否有评星记录
+
+    int checkUserRatings(String userid);
+
 
 }

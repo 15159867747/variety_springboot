@@ -29,4 +29,8 @@ public interface IRatingsBLL {
 
     //判断该用户下，该节目是否有评星
     int checkUserRating(String user,String varietyid);
+
+    //判断该用户是否有评论过节目
+    int checkUserRating(String user);
+
 }

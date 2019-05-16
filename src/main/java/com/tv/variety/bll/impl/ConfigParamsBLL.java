@@ -84,7 +84,8 @@ public class ConfigParamsBLL implements IConfigParamsBLL {
     @Override
     public Configparams getValueByKey(String key) {
         EntityWrapper<Configparams> wrapper = new EntityWrapper<Configparams>();
-        wrapper.eq("key",key);
+
+        wrapper.eq("`key`",key);
         List<Configparams> list =configparamsMapper.selectList(wrapper);
         if (list.size()>0)
         {

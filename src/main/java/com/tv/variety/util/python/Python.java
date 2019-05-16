@@ -4,7 +4,7 @@ package com.tv.variety.util.python;
  * @author yrongqin@linwell.com
  * @createtime ${date}${time}
  */
-import com.sun.tools.javac.util.List;
+
 import com.tv.variety.bll.IConfigParamsBLL;
 import com.tv.variety.bll.IRatingsBLL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Python {
     @Autowired
     private IConfigParamsBLL iConfigParamsBLL;
@@ -66,7 +67,7 @@ public class Python {
 
     }
 
-    public List recommendpy(String user)  //4
+    public List<String> recommendpy(String user)  //5
     {
         Process proc;
         try {
@@ -76,13 +77,15 @@ public class Python {
             //用输入输出流来截取结果
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line = null;
-            List list=null;
+            List<String> list=new ArrayList<String>();
             while ((line = in.readLine()) != null) {
                 list.add(line);
 //                System.out.println(line);
             }
+//            System.out.println(list.size());
             in.close();
             proc.waitFor();
+            System.out.println("reconmmendSuccess");
             return list;
 
         } catch (IOException e) {
@@ -96,7 +99,6 @@ public class Python {
 
         }
     }
-
 
     public int MovieRatingsAction(){
         Process proc;
@@ -126,7 +128,7 @@ public class Python {
             return 0;
 
         }
-    }  //1
+    }  //2
 
     public int SklearnAction(){
         Process proc;
@@ -156,7 +158,7 @@ public class Python {
             return 0;
 
         }
-    }       //2
+    }       //3
 
     public int SimAction(){
         Process proc;
@@ -186,7 +188,7 @@ public class Python {
             return 0;
 
         }
-    }           //3
+    }           //4
 
     public int getRatings(){
         Process proc;
@@ -216,38 +218,42 @@ public class Python {
             return 0;
 
         }
-    }           //3
+    }           //1
 
     public static void main(String[] args) {
+        Python python=new Python();
+        System.out.println( python.recommendpy("31"));
+//        python.recommendpy("31");
 
 
 
-        Process proc;
-        try {
-            System.out.println("reconmmend");
-//            String[] args1 = new String[] { "python", "C:\\Users\\Dell\\Desktop\\毕设\\AgglomerativeClustering\\actionRecommend.py", String.valueOf(user) };
-//            Process proc = Runtime.getRuntime().exec(args1);
-            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionGetDBRatings.py");// 执行py文件
-            //用输入输出流来截取结果
-//            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-//            String line = null;
-//            while ((line = in.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//            in.close();
-            proc.waitFor();
 
-
-        } catch (IOException e) {
-//            System.out.println(e);
-            e.printStackTrace();
-
-        } catch (InterruptedException e) {
-//            System.out.println(e);
-            e.printStackTrace();
-
-
-        }
+//        Process proc;
+//        try {
+//            System.out.println("reconmmend");
+////            String[] args1 = new String[] { "python", "C:\\Users\\Dell\\Desktop\\毕设\\AgglomerativeClustering\\actionRecommend.py", String.valueOf(user) };
+////            Process proc = Runtime.getRuntime().exec(args1);
+//            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionGetDBRatings.py");// 执行py文件
+//            //用输入输出流来截取结果
+////            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+////            String line = null;
+////            while ((line = in.readLine()) != null) {
+////                System.out.println(line);
+////            }
+////            in.close();
+//            proc.waitFor();
+//
+//
+//        } catch (IOException e) {
+////            System.out.println(e);
+//            e.printStackTrace();
+//
+//        } catch (InterruptedException e) {
+////            System.out.println(e);
+//            e.printStackTrace();
+//
+//
+//        }
 
 
 

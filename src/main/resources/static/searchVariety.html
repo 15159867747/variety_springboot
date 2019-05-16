@@ -321,6 +321,44 @@
     var pageNum=0;// 当前页面
     var totalNum=0;// 总页码
     var totalList=0// 记录总数量
+
+    function recommendVariety() {
+        var userid=getCookie("userid");
+        var type=$("#type0").text();
+        console.log(userid,type.trim())
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/YqLook/recommend",//url
+            data: {
+                userid: userid,
+                type:type
+            },
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+
+                if (result.code == 1) {
+
+                }
+                if(result.code==-1)
+                {
+
+
+                }
+
+
+            },
+            error: function (e) {
+                swal("系统异常啦，赶快联系管理员叭!", "", "error");
+                // window.location.href = '/index.html';
+            }
+        });
+    }
+
+
+
     function searchVarietyAll(pageSize) {
         var all=decodeURIComponent(getQueryVariable("word"));
         console.log(all);
@@ -397,7 +435,7 @@
 
     $(document).ready(function () {
         var token=getCookie("token");
-        console.log("123")
+        // console.log("123")
         if (token!=null){
             $("#login-btn").css("display","none");
             $("#register-btn").css("display","none");
@@ -408,6 +446,7 @@
             $("#userinform").css("display","none");
             $("#exit").css("display","none");
         }
+
         searchVarietyAll(1);
 
 

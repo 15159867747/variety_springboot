@@ -68,4 +68,12 @@ public class RatingsBLL implements IRatingsBLL {
         int rs=ratingsMapper.selectCount(entityWrapper);
         return rs;
     }
+
+    @Override
+    public int checkUserRating(String user) {
+        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+        entityWrapper.eq("userid",user);
+        int rs=ratingsMapper.selectCount(entityWrapper);
+        return rs;
+    }
 }

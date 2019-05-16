@@ -9,8 +9,10 @@ import com.tv.variety.util.JsonResult;
  * @createtime ${date}${time}
  */
 public interface IVarietyController {
+    //通过节目名找节目
     JsonResult findvarietyByName(String name,String userid);
 
+    //通过类型找节目
     JsonResult findVarietyByType(String type);
 
     JsonResult findvarietyById(String id,String name);
@@ -22,4 +24,8 @@ public interface IVarietyController {
     JsonResult findVarietyByTypeOrArea(String area,String type,int pageNum,int pageSize);
 
     JsonResult findVarietyByType(String type,String name);
+
+    JsonResult recommend(String userid,String type);
+
+
 }

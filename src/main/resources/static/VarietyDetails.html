@@ -595,10 +595,13 @@ function VarietySame(type,name) {
                         $("#name").text(result.data.variety.name);
                         // $("#fromtv").text(result.data.fromtv);
                         for (var i in result.data.variety.fromtv) {
-                            $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
+                            // $("#fromtvdiv").append('<a href="#" id=fromtv"' + i + '">' + result.data.variety.fromtv[i] + '</a>&nbsp;');
+                            $("#fromtvdiv").append(result.data.variety.fromtv[i] + '&nbsp;');
                         }
                         for (var i in result.data.variety.type) {
-                            $("#type").append('<a href="#" id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
+                            $("#type").append("<a href=/VarietyType.html?area=全部地区&type="+ result.data.variety.type[i]+"> "+ result.data.variety.type[i] + "</a>&nbsp;");
+                            // $("#type").append('<a href=/VarietyType.html?area=全部地区&type='+ result.data.variety.type[i]+ 'id="atype' + i + '">' + result.data.variety.type[i] + '</a>&nbsp;');
+                            // /VarietyType.html?area=全部地区&type='+ result.data.variety.type[i]+ '
                             // $("#atype"+i).text(result.data.type[i]);
                             // console.log(decodeURIComponent(result.data.type[i]))
                         }
@@ -606,8 +609,8 @@ function VarietySame(type,name) {
                         $("#updatetime").text(result.data.variety.update);
                         // $("#area").text(result.data.area);
                         for (var i in result.data.variety.area) {
-                            $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
-
+                            // $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
+                            $("#areadiv").append( result.data.variety.area[i] +'&nbsp;');
                         }
                         $("#img1").attr("src", result.data.variety.picurl);
                         showtvurl = result.data.variety.btn

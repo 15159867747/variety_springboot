@@ -19,7 +19,7 @@ public interface IVarietyMongoDB {
     //根据综艺名查询综艺的节目信息
     Variety findVarietyByName(String name);
 
-    //根据综艺类型查询该类型下的所有节目
+    //根据综艺类型查询该类型下的所有节目 14个
     PageResult findVarietyByType(String type);
 
     //根据id查是否有该节目
@@ -38,6 +38,9 @@ public interface IVarietyMongoDB {
     //根据综艺类型查询该类型下的所有节目 除了该节目
     PageResult findVarietyByType(String type,String name);
 
+
+    //根据综艺类型查询该类型下的所有节目 9个
+    PageResult findVarietyByTypeforRecommend(String type);
 
 
 

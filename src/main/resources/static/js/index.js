@@ -161,23 +161,23 @@ function Searcherall(data) {
                 "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\">\n" +
                 "                            <i>地区：</i>\n";
             for (var j in data[i].area) {
-                el = el + "<a href=\"\">" + data[i].area[j] + "</a>&nbsp;\n";
+                el = el + "" + data[i].area[j] + "&nbsp;\n";
             }
 
             el = el + "                        </div>\n" +
                 "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"type2\">\n" +
                 "                            <i>类型：</i>\n";
             for (var j in data[i].type) {
-                el = el + "<a href=\"\"  target=\"_blank\" >" + data[i].type[j] + " </a>&nbsp;\n";
+                el = el + "<a  id=type"+j+"  href=/VarietyType.html?area=全部地区&type="+ data[i].type[j]+"  target=\"_blank\" >" + data[i].type[j] + " </a>&nbsp;\n";
             }
-
+            {/*<a className="tit" href="/VarietyType.html?area=全部地区&type=真人秀">真人秀</a>*/}
             el = el + "                     </div>\n" +
                 "\n" +
                 "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"fromtvdiv2\">\n" +
                 "                            <i>播出频道：</i>\n" +
                 "                        \n";
             for (var j in data[i].fromtv) {
-                el = el + "<a href=\"\"  target=\"_blank\"> " + data[i].fromtv[j] + "</a>&nbsp;\n";
+                el = el + "" + data[i].fromtv[j] + "&nbsp;\n";
             }
 
 
@@ -224,6 +224,7 @@ function Searcherall(data) {
     }
     var div = document.getElementById("search");
     div.innerHTML=el;
+    recommendVariety()
 }
 
 

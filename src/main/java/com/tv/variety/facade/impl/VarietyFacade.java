@@ -1,6 +1,7 @@
 package com.tv.variety.facade.impl;
 
 //import com.miao.PageResult;
+import com.tv.variety.bll.IConfigParamsBLL;
 import com.tv.variety.bll.IRatingsBLL;
 import com.tv.variety.bll.IVarietyMongoDB;
 import com.tv.variety.bll.impl.VarietyMongoDB;
@@ -29,6 +30,8 @@ public class VarietyFacade implements IVarietyFacade {
     private IVarietyMongoDB varietyMongoDB;
     @Autowired
     private IRatingsBLL iRatingsBLL;
+    @Autowired
+    private IConfigParamsBLL configParamsBLL;
 
     @Override
     public VarietyDetailsParam findVarietyByName(String name,String userid) {
@@ -92,6 +95,30 @@ public class VarietyFacade implements IVarietyFacade {
     @Override
     public PageResult<VarietyParams> findVarietyByType(String type, String name) {
         return varietyMongoDB.findVarietyByType(type,name);
+    }
+
+    @Override
+    public List<VarietyParams> getRecommend(List<String> list) {
+        List<VarietyParams> varietyParamsList=new ArrayList<VarietyParams>();
+
+        for (int i=0;i<list.size();i++)
+        {
+            VarietyParams varietyParams=new VarietyParams();
+            Variety variety=new Variety();
+            String varietyid=configParamsBLL.getKey_Variety(list.get(i)).getKey();
+            variety=varietyMongoDB.findVarietyById(varietyid);
+            varietyParams.setId(variety.getId());
+            varietyParams.setName(variety.getName());
+            varietyParams.setUpdate(variety.getUpdate());
+            varietyParams.setPicurl(variety.getPicurl());
+            varietyParamsList.add(varietyParams);
+        }
+        return varietyParamsList;
+    }
+
+    @Override
+    public PageResult<VarietyParams> findVarietyByTypeForRecommend(String type) {
+        return varietyMongoDB.findVarietyByTypeforRecommend(type);
     }
 
 

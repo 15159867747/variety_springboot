@@ -37,4 +37,9 @@ public interface IVarietyFacade {
     //根据类型查询所有节目，除了该节目
     PageResult<VarietyParams> findVarietyByType(String type,String name);
 
+    //根据推荐的节目查询节目
+    List<VarietyParams> getRecommend(List<String> list);
+
+    //根据新用户进行推荐
+    PageResult<VarietyParams> findVarietyByTypeForRecommend(String type);
 }

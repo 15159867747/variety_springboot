@@ -104,6 +104,11 @@ public class RatingsFacade implements IRatingsFacade {
     public int deleteRatings(String id) {
         return iRatingsBLL.deleteRatings(id);
     }
+
+    @Override
+    public int checkUserRatings(String userid) {
+        return iRatingsBLL.checkUserRating(userid);
+    }
 }
 
 

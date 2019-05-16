@@ -224,7 +224,22 @@ public class VarietyMongoDB implements IVarietyMongoDB {
     @Override
     public PageResult findVarietyByType(String type, String name) {
 
-        final Query query = new Query(Criteria.where("type").is(type).and("name").ne(name));
+        final Query query = new Query(Criteria.where("type").is(type).and("name").ne(name));//ne不等于
+        query.with(new Sort(Sort.Direction.DESC, "update"));
+        return mongoPageHelper.pageQuery(query, Variety.class, 9,
+                1,variety->{
+                    VarietyParams varietyParams1=new VarietyParams();
+                    varietyParams1.setId(variety.getId());
+                    varietyParams1.setName(variety.getName());
+                    varietyParams1.setPicurl(variety.getPicurl());
+                    varietyParams1.setUpdate(variety.getUpdate());
+                    return varietyParams1;}
+                , null);
+    }
+
+    @Override
+    public PageResult findVarietyByTypeforRecommend(String type) {
+        final Query query = new Query(Criteria.where("type").is(type));
         query.with(new Sort(Sort.Direction.DESC, "update"));
         return mongoPageHelper.pageQuery(query, Variety.class, 9,
                 1,variety->{
