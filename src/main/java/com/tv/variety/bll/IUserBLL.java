@@ -44,6 +44,10 @@ public interface IUserBLL {
 
     int updateUserInform(User user);
 
+    //查询所有用户
+    List<User> allUser();
+
+
 
 
 

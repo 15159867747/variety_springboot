@@ -26,4 +26,7 @@ public interface IRatingsBLL {
 
     //删除评星
     int deleteRatings(String id);
+
+    //判断该用户下，该节目是否有评星
+    int checkUserRating(String user,String varietyid);
 }

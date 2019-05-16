@@ -93,5 +93,13 @@ public class UserBLL implements IUserBLL {
         return i;
     }
 
+    @Override
+    public List<User> allUser() {
+        EntityWrapper<User> wrapper = new EntityWrapper<User>();
+        wrapper.notIn("id","");
+        List<User> alluser=userMapper.selectList(wrapper);
+        return alluser;
+    }
+
 
 }
