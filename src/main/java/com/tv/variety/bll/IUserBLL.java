@@ -47,6 +47,11 @@ public interface IUserBLL {
     //查询所有用户
     List<User> allUser();
 
+    //查询所有用户数量
+
+    int CountUserNumber();
+
+
 
 
 

@@ -195,5 +195,10 @@ public class UserFacade implements IUserFacade {
         return user.getPicurl();
     }
 
+    @Override
+    public int CountUserRatings() {
+        return userBLL.CountUserNumber();
+    }
+
 
 }

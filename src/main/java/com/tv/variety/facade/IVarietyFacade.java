@@ -42,4 +42,7 @@ public interface IVarietyFacade {
 
     //根据新用户进行推荐
     PageResult<VarietyParams> findVarietyByTypeForRecommend(String type);
+
+    //总节目数
+    int countAllVarietyNum();
 }

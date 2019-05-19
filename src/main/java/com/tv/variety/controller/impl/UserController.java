@@ -173,6 +173,12 @@ public class UserController implements IUserController {
         return new JsonResult(userFacade.userHead(userid),"返回个人头像",1);
     }
 
+    @Override
+    @RequestMapping(value ="/CountUserRatings", method = RequestMethod.POST)
+    public JsonResult CountUserRatings() {
+        return new JsonResult(userFacade.CountUserRatings(),"返回用户有过评星记录的用户数",1);
+    }
+
 
     @Override
     @RequestMapping(value ="/exit", method = RequestMethod.POST)

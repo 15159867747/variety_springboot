@@ -121,7 +121,10 @@ public class VarietyFacade implements IVarietyFacade {
         return varietyMongoDB.findVarietyByTypeforRecommend(type);
     }
 
-
+    @Override
+    public int countAllVarietyNum() {
+        return varietyMongoDB.countAllVarietyNum();
+    }
 
 
 }

@@ -44,5 +44,8 @@ public interface IVarietyMongoDB {
     //根据综艺类型查询该类型下的所有节目 14个
     PageResult findVarietyByType(String type);
 
+    //总节目数
+    int countAllVarietyNum();
+
 
 }

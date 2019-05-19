@@ -65,6 +65,12 @@ public class VarietyMongoDB implements IVarietyMongoDB {
     }
 
     @Override
+    public int countAllVarietyNum() {
+        Query query = new Query(Criteria.where("id").ne(null));
+        return (int)mongoTemplate.count(query,Variety.class);
+    }
+
+    @Override
     public Variety findVarietyById(String id) {
         Query query=new Query(Criteria.where("id").is(id));
         Variety vatiety =  mongoTemplate.findOne(query , Variety.class);

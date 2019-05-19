@@ -1,0 +1,620 @@
+.gray {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)
+}
+
+.page-wrap {
+    overflow: visible
+}
+
+.mod-home-wrap {
+    width: 1080px !important;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.mod-home-wrap .home-left {
+    width: 268px;
+    float: left;
+    background-color: #f4f4f4
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar {
+    position: relative;
+    width: 114px;
+    margin: 40px auto 0
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar img {
+    width: 114px;
+    height: 114px;
+    border-radius: 114px
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar em {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    background-repeat: no-repeat
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .qq-plat {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .funshion-plat {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .sina-plat {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .weixin-plat {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .user-info .user-name {
+    text-align: center
+}
+
+.mod-home-wrap .home-left .user-info .user-name h3 {
+    font-size: 16px;
+    margin: 15px 0 10px
+}
+
+.mod-home-wrap .home-left .user-info .user-name p {
+    color: #939393;
+    margin-bottom: 15px
+}
+
+.mod-home-wrap .home-left .user-info .user-name h4 {
+    color: #939393
+}
+
+.mod-home-wrap .home-left .user-info .user-name h4 em {
+    color: #f86400
+}
+
+.mod-home-wrap .home-left .user-info .vip-info {
+    margin: 30px 0 40px 30px
+}
+
+.mod-home-wrap .home-left .user-info .vip-info p {
+    margin-top: 5px;
+    color: #939393
+}
+
+.mod-home-wrap .home-left .user-info .vip-info p a {
+    margin-left: 10px;
+    outline: 0;
+    cursor: pointer;
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    color: #f86400;
+    font: 12px/25px Microsoft YaHei;
+    text-align: center;
+    text-decoration: none !important;
+    border: 1px solid #f86400;
+    border-radius: 3px
+}
+
+.mod-home-wrap .home-left .user-info .vip-info p a:hover {
+    background: #f86400;
+    border-color: #f86400;
+    color: #fff
+}
+
+.mod-home-wrap .home-left .user-info .vip-info .no-vip {
+    text-align: center;
+    margin-left: -30px
+}
+
+.mod-home-wrap .home-left .user-info .vip-info .no-vip p {
+    margin-top: 15px
+}
+
+.mod-home-wrap .home-left .user-info .vip-info .no-vip p a {
+    margin-left: 0;
+    width: 100px;
+    height: 25px;
+    line-height: 25px
+}
+
+.mod-home-wrap .home-left .line {
+    height: 1px;
+    margin: 0 30px;
+    background-color: #e5e5e5
+}
+
+.mod-home-wrap .home-left .left-tab {
+    margin-top: 20px
+}
+
+.mod-home-wrap .home-left .left-tab li {
+    height: 45px;
+    line-height: 45px
+}
+
+.mod-home-wrap .home-left .left-tab li a {
+    margin-left: 50px;
+    font-size: 14px
+}
+
+.mod-home-wrap .home-left .left-tab li a em {
+    display: inline-block;
+    margin-right: 15px;
+    width: 25px;
+    height: 22px;
+    position: relative;
+    top: 5px
+}
+
+.mod-home-wrap .home-left .left-tab li a .score {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab li a .vip {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab li a .history {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab li a .sub {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab li a .message {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab li a .account-set {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab .cur {
+    background-color: #f86400
+}
+
+.mod-home-wrap .home-left .left-tab .cur a {
+    color: #fff
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .score {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .vip {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .history {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .sub {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .message {
+    background-repeat: no-repeat;
+}
+
+.mod-home-wrap .home-left .left-tab .line {
+    margin: 10px 30px
+}
+
+.mod-home-wrap .home-right {
+    width: 752px;
+    padding: 25px 30px 0;
+    float: right;
+    background-color: #fff;
+    min-height: 800px
+}
+
+.mod-home-wrap .home-right .home-vip-tab {
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: -15px;
+    overflow: hidden;
+    position: relative
+}
+
+.mod-home-wrap .home-right .home-vip-tab a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px
+}
+
+.mod-home-wrap .home-right .home-vip-tab .cur {
+    color: #fff;
+    background-color: #f86400;
+    *padding-top: 12px
+}
+
+.mod-home-wrap .home-right .home-vip-tab .exchange-vip {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    outline: 0;
+    cursor: pointer;
+    display: inline-block;
+    width: 110px;
+    height: 22px;
+    color: #f86400;
+    font: 12px/22px Microsoft YaHei;
+    text-align: center;
+    text-decoration: none !important;
+    border: 1px solid #f86400;
+    border-radius: 3px
+}
+
+.mod-home-wrap .home-right .home-vip-tab .exchange-vip:hover {
+    background: #f86400;
+    border-color: #f86400;
+    color: #fff
+}
+
+.mod-home-wrap .home-right .content {
+    margin-top: 30px
+}
+
+.mod-home-wrap .home-right .content table {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #eee
+}
+
+.mod-home-wrap .home-right .content table tr {
+    border-bottom: 1px solid #eee
+}
+
+.mod-home-wrap .home-right .content table th, .mod-home-wrap .home-right .content table td {
+    border-right: 1px solid #eee;
+    text-align: center;
+    font-weight: 400;
+    *border-bottom: 1px solid #eee
+}
+
+.mod-home-wrap .home-right .content table thead {
+    height: 35px;
+    line-height: 35px;
+    background-color: #f8f8f8
+}
+
+.mod-home-wrap .home-right .content table tbody tr.even {
+    background-color: #fffbf9
+}
+
+.mod-home-wrap .home-right .content table tbody td {
+    height: 45px;
+    line-height: 45px
+}
+
+.mod-home-wrap .home-right .content table tbody .operate a {
+    color: #f86400
+}
+
+.mod-home-wrap .home-right .content table tbody .operate a:hover {
+    text-decoration: underline
+}
+
+.mod-home-wrap .home-credit-info .content .mod-h2-tit {
+    font-size: 16px;
+    margin-top: 40px
+}
+
+.mod-home-wrap .home-credit-info .content .mod-h2-tit .tit-sub {
+    margin-left: 15px;
+    margin-top: 1px;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    overflow: hidden
+}
+
+.mod-home-wrap .home-credit-info .content .mod-h2-tit .tit-sub .tit-more {
+    float: left;
+    margin-top: 7px;
+    font-size: 12px;
+    background: url(http://static.funshion.com/open/fis/img/v12/css/img/more_arrow_eb5f48f760.png) right bottom no-repeat;
+    height: 12px;
+    line-height: 14px;
+    padding-right: 10px;
+    display: inline-block
+}
+
+.mod-home-wrap .home-credit-info .content .credit-info .mod-h2-tit {
+    margin-top: 30px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-info table .ava-credit {
+    font-size: 18px;
+    color: #f86400
+}
+
+.mod-home-wrap .home-credit-info .content .credit-info table td {
+    width: 33.3%;
+    height: 35px;
+    line-height: 35px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-info table td em {
+    font-size: 18px;
+    color: #2dad2c;
+    margin-top: 15px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-info table td .today-credit {
+    color: #f86400
+}
+
+.mod-home-wrap .home-credit-info .content .credit-info table td i {
+    color: #676767;
+    position: relative;
+    top: -10px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list {
+    margin-right: -26px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li {
+    width: 168px;
+    float: left;
+    text-align: center;
+    margin-right: 26px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .pic {
+    width: 168px;
+    height: 110px;
+    position: relative;
+    display: block
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .pic img {
+    width: 168px;
+    height: 110px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .pic span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    background: rgba(255, 255, 255, .6);
+    background: url(http://img.funshion.com/img/blank.gif) \9;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);
+    zoom: 1
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .pic span i {
+    font-size: 16px;
+    color: #f86400;
+    margin: 0 5px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .pic:hover span {
+    color: #333
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li p {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #676767
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .exchange-btn {
+    outline: 0;
+    cursor: pointer;
+    display: inline-block;
+    width: 80px;
+    height: 22px;
+    color: #f86400;
+    font: 12px/22px Microsoft YaHei;
+    text-align: center;
+    text-decoration: none !important;
+    border: 1px solid #f86400;
+    border-radius: 3px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-exchange .exchange-list li .exchange-btn:hover {
+    background: #f86400;
+    border-color: #f86400;
+    color: #fff
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list {
+    border: 1px solid #eee
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li {
+    width: 25%;
+    *width: 24.9%;
+    float: left;
+    text-align: center
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item {
+    border-right: 1px solid #eee
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item h4 {
+    font-size: 14px;
+    margin-top: 22px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item em {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    background-repeat: no-repeat;
+    margin: 25px 0
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item .watch-video {
+    background-image: url(http://static.funshion.com/open/fis/img/v12/home/img/watch-video_a6b8d85130.png)
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item .buy-vip {
+    width: 51px;
+    height: 42px;
+    margin-bottom: 27px;
+    background-image: url(http://static.funshion.com/open/fis/img/v12/home/img/buy-vip_eb4ebd26a2.png)
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item .start-app {
+    background-image: url(http://static.funshion.com/open/fis/img/v12/home/img/start-app_916b74f4a6.png)
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item .comment-video {
+    background-image: url(http://static.funshion.com/open/fis/img/v12/home/img/comment-video_7affebc3e9.png)
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p {
+    margin-bottom: 15px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p i {
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 15px;
+    color: #f86400
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p a {
+    outline: 0;
+    cursor: pointer;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    *line-height: 26px !important;
+    color: #f86400;
+    font: 14px/24px Microsoft YaHei;
+    text-align: center;
+    text-decoration: none !important;
+    border: 1px solid #f86400;
+    border-radius: 3px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p a:hover {
+    background: #f86400;
+    border-color: #f86400;
+    color: #fff
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p .geted {
+    border-color: #979797;
+    color: #979797;
+    cursor: default
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p .geted:hover {
+    background: #fff;
+    border-color: #979797;
+    color: #979797
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .make-item p span {
+    height: 26px;
+    display: inline-block;
+    line-height: 26px
+}
+
+.mod-home-wrap .home-credit-info .content .credit-make .make-list li .last {
+    border-right: 0
+}
+
+.mod-home-wrap .home-credit-info .content .credit-record table .plus {
+    color: #f86400
+}
+
+.mod-home-wrap .home-credit-info .content .credit-record table .reduce {
+    color: #2dad2c
+}
+
+.mod-home-wrap .home-credit-info .content .no-content {
+    margin-top: 60px;
+    text-align: center
+}
+
+.mod-home-wrap .home-credit-info .content .no-content h4 {
+    font-size: 16px
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .qq-plat {
+    background-position: 0px 0px
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .funshion-plat {
+    background-position: 0px -44px
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .sina-plat {
+    background-position: 0px -88px
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .weixin-plat {
+    background-position: 0px -132px
+}
+
+.mod-home-wrap .home-left .left-tab li a .score {
+    background-position: -15px -176px
+}
+
+.mod-home-wrap .home-left .left-tab li a .vip {
+    background-position: -9px -207px
+}
+
+.mod-home-wrap .home-left .left-tab li a .history {
+    background-position: -13px -237px
+}
+
+.mod-home-wrap .home-left .left-tab li a .sub {
+    background-position: -11px -268px
+}
+
+.mod-home-wrap .home-left .left-tab li a .message {
+    background-position: -11px -300px
+}
+
+.mod-home-wrap .home-left .left-tab li a .account-set {
+    background-position: -12px -331px
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .score {
+    background-position: -15px -362px
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .vip {
+    background-position: -9px -393px
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .history {
+    background-position: -13px -423px
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .sub {
+    background-position: -11px -454px
+}
+
+.mod-home-wrap .home-left .left-tab .cur a .message {
+    background-position: -11px -486px
+}
+
+.mod-home-wrap .home-left .user-info .img-avatar .qq-plat, .mod-home-wrap .home-left .user-info .img-avatar .funshion-plat, .mod-home-wrap .home-left .user-info .img-avatar .sina-plat, .mod-home-wrap .home-left .user-info .img-avatar .weixin-plat, .mod-home-wrap .home-left .left-tab li a .score, .mod-home-wrap .home-left .left-tab li a .vip, .mod-home-wrap .home-left .left-tab li a .history, .mod-home-wrap .home-left .left-tab li a .sub, .mod-home-wrap .home-left .left-tab li a .message, .mod-home-wrap .home-left .left-tab li a .account-set, .mod-home-wrap .home-left .left-tab .cur a .score, .mod-home-wrap .home-left .left-tab .cur a .vip, .mod-home-wrap .home-left .left-tab .cur a .history, .mod-home-wrap .home-left .left-tab .cur a .sub, .mod-home-wrap .home-left .left-tab .cur a .message {
+    background-image: url(http://static.funshion.com/open/fis/img/v12/home/css/home_credit_z_b77c52ed6c.png)
+}

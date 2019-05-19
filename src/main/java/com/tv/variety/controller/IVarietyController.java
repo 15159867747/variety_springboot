@@ -27,5 +27,7 @@ public interface IVarietyController {
 
     JsonResult recommend(String userid,String type);
 
+    JsonResult  countAllVarietyNum();
+
 
 }

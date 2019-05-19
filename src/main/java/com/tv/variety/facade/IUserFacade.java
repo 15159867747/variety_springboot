@@ -56,4 +56,7 @@ public interface IUserFacade {
     //查询用户头像
     String userHead(String userid);
 
+    //查询有过评星记录的用户
+    int CountUserRatings();
+
 }

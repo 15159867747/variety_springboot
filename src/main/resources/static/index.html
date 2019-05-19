@@ -491,6 +491,8 @@
 
 	//页面一进来就执行
     $(document).ready(function () {
+        test()
+
         var token=getCookie("token");
         if (token!=null){
             $("#login-btn").css("display","none");
@@ -555,6 +557,41 @@
 
 	}
 
+
+	function test() {
+        // $.ajax({
+        //     //几个参数需要注意一下
+        //     type: "post",//方法类型
+        //     dataType: "json",//预期服务器返回的数据类型
+        //     url: "/API/CountUserRatings" ,//url
+        //     data: {
+        //     },
+        //     success: function (result) {
+        //         console.log(result);//打印服务端返回的数据(调试用)
+		//
+        //         },
+        //     error : function(e) {
+        //         alert("111")
+        //         // exitlogin();
+        //     }
+        // });
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/YqLook/countAllVarietyNum" ,//url
+            data: {
+            },
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+
+            },
+            error : function(e) {
+                alert("111")
+                // exitlogin();
+            }
+        });
+    }
 
 </script>
 <div id="test-page-complete"></div>

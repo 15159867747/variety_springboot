@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie6 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 7 ]><html class="ie7 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 8 ]><html class="ie8 page_index_" lang="zh-cn"><![endif]-->
+<!--[if IE 9 ]><html class="ie9 page_index_" lang="zh-cn"><![endif]-->
+<!--[if (gt IE 9)|!(IE) ]><html page_index_ lang="zh-cn"><![endif]-->
+<html class="page_index_ " data-fs="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>艺起看-综艺节目一起看</title>
+
+    <!--[if lt IE 7 ]>
+    <![endif]-->
+
+
+    <!--    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="stylesheet" type="text/css" href="css/Torr.css"/>
+
+        <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/v8.js"></script> -->
+
+
+    <script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+
+    <link rel="stylesheet"   href="css/base.css" />
+
+    <script  charset="utf-8" src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/card.js"></script>
+    <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+
+    <!--下拉列表-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconfont.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/ySearchSelect.css">
+    <script src="js/jQuery.Hz2Py-szm-min.js"></script>
+    <script src="js/ySearchSelect.js"></script>
+
+    <!-- 搜索下拉框 结束 -->
+    <style>
+        .layui-form {
+            margin-right: 30%;
+        }
+
+        .layui-form-label {
+            width: 100px;
+        }
+
+        .layui-input-block {
+            margin-left: 130px;
+        }
+    </style>
+
+    <!--表单样式-->
+    <style type="text/css">
+
+        table
+        {
+
+            border-collapse: collapse;
+
+            margin: 0 auto;
+
+            /*text-align: center;*/
+
+        }
+
+        table td
+        {
+            text-align: center;
+            border: 1px solid #cad9ea;
+            color: #666;
+            height: 67px;
+            text-align: center;
+        }
+        table th
+        {
+            text-align: center;
+            border: 1px solid #cad9ea;
+
+            color: #666;
+
+            height: 30px;
+
+        }
+
+        table thead th
+
+        {
+
+            background-color: #CCE8EB;
+
+            width: 100px;
+
+        }
+
+        table tr:nth-child(odd)
+
+        {
+
+            background: #fff;
+
+        }
+
+        table tr:nth-child(even)
+
+        {
+
+            background: #F5FAFA;
+
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="head-mod z-app-head fix " id="nav-container" style="height:98px;">
+    <div class="hd-content z-app-head fixed fix" id="nav-container-main" style="">
+        <div class="mod-wrap hd-wrap">
+            <div class="hd-left fix">
+                <div class="hd-logo">
+                    <h1 class="logo"><a href="/index.html" title="一起看" hidefocus><img style="overflow: hidden;" src="img/艺起看3.png"/></a></h1>
+                    <div class="hd-ad">
+                        <div class="ad-wrap" data-deliver="ws_index__logo">
+                        </div>
+                    </div>
+                    <div class="hd-line">
+                        &nbsp;
+                    </div>
+
+                    <div class="hd-menu hd-ret" id="subMenuLayout" data-hover-wrap="show-panel">
+                        <!--<a href="" class="tit-inner head-btn fix tool-comboxlike" data-target=".hd-menu-wrap" data-mouse="mouseover" data-hover-ele="1">-->
+
+
+                    </div>
+
+                    <div class="" style="float: left;margin-top: 15px;text-align: center;margin-left: 100px;">
+                        <form onsubmit="" name="msearch" id="msearch" action="" method="get">
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hd-right hd-menu-common fix">
+                <div class="hd-user">
+                    <div class="login-wrap">
+                        <div class="login-btn-wrap" id="loginLayout">
+                            <i class="login-bg"></i>
+                            <div class="btns">
+
+                                <a id="userinform" href="/manageControl.html">管理员中心</a>
+                                <i class="line"></i>
+
+                                <a id="exit" href="javascript:exitToAdmin()" >退出</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="page-progress" id="page-progress">
+            </div>
+        </div>
+        <div class="hd-content-sub z-app-footer fixed" id="nav-container-sub">
+            <div class="hd-content-sub-con fix">
+                <div class="mod-wrap sub-wrap">
+                    <div class="nav">
+
+                    </div>
+                    <!--<a href="javascript:void(null);" class="nav-toggle nav-opacity0"><span>更多</span><i></i></a>-->
+                    <!--<div class="nav-ad">-->
+                    <!--<div class="ad-wrap" data-deliver="ws_nav_guide">-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="personal set-wrap" style="margin-top: 90px;">
+        <div class="left-navigate">
+            <div class="nav-con">
+                <div class="level1">
+
+                    <p class="account-setting current"><a href="/manageControl.html">轮播图设置</a></p>
+                    <p class="account-setting current"><a href="/pythonConfig.html">节目爬取设置</a></p>
+                    <p class="account-setting current"><a>相似度离线处理</a></p>
+                </div>
+
+            </div>
+        </div>
+        <div class="setting-title">推荐设置</div>
+        <form method="post"  class="fix account-info" id="FormUserInform">
+
+            <div class="prset-item fix">
+
+
+                <!--<table width="50%" class="table" id="table">-->
+                    <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr >&ndash;&gt;-->
+                    <!--&lt;!&ndash;<th>视频来源</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<th>爬取周期</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<th>爬取状态</th>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+                    <!---->
+                <!--</table>-->
+
+                <table width="50%" class="table" id="table"> <thead>
+                <tr>
+                    <th>当前用户数</th>
+                    <th>有评星记录的用户数</th>
+                    <th>总评论数</th>
+                    <th>当前有被评星的节目数</th>
+                </tr>
+                </thead>
+                    <tbody><tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                </tbody></table>
+
+
+
+                <dl class="fix" style="margin-left: 525px;">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <div style="margin-top:9px" class="layui-form-select ySearchSelect y1">
+                                <div class="layui-input" id="change">选择要爬取的视频网站</div>
+                                <i class="layui-edge"></i>
+                                <ul >
+                                    <li class="on" value="1">优酷</li>
+                                    <li class="on" value="1">芒果TV</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </dl>
+                <dl class="fix" style="margin-left: 525px;">
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <div style="margin-top:9px" class="layui-form-select ySearchSelect y1">
+                                <div class="layui-input" id="allList">选择截取时间</div>
+                                <i class="layui-edge"></i>
+                                <ul id="time">
+                                    <li class="on" >立即爬取</li>
+                                    <li class="on" >间隔10分钟</li>
+                                    <li class="on" >间隔30分钟</li>
+                                    <li class="on" >间隔1小时</li>
+                                    <li class="on" >间隔12小时</li>
+                                    <li class="on" >间隔1天</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+
+                <p class="">
+                    <input type="button" class="login_submit" style="width:156px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 595px;" value="开始爬取" onclick="updateConfigPy()">
+
+                </p>
+            </div>
+
+        </form>
+    </div>
+
+
+    <div class="page-wrap" style="margin-top: 90px;">
+
+    </div>
+
+    <!-- 底部样式    -->
+    <div class="footer fix" id="footer">
+        <div class="mod-wrap">
+            <div class="foot-wrap">
+                <div class="foot-link fix" >
+                    <h2 align="center">该网站用于毕业设计学习，如有侵权请联系QQ：1049084904进行删除</h2>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
+
+    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+
+    <script type="text/javascript">
+
+
+        //根据节目id查询配置表
+
+
+
+
+
+
+
+        //查询配置表
+        // function findConfigPy() {
+        //
+        //     $.ajax({
+        //         //几个参数需要注意一下
+        //         type: "post",//方法类型
+        //         dataType: "json",//预期服务器返回的数据类型
+        //         url: "/Configpy/getAllconfigpy" ,//url
+        //         data: {
+        //         },
+        //         success: function (result) {
+        //             console.log(result);//打印服务端返回的数据(调试用)
+        //             // console.log(result.data)
+        //             if (result.code == 1) {
+        //                 showConfigpy(result.data)
+        //             }
+        //
+        //             ;
+        //         },
+        //         error : function(e) {
+        //             swal("系统异常，请联系管理员", "", "error");
+        //         }
+        //     });
+        //
+        // }
+        //立即执行
+        // function BeginNow(id) {
+        //     $.ajax({
+        //         //几个参数需要注意一下
+        //         type: "post",//方法类型
+        //         dataType: "json",//预期服务器返回的数据类型
+        //         url: "/Configpy/beginNow" ,//url
+        //         data: {
+        //             id:id
+        //         },
+        //         success: function (result) {
+        //             console.log(result);
+        //
+        //         },
+        //         error : function(e) {
+        //             swal("系统异常，请联系管理员", "", "error");
+        //         }
+        //     });
+        //
+        // }
+
+
+
+
+
+        //修改爬虫配置
+        // function updateConfigPy() {
+        //     var name =$("#change").text();
+        //     var time=$("#allList").text();
+        //     var id=0;
+        //     var actiontine=-1;
+        //     if (name=="选择要爬取的视频网站")
+        //     {
+        //         swal("亲，爬取的视频网站不能为空哦");
+        //     }
+        //     else if(time=="爬虫定时")
+        //     {
+        //         swal("请选择爬虫时间");
+        //     }
+        //     else {
+        //         if(name=="优酷"){
+        //             id=1;
+        //         }
+        //         if (name=="芒果TV") {
+        //             id=2;
+        //         }
+        //         if(time=="立即爬取") {
+        //             actiontine=0;
+        //         }
+        //         if(time=="间隔10分钟") {
+        //             actiontine=1000*60*10;
+        //         }
+        //         if(time=="间隔30分钟") {
+        //             actiontine=1000*60*30;
+        //         }
+        //         if(time=="间隔1小时") {
+        //             actiontine=1000*60*60;
+        //         }
+        //         if(time=="间隔12小时") {
+        //             actiontine=1000*60*60*12;
+        //         }
+        //         if(time=="间隔24小时") {
+        //             actiontine=1000*60*60*24;
+        //         }
+        //         $.ajax({
+        //             //几个参数需要注意一下
+        //             type: "post",//方法类型
+        //             dataType: "json",//预期服务器返回的数据类型
+        //             url: "/Configpy/getConfigpyById" ,//url
+        //             data: {
+        //                 id:id
+        //             },
+        //             success: function (result) {
+        //                 console.log(result);//打印服务端返回的数据(调试用)
+        //                 // console.log(result.data)
+        //                 if (result.code == 1) {
+        //                     if(result.data.status==0||result.data.status==-1||result.data.status==2||result.data.status==3)
+        //                     {
+        //                         $.ajax({
+        //                             //几个参数需要注意一下
+        //                             type: "post",//方法类型
+        //                             dataType: "json",//预期服务器返回的数据类型
+        //                             url: "/Configpy/updeteConfigpy" ,//url
+        //                             data: {
+        //                                 id:id,
+        //                                 atctionime:actiontine,
+        //                                 status:0
+        //                             },
+        //                             success: function (result) {
+        //                                 console.log(result);//打印服务端返回的数据(调试用)
+        //                                 if (result.code == 1) {
+        //                                     if(actiontine==0)
+        //                                     {
+        //                                         swal("修改成功,开始爬取!", "", "success");
+        //
+        //                                         BeginNow(id);
+        //                                         setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
+        //                                     }
+        //                                     else{
+        //                                         swal("爬虫任务配置成功!", "", "success");
+        //                                         setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
+        //                                     }
+        //
+        //
+        //
+        //                                 }
+        //                                 if(result.code==-1){
+        //                                     swal("修改失败啦，要不您再试试？", "", "error");
+        //                                 }
+        //                                 ;
+        //                             },
+        //                             error : function(e) {
+        //                                 swal("系统异常，请联系管理员", "", "error");
+        //                             }
+        //                         });
+        //                     }
+        //                     else{
+        //                         swal("当前任务正在执行..." );
+        //                     }
+        //
+        //
+        //                 }
+        //
+        //
+        //
+        //                 ;
+        //             },
+        //             error : function(e) {
+        //                 swal("系统异常，请联系管理员", "", "error");
+        //             }
+        //         });
+        //
+        //     }
+        // }
+
+
+        $(function() {
+            $(".y1").ySearchSelect(); //调用自定义 高亮插件
+            // getAllVariety();
+        });
+
+
+        $(document).ready(function () {
+            var token=getCookie("token");
+            var is_manage=getCookie("is_manage");
+
+            if(token==null||token.trim()==""||is_manage!=1)
+            {
+
+                exitToAdmin();
+            }
+
+        })
+
+
+
+
+
+
+        //s刷新页面
+        $(document).ready(function () {
+            var token=getCookie("token");
+            var is_manage=getCookie("is_manage");
+            // findConfigPy();
+            if(token==null||token.trim()==""||is_manage!=1)
+            {
+                exitToAdmin();
+            }
+            // addconfigParams()
+        })
+
+
+
+
+        // function addconfigParams() {
+        //     $.ajax({
+        //         //几个参数需要注意一下
+        //         type: "post",//方法类型
+        //         dataType: "json",//预期服务器返回的数据类型
+        //         url: "/ConfigParams/addConfigParams" ,//url
+        //         data: {
+        //         },
+        //         success: function (result) {
+        //             console.log(result);//打印服务端返回的数据(调试用)
+        //         },
+        //         error : function(e) {
+        //             swal("系统异常，请联系管理员", "", "error");
+        //         }
+        //     });
+        // }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>
+
+

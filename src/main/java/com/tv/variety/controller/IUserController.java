@@ -44,4 +44,7 @@ public interface IUserController {
 
     //返回用户个人信息
     JsonResult userHead(String userid);
+
+    //查询有过评星记录的用户数
+    JsonResult CountUserRatings();
 }
