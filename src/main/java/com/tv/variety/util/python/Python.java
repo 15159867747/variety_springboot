@@ -103,7 +103,7 @@ public class Python {
     public int MovieRatingsAction(){
         Process proc;
         try {
-            System.out.println("reconmmend");
+            System.out.println("BuildMovieRatings");
 //            String[] args1 = new String[] { "python", "C:\\Users\\Dell\\Desktop\\毕设\\AgglomerativeClustering\\actionRecommend.py", String.valueOf(user) };
 //            Process proc = Runtime.getRuntime().exec(args1);
             proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionMovieRatings.py");// 执行py文件
@@ -133,7 +133,7 @@ public class Python {
     public int SklearnAction(){
         Process proc;
         try {
-            System.out.println("reconmmend");
+            System.out.println("k-means");
 //            String[] args1 = new String[] { "python", "C:\\Users\\Dell\\Desktop\\毕设\\AgglomerativeClustering\\actionRecommend.py", String.valueOf(user) };
 //            Process proc = Runtime.getRuntime().exec(args1);
             proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\Sklearn_K-Means.py");// 执行py文件
@@ -163,7 +163,7 @@ public class Python {
     public int SimAction(){
         Process proc;
         try {
-            System.out.println("reconmmend");
+            System.out.println("simcalculate");
 //            String[] args1 = new String[] { "python", "C:\\Users\\Dell\\Desktop\\毕设\\AgglomerativeClustering\\actionRecommend.py", String.valueOf(user) };
 //            Process proc = Runtime.getRuntime().exec(args1);
             proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionForeachSim.py");// 执行py文件
@@ -190,20 +190,22 @@ public class Python {
         }
     }           //4
 
-    public int getRatings(){
+    public int getRatings(String time){
+        long longtime=Long.parseLong(time);
         Process proc;
         try {
-            System.out.println("reconmmend");
+            System.out.println("getRatings");
 //            String[] args1 = new String[] { "python", "C:\\Users\\Dell\\Desktop\\毕设\\AgglomerativeClustering\\actionRecommend.py", String.valueOf(user) };
 //            Process proc = Runtime.getRuntime().exec(args1);
-            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionGetDBRatings.py");// 执行py文件
+//                                                          python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionRecommend.py "+ user+" "
+            proc = Runtime.getRuntime().exec("python C:\\Users\\Dell\\Desktop\\毕设\\Variety_K-means\\actionGetDBRatings.py "+longtime+" ");// 执行py文件
             //用输入输出流来截取结果
-//            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-//            String line = null;
-//            while ((line = in.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//            in.close();
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
             proc.waitFor();
             return 1;
 
@@ -213,6 +215,7 @@ public class Python {
             return 0;
 
         } catch (InterruptedException e) {
+
 //            System.out.println(e);
             e.printStackTrace();
             return 0;
@@ -222,7 +225,7 @@ public class Python {
 
     public static void main(String[] args) {
         Python python=new Python();
-        System.out.println( python.recommendpy("31"));
+        python.getRatings("1557643436000");
 //        python.recommendpy("31");
 
 

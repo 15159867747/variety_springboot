@@ -20,4 +20,13 @@ public interface IRatingsController {
 
     //删除评星
     JsonResult getRatingsByUserid(String id);
+
+    //查询总评星数
+    JsonResult countUserRatings();
+
+    //查询有被评星的节目数
+    JsonResult countVarietyRatings();
+
+    //查询有评星的用户数
+    JsonResult countDistinctUserRatings();
 }

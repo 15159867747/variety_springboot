@@ -104,7 +104,8 @@ public class UserBLL implements IUserBLL {
     @Override
     public int CountUserNumber() {
         EntityWrapper<User> wrapper = new EntityWrapper<User>();
-        wrapper.setSqlSelect("count(DISTINCT(userid))");
+       wrapper.notIn("id","");
+
         return userMapper.selectCount(wrapper);
 //        return userMapper.CountUserComment();
     }

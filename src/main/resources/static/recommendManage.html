@@ -214,7 +214,7 @@
 
                     <p class="account-setting current"><a href="/manageControl.html">轮播图设置</a></p>
                     <p class="account-setting current"><a href="/pythonConfig.html">节目爬取设置</a></p>
-                    <p class="account-setting current"><a>相似度离线处理</a></p>
+                    <p class="account-setting current"><a href="/recommendManage.html">推荐设置</a></p>
                 </div>
 
             </div>
@@ -238,62 +238,38 @@
 
                 <table width="50%" class="table" id="table"> <thead>
                 <tr>
-                    <th>当前用户数</th>
-                    <th>有评星记录的用户数</th>
+                    <th>参与评星的用户数</th>
+                    <th>有被评星的节目数</th>
+                    <th>总用户数</th>
+                    <th>总节目数</th>
                     <th>总评论数</th>
-                    <th>当前有被评星的节目数</th>
                 </tr>
                 </thead>
-                    <tbody><tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <tbody>
+                    <tr>
+                    <td id="disuser">1</td>
+
+                    <td id="disvariety"></td>
+                        <td id="alluser"></td>
+                        <td id="allvariety"></td>
+                    <td id="allcomment"></td>
                 </tr>
 
                 </tbody></table>
 
 
 
-                <dl class="fix" style="margin-left: 525px;">
-                    <div class="layui-form-item">
-                        <div class="layui-input-inline">
-                            <div style="margin-top:9px" class="layui-form-select ySearchSelect y1">
-                                <div class="layui-input" id="change">选择要爬取的视频网站</div>
-                                <i class="layui-edge"></i>
-                                <ul >
-                                    <li class="on" value="1">优酷</li>
-                                    <li class="on" value="1">芒果TV</li>
-                                </ul>
-                            </div>
 
-                        </div>
+                <dl class="fix">
+                    <dt style="    margin-top: 10px;margin-left: 377px;">选择截取时间：</dt>
+                    <dd>
 
-
-                    </div>
+                        <input  style="     margin-top: 10px;" type="text" id="test1" class="t" readonly="readonly">
                 </dl>
-                <dl class="fix" style="margin-left: 525px;">
 
-                    <div class="layui-form-item">
-                        <div class="layui-input-inline">
-                            <div style="margin-top:9px" class="layui-form-select ySearchSelect y1">
-                                <div class="layui-input" id="allList">选择截取时间</div>
-                                <i class="layui-edge"></i>
-                                <ul id="time">
-                                    <li class="on" >立即爬取</li>
-                                    <li class="on" >间隔10分钟</li>
-                                    <li class="on" >间隔30分钟</li>
-                                    <li class="on" >间隔1小时</li>
-                                    <li class="on" >间隔12小时</li>
-                                    <li class="on" >间隔1天</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </dl>
 
                 <p class="">
-                    <input type="button" class="login_submit" style="width:156px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 595px;" value="开始爬取" onclick="updateConfigPy()">
+                    <input  type="button" class="login_submit" style=" margin-top: 10px;width:156px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 595px;" value="开始计算" onclick="updateConfigPy()">
 
                 </p>
             </div>
@@ -325,7 +301,9 @@
     <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
 
     <script type="text/javascript">
-
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
 
         //根据节目id查询配置表
 
@@ -513,6 +491,95 @@
             }
 
         })
+        function showInform() {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/API/CountUserRatings" ,//url
+                data: {
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    $("#alluser").text(result.data)
+                },
+                error : function(e) {
+                    exitToAdmin();
+                }
+            });
+
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/YqLook/countAllVarietyNum" ,//url
+                data: {
+                },
+                success: function (result) {
+                    // console.log(result);//打印服务端返回的数据(调试用)
+                    $("#allvariety").text(result.data)
+
+                },
+                error : function(e) {
+                    // alert("111")
+                    exitToAdmin();
+                    // exitlogin();
+                }
+            });
+
+            $.ajax({   //总评星数
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Ratings/countUserRatings" ,//url
+                data: {
+                },
+                success: function (result) {
+                    // console.log(result);//打印服务端返回的数据(调试用)
+                    $("#allcomment").text(result.data)
+                },
+                error : function(e) {
+
+                    exitToAdmin();
+                }
+            });
+            $.ajax({
+//参与评星的用户数
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Ratings/countdistinctUserRatings" ,//url
+                data: {
+                },
+                success: function (result) {
+                    // console.log(result);//打印服务端返回的数据(调试用)
+                    $("#disuser").text(result.data)
+                },
+                error : function(e) {
+                    // alert("111")
+                    // exitlogin();
+                    exitToAdmin();
+                }
+            });
+
+
+            $.ajax({
+//又被评星的节目数
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Ratings/countVarietyRatings" ,//url
+                data: {
+                },
+                success: function (result) {
+                    // console.log(result);//打印服务端返回的数据(调试用)
+                    $("#disvariety").text(result.data)
+                },
+                error : function(e) {
+                    // alert("111")
+                    // exitlogin();
+                    exitToAdmin();
+                }
+            });
+        }
 
 
 
@@ -521,6 +588,7 @@
 
         //s刷新页面
         $(document).ready(function () {
+            showInform();
             var token=getCookie("token");
             var is_manage=getCookie("is_manage");
             // findConfigPy();

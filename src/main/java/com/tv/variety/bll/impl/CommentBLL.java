@@ -42,6 +42,8 @@ public class CommentBLL implements ICommentBLL {
         return page;
     }
 
+
+
     @Override
     public int insertComment(Comment comment) {
         int rs=commentMapper.insert(comment);

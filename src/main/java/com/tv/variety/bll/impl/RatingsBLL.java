@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.tv.variety.bll.IRatingsBLL;
 
 import com.tv.variety.mybatic.mapper.RatingsMapper;
-import com.tv.variety.mybatic.model.Comment;
+import com.tv.variety.mybatic.mapper.SqlRatingsMapper;
 import com.tv.variety.mybatic.model.Ratings;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +20,8 @@ import java.util.List;
 public class RatingsBLL implements IRatingsBLL {
     @Resource
     RatingsMapper ratingsMapper;
+    @Resource
+    SqlRatingsMapper sqlRatingsMapper;
     @Override
     public int insertRatings(Ratings ratings) {
 
@@ -75,5 +77,27 @@ public class RatingsBLL implements IRatingsBLL {
         entityWrapper.eq("userid",user);
         int rs=ratingsMapper.selectCount(entityWrapper);
         return rs;
+    }
+
+    @Override
+    public int countUserRatings() {
+        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+        entityWrapper.notIn("id","");
+        int rs=ratingsMapper.selectCount(entityWrapper);
+        return rs;
+    }
+
+    @Override
+    public int countVarietyRatings() {
+//        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+//        entityWrapper.setSqlSelect("count(DISTINCT(varietyId))");
+//        int rs=ratingsMapper.selectCount(entityWrapper);
+//        return rs;
+        return sqlRatingsMapper.selectCountRatings();
+    }
+
+    @Override
+    public int countDistinctUserRatings() {
+        return sqlRatingsMapper.selectCountUserRatings();
     }
 }

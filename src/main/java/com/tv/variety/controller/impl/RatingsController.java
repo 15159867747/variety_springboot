@@ -78,4 +78,22 @@ public class RatingsController implements IRatingsController {
          return new JsonResult<>(1,"删除评星成功");
 
     }
+
+    @Override
+    @RequestMapping(value = "/countUserRatings" , method = RequestMethod.POST)
+    public JsonResult countUserRatings() {
+        return new JsonResult(iRatingsFacade.countUserRatings(),"评星总数",1);
+    }
+
+    @Override
+    @RequestMapping(value = "/countVarietyRatings" , method = RequestMethod.POST)
+    public JsonResult countVarietyRatings() {
+        return new JsonResult(iRatingsFacade.countVarietyRatings(),"有被评星的节目总数",1);
+    }
+
+    @Override
+    @RequestMapping(value = "/countdistinctUserRatings" , method = RequestMethod.POST)
+    public JsonResult countDistinctUserRatings() {
+        return new JsonResult(iRatingsFacade.countDistinctUserRatings(),"有评星过的用户数",1);
+    }
 }

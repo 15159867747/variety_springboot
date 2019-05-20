@@ -176,7 +176,7 @@ public class UserController implements IUserController {
     @Override
     @RequestMapping(value ="/CountUserRatings", method = RequestMethod.POST)
     public JsonResult CountUserRatings() {
-        return new JsonResult(userFacade.CountUserRatings(),"返回用户有过评星记录的用户数",1);
+        return new JsonResult(userFacade.CountUserRatings(),"所有用户数",1);
     }
 
 

@@ -28,8 +28,16 @@ public interface IRatingsFacade {
     int deleteRatings(String id);
 
     //判断用户是否有评星记录
-
     int checkUserRatings(String userid);
+
+    //查询总评星数
+    int countUserRatings();
+
+    //查询有被评星的节目数
+    int countVarietyRatings();
+
+    //有评星过的用户数
+    int countDistinctUserRatings();
 
 
 }

@@ -33,4 +33,14 @@ public interface IRatingsBLL {
     //判断该用户是否有评论过节目
     int checkUserRating(String user);
 
+    //总评论数
+    int countUserRatings();
+
+    //当前有被评星的节目
+    int countVarietyRatings();
+
+    //当前有评过星的用户
+    int countDistinctUserRatings();
+
+
 }

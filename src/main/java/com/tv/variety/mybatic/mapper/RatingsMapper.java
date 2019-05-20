@@ -1,7 +1,7 @@
 package com.tv.variety.mybatic.mapper;
 
-import com.tv.variety.mybatic.model.Ratings;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+        import com.tv.variety.mybatic.model.Ratings;
+        import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * <p>

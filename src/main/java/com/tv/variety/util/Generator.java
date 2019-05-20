@@ -67,6 +67,7 @@ public class Generator {
                                 .setMapper("mapper")
                                 .setService("service")
                                 .setServiceImpl("service.impl")
+//                                .setXml("mappers")
                                 .setXml("mybatis.mappers")
                 ).execute();
     }

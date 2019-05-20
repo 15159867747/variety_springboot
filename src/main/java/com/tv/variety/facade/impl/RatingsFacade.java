@@ -109,6 +109,21 @@ public class RatingsFacade implements IRatingsFacade {
     public int checkUserRatings(String userid) {
         return iRatingsBLL.checkUserRating(userid);
     }
+
+    @Override
+    public int countUserRatings() {
+        return iRatingsBLL.countUserRatings();
+    }
+
+    @Override
+    public int countVarietyRatings() {
+        return iRatingsBLL.countVarietyRatings();
+    }
+
+    @Override
+    public int countDistinctUserRatings() {
+        return iRatingsBLL.countDistinctUserRatings();
+    }
 }
 
 

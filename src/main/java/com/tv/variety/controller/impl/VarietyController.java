@@ -132,6 +132,7 @@ public class VarietyController implements IVarietyController {
 
     }
 
+
     @Override
     @RequestMapping(value ="/countAllVarietyNum", method = RequestMethod.POST)
     public JsonResult countAllVarietyNum() {
