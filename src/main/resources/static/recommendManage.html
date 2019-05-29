@@ -214,12 +214,12 @@
 
                     <p class="account-setting current"><a href="/manageControl.html">轮播图设置</a></p>
                     <p class="account-setting current"><a href="/pythonConfig.html">节目爬取设置</a></p>
-                    <p class="account-setting current"><a href="/recommendManage.html">推荐设置</a></p>
+                    <p class="account-setting current"><a href="/recommendManage.html">离线计算设置</a></p>
                 </div>
 
             </div>
         </div>
-        <div class="setting-title">推荐设置</div>
+        <div class="setting-title">离线计算设置</div>
         <form method="post"  class="fix account-info" id="FormUserInform">
 
             <div class="prset-item fix">
@@ -478,6 +478,81 @@
             $(".y1").ySearchSelect(); //调用自定义 高亮插件
             // getAllVariety();
         });
+
+
+
+        function actionSimCalculate()
+        {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Configpy/getConfigpyById" ,//url
+                data: {
+                    id:id
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    // console.log(result.data)
+                    if (result.code == 1) {
+                        if(result.data.status==0||result.data.status==-1||result.data.status==2||result.data.status==3)
+                        {
+                            $.ajax({
+                                //几个参数需要注意一下
+                                type: "post",//方法类型
+                                dataType: "json",//预期服务器返回的数据类型
+                                url: "/Configpy/updeteConfigpy" ,//url
+                                data: {
+                                    id:id,
+                                    atctionime:actiontine,
+                                    status:0
+                                },
+                                success: function (result) {
+                                    console.log(result);//打印服务端返回的数据(调试用)
+                                    if (result.code == 1) {
+                                        if(actiontine==0)
+                                        {
+                                            swal("修改成功,开始爬取!", "", "success");
+
+                                            BeginNow(id);
+                                            setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
+                                        }
+                                        else{
+                                            swal("爬虫任务配置成功!", "", "success");
+                                            setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
+                                        }
+
+
+
+                                    }
+                                    if(result.code==-1){
+                                        swal("修改失败啦，要不您再试试？", "", "error");
+                                    }
+                                    ;
+                                },
+                                error : function(e) {
+                                    swal("系统异常，请联系管理员", "", "error");
+                                }
+                            });
+                        }
+                        else{
+                            swal("当前任务正在执行..." );
+                        }
+
+
+                    }
+
+
+
+                    ;
+                },
+                error : function(e) {
+                    swal("系统异常，请联系管理员", "", "error");
+                }
+            });
+        }
+
+
 
 
         $(document).ready(function () {

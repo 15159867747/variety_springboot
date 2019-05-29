@@ -66,10 +66,12 @@ function dateTolong(date) {
 
 //将long转为时间
 function longTodate(date1) {
-    var dateType = "";
-    var date = new Date(date1);
-    dateType = date.getFullYear() + "-" +getMonth(date)+ "-" + getDay(date)+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();//yyyy-MM-dd格式日期
-    return dateType;
+    // var dateType = "";
+    // var date = new Date(date1);
+    // dateType = date.getFullYear() + "-" +getMonth(date)+ "-" + getDay(date)+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();//yyyy-MM-dd格式日期
+    // return dateType;
+    var timestamp4 = new Date(date1);
+    return timestamp4.toLocaleDateString().replace(/\//g, "-") + " " + timestamp4.toTimeString().substr(0, 8);
 }
 //从url上获取参数
 function getQueryVariable(variable)

@@ -96,7 +96,7 @@
                 <div class="login-form">
                     <form id="pageLoginForm">
 
-                        <p class="login-tip"><span class="show_text" id="show_text">风行管理员登录</span></p>
+                        <p class="login-tip"><span class="show_text" id="show_text">管理员登录</span></p>
 
                         <div id="acount_login_container" style="display:block;">
                             <p class="f-p">
@@ -199,16 +199,20 @@
                 url: "/API/check" ,//url
                 data: $('#pageLoginForm').serialize(),
                 success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
+                    // console.log(result);//打印服务端返回的数据(调试用)
                     if (result.code == 1) {
                         if(result.data.is_manage==1)
                         {
                             setCookie("token",result.data.token);
                             setCookie("name",result.data.name);
                             setCookie("userid",result.data.id);
+                            setCookie("headpic",result.data.picurl)
                             setCookie("is_manage",1);
                             console.log(result.data.token,result.data.name,result.data.id);
                             window.location.href="/manageControl.html";
+                        }
+                        else{
+                            swal("您好像不是管理员哦");
                         }
                         // swal("登录成功!", "", "success");
 

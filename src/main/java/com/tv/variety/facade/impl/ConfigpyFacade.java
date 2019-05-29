@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,10 +23,14 @@ public class ConfigpyFacade implements IConfigpyFacade {
 
     @Override
     public int updateConfigpy(UpdateConfigpyParams updateConfigpyParams) {
+        Date date = new Date();
+        long nowtime = (long) (date.getTime());
         Configpy configpy=new Configpy();
         configpy.setId(updateConfigpyParams.getId());
         configpy.setActiontime(updateConfigpyParams.getAtctionime());
         configpy.setStatus(updateConfigpyParams.getStatus());
+        configpy.setUserid(updateConfigpyParams.getUserid());
+        configpy.setUpdatetime(nowtime);
         int rs=configPythonBLL.update(configpy);
         return rs;
     }

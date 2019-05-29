@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author yrongqin
- * @since 2019-05-08
+ * @since 2019-05-29
  */
 public interface ConfigpyService extends IService<Configpy> {
 

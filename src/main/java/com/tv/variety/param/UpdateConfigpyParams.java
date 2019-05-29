@@ -11,4 +11,5 @@ public class UpdateConfigpyParams {
     int id;
     long atctionime;
     int status;
+    String userid;
 }

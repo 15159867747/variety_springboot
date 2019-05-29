@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author yrongqin
- * @since 2019-05-08
+ * @since 2019-05-29
  */
 @Service
 public class ConfigpyServiceImpl extends ServiceImpl<ConfigpyMapper, Configpy> implements ConfigpyService {

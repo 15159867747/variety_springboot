@@ -776,6 +776,18 @@ function VarietySame(type,name) {
                             if (result.code == 1) {
                                 swal("评论成功!", "", "success");
                                 $("#content").val("");
+                                // $("#content").val("");
+                                //         var headpic=getCookie("headpic")
+                                //         var obj = new Object();
+                                //         obj.picurl=headpic;
+                                //         obj.name=getCookie("name");
+                                //         obj.comment=$("#content").val();
+                                //         obj.replyBody="";
+                                //         obj.userid=getCookie("userid");
+                                //         $(".comment-list").addCommentList({data:[],add:obj});
+                                        // insertComment()
+
+
 
                                 // findcCommentByVarietyId(1);
 
@@ -887,17 +899,30 @@ function VarietySame(type,name) {
     }
 
 
+    //
     $(function(){
         $("#comment").click(function(){
-            var headpic=getCookie("headpic")
-            var obj = new Object();
-            obj.picurl=headpic;
-            obj.name=getCookie("name");
-            obj.comment=$("#content").val();
-            obj.replyBody="";
-            obj.userid=getCookie("userid");
-            $(".comment-list").addCommentList({data:[],add:obj});
-            insertComment()
+
+            if($("#content").val().length>100)
+            {
+                swal("评论信息长度不能大于100");
+            }
+            else if($("#content").val().length==0||$("#content").val()==null||$("#content").val().trim()==""){
+                swal("请输入评论内容");
+            }
+            else{
+                var headpic=getCookie("headpic")
+                var obj = new Object();
+                obj.picurl=headpic;
+                obj.name=getCookie("name");
+                obj.comment=$("#content").val();
+
+                obj.replyBody="";
+                obj.userid=getCookie("userid");
+                $(".comment-list").addCommentList({data:[],add:obj});
+                insertComment()
+            }
+
         });
     }) //评论
 

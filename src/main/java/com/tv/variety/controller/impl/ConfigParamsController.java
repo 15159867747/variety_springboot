@@ -3,7 +3,9 @@ package com.tv.variety.controller.impl;
 import com.tv.variety.bll.IConfigParamsBLL;
 import com.tv.variety.controller.IConfigParamsController;
 import com.tv.variety.facade.IConfigParamsFacade;
+import com.tv.variety.facade.IConfigpyFacade;
 import com.tv.variety.util.JsonResult;
+import com.tv.variety.util.python.Python;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +23,8 @@ public class ConfigParamsController implements IConfigParamsController {
     @Autowired
     private IConfigParamsFacade configParamsFacade;
 
-
+    @Autowired
+    private IConfigpyFacade iConfigpyFacade;
     @Autowired
     private IConfigParamsBLL iConfigParamsBLL;
 
@@ -41,5 +44,12 @@ public class ConfigParamsController implements IConfigParamsController {
     public JsonResult test() {
         iConfigParamsBLL.test();
         return new JsonResult<>(1,"success");
+    }
+
+    @Override
+    @RequestMapping(value = "/actionConfig" , method = RequestMethod.POST)
+    public JsonResult actionConfig() {
+        Python python =new Python();
+        return null;
     }
 }

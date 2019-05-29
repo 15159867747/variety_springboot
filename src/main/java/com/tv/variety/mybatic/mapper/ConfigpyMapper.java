@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author yrongqin
- * @since 2019-05-08
+ * @since 2019-05-29
  */
 public interface ConfigpyMapper extends BaseMapper<Configpy> {
 
