@@ -208,6 +208,7 @@
                             setCookie("userid",result.data.id);
                             setCookie("headpic",result.data.picurl)
                             setCookie("is_manage",1);
+                            setCookie("tokentime",result.data.tokentime);
                             console.log(result.data.token,result.data.name,result.data.id);
                             window.location.href="/manageControl.html";
                         }
@@ -239,12 +240,12 @@
     //s刷新页面
     $(document).ready(function () {
         var token=getCookie("token");
+        // var timestamp = (new Date()).getTime();
+        // var is_chaoshi=(timestamp-token)/1000;
         var is_manage=getCookie("is_manage");
         if (token!=null&&token.trim()!=""&&is_manage==1){
             window.location.href = '/manageControl.html';
         }
-
-
 
 
     })

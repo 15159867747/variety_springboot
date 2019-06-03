@@ -417,19 +417,40 @@
 
         //s刷新页面
         $(document).ready(function () {
-            var token=getCookie("token");
-            if (token!=null){
+
+            var token = getCookie("tokentime");
+            var timestamp = (new Date()).getTime();
+            // console.log(timestamp);
+            var is_chaoshi = (timestamp - token) / 1000;
+            // console.log(is_chaoshi);
+            var is_manage = getCookie("is_manage");
+            if (token == null || token.trim() == "" || is_chaoshi > 60 * 60 * 24 * 3) {
+                $("#userinform").css("display","none");
+                $("#exit").css("display","none");
+                exitToindex();
+            }
+            else {
+                // $(".y1").ySearchSelect(); //调用自定义 高亮插件
                 $("#login-btn").css("display","none");
                 $("#register-btn").css("display","none");
                 findCommentByUserId(1);
             }
-            if(token==null||token=="")
-            {
-                $("#userinform").css("display","none");
-                $("#exit").css("display","none");
-                window.location.href = '/index.html';
 
-            }
+
+
+            // var token=getCookie("token");
+            // if (token!=null){
+            //     $("#login-btn").css("display","none");
+            //     $("#register-btn").css("display","none");
+            //     findCommentByUserId(1);
+            // }
+            // if(token==null||token=="")
+            // {
+            //     $("#userinform").css("display","none");
+            //     $("#exit").css("display","none");
+            //     window.location.href = '/index.html';
+            //
+            // }
 
         })
 

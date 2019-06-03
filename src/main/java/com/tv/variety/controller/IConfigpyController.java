@@ -18,6 +18,6 @@ public interface IConfigpyController {
     JsonResult showConfigpy(int id);
 
     //立即开始爬虫
-    JsonResult actionPyNow(int id);
+    JsonResult actionPyNow(UpdateConfigpyParams updateConfigpyParams);
 
 }

@@ -1,5 +1,6 @@
 package com.tv.variety.controller;
 
+import com.tv.variety.param.UpdateConfigSimParams;
 import com.tv.variety.util.JsonResult;
 
 /**
@@ -14,5 +15,6 @@ public interface IConfigParamsController {
 
     JsonResult test();
 
-    JsonResult actionConfig();
+    JsonResult actionConfig(UpdateConfigSimParams updateConfigSimParams);
+
 }

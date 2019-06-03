@@ -585,20 +585,38 @@ function findVarietyByTypeOrArea(area,type,pageNum)
 
     $(document).ready(function () {
 
-        var token=getCookie("token");
+        // var token=getCookie("token");
+        // changeStyle();
+        //
+        // if (token!=null){
+        //     $("#login-btn").css("display","none");
+        //     $("#register-btn").css("display","none");
+        //
+        // }
+        // if(token==null||token=="")
+        // {
+        //     $("#userinform").css("display","none");
+        //     $("#exit").css("display","none");
+        // }
+        var token = getCookie("tokentime");
+        var timestamp = (new Date()).getTime();
+        // console.log(timestamp);
+        var is_chaoshi = (timestamp - token) / 1000;
+        // console.log(is_chaoshi);
+        var is_manage = getCookie("is_manage");
         changeStyle();
+        if (token == null || token.trim() == "" || is_chaoshi > 60 * 60 * 24 * 3) {
 
-        if (token!=null){
-            $("#login-btn").css("display","none");
-            $("#register-btn").css("display","none");
+            $("#login-btn").css("display", "none");
+            $("#register-btn").css("display", "none");
+
 
         }
-        if(token==null||token=="")
-        {
-            $("#userinform").css("display","none");
-            $("#exit").css("display","none");
+        else {
+            // $(".y1").ySearchSelect(); //调用自定义 高亮插件
+            $("#userinform").css("display", "none");
+            $("#exit").css("display", "none");
         }
-
 
 
         // var i=checkVarietyId();

@@ -411,22 +411,36 @@
         }
 
         $(document).ready(function () {
-            var token = getCookie("token");
+            // var token = getCookie("token");
             var head=getCookie("headpic");
             $("#image").attr("src",head);  //显示图片
 
-            if (token != null) {
-                $("#login-btn").css("display", "none");
-                $("#register-btn").css("display", "none");
+            // if (token != null) {
+            //     $("#login-btn").css("display", "none");
+            //     $("#register-btn").css("display", "none");
+            //
+            // }
+            // if (token == null || token == "") {
+            //     $("#userinform").css("display", "none");
+            //     $("#exit").css("display", "none");
+            //     window.location.href = '/index.html';
+            //
+            // }
 
-                // getUserInform()
 
-                // alert(getQueryVariable("name"));
+            var token = getCookie("tokentime");
+            var timestamp = (new Date()).getTime();
+            var is_chaoshi = (timestamp - token) / 1000;
+            var is_manage = getCookie("is_manage");
+            if (token == null || token.trim() == "" ||  is_chaoshi > 60 * 60 * 24 * 3) {
+                $("#userinform").css("display","none");
+                $("#exit").css("display","none");
+                exitToindex();
             }
-            if (token == null || token == "") {
-                $("#userinform").css("display", "none");
-                $("#exit").css("display", "none");
-                window.location.href = '/index.html';
+            else {
+                // $(".y1").ySearchSelect(); //调用自定义 高亮插件
+                $("#login-btn").css("display","none");
+                $("#register-btn").css("display","none");
 
             }
 

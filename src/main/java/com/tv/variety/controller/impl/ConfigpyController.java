@@ -54,14 +54,17 @@ public class ConfigpyController implements IConfigpyController {
 
     @Override
     @RequestMapping(value = "/beginNow" , method = RequestMethod.POST)
-    public JsonResult actionPyNow(int id) {
+    public JsonResult actionPyNow(UpdateConfigpyParams updateConfigpyParams) {
         Configpy configpy=new Configpy();
-        configpy=iConfigpyFacade.showConfigpy(id);
+        configpy=iConfigpyFacade.showConfigpy(updateConfigpyParams.getId());
         if(configpy.getStatus()==0||configpy.getStatus()==3||configpy.getStatus()==2||configpy.getStatus()==-1)
         {
-            iConfigpyFacade.updateConfigpy(configpy.getId(),1);
+//            iConfigpyFacade.updateConfigpy(configpy.getId(),1);
+            updateConfigpyParams.setStatus(1);
+            iConfigpyFacade.updateConfigpy(updateConfigpyParams);
+
             Python python=new Python();
-            if (id==1){
+            if (updateConfigpyParams.getId()==1){
                 int rs=python.youkuAction();
                 if(rs==0)
                 {
@@ -73,7 +76,7 @@ public class ConfigpyController implements IConfigpyController {
                 iConfigpyFacade.updateConfigpy(configpy.getId(),2);
                 return new JsonResult<>(1,"立即爬取优酷成功");
             }
-            if (id==2)
+            if (updateConfigpyParams.getId()==2)
             {
                 int rs=python.MongoTvAction();
                 if(rs==0)

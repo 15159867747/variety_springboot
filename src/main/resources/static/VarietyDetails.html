@@ -941,23 +941,44 @@ function VarietySame(type,name) {
 
 
     $(document).ready(function () {
-        var token=getCookie("token");
-        if (token!=null){
-            $("#login-btn").css("display","none");
-            $("#register-btn").css("display","none");
+            // var token=getCookie("token");
+            // if (token!=null){
+            //     $("#login-btn").css("display","none");
+            //     $("#register-btn").css("display","none");
+            //
+            // }
+            // if(token==null||token=="")
+            // {
+            //     $("#userinform").css("display","none");
+            //     $("#exit").css("display","none");
+            // }
+            // getVarietyDetails()
+            // findcCommentByVarietyId(1);
+            // var i=checkVarietyId();
+            // console.log(i);
 
-        }
-        if(token==null||token=="")
-        {
-            $("#userinform").css("display","none");
-            $("#exit").css("display","none");
-        }
-        getVarietyDetails()
-        findcCommentByVarietyId(1);
-        // var i=checkVarietyId();
-        // console.log(i);
+            // }
+            var token = getCookie("tokentime");
+            var timestamp = (new Date()).getTime();
+            // console.log(timestamp);
+            var is_chaoshi = (timestamp - token) / 1000;
+            // console.log(is_chaoshi);
+            var is_manage = getCookie("is_manage");
+            if (token == null || token.trim() == "" ||  is_chaoshi > 60 * 60 * 24 * 3) {
+                $("#userinform").css("display", "none");
+                $("#exit").css("display", "none");
 
-    })
+            }
+            else {
+                // $(".y1").ySearchSelect(); //调用自定义 高亮插件
+                $("#login-btn").css("display", "none");
+                $("#register-btn").css("display", "none");
+
+            }
+            getVarietyDetails();
+            findcCommentByVarietyId(1);
+        }
+    )
 
     //跳转到个人中心
     function getUserInform() {

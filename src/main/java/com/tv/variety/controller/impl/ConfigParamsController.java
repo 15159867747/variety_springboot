@@ -4,6 +4,9 @@ import com.tv.variety.bll.IConfigParamsBLL;
 import com.tv.variety.controller.IConfigParamsController;
 import com.tv.variety.facade.IConfigParamsFacade;
 import com.tv.variety.facade.IConfigpyFacade;
+import com.tv.variety.mybatic.model.Configpy;
+import com.tv.variety.param.UpdateConfigSimParams;
+import com.tv.variety.param.UpdateConfigpyParams;
 import com.tv.variety.util.JsonResult;
 import com.tv.variety.util.python.Python;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +51,50 @@ public class ConfigParamsController implements IConfigParamsController {
 
     @Override
     @RequestMapping(value = "/actionConfig" , method = RequestMethod.POST)
-    public JsonResult actionConfig() {
+    public JsonResult actionConfig(UpdateConfigSimParams updateConfigSimParams) {
         Python python =new Python();
-        return null;
+        Configpy configpy=new Configpy();
+        configpy=iConfigpyFacade.showConfigpy(updateConfigSimParams.getId());
+        UpdateConfigpyParams updateConfigpyParams=new UpdateConfigpyParams();
+
+        updateConfigpyParams.setStatus(updateConfigSimParams.getStatus());
+        updateConfigpyParams.setAtctionime(updateConfigSimParams.getAtctionime());
+        updateConfigpyParams.setId(updateConfigSimParams.getId());
+        updateConfigpyParams.setUserid(updateConfigSimParams.getUserid());
+
+        if(configpy.getStatus()==0||configpy.getStatus()==3||configpy.getStatus()==2||configpy.getStatus()==-1) {
+
+            iConfigpyFacade.updateConfigpy(updateConfigpyParams);
+            if (updateConfigpyParams.getId()==3)
+            {
+                int rs1=python.getRatings(Long.toString(updateConfigSimParams.getLimittime()));
+                if (rs1==0)
+                {
+                    return new JsonResult<>(-1,"getRatings失败，执行过程出错");
+                }
+                int rs2=python.MovieRatingsAction();
+                if (rs2==0)
+                {
+                    return new JsonResult<>(-1,"MovieRatingsActions执行过程出错");
+                }
+                int rs3=python.SklearnAction();
+                if (rs3==0)
+                {
+                    return new JsonResult<>(-1,"SklearnAction,执行过程出错");
+                }
+                int rs4=python.SimAction();
+                if (rs4==0)
+                {
+                    return new JsonResult<>(-1,"SimAction,执行过程出错");
+                }
+                System.out.println("离线相似度计算成功");
+                iConfigpyFacade.updateConfigpy(configpy.getId(),2);
+                return new JsonResult<>(1,"离线相似度计算成功");
+
+
+            }
+        }
+        return new JsonResult<>(0,"离线相似度计算失败，该任务不是处于待执行状态");
+
     }
 }

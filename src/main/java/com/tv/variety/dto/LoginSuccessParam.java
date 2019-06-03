@@ -13,5 +13,6 @@ public class LoginSuccessParam {
       String token;
       int is_manage;
       String picurl;
+      long tokentime;
 
 }

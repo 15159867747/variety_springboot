@@ -108,12 +108,14 @@ public class UserController implements IUserController {
             userFacade.updateToken(myUser);
         }
         String TokenStr=userFacade.searchToken(myUser.getId()).getToken();
+        long tokentime=userFacade.searchToken(myUser.getId()).getBuildtime();
         LoginSuccessParam loginSuccessParam=new LoginSuccessParam();
         loginSuccessParam.setId(myUser.getId());
         loginSuccessParam.setName(myUser.getName());
         loginSuccessParam.setIs_manage(myUser.getIsManage());
         loginSuccessParam.setToken(TokenStr);
         loginSuccessParam.setPicurl(myUser.getPicurl());
+        loginSuccessParam.setTokentime(tokentime);
 
         //返回Token信息给客户端
 

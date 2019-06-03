@@ -458,20 +458,44 @@
 
 
     $(document).ready(function () {
-        var token=getCookie("token");
-        // console.log("123")
-        if (token!=null){
-            $("#login-btn").css("display","none");
-            $("#register-btn").css("display","none");
+        // var token=getCookie("token");
+        // // console.log("123")
+        // if (token!=null){
+        //     $("#login-btn").css("display","none");
+        //     $("#register-btn").css("display","none");
+        //
+        // }
+        // if(token==null||token=="")
+        // {
+        //     $("#userinform").css("display","none");
+        //     $("#exit").css("display","none");
+        // }
+        //
+        // searchVarietyAll(1);
 
-        }
-        if(token==null||token=="")
-        {
+
+        var token = getCookie("tokentime");
+        var timestamp = (new Date()).getTime();
+        // console.log(timestamp);
+        var is_chaoshi = (timestamp - token) / 1000;
+        // console.log(is_chaoshi);
+        var is_manage = getCookie("is_manage");
+        if (token == null || token.trim() == "" || is_chaoshi > 60 * 60 * 24 * 3) {
+
+
+
             $("#userinform").css("display","none");
             $("#exit").css("display","none");
-        }
 
+        }
+        else {
+            // $(".y1").ySearchSelect(); //调用自定义 高亮插件
+
+            $("#login-btn").css("display","none");
+            $("#register-btn").css("display","none");
+        }
         searchVarietyAll(1);
+
 
 
     })
