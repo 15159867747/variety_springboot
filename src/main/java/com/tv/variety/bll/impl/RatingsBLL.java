@@ -100,4 +100,12 @@ public class RatingsBLL implements IRatingsBLL {
     public int countDistinctUserRatings() {
         return sqlRatingsMapper.selectCountUserRatings();
     }
+
+    @Override
+    public int countUserRatings(long limittime) {
+        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+        entityWrapper.le("time",limittime);
+        int rs=ratingsMapper.selectCount(entityWrapper);
+        return rs;
+    }
 }

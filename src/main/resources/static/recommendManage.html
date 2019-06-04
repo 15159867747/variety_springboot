@@ -30,7 +30,7 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/card.js"></script>
     <script type="text/javascript" src="js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="js/card.js"></script>
+
     <script type="text/javascript" src="js/sweetalert-dev.js"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
 
@@ -242,7 +242,7 @@
                     <th>有被评星的节目数</th>
                     <th>总用户数</th>
                     <th>总节目数</th>
-                    <th>总评论数</th>
+                    <th>总评星数</th>
                 </tr>
                 </thead>
                     <tbody>
@@ -265,11 +265,14 @@
                     <dd>
 
                         <input  style="     margin-top: 10px;" type="text" id="test1" class="t" readonly="readonly">
+                        <a  href="javascript:simDetail()">查看详情</a>
+
                 </dl>
 
 
+
                 <p class="">
-                    <input  type="button" class="login_submit" style=" margin-top: 10px;width:156px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 595px;" value="开始计算" onclick="updateConfigPy()">
+                    <input  type="button" class="login_submit" style=" margin-top: 10px;width:156px;height:40px;border: 1px solid #BBBBBB;color: #fff;background-color: #2B8D05;font-size: 20px;font-family: '黑体';font-weight: bold;margin-left: 595px;" value="开始计算" onclick="actionSimCalculate()">
 
                 </p>
             </div>
@@ -297,10 +300,54 @@
 
     <div class="ad-client-tip" data-deliver="ws_all_bottom"></div>
 
-    <script type="text/javascript" charset="utf-8" src="js/widget.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/tool.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/widget.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="js/tool.js"></script>-->
 
     <script type="text/javascript">
+        function simDetail(){
+            $.ajax({
+                //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/Configpy/getConfigpyById" ,//url
+                data: {
+                    id:3
+                },
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    // console.log(result.data)
+                    if (result.code == 1) {
+                        if (result.data.status==-1)
+                        {
+                            swal("执行失败...","","error");
+                        }
+                        if (result.data.status==2)
+                        {
+                            swal("执行人："+getCookie("userid")+"\n数据集截止时间："+dateFormat_2(result.data.actiontime),"开始计算时间"+dateFormat_2(result.data.updatetime),"success");
+                        }
+                        if (result.data.status==1)
+                        {
+
+                            swal("当前任务正在执行...","数据集截止时间为："+dateFormat_2(result.data.actiontime));
+                        }
+
+                    }
+
+
+
+                    ;
+                },
+                error : function(e) {
+                    swal("系统异常，请联系管理员", "", "error");
+                }
+            });
+
+        }
+
+
+
+
+
         laydate.render({
             elem: '#test1' //指定元素
         });
@@ -473,61 +520,84 @@
         //     }
         // }
 
-
-        $(function() {
-            $(".y1").ySearchSelect(); //调用自定义 高亮插件
-            // getAllVariety();
-        });
+        //
+        // $(function() {
+        //     $(".y1").ySearchSelect(); //调用自定义 高亮插件
+        //     // getAllVariety();
+        // });
 
 
 
         function actionSimCalculate()
         {
-            $.ajax({
-                //几个参数需要注意一下
-                type: "post",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "/Configpy/getConfigpyById" ,//url
-                data: {
-                    id:id
-                },
-                success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
-                    // console.log(result.data)
-                    if (result.code == 1) {
-                        if(result.data.status==0||result.data.status==-1||result.data.status==2||result.data.status==3)
+            actiontine=$("#test1").val();
+
+
+            // actiontine=dateTolong(actiontine);
+            // console.log(dateTolong(actiontine))
+            if (actiontine==null||actiontine.trim()=="")
+            {
+                swal("请选择截取日期", "", "error");
+            }
+            else{
+                $.ajax({   //总评星数
+
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/Ratings/countUserRatingslimit" ,//url
+                    data: {
+                        time:dateTolong(actiontine)
+                    },
+                    success: function (result) {
+                        // console.log(result);//打印服务端返回的数据(调试用)
+                        if(result.data>1000)
                         {
                             $.ajax({
                                 //几个参数需要注意一下
                                 type: "post",//方法类型
                                 dataType: "json",//预期服务器返回的数据类型
-                                url: "/Configpy/updeteConfigpy" ,//url
+                                url: "/Configpy/getConfigpyById" ,//url
                                 data: {
-                                    id:id,
-                                    atctionime:actiontine,
-                                    status:0
+                                    id:3
                                 },
                                 success: function (result) {
                                     console.log(result);//打印服务端返回的数据(调试用)
+                                    // console.log(result.data)
                                     if (result.code == 1) {
-                                        if(actiontine==0)
+                                        if(result.data.status==0||result.data.status==-1||result.data.status==2||result.data.status==3)
                                         {
-                                            swal("修改成功,开始爬取!", "", "success");
+                                            swal("开始离线计算节目相似度", "", "success");
+                                            $.ajax({
+                                                //几个参数需要注意一下
+                                                type: "post",//方法类型
+                                                dataType: "json",//预期服务器返回的数据类型
+                                                url: "/ConfigParams/actionConfig" ,//url
+                                                data: {
+                                                    id:3,
+                                                    atctionime:dateTolong(actiontine),
+                                                    status:1,
+                                                    userid:getCookie("userid"),
 
-                                            BeginNow(id);
-                                            setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
+                                                },
+                                                success: function (result) {
+                                                    console.log(result);//打印服务端返回的数据(调试用)
+
+                                                    ;
+                                                },
+                                                error : function(e) {
+                                                    swal("系统异常，请联系管理员", "", "error");
+                                                }
+                                            });
                                         }
                                         else{
-                                            swal("爬虫任务配置成功!", "", "success");
-                                            setTimeout("window.location.href = '/pythonConfig.html' ", 2000 );
+                                            swal("当前任务正在执行...","数据集截止时间为："+dateFormat_2(result.data.actiontime));
                                         }
 
 
+                                    }
 
-                                    }
-                                    if(result.code==-1){
-                                        swal("修改失败啦，要不您再试试？", "", "error");
-                                    }
+
+
                                     ;
                                 },
                                 error : function(e) {
@@ -536,36 +606,36 @@
                             });
                         }
                         else{
-                            swal("当前任务正在执行..." );
+                            swal("当前数据集为"+result.data+"，数量较少，不适合进行离线计算", "", "error");
                         }
+                    },
+                    error : function(e) {
 
-
+                        exitToAdmin();
                     }
+                });
 
 
 
-                    ;
-                },
-                error : function(e) {
-                    swal("系统异常，请联系管理员", "", "error");
-                }
-            });
+
+            }
+
         }
 
 
 
 
-        $(document).ready(function () {
-            var token=getCookie("token");
-            var is_manage=getCookie("is_manage");
-
-            if(token==null||token.trim()==""||is_manage!=1)
-            {
-
-                exitToAdmin();
-            }
-
-        })
+        // $(document).ready(function () {
+        //     var token=getCookie("token");
+        //     var is_manage=getCookie("is_manage");
+        //
+        //     if(token==null||token.trim()==""||is_manage!=1)
+        //     {
+        //
+        //         exitToAdmin();
+        //     }
+        //
+        // })
         function showInform() {
             $.ajax({
                 //几个参数需要注意一下

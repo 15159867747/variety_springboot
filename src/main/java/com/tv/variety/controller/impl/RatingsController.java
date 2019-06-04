@@ -96,4 +96,11 @@ public class RatingsController implements IRatingsController {
     public JsonResult countDistinctUserRatings() {
         return new JsonResult(iRatingsFacade.countDistinctUserRatings(),"有评星过的用户数",1);
     }
+
+    @Override
+    @RequestMapping(value = "/countUserRatingslimit" , method = RequestMethod.POST)
+    public JsonResult countUserRatings(long time) {
+        return new JsonResult(iRatingsFacade.countUserRatings(time),"截止时间前的评星总数",1);
+    }
+
 }

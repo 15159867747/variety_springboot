@@ -42,5 +42,7 @@ public interface IRatingsBLL {
     //当前有评过星的用户
     int countDistinctUserRatings();
 
+    //截止日期前的总评星数
+    int countUserRatings(long limittime);
 
 }

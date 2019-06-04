@@ -29,4 +29,7 @@ public interface IRatingsController {
 
     //查询有评星的用户数
     JsonResult countDistinctUserRatings();
+
+    //查询总评星数 限制时间
+    JsonResult countUserRatings(long time);
 }

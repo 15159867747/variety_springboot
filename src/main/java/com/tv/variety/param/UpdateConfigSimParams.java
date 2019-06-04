@@ -12,5 +12,5 @@ public class UpdateConfigSimParams {
     long atctionime;
     int status;
     String userid;
-    long limittime;
+
 }

@@ -66,8 +66,9 @@ public class ConfigParamsController implements IConfigParamsController {
 
             iConfigpyFacade.updateConfigpy(updateConfigpyParams);
             if (updateConfigpyParams.getId()==3)
-            {
-                int rs1=python.getRatings(Long.toString(updateConfigSimParams.getLimittime()));
+            {   System.out.println(Long.toString(updateConfigSimParams.getAtctionime()));
+                int rs1=python.getRatings(Long.toString(updateConfigSimParams.getAtctionime()));
+
                 if (rs1==0)
                 {
                     return new JsonResult<>(-1,"getRatings失败，执行过程出错");

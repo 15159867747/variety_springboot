@@ -124,6 +124,11 @@ public class RatingsFacade implements IRatingsFacade {
     public int countDistinctUserRatings() {
         return iRatingsBLL.countDistinctUserRatings();
     }
+
+    @Override
+    public int countUserRatings(long time) {
+        return iRatingsBLL.countUserRatings(time);
+    }
 }
 
 

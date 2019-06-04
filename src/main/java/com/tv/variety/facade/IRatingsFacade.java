@@ -39,5 +39,6 @@ public interface IRatingsFacade {
     //有评星过的用户数
     int countDistinctUserRatings();
 
-
+    //查询总评星数
+    int countUserRatings(long time);
 }
