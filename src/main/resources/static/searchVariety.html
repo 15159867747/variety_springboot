@@ -168,7 +168,7 @@
                                 <a id="userinform" href="javascript:getUserInform()">个人中心</a>
                                 <i class="line"></i>
                                 <a id="register-btn" href="/register.html" >注册</a>
-                                <a id="exit" href="javascript:exitlogin()" >退出</a>
+                                <a id="exit" href="javascript:exitToindex()" >退出</a>
                             </div>
                         </div>
 
@@ -386,8 +386,13 @@
     function searchVarietyAll(pageSize) {
         var all=decodeURIComponent(getQueryVariable("word"));
         console.log(all);
-
-            // var all="星光大道"
+        if (all.trim()==""||all==null||all=="*")
+        {
+            swal("没有找到你要的资源哦");
+            $("#guess").css("display","none");
+            $("#vue").val(all);
+        }
+        else{
             pageNum = pageSize;
             $.ajax({
                 //几个参数需要注意一下
@@ -409,7 +414,8 @@
                             swal("没有找到你要的资源哦");
 
                             $("#guess").css("display","none");
-
+                            $("#vue").val(all);
+                            // recommendVariety()
                         }
                         else {
                             totalList = result.data.total;
@@ -422,6 +428,7 @@
                                 flag: 4
                             });
                             Searcherall(result.data.list)
+                            $("#vue").val(all);
                         }
 
 
@@ -438,9 +445,13 @@
                 },
                 error: function (e) {
                     swal("系统异常啦，赶快联系管理员叭!", "", "error");
-                     window.location.href = '/index.html';
+                    window.location.href = '/index.html';
                 }
             });
+        }
+
+            // var all="星光大道"
+
 
 
     }
@@ -534,7 +545,7 @@
 
                     }},
                 error : function(e) {
-                    exitlogin();
+                    exitTologin();
                 }
             });
         }

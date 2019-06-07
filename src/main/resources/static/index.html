@@ -78,7 +78,7 @@
 								<a id="userinform" href="javascript:getUserInform()" >个人中心</a>
 								<i class="line"></i>
 								<a id="register-btn" href="/register.html" >注册</a>
-								<a id="exitlogin" href="javascript:exitlogin()" >退出</a>
+								<a id="exitlogin" href="javascript:exitToindex()" >退出</a>
 							</div>
 						</div>
 						<div class="logined hidden" id="userMsgLayout" data-hover-wrap="show-panel">
@@ -481,7 +481,7 @@
                 }
                 },
             error : function(e) {
-                exitlogin();
+                eexitToindex();
             }
         });
 	}
@@ -548,7 +548,7 @@
 	                
 	            }},
 	            error : function(e) {
-                    exitlogin();
+                    exitTologin();
 	            }
 	        });
 		}

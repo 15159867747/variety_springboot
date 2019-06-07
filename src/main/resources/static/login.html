@@ -275,15 +275,37 @@
 
 
     }
-    function refresh(){
-        var tokentime=getCookie("tokentime");
-        var timestamp = (new Date()).getTime();
-        if (tokentime!=null&&timestamp<60*60*24*3*1000){
-            window.location.href = '/index.html';
-        }
 
-    }
-    window.refresh();
+
+    $(document).ready(function () {
+
+            var token=getCookie("tokentime");
+            var timestamp = (new Date()).getTime();
+            // console.log(timestamp);
+            var is_chaoshi=(timestamp-token)/1000;
+            // console.log(is_chaoshi);
+            var is_manage=getCookie("is_manage");
+
+            if(token!=null&&token.trim()!=""&&is_chaoshi<=60*60*24*3)
+            {
+
+                window.location.href = '/index.html';
+            }
+
+
+        }
+    )
+
+
+    // function refresh(){
+    //     var tokentime=getCookie("tokentime");
+    //     var timestamp = (new Date()).getTime();
+    //     if (tokentime!=null&&timestamp<60*60*24*3*1000){
+    //         window.location.href = '/index.html';
+    //     }
+	//
+    // }
+    // window.refresh();
 	
 
 	
