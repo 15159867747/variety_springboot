@@ -74,6 +74,6 @@ public class ConfigController implements IConfigController {
             e.printStackTrace();
         }
         String filename = "/uploadImage/" + fileName;
-        return new JsonResult(filename,"轮播图后台返回成功",1);
+        return new JsonResult(filename,"头像上传成功",1);
     }
 }

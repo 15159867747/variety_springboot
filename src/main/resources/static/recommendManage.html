@@ -733,6 +733,7 @@
 
         //s刷新页面
         $(document).ready(function () {
+            // test();
                 //     showInform();
                 //     var token=getCookie("token");
                 //     var is_manage=getCookie("is_manage");
@@ -760,7 +761,27 @@
                 }
             }
         )
+function test() {
+    $.ajax({
+        //几个参数需要注意一下
+        type: "post",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "/ConfigParams/test" ,//url
+        data: {
+        },
+        success: function (result) {
+            console.log(result);//打印服务端返回的数据(调试用)
 
+
+        },
+        error : function(e) {
+            alert("111")
+            // exitToAdmin();
+            // exitlogin();
+        }
+    });
+
+}
 
 
 

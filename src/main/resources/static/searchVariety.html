@@ -241,7 +241,7 @@
             <!--</div>-->
             <div class="media-tab media-tab-pic-v" id="guess">
                 <div class="tab-inner">
-                    <ul class="fix">
+                    <ul class="fix" >
                         <li class="fix-width current"><span class="sub">猜你喜欢</span><span class="tit-line"><em class="arr"></em></span></li>
                     </ul>
                 </div>
@@ -342,27 +342,36 @@
 
                 if (result.code == 1) {
                     var el="";
-                    for (var n = 0; n < result.data.length; n++)
+
+                    if(result.data.length>0)
                     {
 
-                        //   console.log(result.data.list[n].name)
 
-                        el =el+ "  <div class=\"mod-vd-i fix\">\n" +
-                            "                                        <div class=\"pic\">\n" +
-                            "                                            <a href=\"/VarietyDetails.html?name="+ result.data[n].name+ "&varietyId="+result.data[n].id +  "\" data-gtype=\"tv\" block=\"guess_1_media\" data-id=\"316099\"  title="+ result.data[n].name+"    target=\"_blank\">\n" +
-                            "                                                <img src="+result.data[n].picurl+">\n" +
-                            "                                                <span class=\"mask\"><i class=\"play-btn\"></i></span>\n" +
-                            "                                            </a>\n" +
-                            "                                        </div>\n" +
-                            "                                        <div class=\"info\">\n" +
-                            "                                            <h3 class=\"tit\"><a href=\"/VarietyDetails.html?name="+ result.data[n].name+ "&varietyId="+result.data[n].id +  "\"   title="+ result.data[n].name+"   block=\"guess_1_media\" target=\"_blank\">"+result.data[n].name+"</a></h3>\n" +
-                            "                                            <p>"+result.data[n].name+"</p>\n" +
-                            "                                        </div>\n" +
-                            "                                    </div>";
+                        $("#guess").show();
+                        for (var n = 0; n < result.data.length; n++)
+                        {
+
+                            //   console.log(result.data.list[n].name)
+
+                            el =el+ "  <div class=\"mod-vd-i fix\">\n" +
+                                "                                        <div class=\"pic\">\n" +
+                                "                                            <a href=\"/VarietyDetails.html?name="+ result.data[n].name+ "&varietyId="+result.data[n].id +  "\" data-gtype=\"tv\" block=\"guess_1_media\" data-id=\"316099\"  title="+ result.data[n].name+"    target=\"_blank\">\n" +
+                                "                                                <img src="+result.data[n].picurl+">\n" +
+                                "                                                <span class=\"mask\"><i class=\"play-btn\"></i></span>\n" +
+                                "                                            </a>\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"info\">\n" +
+                                "                                            <h3 class=\"tit\"><a href=\"/VarietyDetails.html?name="+ result.data[n].name+ "&varietyId="+result.data[n].id +  "\"   title="+ result.data[n].name+"   block=\"guess_1_media\" target=\"_blank\">"+result.data[n].name+"</a></h3>\n" +
+                                "                                            <p>"+result.data[n].name+"</p>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>";
+                        }
+                        var div = document.getElementById("Varietylike");
+                        div.innerHTML=el;
                     }
 
-                    var div = document.getElementById("Varietylike");
-                    div.innerHTML=el;
+
+
 
 
                 }
@@ -484,7 +493,7 @@
         //
         // searchVarietyAll(1);
 
-
+        $("#guess").css("display","none");
         var token = getCookie("tokentime");
         var timestamp = (new Date()).getTime();
         // console.log(timestamp);

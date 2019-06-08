@@ -49,12 +49,12 @@ public class ConfigParamsBLL implements IConfigParamsBLL {
     @Override
     public void test() {
 
-        for (int i=100000;i<=100031;i++)
+        for (int i=100000;i<=100100;i++)
         {
-            for (int j=0;j<=50;j++)
+            for (int j=0;j<=100;j++)
             {
                 String userid=String.valueOf(i);
-                int random = (int)(Math.random()*100+1);
+                int random = (int)(Math.random()*1917+1);
 //                int ratings=(int)(Math.random()*100+1);
                 int check=iRatingsBLL.checkUserRating(userid,getKey_Variety(String.valueOf(random)).getKey());
                 if (check==0)
