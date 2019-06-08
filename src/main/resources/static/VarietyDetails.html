@@ -308,6 +308,7 @@
                 </h3>
 
                 <div class="rating fix"  style="margin: 15px 0 10px">
+                    <div class="karma"><i>7.1</i></div>
                     <div class="karma" style="float: left;font-size: 20px;color: orange"><i>我来评星</i></div>
                     <!--<div class="rating-title" style="float: left;margin: 0 20px">我来评分：</div>-->
 
@@ -336,6 +337,10 @@
                 </div>
                 <div class="desc" style="margin: 10px 0;font-size: 14px" id="areadiv">
                     <i>地区：</i>
+
+                </div>
+                <div class="desc" style="margin: 10px 0;font-size: 14px" id="actor">
+                    <i>主持人：</i>
 
                 </div>
                 <div class="desc" style="margin: 10px 0;font-size: 14px" id="type">
@@ -612,6 +617,11 @@ function VarietySame(type,name) {
                             // $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
                             $("#areadiv").append( result.data.variety.area[i] +'&nbsp;');
                         }
+
+                        for (var i in result.data.variety.actor) {
+                            // $("#areadiv").append('<a href="#" id="aarea' + i + '">' + result.data.variety.area[i] + '</a>&nbsp;');
+                            $("#actor").append( result.data.variety.actor[i] +'&nbsp;');
+                        }
                         $("#img1").attr("src", result.data.variety.picurl);
                         showtvurl = result.data.variety.btn
 
@@ -704,6 +714,7 @@ function VarietySame(type,name) {
                     error: function (e) {
                         // alert("异常！");
                         swal("要评论需要先登录哦!", "", "error");
+                        setTimeout("window.location.href = '/login.html' ", 1000 );
                     }
                 });
 
@@ -808,6 +819,7 @@ function VarietySame(type,name) {
             }
             else {
                 swal("要评论需要先登录哦!", "", "error");
+                setTimeout("window.location.href = '/login.html' ", 1000 );
             }
         }
         else {

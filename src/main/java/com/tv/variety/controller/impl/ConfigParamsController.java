@@ -32,15 +32,15 @@ public class ConfigParamsController implements IConfigParamsController {
     private IConfigParamsBLL iConfigParamsBLL;
 
 
-    @Override
-    @RequestMapping(value = "/addConfigParams" , method = RequestMethod.POST)
-    public JsonResult addConfigParams() {
-        int de=configParamsFacade.delete();
-        int ru =configParamsFacade.insertUser();
-        int rv=configParamsFacade.insertVariety();
-
-        return new JsonResult<>(1,"配置成功");
-    }
+//    @Override
+//    @RequestMapping(value = "/addConfigParams" , method = RequestMethod.POST)
+//    public JsonResult addConfigParams(long time) {
+//        int de=configParamsFacade.delete();
+//        int ru =configParamsFacade.insertUser(time);
+//        int rv=configParamsFacade.insertVariety();
+//
+//        return new JsonResult<>(1,"离线计算配置成功");
+//    }
 
     @Override
     @RequestMapping(value = "/test" , method = RequestMethod.POST)
@@ -52,6 +52,10 @@ public class ConfigParamsController implements IConfigParamsController {
     @Override
     @RequestMapping(value = "/actionConfig" , method = RequestMethod.POST)
     public JsonResult actionConfig(UpdateConfigSimParams updateConfigSimParams) {
+        int de=configParamsFacade.delete();
+        int ru =configParamsFacade.insertUser(updateConfigSimParams.getAtctionime());
+        int rv=configParamsFacade.insertVariety();
+
         Python python =new Python();
         Configpy configpy=new Configpy();
         configpy=iConfigpyFacade.showConfigpy(updateConfigSimParams.getId());

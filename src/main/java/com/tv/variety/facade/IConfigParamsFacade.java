@@ -6,7 +6,7 @@ package com.tv.variety.facade;
  */
 public interface IConfigParamsFacade {
 
-    int insertUser();
+    int insertUser(long time);
 
     int insertVariety();
 

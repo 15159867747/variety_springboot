@@ -22,6 +22,15 @@ public class Variety {
     private String name;
     private String content;
     private String update;
+    private String[] actor;
+
+    public String[] getActor() {
+        return actor;
+    }
+
+    public void setActor(String[] actor) {
+        this.actor = actor;
+    }
 
     public String getId() {
         return id;

@@ -11,7 +11,7 @@ public interface IConfigParamsController {
 
 
 
-    JsonResult addConfigParams();
+//    JsonResult addConfigParams(long time);
 
     JsonResult test();
 

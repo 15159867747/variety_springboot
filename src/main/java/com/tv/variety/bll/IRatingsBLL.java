@@ -45,4 +45,7 @@ public interface IRatingsBLL {
     //截止日期前的总评星数
     int countUserRatings(long limittime);
 
+    //判断该用户是否有评论过节目  在該時間之前
+    int checkUserRating(String user,long time);
+
 }

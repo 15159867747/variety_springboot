@@ -277,12 +277,25 @@
         if(id=="内地"||id=="中国香港"||id=="中国台湾"||id=="全部地区")
         {
             var type=decodeURIComponent(getQueryVariable("type"));
-            window.location.href='/VarietyType.html?area='+id+'&type='+type;
+            if (type=="搞笑"||type=="情感"||type=="真人秀"||type=="亲子"||type=="娱乐"||type=="相亲"||type=="美食"||type=="全部类型")
+            {
+                window.location.href='/VarietyType.html?area='+id+'&type='+type;
+            }
+            else{
+                window.location.href='/VarietyType.html?area='+id+'&type=全部类型';
+            }
         }
         if(id=="搞笑"||id=="情感"||id=="真人秀"||id=="亲子"||id=="娱乐"||id=="相亲"||id=="美食"||id=="全部类型")
         {
             var allarea=decodeURIComponent(getQueryVariable("area"));
-            window.location.href='/VarietyType.html?area='+allarea+'&type='+id;
+            if(allarea=="内地"||allarea=="中国香港"||allarea=="中国台湾"||allarea=="全部地区")
+            {
+                window.location.href='/VarietyType.html?area='+allarea+'&type='+id;
+            }
+            else{
+                window.location.href='/VarietyType.html?area=全部地区&type='+id;
+            }
+
         }
 
 
@@ -294,10 +307,10 @@
 
 
 
-    var pageNow=0;// 当前页面
-    var totalNum=0;// 总页码
-    var totalList=0// 记录总数量
 
+    // var pageNow=0;// 当前页面
+    // var totalNum=0;// 总页码
+    // var totalList=0// 记录总数量
     $("#sousuo").click(function(){
         $(this).attr("href","/searchVariety.html?word="+$("#vue").val());
     })
@@ -504,9 +517,10 @@
 
 
         else{
-            document.getElementById("alltype").className='bar-item bar-current';
-            document.getElementById("allarea").className='bar-item bar-current';
-            findVarietyByTypeOrArea("全部地区","全部类型",1);
+            // document.getElementById("alltype").className='bar-item bar-current';
+            // document.getElementById("allarea").className='bar-item bar-current';
+            // findVarietyByTypeOrArea("全部地区","全部类型",1);
+            window.location.href='/VarietyType.html?area=全部地区&type=全部类型';
         }
 
 
@@ -607,15 +621,15 @@ function findVarietyByTypeOrArea(area,type,pageNum)
         changeStyle();
         if (token == null || token.trim() == "" || is_chaoshi > 60 * 60 * 24 * 3) {
 
-            $("#login-btn").css("display", "none");
-            $("#register-btn").css("display", "none");
 
+            $("#userinform").css("display", "none");
+            $("#exit").css("display", "none");
 
         }
         else {
             // $(".y1").ySearchSelect(); //调用自定义 高亮插件
-            $("#userinform").css("display", "none");
-            $("#exit").css("display", "none");
+            $("#login-btn").css("display", "none");
+            $("#register-btn").css("display", "none");
         }
 
 

@@ -119,7 +119,8 @@ public class VarietyController implements IVarietyController {
         else{
             List<VarietyParams> varietyParamsList=new ArrayList<VarietyParams>();
 //            System.out.println(iConfigParamsBLL.getValueByKey(userid).getValue());
-            List<String> list=python.recommendpy(String.valueOf(iConfigParamsBLL.getValueByKey(userid).getValue()));
+//            List<String> list=python.recommendpy(String.valueOf(iConfigParamsBLL.getValueByKey(userid).getValue()));
+            List<String> list=python.recommendpy(userid);
             if (list==null)
             {
                 PageResult<VarietyParams> paramsPageResult=new PageResult<VarietyParams>();
