@@ -116,4 +116,13 @@ public class RatingsBLL implements IRatingsBLL {
         int rs=ratingsMapper.selectCount(entityWrapper);
         return rs;
     }
+
+    @Override
+    public Float aveRating(String varietyid) {
+//        EntityWrapper<Ratings> entityWrapper=new EntityWrapper<Ratings>();
+//        entityWrapper.eq("varietyId",varietyid);
+//        int rs=ratingsMapper.selectCount(entityWrapper);
+        System.out.println(sqlRatingsMapper.aveRatings(varietyid));
+        return sqlRatingsMapper.aveRatings(varietyid);
+    }
 }

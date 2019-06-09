@@ -308,7 +308,7 @@
                 </h3>
 
                 <div class="rating fix"  style="margin: 15px 0 10px">
-                    <div class="karma"><i>7.1</i></div>
+                    <div class="karma" id="avg"></div>
                     <div class="karma" style="float: left;font-size: 20px;color: orange"><i>我来评星</i></div>
                     <!--<div class="rating-title" style="float: left;margin: 0 20px">我来评分：</div>-->
 
@@ -593,10 +593,12 @@ function VarietySame(type,name) {
                 },
                 success: function (result) {
                     console.log(result);//打印服务端返回的数据(调试用)
+
                     if (result.data == null) {
                         window.location.href = '/404.html';
                     }
                     if (result.code == 1 && result.data != null) {
+                        avgRatings(getQueryVariable("varietyId"));
                         $("#name").text(result.data.variety.name);
                         // $("#fromtv").text(result.data.fromtv);
                         for (var i in result.data.variety.fromtv) {
@@ -910,6 +912,49 @@ function VarietySame(type,name) {
 
     }
 
+
+    function avgRatings(varietyId){
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/Ratings/avgRatings",//url
+            data: {
+                varietyId: varietyId
+            },
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                // console.log(result.data);
+                var div = document.getElementById("avg");
+
+                if (result.data>0)
+                {
+                    console.log(result.data);
+                    // $("#avg").val(result.data);
+                    el="<i>"+ result.data.toFixed(1); +"</i>"
+                }
+                else{
+                    console.log(result.data);
+                    el="<i>暂无</i>"
+                    // $("#avg").val("暂无");
+                }
+                div.innerHTML=el;
+            },
+            error: function (e) {
+                // alert("异常！");
+                // swal("要评论需要先登录哦!", "", "error");
+                var div = document.getElementById("avg");
+                // swal("出错啦", "", "error");
+                el="<i>暂无</i>"
+                div.innerHTML=el;
+                // delCookie("userid");
+                // delCookie("name");
+                // delCookie("token")
+                // setTimeout("window.location.href = '/login.html' ", 2000 );
+            }
+        });
+
+    }
 
     //
     $(function(){

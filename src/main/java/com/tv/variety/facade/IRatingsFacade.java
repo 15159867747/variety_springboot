@@ -41,4 +41,7 @@ public interface IRatingsFacade {
 
     //查询总评星数
     int countUserRatings(long time);
+
+    //节目平均评分
+    Float avgRatings(String varietyId);
 }

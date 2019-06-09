@@ -103,4 +103,11 @@ public class RatingsController implements IRatingsController {
         return new JsonResult(iRatingsFacade.countUserRatings(time),"截止时间前的评星总数",1);
     }
 
+    @Override
+    @RequestMapping(value = "/avgRatings" , method = RequestMethod.POST)
+    public JsonResult avgRatings(String varietyId) {
+
+        return new JsonResult(iRatingsFacade.avgRatings(varietyId),"平均评分",1);
+    }
+
 }

@@ -17,4 +17,5 @@ public class SearchVarietyparams {
      String name;
      String content;
      String update;
+     String[] actor;
 }

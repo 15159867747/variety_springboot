@@ -100,6 +100,7 @@ public class VarietyMongoDB implements IVarietyMongoDB {
                         varietyParams1.setContent(variety.getContent());
                         varietyParams1.setBtn(variety.getBtn());
                         varietyParams1.setType(variety.getType());
+                        varietyParams1.setActor(variety.getActor());
                         return varietyParams1;
                     }
                     , null);

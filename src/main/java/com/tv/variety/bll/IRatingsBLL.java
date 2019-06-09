@@ -48,4 +48,7 @@ public interface IRatingsBLL {
     //判断该用户是否有评论过节目  在該時間之前
     int checkUserRating(String user,long time);
 
+    //该节目的平均评分
+    Float aveRating(String varietyid);
+
 }

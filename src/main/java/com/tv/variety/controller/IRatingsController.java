@@ -32,4 +32,7 @@ public interface IRatingsController {
 
     //查询总评星数 限制时间
     JsonResult countUserRatings(long time);
+
+    //节目平均评分
+    JsonResult avgRatings(String varietyId);
 }

@@ -147,6 +147,7 @@ function Searcherall(data) {
                 "                    <div class=\"info\" style=\"float: left;\">\n" +
                 "                        <h3 class=\"tit\">\n" +                                                                                           //'VarietyDetails.html?name="+ data[i].varietyName+"&varietyId="+ data[i].varietyId+" '
                 "                            <a style=\"font-size: 30px;line-height: 40px\"  target=\"_blank\" class=\"seedplay play-btn-b\" href=\"/VarietyDetails.html?name="+ data[i].name+"&varietyId="+ data[i].id+"\" >" + data[i].name + "</a>\n" +
+
                 "                        </h3>\n" +
                 "\n" +
                 "                        \n" +
@@ -171,6 +172,15 @@ function Searcherall(data) {
                 el = el + "<a  id=type"+j+"  href=/VarietyType.html?area=全部地区&type="+ data[i].type[j]+"  target=\"_blank\" >" + data[i].type[j] + " </a>&nbsp;\n";
             }
             {/*<a className="tit" href="/VarietyType.html?area=全部地区&type=真人秀">真人秀</a>*/}
+            el = el + "                     </div>\n"
+
+            el=el+"                <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"actor\">\n" +
+                "                    <i>主持人：</i>"
+            for (var j in data[i].actor)
+            {
+                el = el + "" + data[i].actor[j] + "&nbsp;\n";
+            }
+
             el = el + "                     </div>\n" +
                 "\n" +
                 "                        <div class=\"desc\" style=\"margin: 10px 0;font-size: 14px\" id=\"fromtvdiv2\">\n" +

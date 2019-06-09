@@ -129,6 +129,12 @@ public class RatingsFacade implements IRatingsFacade {
     public int countUserRatings(long time) {
         return iRatingsBLL.countUserRatings(time);
     }
+
+    @Override
+    public Float avgRatings(String varietyId) {
+//        System.out.println(iRatingsBLL.aveRating(varietyId));
+        return iRatingsBLL.aveRating(varietyId);
+    }
 }
 
 
